@@ -1,0 +1,45 @@
+---
+description: Digest of memory/known-pitfalls.md — mistakes already made once in this repo; check before debugging or "fixing" guardrails.
+globs: src/**/*
+alwaysApply: false
+---
+
+# Known pitfalls (digest)
+
+Full log with context: `memory/known-pitfalls.md`. When something feels broken, check here
+before changing configuration — most "bugs" below are the guardrails working.
+
+- **tsgo quirks**: `npm run typecheck` uses tsgo (@typescript/native-preview). If it
+  reports something implausible, cross-check with `npm run typecheck:tsc` before changing
+  code; the tsc fallback is authoritative.
+- **`server-only` build error in a client file**: you imported `@/packages/env/server`
+  (or something that does) under a `'use client'` boundary. Use `publicEnv` from
+  `@/packages/env`, or move the read to a server component / route handler.
+- **App "needs a backend"**: it does not. `SERVER_API_MOCKING=enabled` is the default and
+  the BFF gateway (`/api/gateway/[...path]`) serves module fixtures like
+  `src/modules/articles/api/articles.mock.ts`. Only set `SERVER_API_BASE_URL` +
+  `SERVER_API_MOCKING=disabled` to hit a real API.
+- **Locale routing**: there are no `/en` or `/ar` path prefixes. Locale is the
+  `NEXT_LOCALE` cookie; adding path-based locale segments breaks `typedRoutes` and `ROUTE_PATHS`.
+- **RTL regressions**: physical properties (`pl-*`, `text-left`, `left-0`) mirror wrong in
+  Arabic. Always use logical utilities (`ps-*`, `text-start`) and test with `dir="rtl"`.
+- **Dark theme**: driven by `[data-theme='dark']` on the root (set via `setRootAttribute`
+  through the ui-preferences store), not `prefers-color-scheme` and not a `dark` class.
+- **Stale lists after mutation**: invalidate through the module helper (e.g.
+  `invalidateArticleLists` in `src/modules/articles/queries/article.invalidate.ts`) with
+  keys from the builder — hand-written key arrays silently miss.
+- **Zustand re-render storms**: select slices with `useAppStoreShallow`; never subscribe a
+  component to the whole store. Hydrate persisted state via `readStorageJson`
+  (schema-validated) — never raw `localStorage`.
+- **MSW vs BFF confusion**: MSW (`src/tests/msw/`) exists only for Vitest; Playwright and
+  `npm run dev` exercise the real BFF mock fixtures. Do not import MSW in app code.
+- **Login always fails in mocks**: the sentinel `AUTH_MOCK_REJECTED_PASSWORD =
+  'wrong-password'` triggers the negative path on purpose; any other password succeeds.
+- **Raw copy in the error boundary**: `FALLBACK_ERROR_COPY` in global-error is the single
+  sanctioned raw-text exception (i18n may be broken there). Do not copy that pattern elsewhere.
+- **"Just disable the rule"**: never. `--max-warnings=0` plus the architecture plugin is
+  the product. Move code to the right layer, or file a documented exception in
+  `docs/exceptions/` (see `docs/exceptions/exception-template.md`).
+- **Transitive vulnerability**: fix with a documented `overrides` entry in `package.json`
+  (current example: `postcss`), then prove clean with `npm run security:audit` and
+  `npm run security:scan`.

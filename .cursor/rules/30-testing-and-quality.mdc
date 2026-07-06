@@ -1,0 +1,48 @@
+---
+description: TDD workflow, test locations, coverage bars, and the quality gate commands.
+globs: src/**/*.test.ts,src/**/*.test.tsx,src/tests/**/*,src/modules/**/test/**/*
+alwaysApply: false
+---
+
+# Testing and quality
+
+TDD is the default: write or update the failing test first, then the code. Full standard:
+`testing/testing-strategy.md` and `rules/15-testing-and-coverage.md`.
+
+# Test locations
+
+- Module unit tests: `src/modules/<feature>/test/` (Vitest 4 + React Testing Library, jsdom).
+- Cross-module integration: `src/tests/integration` using `renderWithProviders`
+  (`src/tests/helpers/render-with-providers.tsx`).
+- Network mocking in unit/integration tests: MSW node server `src/tests/msw/server.ts`,
+  handlers in `src/tests/msw/handlers/`. MSW is test-only; runtime mocking is the BFF's
+  job (`SERVER_API_MOCKING=enabled` serves `api/*.mock.ts` fixtures).
+- Playwright: `src/tests/e2e/*.e2e.ts`, `src/tests/accessibility/*.a11y.ts`
+  (@axe-core/playwright), `src/tests/visual/*.visual.ts`.
+- Global setup: `src/tests/setup/vitest.setup.ts` (jest-dom, MSW server, server-only mock).
+
+# Hard test rules
+
+- Component tests assert user-visible behavior only — roles, accessible names, text via
+  message keys — never implementation details.
+- Locate elements via `TEST_IDS` (`src/shared/constants/test-ids.constants.ts`) and
+  `buildIndexedTestId` for lists; never ad-hoc selectors in Playwright specs.
+- No `.only`. No skipped tests without a documented exception in `docs/exceptions/`.
+- Coverage thresholds (`vitest.config.mts`): 95% global lines/statements/functions/branches;
+  100% for utils, helpers, mappers, schemas, and query-key builders.
+
+# Gate commands
+
+```bash
+npm run test            # Vitest run
+npm run test:coverage   # enforces the thresholds above
+npm run test:e2e        # Playwright e2e
+npm run test:a11y       # Playwright + axe accessibility suite
+npm run test:visual     # Playwright visual regression
+npm run quality         # lint + typecheck + coverage + build
+npm run validate        # quality + e2e + security scans + knip + madge
+```
+
+Pre-push (`.husky/pre-push`) runs typecheck + test — never push red, never skip hooks.
+Task guides: `skills/write-unit-tests.md`, `skills/write-integration-tests.md`,
+`skills/write-e2e-tests.md`, `skills/write-accessibility-tests.md`, `skills/write-visual-tests.md`.

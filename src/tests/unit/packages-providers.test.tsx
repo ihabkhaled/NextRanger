@@ -1,0 +1,55 @@
+import { render, screen } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
+
+import { AppIntlProvider, DEFAULT_LOCALE } from '@/packages/i18n';
+import { AppQueryProvider } from '@/packages/query';
+import { VirtualizedList } from '@/packages/virtuoso';
+
+describe('AppQueryProvider', () => {
+  it('provides the query cache to children (devtools included in local env)', () => {
+    render(
+      <AppQueryProvider>
+        <span>query-child</span>
+      </AppQueryProvider>,
+    );
+
+    expect(screen.getByText('query-child')).toBeInTheDocument();
+  });
+});
+
+describe('AppIntlProvider', () => {
+  it('provides the resolved locale to children', () => {
+    render(
+      <AppIntlProvider locale={DEFAULT_LOCALE}>
+        <span>intl-child</span>
+      </AppIntlProvider>,
+    );
+
+    expect(screen.getByText('intl-child')).toBeInTheDocument();
+  });
+});
+
+describe('VirtualizedList', () => {
+  it('renders the initial rows via keys and render callbacks', () => {
+    const items = Array.from({ length: 200 }, (_, index) => ({
+      id: `row-${index}`,
+      label: `Row ${index}`,
+    }));
+
+    render(
+      <VirtualizedList
+        items={items}
+        heightPx={400}
+        initialRenderCount={5}
+        computeItemKey={(item) => item.id}
+        renderItem={(item) => <span>{item.label}</span>}
+        testId="virtual-list"
+      />,
+    );
+
+    expect(screen.getByTestId('virtual-list')).toBeInTheDocument();
+    expect(screen.getByText('Row 0')).toBeInTheDocument();
+    expect(screen.getByText('Row 4')).toBeInTheDocument();
+    expect(screen.queryByText('Row 150')).not.toBeInTheDocument();
+  });
+});

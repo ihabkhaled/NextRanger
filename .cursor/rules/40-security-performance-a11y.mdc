@@ -1,0 +1,47 @@
+---
+description: Security facades and CSP, server-first performance, virtualization, accessibility, and i18n key discipline.
+globs: src/**/*.ts,src/**/*.tsx
+alwaysApply: false
+---
+
+# Security
+
+- Env access ONLY through facades: `publicEnv` from `@/packages/env` (client-safe
+  `NEXT_PUBLIC_*`) and `getServerEnv` from `@/packages/env/server` (guarded by `server-only`
+  — importing it in client code fails the build, by design).
+- CSP: per-request nonce in `src/proxy.ts` (`script-src 'self' 'nonce-…' 'strict-dynamic'`);
+  static headers (nosniff, DENY, referrer-policy, permissions-policy, COOP, HSTS) in
+  `next.config.ts`. Never weaken either.
+- Never `dangerouslySetInnerHTML`. Validate outbound URLs with `isSafeExternalUrl`
+  (`src/shared/security/external-url.helper.ts`); external anchors via `ExternalLink`.
+- Errors surface as message keys: `toAppError` + `mapErrorToMessageKey`
+  (`src/shared/errors/`). Never render raw server error strings.
+- Auth is cookie-session, token-free: never put tokens in Zustand or storage.
+- Vulnerabilities: `npm run security:audit` + `npm run security:scan` (Trivy) must stay
+  clean; fix transitives via documented `overrides` (see the `postcss` override in `package.json`).
+
+# Performance
+
+- Server-first: pages and layouts stay server components; the client boundary is a
+  container with a documented `// client-boundary-reason: …`.
+- Any list that can grow unbounded uses `VirtualizedList` from `@/packages/virtuoso`
+  (`skills/add-virtualized-list.md`).
+- Images via `AppImage` (`@/packages/image`, alt mandatory); internal links via `AppLink`
+  typed routes; fonts via `src/shared/fonts/app-fonts.ts`.
+- Respect `prefersReducedMotion` from `@/packages/browser` for animation decisions.
+
+# Accessibility
+
+- Interactive elements come from `@/packages/ui-primitives` (Button, Input, Label, …) —
+  they carry the focus/aria contract. Landmarks use `LANDMARK_IDS`.
+- Every image has alt text; every form control has a Label; icon-only buttons have
+  accessible names. Axe suite (`npm run test:a11y`) must pass with zero violations.
+
+# i18n / RTL
+
+- Every user-visible string is a message key in `src/packages/i18n/messages/{en,ar}.json`,
+  read via `useAppTranslation` / `getServerTranslations` and namespaced through
+  `I18N_NAMESPACES`. Only exception: `FALLBACK_ERROR_COPY` in the global error boundary.
+- Locale is cookie-based (`NEXT_LOCALE`), no path prefixes; direction comes from
+  `getLocaleDirection` and the `dir` attribute. Use logical CSS properties (`ps-*`, `ms-*`,
+  `text-start`) — never `left`/`right` styling that breaks Arabic RTL.

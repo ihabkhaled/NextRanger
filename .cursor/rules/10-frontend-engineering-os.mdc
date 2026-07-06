@@ -1,0 +1,45 @@
+---
+description: Module anatomy, file suffix conventions, and where every kind of code goes.
+globs: src/**/*
+alwaysApply: false
+---
+
+# Frontend engineering OS — where code goes
+
+Top-level layout:
+
+- `src/app` — routes, layouts, route handlers ONLY. No business logic in pages.
+- `src/modules/<feature>` — feature modules (reference: `src/modules/articles`).
+- `src/shared` — generic building blocks (components, config, constants, errors, i18n,
+  security, testing, types, utils).
+- `src/packages/<vendor>` — one owning wrapper per third-party package.
+- `src/tests` — cross-module tests (setup, msw, integration, e2e, accessibility, visual, factories).
+- `src/proxy.ts` — per-request nonce CSP (Next 16 proxy convention).
+
+# Module anatomy and suffixes
+
+Inside `src/modules/<feature>/`:
+
+- `components/*.component.tsx` — JSX-only presentation. No hooks, no logic, no raw copy,
+  no raw `className`; class bundles come from `*.variants.ts` or `@/packages/ui-primitives`.
+- `containers/*.container.tsx` — `'use client'` + `// client-boundary-reason: …`; connects
+  hooks to components; owns the `.map()` (see `src/modules/articles/containers/articles-list.container.tsx`).
+- `hooks/use-*.hook.ts` — orchestration; builds fully-translated view models.
+- `queries/*.queries.ts`, `queries/*.mutations.ts`, `queries/*-query-keys.ts` — TanStack
+  Query via `@/packages/query`; keys only from the builder file; invalidation helpers live
+  beside them (e.g. `src/modules/articles/queries/article.invalidate.ts`).
+- `services/*.service.ts` — React-free domain logic.
+- `gateway/*.gateway.ts` — `httpClient` calls to `buildGatewayPath(...)` BFF paths.
+- `mappers/*.mapper.ts` — wire snake_case → domain camelCase.
+- `schemas/*.schema.ts` — Zod via `@/packages/zod`; error messages are i18n keys.
+- `types/*.types.ts`, `enums/*.enum.ts` (as-const objects), `constants/*.constants.ts`.
+- `store/` — Zustand stores via `createAppStore` from `@/packages/zustand`.
+- `api/` — wire types and mock fixtures (e.g. `src/modules/articles/api/articles.mock.ts`).
+- `test/` — module unit tests.
+- `index.ts` — the module's public surface; the ONLY thing other modules may import.
+
+New module? Follow `skills/create-module.md`. New file kind unclear? `context/codebase-navigation.md`.
+
+The workbench route `/workbench` (`src/app/(workbench)/workbench/page.tsx`) is the living
+primitive showcase — Storybook is deliberately not used (ADR
+`architecture/adrs/0002-component-workbench-over-storybook.md`).

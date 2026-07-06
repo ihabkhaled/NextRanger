@@ -1,0 +1,34 @@
+---
+description: Canonical policy sources and non-negotiable rules for strict-next-ranger. Applies to every request.
+alwaysApply: true
+---
+
+# Canonical policy
+
+This repo is strict-next-ranger, a strict Next.js 16 frontend operating system. The
+documentation corpus is the source of truth — consult it before changing structure:
+
+- `AGENTS.md` — universal agent entrypoint and skills routing table
+- `context/architecture-map.md` — where everything lives
+- `rules/00-non-negotiable-rules.md` — the full law; `rules/` holds per-topic rules 01–20
+- `skills/` — step-by-step procedures for every recurring task
+- `memory/known-pitfalls.md` — mistakes already made once; do not repeat them
+- `docs/eslint/` — one page per custom `frontend-architecture` rule
+
+# Non-negotiables
+
+- Third-party packages are imported ONLY through their owning wrapper in
+  `src/packages/<vendor>` (ownership map: `eslint/package-boundaries.config.mjs`).
+- Cross-module imports ONLY via the module public surface `@/modules/<feature>`.
+- `*.component.tsx` files are JSX-only: no hooks, no logic, no inline declarations,
+  no raw copy, no raw `className` outside the design system.
+- Containers carry `'use client'` + a `// client-boundary-reason: …` comment.
+- No `process.env` outside `src/packages/env`; no browser globals outside
+  `src/packages/browser` / `src/packages/storage`.
+- Query keys only from `*-query-keys.ts` builders; `useAppQuery`/`useAppMutation` only.
+- Every user-visible string is a next-intl message key with `en` and `ar` entries.
+- Never `dangerouslySetInnerHTML`. Never `eslint-disable` without a documented
+  exception in `docs/exceptions/` — move the code to the right layer instead.
+- TDD; coverage 95% global, 100% for utils/helpers/mappers/schemas/query-key builders.
+- Before finishing any task run: `npm run lint`, `npm run typecheck`, `npm run test`,
+  `npm run build` (or the aggregate `npm run quality`).
