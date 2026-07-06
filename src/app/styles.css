@@ -1,0 +1,61 @@
+@import 'tailwindcss';
+
+/* Dark theme is attribute-driven so the ui-preferences store can toggle it. */
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+/*
+ * Semantic design tokens. Components never hardcode palette values — they use
+ * these roles, which resolve per theme below.
+ */
+@theme inline {
+  --font-sans: var(--font-sans-stack);
+  --color-primary: var(--role-primary);
+  --color-primary-foreground: var(--role-primary-foreground);
+  --color-surface: var(--role-surface);
+  --color-foreground: var(--role-foreground);
+  --color-muted: var(--role-muted);
+  --color-muted-foreground: var(--role-muted-foreground);
+  --color-border: var(--role-border);
+  --color-ring: var(--role-ring);
+  --color-danger: var(--role-danger);
+  --color-danger-foreground: var(--role-danger-foreground);
+  --color-success: var(--role-success);
+  --color-warning: var(--role-warning);
+}
+
+:root {
+  --font-sans-stack: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --role-primary: oklch(0.55 0.18 262);
+  --role-primary-foreground: oklch(0.985 0 0);
+  --role-surface: oklch(1 0 0);
+  --role-foreground: oklch(0.2 0.02 262);
+  --role-muted: oklch(0.96 0.005 262);
+  --role-muted-foreground: oklch(0.45 0.02 262);
+  --role-border: oklch(0.9 0.01 262);
+  --role-ring: oklch(0.55 0.18 262);
+  /* Status roles stay ≥ 4.5:1 on surface/tint backgrounds (WCAG 2 AA). */
+  --role-danger: oklch(0.5 0.19 27);
+  --role-danger-foreground: oklch(0.985 0 0);
+  --role-success: oklch(0.44 0.12 155);
+  --role-warning: oklch(0.46 0.11 80);
+}
+
+[data-theme='dark'] {
+  --role-primary: oklch(0.68 0.16 262);
+  --role-primary-foreground: oklch(0.15 0.02 262);
+  --role-surface: oklch(0.18 0.02 262);
+  --role-foreground: oklch(0.94 0.01 262);
+  --role-muted: oklch(0.25 0.02 262);
+  --role-muted-foreground: oklch(0.68 0.02 262);
+  --role-border: oklch(0.32 0.02 262);
+  --role-ring: oklch(0.68 0.16 262);
+  --role-danger: oklch(0.65 0.19 27);
+  --role-danger-foreground: oklch(0.15 0.02 262);
+  --role-success: oklch(0.68 0.14 155);
+  --role-warning: oklch(0.75 0.14 80);
+}
+
+body {
+  background-color: var(--role-surface);
+  color: var(--role-foreground);
+}

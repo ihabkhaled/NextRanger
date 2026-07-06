@@ -1,0 +1,117 @@
+{
+  "app": {
+    "title": "Strict Next Ranger",
+    "description": "A strict Next.js frontend operating system.",
+    "skipToContent": "Skip to main content",
+    "loading": "Loading…",
+    "localeSwitchLabel": "Change language",
+    "localeNameEn": "English",
+    "localeNameAr": "Arabic"
+  },
+  "nav": {
+    "home": "Home",
+    "articles": "Articles",
+    "settings": "Settings",
+    "login": "Sign in",
+    "workbench": "Workbench",
+    "landmarkLabel": "Primary"
+  },
+  "home": {
+    "title": "Strict Next Ranger",
+    "subtitle": "Module-first architecture, JSX-only components, wrapped vendors, and every gate enforced by machines.",
+    "ctaArticles": "Browse articles",
+    "ctaLogin": "Sign in",
+    "principlesTitle": "Non-negotiables",
+    "principleComponents": "Components are JSX-only; behavior lives in hooks and containers.",
+    "principleBoundaries": "Every third-party package has exactly one owning wrapper.",
+    "principleServerFirst": "Server Components by default; client boundaries must justify themselves.",
+    "principleTesting": "TDD with unit, integration, e2e, accessibility, and visual gates."
+  },
+  "articles": {
+    "title": "Articles",
+    "subtitle": "Reference module demonstrating the full layer anatomy.",
+    "empty": "No articles yet.",
+    "error": "We could not load the articles.",
+    "retry": "Try again",
+    "loading": "Loading articles…",
+    "readingTime": "{minutes, plural, one {# minute read} other {# minute read}}",
+    "publishedOn": "Published {date}",
+    "status": {
+      "draft": "Draft",
+      "published": "Published",
+      "archived": "Archived"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Sign in",
+      "subtitle": "Access the dashboard with your work account.",
+      "emailLabel": "Email address",
+      "passwordLabel": "Password",
+      "submit": "Sign in",
+      "submitting": "Signing in…",
+      "success": "Signed in successfully.",
+      "genericError": "Sign-in failed. Check your credentials and try again.",
+      "validation": {
+        "emailRequired": "Enter your email address.",
+        "emailInvalid": "Enter a valid email address.",
+        "passwordRequired": "Enter your password.",
+        "passwordTooShort": "Password must be at least 8 characters."
+      }
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "subtitle": "Client-side UI preferences stored in the ui-preferences module.",
+    "theme": {
+      "label": "Theme",
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
+    },
+    "direction": {
+      "label": "Text direction",
+      "ltr": "Left to right",
+      "rtl": "Right to left"
+    },
+    "sidebar": {
+      "label": "Sidebar",
+      "expanded": "Expanded",
+      "collapsed": "Collapsed"
+    }
+  },
+  "errors": {
+    "generic": "Something went wrong. Please try again.",
+    "network": "You appear to be offline. Check your connection.",
+    "timeout": "The request took too long. Please try again.",
+    "notFound": "The requested resource was not found.",
+    "unauthorized": "You need to sign in to continue.",
+    "forbidden": "You do not have access to this resource.",
+    "server": "The server had a problem. Please try again later.",
+    "validation": "Some fields need attention."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The page you are looking for does not exist or has moved.",
+    "backHome": "Back to home"
+  },
+  "errorPage": {
+    "title": "Something went wrong",
+    "description": "An unexpected error occurred. The team has been notified.",
+    "retry": "Try again"
+  },
+  "workbench": {
+    "title": "Component workbench",
+    "subtitle": "Living showcase of the design-system primitives.",
+    "buttonsSection": "Buttons",
+    "feedbackSection": "Feedback",
+    "iconsSection": "Icons",
+    "formsSection": "Form primitives",
+    "sampleLabel": "Email address",
+    "samplePlaceholder": "you@example.com",
+    "sampleAlert": "This is an informational alert.",
+    "sampleButton": "Primary action",
+    "sampleSecondaryButton": "Secondary action",
+    "sampleDangerButton": "Destructive action"
+  }
+}

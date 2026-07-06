@@ -1,0 +1,42 @@
+---
+description: Import boundaries — layer policy, package ownership map, and the deep-import ban.
+globs: src/**/*.ts,src/**/*.tsx
+alwaysApply: false
+---
+
+# Import boundaries
+
+Enforced by the `frontend-architecture` ESLint plugin. Policy tables:
+`eslint/architecture.config.mjs` (layer imports) and `eslint/package-boundaries.config.mjs`
+(package ownership). Never work around a boundary error — move the code.
+
+- Cross-module imports ONLY via `@/modules/<feature>` (the module `index.ts`). Deep imports
+  like `@/modules/articles/services/article.service` from another module are banned
+  (`no-cross-module-deep-imports`).
+- `src/app` imports containers/components from modules and shared; it never contains logic.
+- Layer direction inside a module: containers → hooks → queries/store → services → gateway →
+  mappers. Services and gateways are React-free. Components import nothing but props types
+  and design-system primitives (`no-restricted-layer-imports`).
+
+# Package owners (digest)
+
+Import the wrapper, never the vendor (`no-raw-package-imports`):
+
+| Vendor | Wrapper | Key exports |
+| --- | --- | --- |
+| axios | `@/packages/axios` | `httpClient`, `HttpError`, `isHttpError`, `normalizeToHttpError` |
+| @tanstack/react-query | `@/packages/query` | `useAppQuery`, `useAppMutation`, `useAppSuspenseQuery`, `AppQueryProvider` |
+| zustand | `@/packages/zustand` | `createAppStore`, `useAppStoreShallow` |
+| zod | `@/packages/zod` | `z`, `parseSchema`, `safeParseSchema` |
+| dayjs | `@/packages/date` | `formatDisplayDate`, `formatRelativeToNow`, `toIsoString` |
+| react-hook-form | `@/packages/forms` | `useAppZodForm` |
+| next-intl | `@/packages/i18n` | `useAppTranslation`, `getServerTranslations`, `AppIntlProvider` |
+| sonner | `@/packages/toast` | `showToast`, `AppToaster` |
+| lucide-react | `@/packages/icons` | named `*Icon` exports only |
+| clsx + tailwind-merge + cva | `@/packages/ui-primitives` | `cn`, `Button`, `Input`, `Card`, `Alert`, `Stack` |
+| react-virtuoso | `@/packages/virtuoso` | `VirtualizedList` |
+| next/link, next/image, next/navigation | `@/packages/link`, `@/packages/image`, `@/packages/navigation` | `AppLink`, `ExternalLink`, `AppImage`, `useAppNavigation`, `appRedirect`, `appNotFound` |
+| env / browser / storage / console | `@/packages/env`, `@/packages/browser`, `@/packages/storage`, `@/packages/logger` | `publicEnv`, `getServerEnv` (server), `getSafeWindow`, `readStorageJson`, `appLogger` |
+
+Full map with rationale: `context/package-boundaries.md` and `rules/09-library-wrapping.md`.
+Wrapping something new: `skills/create-package-wrapper.md`.

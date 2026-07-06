@@ -1,0 +1,8 @@
+{
+  "$schema": "https://unpkg.com/knip@latest/schema.json",
+  "entry": ["src/modules/*/index.ts", "src/packages/*/index.ts", "src/packages/env/server.ts"],
+  "project": ["src/**/*.{ts,tsx}", "eslint/**/*.mjs"],
+  "ignoreExportsUsedInFile": true,
+  "ignoreDependencies": ["tailwindcss"],
+  "ignoreBinaries": ["trivy"]
+}

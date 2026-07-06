@@ -1,0 +1,33 @@
+strict-next-ranger — strict Next.js 16 frontend OS. Full policy: AGENTS.md, rules/00-non-negotiable-rules.md, context/architecture-map.md. Scoped rules: .cursor/rules/.
+
+NON-NEGOTIABLES
+- Third-party packages only via their wrapper in src/packages/<vendor> (map: eslint/package-boundaries.config.mjs). Never raw axios/zod/dayjs/@tanstack/react-query/zustand/next-intl/sonner/lucide-react/clsx/next-link/next-image/next-navigation/console.
+- Cross-module imports only through @/modules/<feature> (index.ts). No deep imports across modules.
+- *.component.tsx = JSX only: no hooks, no logic, no inline declarations, no raw copy, no raw className outside the design system (class bundles come from *.variants.ts or src/packages/ui-primitives).
+- Containers (*.container.tsx): 'use client' + '// client-boundary-reason: ...' comment; connect hooks to components; own the .map() over items.
+- No process.env outside src/packages/env. Server env only via '@/packages/env/server' (server-only guarded). No window/document/localStorage outside src/packages/browser and src/packages/storage.
+- Query keys only from *-query-keys.ts builders. useAppQuery/useAppMutation from @/packages/query.
+- Every user-visible string is a next-intl message key with en + ar entries (src/packages/i18n/messages). Only exception: FALLBACK_ERROR_COPY in the global error boundary.
+- Routes only in src/app; paths via ROUTE_PATHS; API calls via httpClient + buildGatewayPath (same-origin BFF /api/gateway/*).
+- Never dangerouslySetInnerHTML. CSP nonce comes from src/proxy.ts. Errors surface as message keys via mapErrorToMessageKey.
+- Never add eslint-disable. Lint is --max-warnings=0; a firing rule means wrong layer — move the code. Exceptions require docs/exceptions/.
+- TDD. Coverage 95% global; 100% for utils/helpers/mappers/schemas/query-key builders. No .only, no skipped tests.
+
+FILE SUFFIX CONVENTIONS (src/modules/<feature>/)
+- components/*.component.tsx      JSX-only presentation
+- containers/*.container.tsx      client boundary + hook-to-component glue
+- hooks/use-*.hook.ts             orchestration, translated view models
+- queries/*.queries.ts | *.mutations.ts | *-query-keys.ts
+- services/*.service.ts           React-free domain logic
+- gateway/*.gateway.ts            httpClient + buildGatewayPath calls
+- mappers/*.mapper.ts             wire snake_case -> domain camelCase
+- schemas/*.schema.ts             Zod via @/packages/zod, i18n-key error messages
+- types/*.types.ts, enums/*.enum.ts (as-const objects), constants/*.constants.ts
+- store/                          Zustand via createAppStore
+- test/                           module unit tests
+- index.ts                        the only cross-module import surface
+
+VALIDATION COMMANDS
+- npm run lint && npm run typecheck && npm run test && npm run build
+- npm run quality   (lint + typecheck + coverage + build)
+- npm run validate  (quality + e2e + security:audit + security:scan + dead code + circular)
