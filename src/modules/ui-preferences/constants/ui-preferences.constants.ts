@@ -1,5 +1,5 @@
-import { AppDirection } from '@/shared/enums/app-direction.enum';
-import { AppTheme } from '@/shared/enums/app-theme.enum';
+import { AppDirection, type AppDirectionValue } from '@/shared/enums/app-direction.enum';
+import { AppTheme, type AppThemeValue } from '@/shared/enums/app-theme.enum';
 
 import type { UiPreferencesSnapshot } from '../types/ui-preferences.types';
 
@@ -16,3 +16,14 @@ export const UI_PREFERENCE_DOM_ATTRIBUTES = {
 } as const;
 
 export const DARK_COLOR_SCHEME_QUERY = '(prefers-color-scheme: dark)';
+
+export const UI_PREFERENCE_THEME_OPTION_VALUES: readonly AppThemeValue[] = [
+  AppTheme.Light,
+  AppTheme.Dark,
+  AppTheme.System,
+];
+
+export const UI_PREFERENCE_DIRECTION_OPTION_VALUES: readonly AppDirectionValue[] = [
+  AppDirection.Ltr,
+  AppDirection.Rtl,
+];

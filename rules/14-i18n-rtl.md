@@ -27,7 +27,7 @@ Every user-visible string is translated, and every layout works mirrored. Englis
 ## Where translation happens
 
 - Client side: hooks translate. `useAppTranslation` (from [src/packages/i18n](../src/packages/i18n/index.ts))
-  is called in hooks and containers, which hand fully-translated view models to JSX-only
+  is called in hooks and containers, which hand fully-translated view models to TSX-only
   components — `useArticlesList` in [src/modules/articles](../src/modules/articles) is the
   reference.
 - Server side: `getServerTranslations` in server components and `generateMetadata`.

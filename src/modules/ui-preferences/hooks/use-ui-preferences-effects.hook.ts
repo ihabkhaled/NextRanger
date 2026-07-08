@@ -1,26 +1,15 @@
 import { useEffect } from 'react';
 
-import { getRootAttribute, matchesMediaQuery, setRootAttribute } from '@/packages/browser';
+import { getRootAttribute, setRootAttribute } from '@/packages/browser';
 import { readStorageJson, writeStorageJson } from '@/packages/storage';
 import { STORAGE_KEYS } from '@/shared/constants/storage-keys.constants';
 import { AppDirection } from '@/shared/enums/app-direction.enum';
-import { AppTheme, type AppThemeValue } from '@/shared/enums/app-theme.enum';
 
-import {
-  DARK_COLOR_SCHEME_QUERY,
-  UI_PREFERENCE_DOM_ATTRIBUTES,
-} from '../constants/ui-preferences.constants';
+import { UI_PREFERENCE_DOM_ATTRIBUTES } from '../constants/ui-preferences.constants';
+import { resolveThemeAttribute } from '../helpers/ui-preferences.helper';
 import { uiPreferencesSnapshotSchema } from '../schemas/ui-preferences.schema';
 import { selectPreferencesSnapshot } from '../store/ui-preferences.selectors';
 import { useUiPreferencesStore } from '../store/ui-preferences.store';
-
-function resolveThemeAttribute(theme: AppThemeValue): string {
-  if (theme === AppTheme.System) {
-    return matchesMediaQuery(DARK_COLOR_SCHEME_QUERY) ? AppTheme.Dark : AppTheme.Light;
-  }
-
-  return theme;
-}
 
 /**
  * Side-effect bridge between the preferences store and the outside world:

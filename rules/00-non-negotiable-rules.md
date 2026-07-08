@@ -12,7 +12,7 @@ enforces it.
    [eslint/architecture.config.mjs](../eslint/architecture.config.mjs), plus review against
    [context/architecture-map.md](../context/architecture-map.md).
 
-2. **Components are JSX-only.** `*.component.tsx` files render pre-computed props and nothing else,
+2. **Components are TSX-only.** `*.component.tsx` files render pre-computed props and nothing else,
    so they are trivially testable, reusable, and safe to restyle. Enforced by:
    `no-inline-component-logic`, `no-hooks-in-components`, `no-raw-i18n-text`,
    `no-inline-classname-outside-design-system`.

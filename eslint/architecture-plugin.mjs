@@ -2,9 +2,9 @@
  * Local ESLint plugin: frontend-architecture
  *
  * Enforces the architecture contract no off-the-shelf plugin can:
- * JSX-only components, layered one-way imports, package boundaries,
- * env/browser facades, query-key builders, i18n copy discipline, and
- * justified client boundaries.
+ * TSX-only component files, layered one-way imports, package boundaries,
+ * React-free services/gateways/helpers, env/browser facades, query-key builders,
+ * i18n copy discipline, and justified client boundaries.
  *
  * Rule documentation lives in docs/eslint/<rule-name>.md.
  */
@@ -19,6 +19,7 @@ import noInlineQueryKeys from './architecture-plugin/rules/no-inline-query-keys.
 import noProcessEnvOutsideConfig from './architecture-plugin/rules/no-process-env-outside-config.mjs';
 import noRawI18nText from './architecture-plugin/rules/no-raw-i18n-text.mjs';
 import noRawPackageImports from './architecture-plugin/rules/no-raw-package-imports.mjs';
+import noReactInPureLayers from './architecture-plugin/rules/no-react-in-pure-layers.mjs';
 import noRestrictedLayerImports from './architecture-plugin/rules/no-restricted-layer-imports.mjs';
 import noServerOnlyImportInClient from './architecture-plugin/rules/no-server-only-import-in-client.mjs';
 import requireClientComponentReason from './architecture-plugin/rules/require-client-component-reason.mjs';
@@ -39,6 +40,7 @@ export const frontendArchitecturePlugin = {
     'no-process-env-outside-config': noProcessEnvOutsideConfig,
     'no-raw-i18n-text': noRawI18nText,
     'no-raw-package-imports': noRawPackageImports,
+    'no-react-in-pure-layers': noReactInPureLayers,
     'no-restricted-layer-imports': noRestrictedLayerImports,
     'no-server-only-import-in-client': noServerOnlyImportInClient,
     'require-client-component-reason': requireClientComponentReason,

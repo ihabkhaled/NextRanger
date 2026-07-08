@@ -2,24 +2,18 @@ import { formatDisplayDate } from '@/packages/date';
 import { buildIndexedTestId } from '@/shared/testing/test-id.helper';
 
 import { ARTICLE_STATUS_BADGE_CLASSES } from '../constants/article-style.constants';
-import type { Article, ArticleCardViewModel } from '../types/article.types';
-
-export interface ArticleDisplayTranslations {
-  readonly translateStatus: (status: Article['status']) => string;
-  readonly translateReadingTime: (minutes: number) => string;
-  readonly translatePublishedOn: (formattedDate: string) => string;
-}
+import type {
+  ArticleCardViewModel,
+  BuildArticleCardViewModelOptions,
+} from '../types/article.types';
 
 /**
  * Pure presentation assembly: domain article → display-ready card view model.
  * Translation functions are injected so this stays unit-testable.
  */
-export function buildArticleCardViewModel(options: {
-  article: Article;
-  locale: string;
-  cardTestId: string;
-  translations: ArticleDisplayTranslations;
-}): ArticleCardViewModel {
+export function buildArticleCardViewModel(
+  options: BuildArticleCardViewModelOptions,
+): ArticleCardViewModel {
   const { article, locale, cardTestId, translations } = options;
   const formattedDate = article.publishedAt ? formatDisplayDate(article.publishedAt, locale) : null;
 

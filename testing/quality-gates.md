@@ -14,6 +14,7 @@ overrides, no "merge now, fix later". Exceptions follow
 | Typecheck (strict, 3 tsconfigs)                           | `npm run typecheck` (tsgo over `tsconfig.app.json`, `tsconfig.test.json`, `tsconfig.node.json`; `typecheck:tsc` as fallback) | pre-push; `ci.yml`                                                                  | Yes                                                                                                            |
 | Unit + integration tests with coverage thresholds         | `npm run test:coverage` ([coverage-policy.md](coverage-policy.md))                                                           | pre-push (`npm run test`); `ci.yml` (with coverage)                                 | Yes                                                                                                            |
 | Production build                                          | `npm run build`                                                                                                              | `ci.yml`; also implied by the e2e webServer                                         | Yes                                                                                                            |
+| Playwright browser install                                | `npm run test:e2e:install` (`npx playwright install chromium`)                                                               | One-time per environment; CI caches the binary                                      | Yes — required before first `test:e2e` / `validate` locally                                                    |
 | End-to-end                                                | `npm run test:e2e`                                                                                                           | `.github/workflows/e2e.yml`                                                         | Yes                                                                                                            |
 | Accessibility (axe serious/critical = 0 + keyboard specs) | `npm run test:a11y`                                                                                                          | `e2e.yml`                                                                           | Yes                                                                                                            |
 | Visual regression (`maxDiffPixelRatio: 0.02`)             | `npm run test:visual`                                                                                                        | `e2e.yml`                                                                           | Yes                                                                                                            |
@@ -39,7 +40,8 @@ the hook.
 - `npm run validate` = `quality` + e2e + security:audit + security:scan + dead-code + circular.
   This is the full release gate — the same bar CI applies across all three workflows, runnable
   on one machine. The [skills/final-validation.md](../skills/final-validation.md) skill walks
-  through it.
+  through it. Run `npm run test:e2e:install` once on a fresh environment before the first
+  `validate`.
 
 ## Merge and release
 

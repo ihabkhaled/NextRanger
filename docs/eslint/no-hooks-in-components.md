@@ -6,7 +6,7 @@
 
 ## What it enforces
 
-`*.component.tsx` files are JSX-only. They MUST NOT:
+`*.component.tsx` files are TSX-only. They MUST NOT:
 
 - call any React built-in hook (the full `REACT_BUILTIN_HOOKS` set in
   `eslint/architecture-plugin/shared/ast-utils.mjs`, including `use`) or any custom hook

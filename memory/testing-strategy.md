@@ -34,7 +34,7 @@ Rationale behind the testing standard. The normative rules live in
 
 - **Decision:** `*.container.tsx` files are tested in `src/tests/integration` with
   `renderWithProviders` (`src/tests/helpers/render-with-providers.tsx`) and MSW; they get no
-  isolated unit tests. Unit tests target hooks, services, mappers, schemas, and JSX-only
+  isolated unit tests. Unit tests target hooks, services, mappers, schemas, and TSX-only
   components inside each module's `test/` directory.
 - **Why:** a container's whole job is wiring — hooks in, view models out, loading/error/empty/ready
   switching (see `src/modules/articles/containers/articles-list.container.tsx`). Unit-testing a

@@ -36,7 +36,7 @@ architecture-level cost, not micro-optimizations.
   `src/packages/icons` as named `*Icon` exports (no wildcard icon imports).
 - Lists that can exceed roughly one screen of items use `VirtualizedList` from
   `@/packages/virtuoso` instead of a bare `.map()` render.
-- Containers do the `.map()` to child elements and pass computed, stable props; JSX-only
+- Containers do the `.map()` to child elements and pass computed, stable props; TSX-only
   components stay memo-friendly because `no-inline-declarations` already forbids inline
   literals/lambdas in `*.component.tsx` files. Do not demand `React.memo` everywhere —
   demand stable inputs first.

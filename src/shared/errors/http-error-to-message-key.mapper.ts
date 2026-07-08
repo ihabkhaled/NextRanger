@@ -1,11 +1,12 @@
 import { isHttpError } from '@/packages/axios';
 
 import { ERROR_MESSAGE_KEYS, type ErrorMessageKey } from './error-keys.constants';
-
-const HTTP_STATUS_UNAUTHORIZED = 401;
-const HTTP_STATUS_FORBIDDEN = 403;
-const HTTP_STATUS_NOT_FOUND = 404;
-const HTTP_STATUS_SERVER_ERROR_FLOOR = 500;
+import {
+  HTTP_STATUS_FORBIDDEN,
+  HTTP_STATUS_NOT_FOUND,
+  HTTP_STATUS_SERVER_ERROR_FLOOR,
+  HTTP_STATUS_UNAUTHORIZED,
+} from './http-status.constants';
 
 /**
  * Sanitize any thrown value into a translatable error key. This is the only

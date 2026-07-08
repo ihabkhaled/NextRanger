@@ -1,4 +1,4 @@
-const SAFE_PROTOCOLS = new Set(['https:', 'mailto:']);
+import { SAFE_EXTERNAL_URL_PROTOCOLS } from './external-url.constants';
 
 /**
  * Only https/mailto URLs may be rendered as external links. Everything else
@@ -8,7 +8,7 @@ export function isSafeExternalUrl(candidate: string): boolean {
   try {
     const parsed = new URL(candidate);
 
-    return SAFE_PROTOCOLS.has(parsed.protocol);
+    return SAFE_EXTERNAL_URL_PROTOCOLS.has(parsed.protocol);
   } catch {
     return false;
   }

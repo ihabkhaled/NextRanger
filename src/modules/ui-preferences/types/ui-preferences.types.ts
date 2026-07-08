@@ -41,3 +41,10 @@ export interface UiPreferencesViewModel {
   readonly sidebarStateLabel: string;
   readonly onToggleSidebar: () => void;
 }
+
+export interface BuildPreferenceOptionsInput<TValue extends string> {
+  readonly values: readonly TValue[];
+  readonly selectedValue: TValue;
+  readonly getLabel: (value: TValue) => string;
+  readonly getTestId: (value: TValue) => string;
+}

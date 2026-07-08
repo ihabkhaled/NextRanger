@@ -1,7 +1,7 @@
 # Skill: Create a Container
 
 Create a `*.container.tsx` file — the client boundary that connects one view-model hook to
-JSX-only components. Containers are the only module layer allowed to be a client entry point, and
+TSX-only components. Containers are the only module layer allowed to be a client entry point, and
 the only place `.map()` from view models to child elements happens.
 
 ## Read first

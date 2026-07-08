@@ -40,7 +40,7 @@ mappers/ schemas/ types/ enums/ constants/`). Run `npm run lint` and note which 
    `services/`. Each extraction: create the new file with its test, re-point the old call site,
    delete the dead original, run the scoped tests.
 4. **Then fix the React layers.** Hooks absorb orchestration from containers; containers keep
-   only hook-to-component wiring and the `.map()` to children; components end up JSX-only. The
+   only hook-to-component wiring and the `.map()` to children; components end up TSX-only. The
    architecture rules (`no-hooks-in-components`, `no-inline-component-logic`,
    `no-restricted-layer-imports`) confirm each step — a clean `npm run lint` per commit is the
    proof the layer move is complete.

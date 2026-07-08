@@ -15,7 +15,7 @@ import { TEST_IDS } from '@/shared/constants/test-ids.constants';
 import type { LoginFormProps } from '../types/auth.types';
 
 /**
- * JSX-only login form. All labels/errors are pre-translated; all behavior
+ * TSX-only login form. All labels/errors are pre-translated; all behavior
  * (validation, submission, redirect) lives in the hook behind the container.
  */
 export function LoginForm(props: LoginFormProps): ReactElement {

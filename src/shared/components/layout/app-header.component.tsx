@@ -8,7 +8,7 @@ import { appHeaderClasses } from './app-header.variants';
 
 /**
  * Site header shell. Navigation items and actions arrive as already-built
- * nodes (links composed by the layout), keeping this component JSX-only.
+ * nodes (links composed by the layout), keeping this component TSX-only.
  */
 export function AppHeader(props: AppHeaderProps): ReactElement {
   return (

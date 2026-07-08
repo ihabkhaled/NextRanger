@@ -3,7 +3,7 @@ strict-next-ranger — strict Next.js 16 frontend OS. Full policy: AGENTS.md, ru
 NON-NEGOTIABLES
 - Third-party packages only via their wrapper in src/packages/<vendor> (map: eslint/package-boundaries.config.mjs). Never raw axios/zod/dayjs/@tanstack/react-query/zustand/next-intl/sonner/lucide-react/clsx/next-link/next-image/next-navigation/console.
 - Cross-module imports only through @/modules/<feature> (index.ts). No deep imports across modules.
-- *.component.tsx = JSX only: no hooks, no logic, no inline declarations, no raw copy, no raw className outside the design system (class bundles come from *.variants.ts or src/packages/ui-primitives).
+- *.component.tsx = TSX only: no hooks, no logic, no inline declarations, no raw copy, no raw className outside the design system (class bundles come from *.variants.ts or src/packages/ui-primitives).
 - Containers (*.container.tsx): 'use client' + '// client-boundary-reason: ...' comment; connect hooks to components; own the .map() over items.
 - No process.env outside src/packages/env. Server env only via '@/packages/env/server' (server-only guarded). No window/document/localStorage outside src/packages/browser and src/packages/storage.
 - Query keys only from *-query-keys.ts builders. useAppQuery/useAppMutation from @/packages/query.
@@ -14,7 +14,7 @@ NON-NEGOTIABLES
 - TDD. Coverage 95% global; 100% for utils/helpers/mappers/schemas/query-key builders. No .only, no skipped tests.
 
 FILE SUFFIX CONVENTIONS (src/modules/<feature>/)
-- components/*.component.tsx      JSX-only presentation
+- components/*.component.tsx      TSX-only presentation
 - containers/*.container.tsx      client boundary + hook-to-component glue
 - hooks/use-*.hook.ts             orchestration, translated view models
 - queries/*.queries.ts | *.mutations.ts | *-query-keys.ts

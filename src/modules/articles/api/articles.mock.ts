@@ -22,7 +22,7 @@ const ARTICLES_FIXTURE: readonly ArticleApiItem[] = [
   },
   {
     id: 'a-1002',
-    title: 'JSX-only components in practice',
+    title: 'TSX-only component files in practice',
     summary: 'Moving every decision out of the render tree and into hooks, helpers, and mappers.',
     status: ArticleStatus.Published,
     published_at: '2026-05-02T10:30:00.000Z',

@@ -5,7 +5,7 @@ import { Stack } from '@/packages/ui-primitives';
 import { settingsSectionClasses } from '../constants/ui-preferences-style.constants';
 import type { SettingsSectionProps } from '../types/ui-preferences.types';
 
-/** JSX-only section shell: translated legend + prepared option buttons. */
+/** TSX-only section shell: translated legend + prepared option buttons. */
 export function SettingsSection(props: SettingsSectionProps): ReactElement {
   return (
     <fieldset className={settingsSectionClasses.root} data-testid={props.testId}>

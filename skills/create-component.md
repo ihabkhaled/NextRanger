@@ -1,7 +1,8 @@
-# Skill: Create a Component (JSX-only)
+# Skill: Create a Component (TSX-only)
 
-Create a `*.component.tsx` file that renders a pre-computed view model and nothing else. Components
-in this repo are the leaves of the tree: no hooks, no logic, no inline declarations, no raw copy,
+Create a `*.component.tsx` file that renders a pre-computed view model and nothing else. Component
+files are TSX-only leaves of the tree: they contain only imports/type imports, the exported
+component function, and the TSX it returns. No hooks, no logic, no local declarations, no raw copy,
 no raw `className` outside the design system. All of that is enforced by the `frontend-architecture`
 ESLint rules (`no-hooks-in-components`, `no-inline-component-logic`, `no-inline-declarations`,
 `no-raw-i18n-text`, `no-inline-classname-outside-design-system`).
@@ -56,8 +57,12 @@ ESLint rules (`no-hooks-in-components`, `no-inline-component-logic`, `no-inline-
 
 ## Forbidden
 
-- Hooks, `useState`, event-handler bodies with logic, ternary chains computing labels.
+- Local `const`, `let`, `var`, `type`, `interface`, `enum`, function declarations, arrow helper declarations, or config objects inside the file.
+- Local declarations inside the component body.
+- Hooks of any kind (`useState`, `useEffect`, `useMemo`, `useCallback`, `useId`, etc.).
+- Event-handler bodies with logic, ternary chains computing labels, `.map()` / `.filter()` / `.sort()` / `.reduce()` inside JSX.
 - Conditional class composition in JSX — select the class in a helper and pass it in.
+- Imports from hooks, queries, services, gateways, stores, or app internals.
 - Default-exporting, declaring more than the component and its imports in the file.
 
 ## Validation
@@ -70,7 +75,8 @@ npm run test
 
 ## Definition of done
 
-- File contains only imports and one JSX-returning function; ESLint passes with zero warnings.
+- File contains only imports/type imports and one exported TSX-returning function; ESLint passes with zero warnings.
+- Props, types, enums, constants, style bundles, helpers, and config all live in their owning layers and are imported.
 - All copy and class names arrive via props/constants; `data-testid` is wired.
 - Renders correctly under both `dir="ltr"` and `dir="rtl"` (check via `/settings` toggle).
 - Unit test covers each visual state the props can express.

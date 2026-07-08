@@ -19,7 +19,7 @@ rule blocks you, the code is in the wrong layer — move it, do not disable the 
   `src/packages/<vendor>` (ownership map: `eslint/package-boundaries.config.mjs`).
 - Cross-module imports go **only** through the module public surface
   `@/modules/<feature>` (its `index.ts`). Deep imports across modules are banned.
-- `*.component.tsx` files are JSX-only: no hooks, no logic, no inline declarations,
+- `*.component.tsx` files are TSX-only: no hooks, no logic, no inline declarations,
   no raw copy, no raw `className` outside the design system.
 - Containers (`*.container.tsx`) carry `'use client'` plus a
   `// client-boundary-reason: …` comment, connect hooks to components, and own the `.map()`.
@@ -78,4 +78,6 @@ npm run build       # next build --turbopack
 
 Aggregates: `npm run quality` (lint + typecheck + coverage + build) and `npm run validate`
 (quality + e2e + `security:audit` + `security:scan` + `quality:dead-code` + `quality:circular`).
+Run `npm run test:e2e:install` once per environment to download the Playwright Chromium binary
+before the first `npm run validate`.
 The pre-push hook (`.husky/pre-push`) already runs typecheck + test; do not push red.

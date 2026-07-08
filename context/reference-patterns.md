@@ -4,7 +4,7 @@ Canonical excerpts quoted verbatim from the repo. When you write a new file, sta
 matching excerpt here and its source file — do not invent a new shape. The `articles` module is
 the flagship reference for the full layer anatomy.
 
-## 1. JSX-only component
+## 1. TSX-only component
 
 From [src/modules/articles/components/article-card.component.tsx](../src/modules/articles/components/article-card.component.tsx).
 No hooks, no logic, no raw copy, no raw classes — everything arrives pre-computed on the view model.

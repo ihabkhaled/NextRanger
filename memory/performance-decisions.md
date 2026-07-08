@@ -22,7 +22,7 @@ Rationale for the performance posture. Normative rules:
   noted at the call site.
 - **Rejected alternative:** blanket memoization "for safety".
 - **Why:** the architecture already removes the classic causes of render storms — components are
-  JSX-only (`*.component.tsx`, no hooks, no inline declarations, enforced by
+  TSX-only (`*.component.tsx`, no hooks, no inline declarations, enforced by
   `no-inline-declarations` and `no-inline-component-logic`), containers own the single `.map()`,
   and derived data is built once in hooks like `useArticlesList`
   (`src/modules/articles/hooks/`). On React 19, speculative memo mostly adds comparison cost and

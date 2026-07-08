@@ -6,7 +6,7 @@ import { articleCardClasses } from '../constants/article-style.constants';
 import type { ArticleCardProps } from '../types/article.types';
 
 /**
- * JSX-only: every label is pre-translated, every class comes from constants,
+ * TSX-only: every label is pre-translated, every class comes from constants,
  * every value is pre-computed in the hook/helper layer.
  */
 export function ArticleCard(props: ArticleCardProps): ReactElement {

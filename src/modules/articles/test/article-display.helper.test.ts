@@ -2,10 +2,8 @@ import { buildArticle } from '@tests/factories/article.factory';
 import { describe, expect, it } from 'vitest';
 
 import { ARTICLE_STATUS_BADGE_CLASSES } from '../constants/article-style.constants';
-import {
-  buildArticleCardViewModel,
-  type ArticleDisplayTranslations,
-} from '../helpers/article-display.helper';
+import { buildArticleCardViewModel } from '../helpers/article-display.helper';
+import type { ArticleDisplayTranslations } from '../types/article.types';
 
 const translations: ArticleDisplayTranslations = {
   translateStatus: (status) => `status:${status}`,

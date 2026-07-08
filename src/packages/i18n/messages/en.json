@@ -18,11 +18,11 @@
   },
   "home": {
     "title": "Strict Next Ranger",
-    "subtitle": "Module-first architecture, JSX-only components, wrapped vendors, and every gate enforced by machines.",
+    "subtitle": "Module-first architecture, TSX-only component files, wrapped vendors, and every gate enforced by machines.",
     "ctaArticles": "Browse articles",
     "ctaLogin": "Sign in",
     "principlesTitle": "Non-negotiables",
-    "principleComponents": "Components are JSX-only; behavior lives in hooks and containers.",
+    "principleComponents": "Components are TSX-only; behavior lives in hooks and containers.",
     "principleBoundaries": "Every third-party package has exactly one owning wrapper.",
     "principleServerFirst": "Server Components by default; client boundaries must justify themselves.",
     "principleTesting": "TDD with unit, integration, e2e, accessibility, and visual gates."

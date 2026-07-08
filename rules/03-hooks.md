@@ -32,9 +32,9 @@ the only place where data, translation, and presentation decisions meet.
 - Hooks MUST NOT call gateways or `httpClient` directly; server data arrives through the module's
   query hooks ([05-tanstack-query.md](05-tanstack-query.md)), client state through store selectors
   ([06-zustand.md](06-zustand.md)).
-- **No module-level declarations** in hook files: constants, default params, and pure functions
-  belong in `constants/`, `utils/`, or `helpers/` files where they are independently tested and
-  reusable. Enforced by `no-inline-declarations`
+- **No module-level declarations** in hook files: constants, types, interfaces, enums, default
+  params, and pure functions belong in `constants/`, `types/`, `utils/`, or `helpers/` files where
+  they are independently tested and reusable. Enforced by `no-inline-declarations`
   ([docs/eslint/no-inline-declarations.md](../docs/eslint/no-inline-declarations.md)).
 - Derivations over `query.data` MUST be memoized (`useMemo`) with honest dependency arrays; the
   `react-hooks` config in [eslint/react-hooks.config.mjs](../eslint/react-hooks.config.mjs) treats

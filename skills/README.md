@@ -13,7 +13,7 @@ Rules (the "what is allowed") live in [rules/README.md](../rules/README.md). Ori
 | Task                                                        | Skill                                                        |
 | ----------------------------------------------------------- | ------------------------------------------------------------ |
 | Scaffold a new feature module under `src/modules/`          | [create-module.md](create-module.md)                         |
-| Add a JSX-only presentational component                     | [create-component.md](create-component.md)                   |
+| Add a TSX-only presentational component                     | [create-component.md](create-component.md)                   |
 | Add a client container that wires hooks to components       | [create-container.md](create-container.md)                   |
 | Add a view-model or orchestration hook                      | [create-hook.md](create-hook.md)                             |
 | Add a React-free service (gateway + mapper composition)     | [create-service.md](create-service.md)                       |

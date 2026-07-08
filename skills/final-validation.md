@@ -18,7 +18,8 @@ npm run lint                # 2. ESLint flat config, --max-warnings=0
 npm run typecheck           # 3. tsgo over tsconfig.app/test/node
 npm run test:coverage       # 4. Vitest + thresholds: 95% global, 100% pure-logic layers
 npm run build               # 5. next build --turbopack (typedRoutes, env validation)
-npm run test:e2e            # 6. Playwright e2e (builds + starts the app itself)
+npm run test:e2e:install    # 6. one-time Playwright Chromium download
+npm run test:e2e            # 7. Playwright e2e (builds + starts the app itself)
 npm run security:audit      # 7. npm audit --audit-level=low
 npm run security:scan       # 8. trivy vuln + secret + misconfig, all severities
 npm run quality:dead-code   # 9. knip
@@ -26,8 +27,8 @@ npm run quality:circular    # 10. madge src --circular
 ```
 
 Shortcut: `npm run validate` chains steps 2–10 (via `quality` + the rest). Run `npm install`
-yourself first, and add `npm run test:a11y` / `npm run test:visual` whenever the change touched
-any UI.
+yourself first, run `npm run test:e2e:install` once per environment to download the Chromium
+binary, and add `npm run test:a11y` / `npm run test:visual` whenever the change touched any UI.
 
 ## Forbidden-pattern greps
 
@@ -65,11 +66,12 @@ Close out with this block in the PR description or task hand-off:
 | 3 | Typecheck           | npm run typecheck       | pass (3 projects)|
 | 4 | Unit + coverage     | npm run test:coverage   | pass (<x>% lines)|
 | 5 | Build               | npm run build           | pass             |
-| 6 | E2E                 | npm run test:e2e        | pass (<n> specs) |
-| 7 | Audit               | npm run security:audit  | pass             |
-| 8 | Trivy               | npm run security:scan   | pass             |
-| 9 | Dead code           | npm run quality:dead-code | pass           |
-|10 | Circular deps       | npm run quality:circular  | pass           |
+| 6 | Playwright install  | npm run test:e2e:install | pass (one-time) |
+| 7 | E2E                 | npm run test:e2e        | pass (<n> specs) |
+| 8 | Audit               | npm run security:audit  | pass             |
+| 9 | Trivy               | npm run security:scan   | pass             |
+| 10 | Dead code           | npm run quality:dead-code | pass           |
+| 11 | Circular deps       | npm run quality:circular  | pass           |
 
 Forbidden-pattern greps: clean / <findings + exception links>
 Extra suites run: <test:a11y / test:visual / none — why>

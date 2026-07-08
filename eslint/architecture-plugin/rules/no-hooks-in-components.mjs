@@ -1,22 +1,29 @@
 /**
  * Rule: frontend-architecture/no-hooks-in-components
  *
- * `*.component.tsx` files are JSX-only. They must never call React hooks or
- * custom hooks, and must never import from hooks/queries/store layers.
- * Behavior belongs in containers and hook files.
+ * `*.component.tsx` files are TSX-only. They must never call React hooks or
+ * custom hooks, and must never import from hooks/queries/store/services/gateway
+ * layers. Behavior belongs in containers and hook files.
  */
 
 import { isHookName, REACT_BUILTIN_HOOKS } from '../shared/ast-utils.mjs';
 import { getSourcePath, isComponentFile, toPosixPath } from '../shared/source-utils.mjs';
 
-const FORBIDDEN_IMPORT_SEGMENTS = [/\/hooks\//, /\.hook$/, /\/queries\//, /\/store\//];
+const FORBIDDEN_IMPORT_SEGMENTS = [
+  '/hooks/',
+  '.hook',
+  '/queries/',
+  '/store/',
+  '/services/',
+  '/gateway/',
+];
 
 export default {
   meta: {
     type: 'problem',
     docs: {
       description:
-        'Presentational *.component.tsx files must stay JSX-only: no React hooks, no custom hooks, no hooks/queries/store imports.',
+        'Presentational *.component.tsx files must stay TSX-only: no React hooks, no custom hooks, no hooks/queries/store/services/gateway imports.',
     },
     schema: [],
     messages: {
@@ -55,7 +62,7 @@ export default {
       ImportDeclaration(node) {
         const source = String(node.source.value);
 
-        if (FORBIDDEN_IMPORT_SEGMENTS.some((pattern) => pattern.test(source))) {
+        if (FORBIDDEN_IMPORT_SEGMENTS.some((segment) => source.includes(segment))) {
           context.report({ node, messageId: 'hookImport', data: { source } });
 
           return;

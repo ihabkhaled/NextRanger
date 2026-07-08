@@ -16,7 +16,7 @@
 | 6   | <Mutations + invalidation>  | [skills/create-mutation.md](../../../skills/create-mutation.md)           | <queries/>                                    | 5          |
 | 7   | <Store (if client state)>   | [skills/create-zustand-store.md](../../../skills/create-zustand-store.md) | <store/>                                      | 1          |
 | 8   | <View-model hook>           | [skills/create-hook.md](../../../skills/create-hook.md)                   | <hooks/>                                      | 5          |
-| 9   | <JSX-only components>       | [skills/create-component.md](../../../skills/create-component.md)         | <components/, *.variants.ts>                  | —          |
+| 9   | <TSX-only component files>  | [skills/create-component.md](../../../skills/create-component.md)         | <components/, *.variants.ts>                  | —          |
 | 10  | <Container>                 | [skills/create-container.md](../../../skills/create-container.md)         | <containers/>                                 | 8, 9       |
 | 11  | <Route + ROUTE_PATHS entry> | [skills/add-route.md](../../../skills/add-route.md)                       | <src/app/…/page.tsx>                          | 10         |
 | 12  | <Message keys en + ar>      | [skills/add-i18n-message-key.md](../../../skills/add-i18n-message-key.md) | <messages/en.json, ar.json>                   | —          |
@@ -44,7 +44,7 @@
 
 ## Definition of done (per PR)
 
-- [ ] `npm run validate` passes locally (lint, format:check, typecheck, tests, coverage)
+- [ ] `npm run validate` passes locally (run `npm run test:e2e:install` first on a fresh environment)
 - [ ] `npm run quality` passes (knip dead code, madge circular deps)
 - [ ] Tests from the stage-06 matrix for the touched slices are included in the same PR
 - [ ] Conventional commit messages; hooks in .husky/ not bypassed

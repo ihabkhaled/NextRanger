@@ -14,7 +14,7 @@
 
 ## Architecture checklist (rules/20-review-checklist.md has the full version)
 
-- [ ] Components stayed JSX-only; new behavior lives in hooks/containers
+- [ ] Components stayed TSX-only; new behavior lives in hooks/containers
 - [ ] No new magic strings (routes, keys, copy, test ids are constants/builders)
 - [ ] New vendor imports go through an owner wrapper (`src/packages/`)
 - [ ] Cross-module imports use public surfaces only (`@/modules/<feature>`)

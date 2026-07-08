@@ -3,28 +3,33 @@
 The view layer is split in two: **components** (`*.component.tsx`) render, **containers**
 (`*.container.tsx`) wire. Nothing else renders module UI.
 
-## Components: JSX-only doctrine
+## Components: TSX-only doctrine
 
 A component file receives fully-computed props and returns markup. That is the whole job.
 
 **Allowed in a `*.component.tsx`:**
 
-- JSX using props, design-system primitives from `@/packages/ui-primitives`, and shared components
-  from `src/shared/components/`.
-- Conditional rendering on pre-computed booleans/strings (`viewModel.publishedLabel ? … : null`).
-- Class bundles imported from a `*.variants.ts` / `*-style.constants.ts` file.
+- imports and type imports;
+- the exported component function;
+- TSX using props, design-system primitives from `@/packages/ui-primitives`, and shared components
+  from `src/shared/components/`;
+- conditional rendering on pre-computed booleans/strings (`viewModel.publishedLabel ? … : null`);
+- class bundles imported from a `*.variants.ts` / `*-style.constants.ts` file;
 - `data-testid` values passed in via props or `TEST_IDS`.
 
 **Forbidden in a `*.component.tsx`:**
 
-- Hooks of any kind (`no-hooks-in-components`).
-- Logic: computation, formatting, sorting, branching beyond render ternaries
-  (`no-inline-component-logic`).
-- Inline object/array/function declarations (`no-inline-declarations`).
-- Raw user-facing copy — labels arrive pre-translated (`no-raw-i18n-text`).
-- Raw `className` strings (`no-inline-classname-outside-design-system`); class bundles come from
-  variants files or primitives.
-- Imports from hooks/queries/services/store layers — enforced by the layer policy in
+- local `const`, `let`, `var`, `type`, `interface`, `enum`, function declarations, or arrow helper
+  declarations;
+- local declarations inside the component body;
+- hooks of any kind (`no-hooks-in-components`);
+- logic: computation, formatting, sorting, branching beyond render ternaries
+  (`no-inline-component-logic`);
+- inline object/array/function declarations (`no-inline-declarations`);
+- raw user-facing copy — labels arrive pre-translated (`no-raw-i18n-text`);
+- raw `className` strings (`no-inline-classname-outside-design-system`); class bundles come from
+  variants files or primitives;
+- imports from hooks/queries/services/gateway/store layers — enforced by the layer policy in
   [eslint/architecture.config.mjs](../eslint/architecture.config.mjs).
 
 Reference: [src/modules/articles/components/article-card.component.tsx](../src/modules/articles/components/article-card.component.tsx) —

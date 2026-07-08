@@ -10,7 +10,7 @@ Start with [00-non-negotiable-rules.md](00-non-negotiable-rules.md); everything 
 | ------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------- |
 | [00-non-negotiable-rules.md](00-non-negotiable-rules.md)                 | The 20 non-negotiables — the contract every change is reviewed against.                            |
 | [01-next-app-router-architecture.md](01-next-app-router-architecture.md) | App Router composition: route groups, page/layout/route conventions, server-first, `src/proxy.ts`. |
-| [02-components-and-containers.md](02-components-and-containers.md)       | JSX-only components, containers as the wiring layer, the view-model contract.                      |
+| [02-components-and-containers.md](02-components-and-containers.md)       | TSX-only components, containers as the wiring layer, the view-model contract.                      |
 | [03-hooks.md](03-hooks.md)                                               | Hooks as orchestrators that produce fully-translated view models.                                  |
 | [04-services-api-gateway.md](04-services-api-gateway.md)                 | React-free services, Zod-parsed gateways, the BFF gateway route, mock mode.                        |
 | [05-tanstack-query.md](05-tanstack-query.md)                             | Query-key builders, reusable options, exact invalidation, server state stays in the cache.         |

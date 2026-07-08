@@ -36,7 +36,7 @@ layer as you build it — never after the fact.
    | `queries/`            | `<feature>-query-keys.ts`, `<feature>.queries.ts`, `<feature>.mutations.ts`, `<feature>.invalidate.ts` | `src/modules/articles/queries/`                        |
    | `store/`              | `<feature>.store.ts`, `<feature>.selectors.ts` (only for true client global state)                     | `src/modules/ui-preferences/store/`                    |
    | `hooks/`              | `use-<name>.hook.ts` (view models)                                                                     | `src/modules/articles/hooks/use-articles-list.hook.ts` |
-   | `components/`         | `<name>.component.tsx` (JSX-only)                                                                      | `src/modules/articles/components/`                     |
+   | `components/`         | `<name>.component.tsx` (TSX-only)                                                                      | `src/modules/articles/components/`                     |
    | `containers/`         | `<name>.container.tsx` (`'use client'` + reason)                                                       | `src/modules/articles/containers/`                     |
    | `utils/` / `helpers/` | `<name>.utils.ts`, `<name>.helper.ts` (pure)                                                           | `src/modules/articles/utils/`, `helpers/`              |
    | `test/`               | unit tests colocated per module                                                                        | `src/modules/<feature>/test/`                          |

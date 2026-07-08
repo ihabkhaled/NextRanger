@@ -167,6 +167,7 @@ export default [
       'frontend-architecture/no-direct-browser-api-outside-packages': 'error',
       'frontend-architecture/no-inline-query-keys': 'error',
       'frontend-architecture/no-raw-i18n-text': 'error',
+      'frontend-architecture/no-react-in-pure-layers': 'error',
       'frontend-architecture/no-inline-classname-outside-design-system': 'error',
       'frontend-architecture/require-client-component-reason': 'error',
       'frontend-architecture/no-server-only-import-in-client': 'error',

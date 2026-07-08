@@ -12,7 +12,7 @@ the `frontend-architecture` ESLint plugin (`eslint/architecture-plugin.mjs`) enf
 
 | Layer                     | Suffix / location                                                 | Contains                                                                                                        | Never contains                                                                         |
 | ------------------------- | ----------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| Component                 | `*.component.tsx` in `components/`                                | JSX only; props in, markup out                                                                                  | Hooks, logic, inline declarations, raw copy, raw `className` outside the design system |
+| Component                 | `*.component.tsx` in `components/`                                | TSX only; props in, markup out                                                                                  | Hooks, logic, inline declarations, raw copy, raw `className` outside the design system |
 | Container                 | `*.container.tsx` in `containers/`                                | `'use client'` + `// client-boundary-reason: …`, hook-to-component glue, the `.map()` over items                | Business logic, fetch calls, styling decisions                                         |
 | Hook                      | `use-*.hook.ts` in `hooks/`                                       | Orchestration; builds fully-translated view models (see `src/modules/articles/hooks/use-articles-list.hook.ts`) | JSX                                                                                    |
 | Query / mutation          | `*.queries.ts`, `*.mutations.ts`, `*-query-keys.ts` in `queries/` | `useAppQuery`/`useAppMutation` from `@/packages/query`; keys only from the builder file                         | Raw `@tanstack/react-query` imports, inline key arrays                                 |
@@ -50,8 +50,9 @@ npm run lint          # ESLint 9 flat config, zero warnings tolerated
 npm run typecheck     # tsgo over tsconfig.app/test/node (fallback: npm run typecheck:tsc)
 npm run test          # Vitest; npm run test:coverage enforces 95%/100% thresholds
 npm run build         # next build --turbopack
-npm run quality       # lint + typecheck + coverage + build
-npm run validate      # quality + e2e + security:audit + security:scan + dead code + circular
+npm run quality            # lint + typecheck + coverage + build
+npm run validate           # quality + e2e + security:audit + security:scan + dead code + circular
+npm run test:e2e:install   # one-time Playwright Chromium download (run before first validate)
 ```
 
 Git hooks already enforce these: `.husky/pre-commit` (lint-staged), `.husky/commit-msg`

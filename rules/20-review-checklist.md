@@ -9,8 +9,9 @@ that defines it — when in doubt, the numbered rule wins.
 - [ ] `src/app` contains only routes, layouts, and route handlers — feature logic lives in `src/modules/<feature>`.
 - [ ] Cross-module imports go through the module's `index.ts` public surface (`@/modules/<feature>`), never deep paths.
 - [ ] New third-party usage goes through its owner wrapper in `src/packages/` — no raw vendor imports.
-- [ ] `*.component.tsx` files are JSX-only: no hooks, no logic, no inline query keys, no raw copy.
+- [ ] `*.component.tsx` files are TSX-only: no hooks, no logic, no local declarations, no inline query keys, no raw copy, no service/gateway imports.
 - [ ] Containers carry `'use client'` plus a `// client-boundary-reason:` comment and do the `.map()` to child elements.
+- [ ] Hooks, services, gateways, utils, helpers, and mappers contain no inline types, interfaces, enums, constants, or local helper functions.
 - [ ] Services, gateways, and mappers are React-free; wire snake_case is mapped to domain camelCase in `mappers/`.
 - [ ] Query keys come only from a builder file (e.g. `articleQueryKeys`) — [05](05-tanstack-query.md).
 

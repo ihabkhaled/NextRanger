@@ -20,7 +20,7 @@ documentation corpus is the source of truth — consult it before changing struc
 - Third-party packages are imported ONLY through their owning wrapper in
   `src/packages/<vendor>` (ownership map: `eslint/package-boundaries.config.mjs`).
 - Cross-module imports ONLY via the module public surface `@/modules/<feature>`.
-- `*.component.tsx` files are JSX-only: no hooks, no logic, no inline declarations,
+- `*.component.tsx` files are TSX-only: no hooks, no logic, no inline declarations,
   no raw copy, no raw `className` outside the design system.
 - Containers carry `'use client'` + a `// client-boundary-reason: …` comment.
 - No `process.env` outside `src/packages/env`; no browser globals outside

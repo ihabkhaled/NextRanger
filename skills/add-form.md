@@ -14,7 +14,7 @@ follow its files layer by layer. Doctrine:
 | Field ids    | `src/modules/auth/constants/auth.constants.ts` (`LOGIN_FIELD_IDS`) |
 | Mutation     | `src/modules/auth/queries/auth.mutations.ts` (`useLoginMutation`)  |
 | Hook         | `src/modules/auth/hooks/use-login-form.hook.ts` (`useLoginForm`)   |
-| Component    | `src/modules/auth/components/login-form.component.tsx` (JSX-only)  |
+| Component    | `src/modules/auth/components/login-form.component.tsx` (TSX-only)  |
 | Container    | `src/modules/auth/containers/login-form.container.tsx`             |
 
 ## Steps
@@ -53,7 +53,7 @@ follow its files layer by layer. Doctrine:
    - `formError` is the translated generic error when `mutation.isError` — never the raw
      error message (error sanitization doctrine,
      [rules/18-error-handling.md](../rules/18-error-handling.md)).
-5. **Render through `FormField` for accessibility.** The JSX-only component wraps each
+5. **Render through `FormField` for accessibility.** The TSX-only component wraps each
    control in `FormField` (`src/shared/components/forms/form-field.component.tsx`), which
    binds `Label` via `htmlFor={fieldId}` and renders the error in a `role="alert"` region
    whose id is the field id suffixed with `-error`. The `Input` MUST carry `aria-invalid`
@@ -77,5 +77,5 @@ follow its files layer by layer. Doctrine:
 
 ## Definition of done
 
-- Schema keys translated in the hook; component JSX-only; `FormField` wiring intact.
+- Schema keys translated in the hook; component TSX-only; `FormField` wiring intact.
 - Negative-path test exists at integration and e2e level. `npm run quality` green.

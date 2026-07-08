@@ -1,16 +1,16 @@
 import { useAppTranslation } from '@/packages/i18n';
 import { TEST_IDS } from '@/shared/constants/test-ids.constants';
-import { AppDirection, type AppDirectionValue } from '@/shared/enums/app-direction.enum';
-import { AppTheme, type AppThemeValue } from '@/shared/enums/app-theme.enum';
 import { I18N_NAMESPACES } from '@/shared/i18n/i18n-namespaces.constants';
 import { buildIndexedTestId } from '@/shared/testing/test-id.helper';
 
 import { UI_PREFERENCES_MESSAGE_KEYS } from '../constants/ui-preferences-message-keys.constants';
+import {
+  UI_PREFERENCE_DIRECTION_OPTION_VALUES,
+  UI_PREFERENCE_THEME_OPTION_VALUES,
+} from '../constants/ui-preferences.constants';
+import { buildPreferenceOptions } from '../helpers/ui-preferences.helper';
 import { useUiPreferencesStore } from '../store/ui-preferences.store';
-import type {
-  PreferenceOptionViewModel,
-  UiPreferencesViewModel,
-} from '../types/ui-preferences.types';
+import type { UiPreferencesViewModel } from '../types/ui-preferences.types';
 
 /** Orchestration for the settings screen. */
 export function useUiPreferences(): UiPreferencesViewModel {
@@ -22,26 +22,19 @@ export function useUiPreferences(): UiPreferencesViewModel {
   const setDirection = useUiPreferencesStore((state) => state.setDirection);
   const toggleSidebar = useUiPreferencesStore((state) => state.toggleSidebar);
 
-  const themeOptions: readonly PreferenceOptionViewModel<AppThemeValue>[] = [
-    AppTheme.Light,
-    AppTheme.Dark,
-    AppTheme.System,
-  ].map((value) => ({
-    value,
-    label: t(UI_PREFERENCES_MESSAGE_KEYS.themeOption[value]),
-    isSelected: theme === value,
-    testId: buildIndexedTestId(TEST_IDS.settingsTheme, value),
-  }));
+  const themeOptions = buildPreferenceOptions({
+    values: UI_PREFERENCE_THEME_OPTION_VALUES,
+    selectedValue: theme,
+    getLabel: (value) => t(UI_PREFERENCES_MESSAGE_KEYS.themeOption[value]),
+    getTestId: (value) => buildIndexedTestId(TEST_IDS.settingsTheme, value),
+  });
 
-  const directionOptions: readonly PreferenceOptionViewModel<AppDirectionValue>[] = [
-    AppDirection.Ltr,
-    AppDirection.Rtl,
-  ].map((value) => ({
-    value,
-    label: t(UI_PREFERENCES_MESSAGE_KEYS.directionOption[value]),
-    isSelected: direction === value,
-    testId: buildIndexedTestId(TEST_IDS.settingsDirection, value),
-  }));
+  const directionOptions = buildPreferenceOptions({
+    values: UI_PREFERENCE_DIRECTION_OPTION_VALUES,
+    selectedValue: direction,
+    getLabel: (value) => t(UI_PREFERENCES_MESSAGE_KEYS.directionOption[value]),
+    getTestId: (value) => buildIndexedTestId(TEST_IDS.settingsDirection, value),
+  });
 
   return {
     themeLabel: t(UI_PREFERENCES_MESSAGE_KEYS.themeLabel),

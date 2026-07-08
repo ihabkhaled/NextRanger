@@ -10,29 +10,14 @@ import {
 } from '../constants/article-message-keys.constants';
 import { ARTICLES_DEFAULT_PAGE, ARTICLES_DEFAULT_PAGE_SIZE } from '../constants/article.constants';
 import { buildArticleCardViewModel } from '../helpers/article-display.helper';
+import { resolveArticlesListState } from '../helpers/article-list-state.helper';
 import { useArticlesListQuery } from '../queries/article.queries';
-import type { ArticlesListState, ArticlesListViewModel } from '../types/article.types';
+import type { ArticlesListViewModel } from '../types/article.types';
 import { sortArticlesByNewest } from '../utils/article.utils';
-
-function resolveListState(options: {
-  isPending: boolean;
-  isError: boolean;
-  itemCount: number;
-}): ArticlesListState {
-  if (options.isPending) {
-    return 'loading';
-  }
-
-  if (options.isError) {
-    return 'error';
-  }
-
-  return options.itemCount === 0 ? 'empty' : 'ready';
-}
 
 /**
  * Orchestration: query state + i18n + display helpers → a fully-computed view
- * model. The container renders it; the components stay JSX-only.
+ * model. The container renders it; the components stay TSX-only.
  */
 export function useArticlesList(): ArticlesListViewModel {
   const t = useAppTranslation(I18N_NAMESPACES.articles);
@@ -66,7 +51,7 @@ export function useArticlesList(): ArticlesListViewModel {
   }, [query.data, locale, t]);
 
   return {
-    state: resolveListState({
+    state: resolveArticlesListState({
       isPending: query.isPending,
       isError: query.isError,
       itemCount: items.length,

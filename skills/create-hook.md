@@ -23,27 +23,17 @@ names, callbacks — is finished here.
    `store/`, and i18n via `useAppTranslation(I18N_NAMESPACES.<feature>)` and `useAppLocale` from
    `@/packages/i18n`. Message keys come from `constants/<feature>-message-keys.constants.ts` —
    never string literals.
-4. Resolve the state union with a pure module-scope function (not inline logic), like
-   `resolveListState` in the reference hook:
+4. Resolve the state union with a pure helper in `helpers/` or `utils/` (not a module-scope
+   function in the hook file). The reference hook uses `resolveArticlesListState` from
+   `src/modules/articles/helpers/article-list-state.helper.ts`:
 
    ```ts
-   function resolveListState(options: {
-     isPending: boolean;
-     isError: boolean;
-     itemCount: number;
-   }): ArticlesListState {
-     if (options.isPending) {
-       return 'loading';
-     }
-     if (options.isError) {
-       return 'error';
-     }
-     return options.itemCount === 0 ? 'empty' : 'ready';
-   }
+   import { resolveArticlesListState } from '../helpers/article-list-state.helper';
    ```
 
-   Module-scope pure functions are fine; declaring components or JSX inside a hook is not
-   (`no-inline-declarations`). If a helper grows, move it to `helpers/` like
+   The hook file itself must contain only the hook function, imports, and imported helpers.
+   No module-scope types, interfaces, enums, constants, or helper functions are allowed
+   (`no-inline-declarations`). If a helper grows, extract it to `helpers/` or `utils/` like
    `buildArticleCardViewModel` in `src/modules/articles/helpers/article-display.helper.ts`.
 
 5. Apply memoization discipline:
@@ -66,6 +56,9 @@ names, callbacks — is finished here.
 - HTTP calls or mapping wire data here — that is service/mapper territory
   ([skills/create-service.md](create-service.md)).
 - Declaring React components, JSX, or hooks-inside-conditionals.
+- Inline types, interfaces, enums, constants, or helper functions in the hook file.
+- Inline arrays/objects that should be constants or helpers.
+- Large business logic blocks — move pure logic to `utils/`/`helpers/`.
 - Reading `process.env`, `window`, or `document` — use `@/packages/env` and `@/packages/browser`.
 
 ## Validation

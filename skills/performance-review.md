@@ -40,7 +40,7 @@ diff reviews to [agents/react-performance-reviewer.md](../agents/react-performan
      (`useArticlesList` in `src/modules/articles/hooks/` is the pattern);
    - suspense variants (`useAppSuspenseQuery`) are used deliberately, not to hide loading states
      the container should render.
-6. **Render hygiene.** Components (`*.component.tsx`) are JSX-only by rule, so re-render cost
+6. **Render hygiene.** Components (`*.component.tsx`) are TSX-only by rule, so re-render cost
    concentrates in containers and hooks. Check new hooks for unstable object/array literals fed
    into context or query options, and check Zustand consumers use `useAppStoreShallow` for
    multi-field selection instead of subscribing to the whole store.

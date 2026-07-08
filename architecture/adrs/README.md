@@ -8,7 +8,7 @@ ADRs are the permanent memory of _why_ strict-next-ranger is built the way it is
 | ADR                                                | Title                                                                                                                     | Status   |
 | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | -------- |
 | [adr-template.md](adr-template.md)                 | Template for new ADRs                                                                                                     | —        |
-| [0001](0001-strict-next-architecture.md)           | Strict Next.js frontend architecture (module-first, JSX-only components, owner wrappers, ESLint enforcement, BFF gateway) | Accepted |
+| [0001](0001-strict-next-architecture.md)           | Strict Next.js frontend architecture (module-first, TSX-only components, owner wrappers, ESLint enforcement, BFF gateway) | Accepted |
 | [0002](0002-component-workbench-over-storybook.md) | Component workbench route instead of Storybook                                                                            | Accepted |
 
 ## When an ADR is required

@@ -9,7 +9,7 @@ import { TEST_IDS } from '@/shared/constants/test-ids.constants';
 import { I18N_NAMESPACES } from '@/shared/i18n/i18n-namespaces.constants';
 
 import { AUTH_MESSAGE_KEYS } from '../constants/auth-message-keys.constants';
-import { LOGIN_FIELD_IDS } from '../constants/auth.constants';
+import { LOGIN_FIELD_IDS, LOGIN_FORM_DEFAULT_VALUES } from '../constants/auth.constants';
 import { useLoginMutation } from '../queries/auth.mutations';
 import { loginFormSchema } from '../schemas/auth.schema';
 import { useAuthStore } from '../store/auth.store';
@@ -27,7 +27,7 @@ export function useLoginForm(): LoginFormViewModel {
   const mutation = useLoginMutation();
   const form = useAppZodForm<LoginFormValues>({
     schema: loginFormSchema,
-    defaultValues: { email: '', password: '' },
+    defaultValues: LOGIN_FORM_DEFAULT_VALUES,
   });
 
   const mutate = mutation.mutate;
@@ -47,6 +47,12 @@ export function useLoginForm(): LoginFormViewModel {
   const emailErrorKey = form.formState.errors.email?.message;
   const passwordErrorKey = form.formState.errors.password?.message;
   const submitForm = form.handleSubmit(handleValidSubmit);
+  const onSubmit = useCallback(
+    (event: Parameters<LoginFormViewModel['onSubmit']>[0]) => {
+      void submitForm(event);
+    },
+    [submitForm],
+  );
 
   return {
     title: t(AUTH_MESSAGE_KEYS.loginTitle),
@@ -68,8 +74,6 @@ export function useLoginForm(): LoginFormViewModel {
       testId: TEST_IDS.loginPassword,
       inputProps: form.register('password'),
     },
-    onSubmit: (event) => {
-      void submitForm(event);
-    },
+    onSubmit,
   };
 }

@@ -14,9 +14,9 @@ to React Server Components, client boundaries, design systems, i18n/RTL, and bro
 - **A real app**, not placeholders: articles list, login, settings, health endpoint, and a
   component workbench, all runnable with zero backend (the BFF gateway serves fixtures).
 - **Module-first architecture** with machine-enforced one-way layer dependencies.
-- **JSX-only components**: behavior lives in hooks/containers, logic in helpers/mappers.
+- **TSX-only components**: behavior lives in hooks/containers, logic in helpers/mappers.
 - **One owner per vendor**: every third-party package is wrapped once under `src/packages/`.
-- **13 custom ESLint rules** (`frontend-architecture/*`) enforcing what no off-the-shelf
+- **14 custom ESLint rules** (`frontend-architecture/*`) enforcing what no off-the-shelf
   plugin can, with fixtures and a test harness proving they fire.
 - **TDD gates**: Vitest + Testing Library + MSW, Playwright e2e/accessibility/visual, axe,
   95% global coverage (100% for pure logic).
@@ -41,6 +41,7 @@ npm run lint             # ESLint, --max-warnings=0
 npm run typecheck        # tsgo (TypeScript native preview) over app/test/node configs
 npm run test:coverage    # Vitest + coverage thresholds
 npm run build            # next build --turbopack
+npm run test:e2e:install # one-time Playwright browser install (chromium for this project)
 npm run test:e2e         # Playwright (builds and starts the prod server itself)
 npm run test:a11y        # axe + keyboard suites
 npm run test:visual      # screenshot baselines
@@ -51,10 +52,14 @@ npm run quality:circular   # madge
 npm run validate         # everything above, in order
 ```
 
+> **First-time e2e setup:** `npm run test:e2e:install` downloads the Chromium binary
+> Playwright needs. `npm run validate` expects it to be present; the install is not
+> part of `validate` to keep that command fast and repeatable in CI.
+
 ## Architecture in one breath
 
 `src/app` routes and composes; `src/modules/<feature>` owns features through strict layers
-(components are JSX-only, hooks orchestrate, services/gateways speak HTTP, mappers translate
+(components are TSX-only, hooks orchestrate, services/gateways speak HTTP, mappers translate
 wire↔domain, queries own the cache, stores hold client-only state); `src/shared` is generic;
 `src/packages` wraps every vendor exactly once; `src/tests` proves all of it; `src/proxy.ts`
 signs every response with a nonce CSP.
@@ -71,7 +76,7 @@ src/
                   storage, logger — one owner per vendor
   tests/          setup, msw, unit, integration, e2e, accessibility, visual, factories
   proxy.ts        per-request nonce Content-Security-Policy
-eslint/           split flat configs + the frontend-architecture plugin (13 rules)
+eslint/           split flat configs + the frontend-architecture plugin (14 rules)
 rules/ skills/ agents/ context/ memory/ testing/ docs/   the governance brain
 ```
 
@@ -134,6 +139,11 @@ Point your agent at its entrypoint and it inherits the whole operating system:
 - Claude Code: [CLAUDE.md](CLAUDE.md)
 - Codex: [CODEX.md](CODEX.md)
 - Cursor: [cursor.md](cursor.md), [.cursorrules](.cursorrules), `.cursor/rules/*.mdc`
+- Kimi: [KIMI.md](KIMI.md)
+- Gemini: [GEMINI.md](GEMINI.md)
+- GLM: [GLM.md](GLM.md)
+- Qwen: [QWEN.md](QWEN.md)
+- DeepSeek: [DEEPSEEK.md](DEEPSEEK.md)
 
 Task-shaped playbooks live in [skills/](skills/README.md); reviewer personas in
 [agents/](agents/README.md); durable decisions and pitfalls in [memory/](memory/README.md).

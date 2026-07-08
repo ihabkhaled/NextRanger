@@ -33,7 +33,7 @@ fail `npm run lint`.
 2. **Build view models in the hook, not in `renderItem`.** Follow
    `src/modules/articles/hooks/use-articles-list.hook.ts`: the hook maps domain items to
    fully-translated card view models once (memoized); `renderItem` only hands a prebuilt
-   view model to a JSX-only component.
+   view model to a TSX-only component.
 3. **Render from the container.** `VirtualizedList` is a client component
    (`'use client'` with a documented boundary reason), so it is composed inside a module
    container, never inside a `*.component.tsx` file and never directly in `page.tsx`.
@@ -60,4 +60,4 @@ fail `npm run lint`.
 
 - `VirtualizedList` used via `@/packages/virtuoso`, stable `computeItemKey`, constant
   height, testids from `TEST_IDS`.
-- Row mapping lives in the hook; components stay JSX-only. `npm run quality` green.
+- Row mapping lives in the hook; components stay TSX-only. `npm run quality` green.

@@ -1,23 +1,26 @@
 # Final Validation Report — Strict Next Ranger
 
-Date: 2026-07-06 · Validator: founding build (release-gatekeeper protocol from
+Date: 2026-07-08 · Validator: architectural tightening pass (release-gatekeeper protocol from
 [skills/final-validation.md](../skills/final-validation.md))
 
 ## Gate results
 
-| Gate                | Command                     | Result                                                                                                                      |
-| ------------------- | --------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| Install             | `npm install`               | ✅ clean, **0 vulnerabilities**                                                                                             |
-| Format              | `npm run format:check`      | ✅                                                                                                                          |
-| Lint                | `npm run lint`              | ✅ `--max-warnings=0`, 13 custom rules active                                                                               |
-| Typecheck           | `npm run typecheck`         | ✅ tsgo over app/test/node configs, strict family enabled                                                                   |
-| Unit + integration  | `npm run test:coverage`     | ✅ **177/177 tests**; coverage 99.4% stmts / 97.9% branch / 100% funcs / 99.4% lines (thresholds 95 global, 100 pure logic) |
-| Build               | `npm run build`             | ✅ Next 16 + Turbopack, 8 routes + proxy                                                                                    |
-| E2E + a11y + visual | `npm run test:e2e`          | ✅ **33/33 Playwright tests** (18 e2e, 9 a11y, 6 visual)                                                                    |
-| npm audit           | `npm run security:audit`    | ✅ 0 vulnerabilities (`--audit-level=low`)                                                                                  |
-| Trivy               | `npm run security:scan`     | ✅ 0 vuln / 0 secret / 0 misconfig                                                                                          |
-| Dead code           | `npm run quality:dead-code` | ✅ knip clean                                                                                                               |
-| Circular deps       | `npm run quality:circular`  | ✅ madge: none                                                                                                              |
+| Gate                | Command                     | Result                                                                                                                        |
+| ------------------- | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| Install             | `npm install`               | ✅ clean, **0 vulnerabilities**                                                                                               |
+| Playwright browsers | `npm run test:e2e:install`  | ✅ Chromium binary installed (one-time per environment)                                                                       |
+| Format              | `npm run format:check`      | ✅                                                                                                                            |
+| Lint                | `npm run lint`              | ✅ `--max-warnings=0`, 14 custom rules active                                                                                 |
+| Typecheck           | `npm run typecheck`         | ✅ tsgo over app/test/node configs, strict family enabled                                                                     |
+| Unit + integration  | `npm run test:coverage`     | ✅ **189/189 tests**; coverage 99.42% stmts / 98.42% branch / 100% funcs / 99.4% lines (thresholds 95 global, 100 pure logic) |
+| Build               | `npm run build`             | ✅ Next 16 + Turbopack, 8 routes + proxy                                                                                      |
+| E2E + a11y + visual | `npm run test:e2e`          | ✅ **33/33 Playwright tests** (18 e2e, 9 a11y, 6 visual)                                                                      |
+| npm audit           | `npm run security:audit`    | ✅ 0 vulnerabilities (`--audit-level=low`)                                                                                    |
+| Trivy               | `npm run security:scan`     | ✅ 0 vuln / 0 secret / 0 misconfig                                                                                            |
+| Dead code           | `npm run quality:dead-code` | ✅ knip clean                                                                                                                 |
+| Circular deps       | `npm run quality:circular`  | ✅ madge: none                                                                                                                |
+| Aggregate           | `npm run quality`           | ✅ lint + typecheck + coverage + build                                                                                        |
+| Full gate           | `npm run validate`          | ✅ quality + e2e + security scans + dead code + circular                                                                      |
 
 ## Forbidden-pattern audit (all zero hits in src/ + eslint/)
 
@@ -50,10 +53,11 @@ modules/shared.
 | nested `postcss` vulnerability                                           | fixed via npm `overrides` (upgrade, not suppression)                                                         | memory/security-decisions.md |
 | `sonarjs/no-hardcoded-passwords`, `security/detect-object-injection` off | false-positive-only for this codebase; secret scanning owned by Trivy, injection risk owned by TS strictness | docs/exceptions/README.md    |
 
-## Known limitations
+## Known limitations / setup notes
 
 - Visual baselines are per-platform (generated on win32 locally; CI writes its own on first
   run via `--update-snapshots=missing`) — see testing/visual-testing-standard.md.
 - The e2e web server runs on dedicated port 3100; the gateway serves fixtures
   (`SERVER_API_MOCKING=enabled`) so no backend is required.
-- `npm run validate` chains every gate and is the single handoff command.
+- `npm run validate` chains every gate and is the single handoff command. It requires the
+  Playwright Chromium binary to be installed first with `npm run test:e2e:install`.

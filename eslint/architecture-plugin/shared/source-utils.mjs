@@ -48,12 +48,57 @@ export function isQueryFile(sourcePath) {
   return /\.(?:queries|mutations|invalidate)\.ts$/.test(sourcePath ?? '');
 }
 
+export function isUtilsFile(sourcePath) {
+  return /\.util\.ts$/.test(sourcePath ?? '');
+}
+
+export function isHelpersFile(sourcePath) {
+  return /\.helper\.ts$/.test(sourcePath ?? '');
+}
+
+export function isMappersFile(sourcePath) {
+  return /\.mapper\.ts$/.test(sourcePath ?? '');
+}
+
+export function isPureLogicFile(sourcePath) {
+  return isUtilsFile(sourcePath) || isHelpersFile(sourcePath) || isMappersFile(sourcePath);
+}
+
 export function isQueryKeysFile(sourcePath) {
   return /query-keys\.ts$/.test(sourcePath ?? '');
 }
 
+export function isHookImplementationFile(sourcePath) {
+  return /\.hook\.tsx?$/.test(sourcePath ?? '');
+}
+
 export function isRouteHandlerFile(sourcePath) {
   return /\/app\/.*\/route\.ts$/.test(sourcePath ?? '');
+}
+
+export function isConstantsFile(sourcePath) {
+  return /\.constants\.ts$/.test(sourcePath ?? '');
+}
+
+export function isVariantsFile(sourcePath) {
+  return /\.variants\.ts$/.test(sourcePath ?? '');
+}
+
+export function isAppRouteFile(sourcePath) {
+  if (!sourcePath) {
+    return false;
+  }
+
+  if (
+    isConstantsFile(sourcePath) ||
+    isVariantsFile(sourcePath) ||
+    sourcePath.endsWith('.d.ts') ||
+    isTestFile(sourcePath)
+  ) {
+    return false;
+  }
+
+  return /^src\/app\/.+\.ts$/.test(sourcePath);
 }
 
 export function isTestFile(sourcePath) {

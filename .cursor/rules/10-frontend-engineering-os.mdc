@@ -20,7 +20,7 @@ Top-level layout:
 
 Inside `src/modules/<feature>/`:
 
-- `components/*.component.tsx` — JSX-only presentation. No hooks, no logic, no raw copy,
+- `components/*.component.tsx` — TSX-only presentation. No hooks, no logic, no raw copy,
   no raw `className`; class bundles come from `*.variants.ts` or `@/packages/ui-primitives`.
 - `containers/*.container.tsx` — `'use client'` + `// client-boundary-reason: …`; connects
   hooks to components; owns the `.map()` (see `src/modules/articles/containers/articles-list.container.tsx`).

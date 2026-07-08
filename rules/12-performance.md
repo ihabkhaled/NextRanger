@@ -52,7 +52,7 @@ so TanStack Query caches each page separately.
   React Profiler measurement shows a real re-render cost, and record the finding in
   [memory/performance-decisions.md](../memory/performance-decisions.md).
 - When memoization is justified it lives in hooks, never in components: `*.component.tsx` files are
-  JSX-only and may not call hooks ([no-hooks-in-components](../docs/eslint/no-hooks-in-components.md)).
+  TSX-only and may not call hooks ([no-hooks-in-components](../docs/eslint/no-hooks-in-components.md)).
   Hooks such as `useArticlesList` are where derived view models are built and, when measured,
   memoized.
 - Component-level "logic memoization" is structurally impossible by design — inline expressions in

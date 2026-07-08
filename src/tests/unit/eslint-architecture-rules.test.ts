@@ -41,6 +41,7 @@ function createHarness(): ESLint {
           'frontend-architecture/no-process-env-outside-config': 'error',
           'frontend-architecture/no-direct-browser-api-outside-packages': 'error',
           'frontend-architecture/no-inline-query-keys': 'error',
+          'frontend-architecture/no-react-in-pure-layers': 'error',
           'frontend-architecture/require-client-component-reason': 'error',
           'frontend-architecture/no-server-only-import-in-client': 'error',
           'frontend-architecture/no-raw-package-imports': [
@@ -112,5 +113,17 @@ describe('frontend-architecture rules against deliberate violations', () => {
     expect(ruleIds).toContain('frontend-architecture/require-client-component-reason');
     expect(ruleIds).toContain('frontend-architecture/no-server-only-import-in-client');
     expect(ruleIds).toContain('frontend-architecture/no-inline-query-keys');
+  });
+
+  it('flags the React-in-service fixture for importing react into a pure layer', async () => {
+    const ruleIds = await ruleIdsFor('src/modules/demo/services/bad-article-with-react.service.ts');
+
+    expect(ruleIds).toContain('frontend-architecture/no-react-in-pure-layers');
+  });
+
+  it('flags the app route helper fixture for inline constants and local functions', async () => {
+    const ruleIds = await ruleIdsFor('src/app/bad-gateway-handler.ts');
+
+    expect(ruleIds).toContain('frontend-architecture/no-inline-declarations');
   });
 });

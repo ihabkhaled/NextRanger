@@ -21,7 +21,7 @@ Unit tests cover a single file's contract in isolation with Vitest (jsdom enviro
 - Shared helpers like `buildPageTitle`, `buildIndexedTestId`, `isSafeExternalUrl`,
   `mapErrorToMessageKey`.
 
-Do NOT unit-test JSX-only `*.component.tsx` files for internals — component behavior is
+Do NOT unit-test TSX-only `*.component.tsx` files for internals — component behavior is
 asserted user-visibly at the integration level
 ([skills/write-integration-tests.md](write-integration-tests.md)).
 

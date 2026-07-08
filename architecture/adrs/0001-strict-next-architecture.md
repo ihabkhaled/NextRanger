@@ -28,14 +28,14 @@ We build strict-next-ranger on five load-bearing choices, each machine-enforced:
    live in `src/modules/<feature>` with fixed layers (`api/`, `gateway/`, `services/`, `queries/`,
    `store/`, `containers/`, `components/`, `hooks/`, `mappers/`, `schemas/`, …) and a single
    public surface `index.ts`. Cross-module imports go only through `@/modules/<feature>`.
-2. **JSX-only components.** `*.component.tsx` files contain markup only — no hooks, no logic, no
+2. **TSX-only components.** `*.component.tsx` files contain markup only — no hooks, no logic, no
    inline declarations, no raw copy, no raw `className` outside the design system. Containers
    (`*.container.tsx`) connect hooks to components; hooks orchestrate; services and gateways are
    React-free. See [rules/02-components-and-containers.md](../../rules/02-components-and-containers.md).
 3. **One owning wrapper per vendor.** Every third-party package is imported in exactly one place
    under `src/packages/<vendor>` (e.g. `src/packages/axios`, `src/packages/query`,
    `src/packages/i18n`). Product code imports the wrapper, never the vendor.
-4. **Custom ESLint architecture plugin.** The 13 rules in
+4. **Custom ESLint architecture plugin.** The 14 rules in
    [eslint/architecture-plugin.mjs](../../eslint/architecture-plugin.mjs) (layer policy table in
    [eslint/architecture.config.mjs](../../eslint/architecture.config.mjs), ownership map in
    [eslint/package-boundaries.config.mjs](../../eslint/package-boundaries.config.mjs)) turn every
@@ -51,7 +51,7 @@ We build strict-next-ranger on five load-bearing choices, each machine-enforced:
 
 - Boundaries are enforced by `npm run lint`, not by review vigilance; violations cannot merge.
 - Vendor churn is contained: a breaking major in any package touches one directory.
-- JSX-only components plus React-free services make every layer testable in isolation, which is
+- TSX-only components plus React-free services make every layer testable in isolation, which is
   what makes the 95%/100% coverage thresholds in `vitest.config.mts` realistic.
 - New engineers learn the structure once from the `articles` reference module and can navigate
   any feature.
@@ -83,7 +83,7 @@ in shared folders, reproducing the failure mode we are escaping. Rejected.
 
 Closest competitor: it also slices by feature with layered imports. But FSD's shared/entities/
 features/widgets layering is generic and unenforced out of the box, and it prescribes nothing
-about vendor ownership, JSX-only components, or a BFF. We kept its best idea (feature slices
+about vendor ownership, TSX-only components, or a BFF. We kept its best idea (feature slices
 with a public API) and made the rest stricter and machine-enforced. Rejected as-is.
 
 ### Plain Next.js defaults (colocate everything under app/)

@@ -17,7 +17,7 @@
 
 ### Rendering
 
-- [ ] Components are JSX-only (enforced by docs/eslint/no-inline-component-logic.md and docs/eslint/no-inline-declarations.md), so no per-render closures or object literals leak into hot paths. <Confirm.>
+- [ ] Components are TSX-only (enforced by docs/eslint/no-inline-component-logic.md and docs/eslint/no-inline-declarations.md), so no per-render closures or object literals leak into hot paths. <Confirm.>
 - [ ] Lists over the threshold agreed in stage 02 use `VirtualizedList` (src/packages/virtuoso) per [skills/add-virtualized-list.md](../../../skills/add-virtualized-list.md). <Findings.>
 - [ ] Zustand selectors are narrow; multi-field reads use `useAppStoreShallow` (src/packages/zustand) to avoid over-subscription. <Findings.>
 

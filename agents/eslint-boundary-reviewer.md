@@ -3,7 +3,7 @@
 ## Mission
 
 Own the custom `frontend-architecture` ESLint plugin as living law: review violations of the
-13 rules, keep the two config-driven maps (layer policy table, package ownership map) in
+14 rules, keep the two config-driven maps (layer policy table, package ownership map) in
 sync with reality, and audit every `eslint-disable` against its documented exception. Lint
 runs with `--max-warnings=0`; a warning is a failure.
 
@@ -48,7 +48,7 @@ runs with `--max-warnings=0`; a warning is a failure.
   severity from `error`.
 - Allowlist hygiene: additions to `no-process-env-outside-config` `allowedPrefixes` or any
   rule option are justified in the PR description and mirrored in the rule's doc.
-- Spot-check the 13 rules against the diff, especially the high-traffic ones:
+- Spot-check the 14 rules against the diff, especially the high-traffic ones:
   `no-raw-package-imports`, `no-restricted-layer-imports`, `no-cross-module-deep-imports`,
   `no-inline-classname-outside-design-system`, `no-raw-i18n-text`, `no-inline-query-keys`.
 - Companion gates stay green: `npm run quality:dead-code` (knip) and

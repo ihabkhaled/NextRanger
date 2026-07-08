@@ -50,6 +50,11 @@ export interface ArticlesListViewModel {
   readonly onRetry: () => void;
 }
 
+export interface ArticlesListQueryOptions {
+  readonly queryKey: readonly unknown[];
+  readonly queryFn: () => Promise<ArticleListResult>;
+}
+
 export interface ArticleCardProps {
   readonly viewModel: ArticleCardViewModel;
 }
@@ -57,4 +62,23 @@ export interface ArticleCardProps {
 export interface ArticleListSlots {
   readonly children: ReactNode;
   readonly testId: string;
+}
+
+export interface ResolveArticlesListStateOptions {
+  readonly isPending: boolean;
+  readonly isError: boolean;
+  readonly itemCount: number;
+}
+
+export interface ArticleDisplayTranslations {
+  readonly translateStatus: (status: Article['status']) => string;
+  readonly translateReadingTime: (minutes: number) => string;
+  readonly translatePublishedOn: (formattedDate: string) => string;
+}
+
+export interface BuildArticleCardViewModelOptions {
+  readonly article: Article;
+  readonly locale: string;
+  readonly cardTestId: string;
+  readonly translations: ArticleDisplayTranslations;
 }

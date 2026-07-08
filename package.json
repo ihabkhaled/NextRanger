@@ -2,7 +2,7 @@
   "name": "strict-next-ranger",
   "version": "0.1.0",
   "private": true,
-  "description": "Strict Next.js frontend operating system: module-first architecture, JSX-only components, package boundary enforcement, custom ESLint architecture plugin, TDD gates, security/performance/a11y/i18n baselines.",
+  "description": "Strict Next.js frontend operating system: module-first architecture, TSX-only component files, package boundary enforcement, custom ESLint architecture plugin, TDD gates, security/performance/a11y/i18n baselines.",
   "license": "UNLICENSED",
   "engines": {
     "node": ">=22.0.0",
@@ -26,6 +26,7 @@
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "test:e2e": "playwright test",
+    "test:e2e:install": "npx playwright install chromium",
     "test:e2e:ui": "playwright test --ui",
     "test:a11y": "playwright test src/tests/accessibility",
     "test:visual": "playwright test src/tests/visual",

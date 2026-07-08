@@ -66,7 +66,7 @@ madge. `npm run validate` runs them all; the policy is
 following [docs/exceptions/exception-template.md](../docs/exceptions/exception-template.md);
 undocumented disables fail review.
 
-**Container** — A `*.container.tsx` client component that connects hooks to JSX-only components
+**Container** — A `*.container.tsx` client component that connects hooks to TSX-only components
 and performs the `.map()` over child elements. See
 [rules/02-components-and-containers.md](../rules/02-components-and-containers.md).
 

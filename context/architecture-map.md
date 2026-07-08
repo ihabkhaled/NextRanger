@@ -31,7 +31,7 @@ src/
 │   │   ├── schemas/             # Zod schemas (wire validation, form validation)
 │   │   ├── hooks/               # Orchestration: query + i18n + helpers → view models
 │   │   ├── containers/          # 'use client' glue: hooks → components, does the .map()
-│   │   ├── components/          # JSX-only *.component.tsx — no hooks, no logic, no raw copy
+│   │   ├── components/          # TSX-only *.component.tsx — no hooks, no logic, no raw copy
 │   │   ├── helpers/ utils/      # Pure display/logic functions (100% coverage required)
 │   │   ├── types/ enums/ constants/  # Domain types, enum-like objects, message keys, style bundles
 │   │   ├── test/                # Module unit tests (colocated per module)
