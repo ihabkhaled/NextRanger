@@ -18,6 +18,7 @@ Next.js 16 App Router (Turbopack, typedRoutes) · React 19 · TypeScript 5.9 str
 - `npm run test` / `test:watch` / `test:coverage`
 - `npm run test:e2e` / `test:a11y` / `test:visual`
 - `npm run test:e2e:install` (one-time Playwright Chromium download)
+- `npm run test:e2e:baseline` (one-time per-OS visual baselines — writes only missing)
 - `npm run quality` (lint + typecheck + coverage + build)
 - `npm run validate` (quality + e2e + security scans + dead code + circular deps)
 

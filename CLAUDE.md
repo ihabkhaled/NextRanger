@@ -21,6 +21,7 @@ Vitest 4 + RTL · Playwright · MSW v2 · npm · Node >= 22.
 - `npm run test` / `test:watch` / `test:coverage`
 - `npm run test:e2e` / `test:a11y` / `test:visual`
 - `npm run test:e2e:install` (one-time Playwright Chromium download)
+- `npm run test:e2e:baseline` (one-time per-OS visual baselines — writes only missing)
 - `npm run quality` (lint + typecheck + coverage + build)
 - `npm run validate` (quality + e2e + security scans + dead code + circular deps)
 

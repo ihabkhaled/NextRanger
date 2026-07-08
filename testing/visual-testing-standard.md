@@ -65,6 +65,25 @@ animations via reduced-motion emulation for the latter).
   refresh them on the CI platform (or a matching Linux container), not from a Windows/macOS
   machine — cross-platform "updates" produce baselines CI can never match.
 
+## First run on a new OS (fresh environment)
+
+Because baselines are per-OS, a machine that has never run the visual suite has no baseline for
+its own platform yet. A plain `npm run test:e2e` (or `npm run validate`) would then _write_ the
+missing baseline and _fail that first run_, so only a re-run is green — this is exactly what a
+first `validate` on macOS/darwin hits when only Linux/Windows baselines are committed. To make
+the first `validate` green in a single pass, seed the missing baselines once with the repeatable,
+`npx`-backed scripts:
+
+```sh
+npm run test:e2e:install   # npx playwright install chromium
+npm run test:e2e:baseline  # npx playwright test src/tests/visual --update-snapshots=missing
+```
+
+`test:e2e:baseline` uses `--update-snapshots=missing`, so it only writes baselines that do not
+exist yet and never overwrites a committed one — the same policy CI applies in
+`.github/workflows/e2e.yml`. These local per-OS baselines (e.g. `*-chromium-darwin.png`) speed up
+local iteration only; the committed **Linux** baselines remain the source of truth.
+
 ## Update flow
 
 1. Make the intentional UI change.

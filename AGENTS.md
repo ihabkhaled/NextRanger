@@ -78,6 +78,8 @@ npm run build       # next build --turbopack
 
 Aggregates: `npm run quality` (lint + typecheck + coverage + build) and `npm run validate`
 (quality + e2e + `security:audit` + `security:scan` + `quality:dead-code` + `quality:circular`).
-Run `npm run test:e2e:install` once per environment to download the Playwright Chromium binary
-before the first `npm run validate`.
+Run the two one-time, `npx`-backed Playwright steps once per environment before the first
+`npm run validate`: `npm run test:e2e:install` (downloads the Chromium binary) and
+`npm run test:e2e:baseline` (writes only the missing per-OS visual baselines, so the first
+`validate` is green in one pass instead of failing once while it writes them).
 The pre-push hook (`.husky/pre-push`) already runs typecheck + test; do not push red.

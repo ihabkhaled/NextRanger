@@ -55,9 +55,15 @@ modules/shared.
 
 ## Known limitations / setup notes
 
-- Visual baselines are per-platform (generated on win32 locally; CI writes its own on first
-  run via `--update-snapshots=missing`) — see testing/visual-testing-standard.md.
+- Visual baselines are per-platform. On a fresh OS the baselines for your platform do not exist
+  yet, so a plain `npm run test:e2e` / `validate` writes them and fails on that first run; seed
+  them once with `npm run test:e2e:baseline` (`--update-snapshots=missing` — writes only missing,
+  never overwrites a committed one) so the first `validate` is green in a single pass. CI applies
+  the same policy in `.github/workflows/e2e.yml`, and the committed Linux baselines remain the
+  source of truth — see testing/visual-testing-standard.md. (This per-OS gap is exactly what the
+  first `validate` in this darwin environment hit; the re-run was green.)
 - The e2e web server runs on dedicated port 3100; the gateway serves fixtures
   (`SERVER_API_MOCKING=enabled`) so no backend is required.
-- `npm run validate` chains every gate and is the single handoff command. It requires the
-  Playwright Chromium binary to be installed first with `npm run test:e2e:install`.
+- `npm run validate` chains every gate and is the single handoff command. It requires the two
+  one-time, `npx`-backed Playwright steps first: `npm run test:e2e:install` (Chromium binary) and
+  `npm run test:e2e:baseline` (per-OS visual baselines).

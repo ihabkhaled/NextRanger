@@ -42,6 +42,7 @@ npm run typecheck        # tsgo (TypeScript native preview) over app/test/node c
 npm run test:coverage    # Vitest + coverage thresholds
 npm run build            # next build --turbopack
 npm run test:e2e:install # one-time Playwright browser install (chromium for this project)
+npm run test:e2e:baseline # one-time per-OS visual baseline write (safe; only fills missing)
 npm run test:e2e         # Playwright (builds and starts the prod server itself)
 npm run test:a11y        # axe + keyboard suites
 npm run test:visual      # screenshot baselines
@@ -52,9 +53,22 @@ npm run quality:circular   # madge
 npm run validate         # everything above, in order
 ```
 
-> **First-time e2e setup:** `npm run test:e2e:install` downloads the Chromium binary
-> Playwright needs. `npm run validate` expects it to be present; the install is not
-> part of `validate` to keep that command fast and repeatable in CI.
+> **First-time e2e setup (repeatable on any OS):** run these two `npx`-backed one-time
+> steps before the first `npm run validate`, exactly as agents do it here:
+>
+> ```bash
+> npm run test:e2e:install   # npx playwright install chromium
+> npm run test:e2e:baseline  # npx playwright test src/tests/visual --update-snapshots=missing
+> ```
+>
+> `npm run validate` expects the browser to be present; the install is not part of
+> `validate` to keep that command fast and repeatable in CI. Visual baselines are
+> **per-OS** (`*-chromium-darwin.png`, `*-chromium-linux.png`, …). On a fresh OS the
+> baselines for your platform do not exist yet, so a plain `npm run test:e2e` (or
+> `validate`) would write them and fail on that first run. `npm run test:e2e:baseline`
+> writes only the missing baselines and never overwrites a committed one, so the
+> subsequent `validate` is green in a single pass. The committed Linux baselines remain
+> the source of truth (see [testing/visual-testing-standard.md](testing/visual-testing-standard.md)).
 
 ## Architecture in one breath
 

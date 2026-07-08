@@ -53,6 +53,7 @@ npm run build         # next build --turbopack
 npm run quality            # lint + typecheck + coverage + build
 npm run validate           # quality + e2e + security:audit + security:scan + dead code + circular
 npm run test:e2e:install   # one-time Playwright Chromium download (run before first validate)
+npm run test:e2e:baseline  # one-time per-OS visual baselines (writes only missing; before first validate)
 ```
 
 Git hooks already enforce these: `.husky/pre-commit` (lint-staged), `.husky/commit-msg`

@@ -44,7 +44,7 @@
 
 ## Definition of done (per PR)
 
-- [ ] `npm run validate` passes locally (run `npm run test:e2e:install` first on a fresh environment)
+- [ ] `npm run validate` passes locally (on a fresh environment run `npm run test:e2e:install` then `npm run test:e2e:baseline` first)
 - [ ] `npm run quality` passes (knip dead code, madge circular deps)
 - [ ] Tests from the stage-06 matrix for the touched slices are included in the same PR
 - [ ] Conventional commit messages; hooks in .husky/ not bypassed

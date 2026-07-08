@@ -18,17 +18,22 @@ npm run lint                # 2. ESLint flat config, --max-warnings=0
 npm run typecheck           # 3. tsgo over tsconfig.app/test/node
 npm run test:coverage       # 4. Vitest + thresholds: 95% global, 100% pure-logic layers
 npm run build               # 5. next build --turbopack (typedRoutes, env validation)
-npm run test:e2e:install    # 6. one-time Playwright Chromium download
-npm run test:e2e            # 7. Playwright e2e (builds + starts the app itself)
-npm run security:audit      # 7. npm audit --audit-level=low
-npm run security:scan       # 8. trivy vuln + secret + misconfig, all severities
-npm run quality:dead-code   # 9. knip
-npm run quality:circular    # 10. madge src --circular
+npm run test:e2e:install    # 6. one-time Playwright Chromium download (npx playwright install chromium)
+npm run test:e2e:baseline   # 7. one-time per-OS visual baselines (writes only missing; safe)
+npm run test:e2e            # 8. Playwright e2e (builds + starts the app itself)
+npm run security:audit      # 9. npm audit --audit-level=low
+npm run security:scan       # 10. trivy vuln + secret + misconfig, all severities
+npm run quality:dead-code   # 11. knip
+npm run quality:circular    # 12. madge src --circular
 ```
 
-Shortcut: `npm run validate` chains steps 2–10 (via `quality` + the rest). Run `npm install`
-yourself first, run `npm run test:e2e:install` once per environment to download the Chromium
-binary, and add `npm run test:a11y` / `npm run test:visual` whenever the change touched any UI.
+Shortcut: `npm run validate` chains the gate steps (via `quality` + e2e + security + dead-code +
+circular). It does NOT run the two one-time Playwright steps, so on a fresh environment run them
+yourself first, in order: `npm install`, then `npm run test:e2e:install` (npx-backed Chromium
+download) and `npm run test:e2e:baseline` (writes only the missing per-OS visual baselines).
+Doing both first makes the first `validate` green in a single pass — otherwise the first visual
+run writes the missing per-platform baselines and fails once, and only the re-run is green. Add
+`npm run test:a11y` / `npm run test:visual` whenever the change touched any UI.
 
 ## Forbidden-pattern greps
 
@@ -67,11 +72,12 @@ Close out with this block in the PR description or task hand-off:
 | 4 | Unit + coverage     | npm run test:coverage   | pass (<x>% lines)|
 | 5 | Build               | npm run build           | pass             |
 | 6 | Playwright install  | npm run test:e2e:install | pass (one-time) |
-| 7 | E2E                 | npm run test:e2e        | pass (<n> specs) |
-| 8 | Audit               | npm run security:audit  | pass             |
-| 9 | Trivy               | npm run security:scan   | pass             |
-| 10 | Dead code           | npm run quality:dead-code | pass           |
-| 11 | Circular deps       | npm run quality:circular  | pass           |
+| 7 | Visual baselines    | npm run test:e2e:baseline | pass (one-time) |
+| 8 | E2E                 | npm run test:e2e        | pass (<n> specs) |
+| 9 | Audit               | npm run security:audit  | pass             |
+| 10 | Trivy               | npm run security:scan   | pass             |
+| 11 | Dead code           | npm run quality:dead-code | pass           |
+| 12 | Circular deps       | npm run quality:circular  | pass           |
 
 Forbidden-pattern greps: clean / <findings + exception links>
 Extra suites run: <test:a11y / test:visual / none — why>

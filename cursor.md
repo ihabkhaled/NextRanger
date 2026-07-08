@@ -22,6 +22,7 @@ Vitest 4 + RTL · Playwright · MSW v2 · npm · Node >= 22.
 - `npm run typecheck` (tsgo) · `npm run typecheck:tsc` (fallback)
 - `npm run test` / `test:coverage` / `test:e2e` / `test:a11y` / `test:visual`
 - `npm run test:e2e:install` (one-time Playwright Chromium download)
+- `npm run test:e2e:baseline` (one-time per-OS visual baselines — writes only missing)
 - `npm run quality` · `npm run validate`
 
 ## Architecture digest

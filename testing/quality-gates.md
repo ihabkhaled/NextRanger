@@ -40,8 +40,11 @@ the hook.
 - `npm run validate` = `quality` + e2e + security:audit + security:scan + dead-code + circular.
   This is the full release gate — the same bar CI applies across all three workflows, runnable
   on one machine. The [skills/final-validation.md](../skills/final-validation.md) skill walks
-  through it. Run `npm run test:e2e:install` once on a fresh environment before the first
-  `validate`.
+  through it. On a fresh environment run the two one-time, `npx`-backed Playwright steps before
+  the first `validate`: `npm run test:e2e:install` (Chromium) and `npm run test:e2e:baseline`
+  (writes only the missing per-OS visual baselines). Doing both first makes the first `validate`
+  green in one pass; skip the baseline step and the first visual run writes the missing
+  per-platform baselines and fails once, with only the re-run green.
 
 ## Merge and release
 
