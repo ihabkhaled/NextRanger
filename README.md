@@ -69,6 +69,8 @@ npm run validate         # everything above, in order
 > writes only the missing baselines and never overwrites a committed one, so the
 > subsequent `validate` is green in a single pass. The committed Linux baselines remain
 > the source of truth (see [testing/visual-testing-standard.md](testing/visual-testing-standard.md)).
+> Every Playwright npm script is `npx playwright …` backed, matching the manual commands agents
+> run during validation.
 
 ## Architecture in one breath
 

@@ -44,7 +44,8 @@ the hook.
   the first `validate`: `npm run test:e2e:install` (Chromium) and `npm run test:e2e:baseline`
   (writes only the missing per-OS visual baselines). Doing both first makes the first `validate`
   green in one pass; skip the baseline step and the first visual run writes the missing
-  per-platform baselines and fails once, with only the re-run green.
+  per-platform baselines and fails once, with only the re-run green. All Playwright npm scripts
+  use `npx playwright …`, matching the manual agent commands.
 
 ## Merge and release
 
