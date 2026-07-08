@@ -99,7 +99,7 @@
     "eslint-plugin-unused-imports": "^4.4.1",
     "husky": "^9.1.7",
     "jsdom": "^29.1.1",
-    "knip": "^5.88.1",
+    "knip": "^6.25.0",
     "lint-staged": "^17.0.8",
     "madge": "^8.0.0",
     "msw": "^2.14.6",
