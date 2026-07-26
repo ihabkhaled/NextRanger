@@ -37,20 +37,14 @@ export function useUiPreferencesEffects(): void {
       uiPreferencesSnapshotSchema,
     );
 
-    if (stored) {
-      hydrate(stored);
-
-      return;
-    }
-
-    // First visit: adopt the server-rendered, locale-derived direction.
+    // URL locale always owns direction; persisted preferences cannot override it.
     const documentDirection =
       getRootAttribute(UI_PREFERENCE_DOM_ATTRIBUTES.direction) === AppDirection.Rtl
         ? AppDirection.Rtl
         : AppDirection.Ltr;
 
     hydrate({
-      ...selectPreferencesSnapshot(useUiPreferencesStore.getState()),
+      ...(stored ?? selectPreferencesSnapshot(useUiPreferencesStore.getState())),
       direction: documentDirection,
     });
   }, [hasHydrated, hydrate]);

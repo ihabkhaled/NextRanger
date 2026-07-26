@@ -13,6 +13,7 @@ describe('appLogger in production', () => {
 
   it('mutes debug and info but keeps warn and error', async () => {
     vi.stubEnv('NEXT_PUBLIC_APP_ENV', 'production');
+    vi.stubEnv('NEXT_PUBLIC_APP_URL', 'https://example.com');
     vi.resetModules();
 
     const debugSpy = vi.spyOn(console, 'debug').mockImplementation(() => {});

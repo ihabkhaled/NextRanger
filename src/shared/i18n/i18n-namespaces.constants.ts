@@ -14,6 +14,8 @@ export const I18N_NAMESPACES = {
   notFound: 'notFound',
   errorPage: 'errorPage',
   workbench: 'workbench',
+  marketing: 'marketing',
+  pwa: 'pwa',
 } as const;
 
 /** Catalog-derived public API. @public */

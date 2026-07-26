@@ -5,4 +5,5 @@
 export {
   getLocale as getServerLocale,
   getTranslations as getServerTranslations,
+  setRequestLocale as setServerLocale,
 } from 'next-intl/server';

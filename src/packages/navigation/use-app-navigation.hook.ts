@@ -1,3 +1,6 @@
+'use client';
+// client-boundary-reason: wraps Next.js client router and pathname hooks behind the navigation owner.
+
 import type { Route } from 'next';
 import { usePathname, useRouter } from 'next/navigation';
 import { useMemo } from 'react';

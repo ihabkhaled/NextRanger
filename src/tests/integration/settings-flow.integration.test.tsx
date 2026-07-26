@@ -86,18 +86,20 @@ describe('settings flow', () => {
     expect(document.documentElement.dataset['theme']).toBe('dark');
   });
 
-  it('selecting RTL flips the document direction', async () => {
-    const user = userEvent.setup();
-
-    renderWithProviders(
-      <>
-        <UiPreferencesEffects />
-        <UiPreferencesContainer />
-      </>,
+  it('keeps the URL-derived RTL direction when stored preferences say LTR', async () => {
+    document.documentElement.setAttribute('dir', 'rtl');
+    globalThis.localStorage.setItem(
+      STORAGE_KEYS.uiPreferences,
+      JSON.stringify({ theme: 'dark', direction: 'ltr', isSidebarExpanded: false }),
     );
 
-    await user.click(screen.getByTestId('settings-direction-rtl'));
+    renderWithProviders(<UiPreferencesEffects />);
 
+    await waitFor(() => {
+      expect(useUiPreferencesStore.getState().hasHydrated).toBe(true);
+    });
+
+    expect(useUiPreferencesStore.getState().direction).toBe(AppDirection.Rtl);
     expect(document.documentElement.getAttribute('dir')).toBe('rtl');
   });
 

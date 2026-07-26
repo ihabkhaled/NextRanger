@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
+import { AppLink } from '@/packages/link';
 import { PageHeader } from '@/shared/components/data-display/page-header.component';
 import { AppHeader } from '@/shared/components/layout/app-header.component';
 import { SkipLink } from '@/shared/components/primitives/skip-link.component';
@@ -13,7 +14,7 @@ describe('AppHeader', () => {
         homeLabel="Strict Next Ranger"
         navLandmarkLabel="Primary"
         testId="app-header"
-        navItems={<a href="/articles">Articles</a>}
+        navItems={<AppLink href="/articles">Articles</AppLink>}
         actions={<button type="button">Sign in</button>}
       />,
     );

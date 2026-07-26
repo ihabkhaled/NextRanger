@@ -2,6 +2,7 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import {
   getRootAttribute,
+  getBrowserLocationSuffix,
   getSafeDocument,
   getSafeWindow,
   isBrowser,
@@ -29,11 +30,17 @@ describe('browser/storage facades without a browser environment', () => {
     expect(isBrowser()).toBe(false);
     expect(getSafeWindow()).toBeNull();
     expect(getSafeDocument()).toBeNull();
+    expect(getBrowserLocationSuffix()).toBe('');
     expect(matchesMediaQuery('(prefers-color-scheme: dark)')).toBe(false);
     expect(getRootAttribute('data-theme')).toBeNull();
     expect(() => {
       setRootAttribute('data-theme', 'dark');
     }).not.toThrow();
+  });
+
+  it('returns the current query and hash suffix when a browser exists', () => {
+    vi.stubGlobal('window', { location: { search: '?page=2', hash: '#latest' } });
+    expect(getBrowserLocationSuffix()).toBe('?page=2#latest');
   });
 
   it('storage facade returns null/false when window is absent', () => {

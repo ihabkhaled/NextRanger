@@ -6,6 +6,10 @@ import type { Route } from 'next';
  */
 export const ROUTE_PATHS = {
   home: '/' as Route,
+  about: '/about' as Route,
+  features: '/features' as Route,
+  faq: '/faq' as Route,
+  contact: '/contact' as Route,
   login: '/login' as Route,
   articles: '/articles' as Route,
   settings: '/settings' as Route,

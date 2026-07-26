@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Next Ranger">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#6d5dfc"/><stop offset="1" stop-color="#15b8a6"/></linearGradient></defs>
+  <rect width="512" height="512" rx="116" fill="#0b1020"/>
+  <path d="M112 386V126h68l152 168V126h68v260h-64L180 214v172z" fill="url(#g)"/>
+  <circle cx="400" cy="112" r="28" fill="#f5c451"/>
+</svg>

@@ -30,22 +30,6 @@ export function UiPreferencesContainer(): ReactElement {
           </Button>
         ))}
       </SettingsSection>
-      <SettingsSection legend={viewModel.directionLabel} testId={TEST_IDS.settingsDirection}>
-        {viewModel.directionOptions.map((option) => (
-          <Button
-            key={option.value}
-            variant={option.isSelected ? 'primary' : 'secondary'}
-            size="sm"
-            aria-pressed={option.isSelected}
-            data-testid={option.testId}
-            onClick={() => {
-              viewModel.onSelectDirection(option.value);
-            }}
-          >
-            {option.label}
-          </Button>
-        ))}
-      </SettingsSection>
       <SettingsSection legend={viewModel.sidebarLabel} testId={TEST_IDS.settingsSidebar}>
         <Button variant="secondary" size="sm" onClick={viewModel.onToggleSidebar}>
           {viewModel.sidebarStateLabel}

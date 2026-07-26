@@ -11,7 +11,7 @@ import { I18N_NAMESPACES } from '@/shared/i18n/i18n-namespaces.constants';
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getServerTranslations(I18N_NAMESPACES.articles);
 
-  return { title: buildPageTitle(t('title')) };
+  return { title: buildPageTitle(t('title')), robots: { index: false, follow: true } };
 }
 
 export default async function ArticlesPage(): Promise<ReactElement> {

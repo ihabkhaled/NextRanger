@@ -45,3 +45,18 @@ export interface AppHeaderProps {
   readonly actions?: ReactNode;
   readonly testId?: string;
 }
+
+export interface SiteShellProps {
+  readonly brandHomeLink: ReactNode;
+  readonly desktopNavigation: ReactNode;
+  readonly mobileNavigation: ReactNode;
+  readonly utilityNavigation: ReactNode;
+  readonly controls: ReactNode;
+  readonly breadcrumb: ReactNode;
+  readonly footerNote: ReactNode;
+  readonly footerNavigation: ReactNode;
+  readonly children: ReactNode;
+  readonly navigationLabel: string;
+  readonly breadcrumbLabel: string;
+  readonly menuLabel: string;
+}

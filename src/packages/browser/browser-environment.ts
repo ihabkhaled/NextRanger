@@ -27,6 +27,19 @@ export function getSafeDocument(): Document | null {
   return value === undefined ? null : (value as Document);
 }
 
+/** Query and hash suffix for URL-preserving client navigation. */
+export function getBrowserLocationSuffix(): string {
+  const safeWindow = getSafeWindow();
+  return safeWindow ? `${safeWindow.location.search}${safeWindow.location.hash}` : '';
+}
+
+export function openEmailDraft(recipient: string, subject: string, body: string): boolean {
+  const safeWindow = getSafeWindow();
+  if (!safeWindow) return false;
+  safeWindow.location.href = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  return true;
+}
+
 /** Evaluate a media query; returns false during SSR. */
 export function matchesMediaQuery(query: string): boolean {
   const safeWindow = getSafeWindow();

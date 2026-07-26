@@ -1,6 +1,6 @@
 import type { Route } from 'next';
 import NextLink from 'next/link';
-import type { ReactElement, ReactNode } from 'react';
+import type { MouseEventHandler, ReactElement, ReactNode } from 'react';
 
 /**
  * Deliberately narrow prop surface: navigation styling and identification
@@ -12,18 +12,24 @@ export interface AppLinkProps {
   readonly className?: string | undefined;
   readonly prefetch?: boolean;
   readonly 'aria-label'?: string;
+  readonly 'aria-current'?: 'page' | undefined;
   readonly 'data-testid'?: string;
+  readonly onClick?: MouseEventHandler<HTMLAnchorElement>;
 }
 
 /** Internal navigation. Typed routes keep dead links out of the build. */
 export function AppLink(props: AppLinkProps): ReactElement {
+  const optionalClickProps = props.onClick === undefined ? {} : { onClick: props.onClick };
+
   return (
     <NextLink
       href={props.href}
       prefetch={props.prefetch ?? true}
       className={props.className}
       aria-label={props['aria-label']}
+      aria-current={props['aria-current']}
       data-testid={props['data-testid']}
+      {...optionalClickProps}
     >
       {props.children}
     </NextLink>

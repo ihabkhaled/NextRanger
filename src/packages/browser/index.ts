@@ -7,8 +7,11 @@ export {
   copyTextToClipboard,
   getSafeDocument,
   getSafeWindow,
+  getBrowserLocationSuffix,
+  openEmailDraft,
   isBrowser,
   matchesMediaQuery,
   prefersReducedMotion,
 } from './browser-environment';
 export { getRootAttribute, setRootAttribute } from './dom-attributes';
+export { registerAppServiceWorker } from './service-worker';
