@@ -29,6 +29,7 @@ Start with [00-non-negotiable-rules.md](00-non-negotiable-rules.md); everything 
 | [18-error-handling.md](18-error-handling.md)                             | `AppError`, `toAppError`, message-key mapping, error boundaries.                                   |
 | [19-release-gates.md](19-release-gates.md)                               | The `npm run validate` gate stack and what blocks a merge/release.                                 |
 | [20-review-checklist.md](20-review-checklist.md)                         | The reviewer's pass — every rule above condensed into checkboxes.                                  |
+| [21-version-control-checkpoints.md](21-version-control-checkpoints.md)   | Small coherent commits, focused proof, hooks, and prompt green publication.                        |
 
 Related corpora: [docs/eslint/README.md](../docs/eslint/README.md) (per-rule reference),
 [skills/README.md](../skills/README.md) (how-to recipes), [testing/README.md](../testing/README.md)

@@ -86,3 +86,6 @@ Run the two one-time, `npx`-backed Playwright steps once per environment before 
 `npm run test:e2e:baseline` (writes only the missing per-OS visual baselines, so the first
 `validate` is green in one pass instead of failing once while it writes them).
 The pre-push hook (`.husky/pre-push`) already runs typecheck + test; do not push red.
+Commit each coherent behavior, design, test, or documentation concern separately with a
+conventional message after its focused gate passes, then push the authorized branch promptly.
+Never bypass hooks, mix unrelated concerns, or defer all publication to one final mega-commit.

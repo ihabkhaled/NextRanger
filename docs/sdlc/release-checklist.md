@@ -5,6 +5,9 @@ Executed by the release gatekeeper for every production release. Companion polic
 ## 1. Preconditions
 
 - [ ] All feature work merged to `main`; no half-landed feature without a documented flag or safe default.
+- [ ] Work arrived as small coherent conventional commits, each pushed after its focused gate; no
+      hook bypass, known-red checkpoint, unrelated mega-commit, or unpublished final pile-up
+      ([rule 21](../../rules/21-version-control-checkpoints.md)).
 - [ ] Phase doc [11-release-readiness.md](../features/_template/11-release-readiness.md) completed for every feature in the release.
 - [ ] Exceptions register reviewed: no exception in [docs/exceptions/README.md](../exceptions/README.md) has passed its expiry date.
 - [ ] UAT exit criteria met for **High**-risk changes ([uat-baseline.md](./uat-baseline.md)).
