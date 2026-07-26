@@ -1,0 +1,205 @@
+{
+  "app": {
+    "title": "Strict Next Ranger",
+    "description": "Un sistema frontend Next.js rigoroso.",
+    "skipToContent": "Vai al contenuto",
+    "loading": "Caricamento…",
+    "localeSwitchLabel": "Lingua",
+    "localeNameEn": "English",
+    "localeNameAr": "العربية",
+    "themeSwitchLabel": "Tema colore",
+    "footerNote": "Una base rigorosa per team di prodotti web e nativi.",
+    "breadcrumbLabel": "Percorso di navigazione"
+  },
+  "nav": {
+    "home": "Benvenuto",
+    "about": "Chi siamo",
+    "features": "Funzionalità",
+    "faq": "FAQ",
+    "contact": "Contatti",
+    "menu": "Apri navigazione",
+    "articles": "Articoli",
+    "settings": "Impostazioni",
+    "login": "Accedi",
+    "workbench": "Laboratorio UI",
+    "landmarkLabel": "Navigazione principale"
+  },
+  "home": {
+    "title": "Strict Next Ranger",
+    "subtitle": "Gli import scorrono in una direzione, ogni libreria ha un proprietario e i moduli espongono superfici pubbliche intenzionali. Controlli indipendenti impongono la stessa forma attesa in revisione.",
+    "ctaArticles": "Esplora le fondamenta",
+    "ctaLogin": "Accedi",
+    "principlesTitle": "Tutto ciò che serve per partire con fiducia",
+    "principleComponents": "Navigazione, breadcrumb, schede, moduli, stati, temi, lingue e layout responsivi sono primitive condivise, non copie locali.",
+    "principleBoundaries": "Gli import scorrono in una direzione, ogni libreria ha un proprietario e i moduli espongono superfici pubbliche intenzionali. Controlli indipendenti impongono la stessa forma attesa in revisione.",
+    "principleServerFirst": "Ogni regola rigida indica motivo, meccanismo di applicazione e modello valido. Il team può migliorare il sistema senza trasformarlo in folklore.",
+    "principleTesting": "ESLint consapevole dei tipi, doppio compilatore, copertura per file, architettura, codice morto, cicli e parità dei testi falliscono chiaramente prima della revisione."
+  },
+  "articles": {
+    "title": "Articoli",
+    "subtitle": "Gli import scorrono in una direzione, ogni libreria ha un proprietario e i moduli espongono superfici pubbliche intenzionali. Controlli indipendenti impongono la stessa forma attesa in revisione.",
+    "empty": "Nessun articolo disponibile.",
+    "error": "Si è verificato un problema da parte nostra. Riprova.",
+    "retry": "Riprova",
+    "loading": "Caricamento…",
+    "readingTime": "{minutes, plural, one {# minuto di lettura} other {# minuti di lettura}}",
+    "publishedOn": "Pubblicato il {date}",
+    "status": {
+      "draft": "Bozza",
+      "published": "Pubblicato",
+      "archived": "Archiviato"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Accedi",
+      "subtitle": "Uno starter Ionic React e Capacitor pensato per la produzione, con architettura rigorosa, componenti accessibili, percorsi multilingue e controlli di rilascio già configurati.",
+      "emailLabel": "E-mail",
+      "passwordLabel": "Password",
+      "submit": "Accedi",
+      "submitting": "Accesso…",
+      "success": "Accedi",
+      "genericError": "L’e-mail o la password non è corretta.",
+      "validation": {
+        "emailRequired": "L’e-mail è obbligatoria.",
+        "emailInvalid": "Inserisci un indirizzo e-mail valido.",
+        "passwordRequired": "La password è obbligatoria.",
+        "passwordTooShort": "La password deve contenere almeno 8 caratteri."
+      }
+    }
+  },
+  "settings": {
+    "title": "Impostazioni",
+    "subtitle": "Preferenze di aspetto e interfaccia.",
+    "theme": {
+      "label": "Tema",
+      "light": "Chiaro",
+      "dark": "Scuro",
+      "system": "Sistema"
+    },
+    "direction": {
+      "label": "Direzione del testo",
+      "ltr": "Da sinistra a destra",
+      "rtl": "Da destra a sinistra"
+    },
+    "sidebar": {
+      "label": "Barra laterale",
+      "expanded": "Espansa",
+      "collapsed": "Ridotta"
+    }
+  },
+  "errors": {
+    "generic": "È successo qualcosa di imprevisto. Riprova.",
+    "network": "Sembri offline. Controlla la connessione e riprova.",
+    "timeout": "La richiesta ha impiegato troppo tempo. Riprova.",
+    "notFound": "Non abbiamo trovato ciò che cercavi.",
+    "unauthorized": "Devi accedere per continuare.",
+    "forbidden": "Non hai il permesso di eseguire questa azione.",
+    "server": "Si è verificato un problema da parte nostra. Riprova.",
+    "validation": "Alcuni campi richiedono attenzione."
+  },
+  "notFound": {
+    "title": "Pagina non trovata",
+    "description": "La pagina cercata non esiste.",
+    "backHome": "Torna alla home"
+  },
+  "errorPage": {
+    "title": "Qualcosa è andato storto",
+    "description": "È successo qualcosa di imprevisto. Riprova.",
+    "retry": "Riprova"
+  },
+  "workbench": {
+    "title": "Laboratorio UI",
+    "subtitle": "Navigazione, breadcrumb, schede, moduli, stati, temi, lingue e layout responsivi sono primitive condivise, non copie locali.",
+    "buttonsSection": "Pulsanti",
+    "feedbackSection": "Stati",
+    "iconsSection": "Icone",
+    "formsSection": "Modulo",
+    "sampleLabel": "E-mail",
+    "samplePlaceholder": "you@example.com",
+    "sampleAlert": "Al momento non ci sono contenuti da mostrare.",
+    "sampleButton": "Azione principale",
+    "sampleSecondaryButton": "Azione secondaria",
+    "sampleDangerButton": "Azione distruttiva"
+  },
+  "marketing": {
+    "home": {
+      "eyebrow": "Costruisci con fiducia",
+      "title": "Le fondamenta rigorose che il tuo prossimo prodotto merita",
+      "description": "Un sistema Next.js curato, con confini chiari, UI riutilizzabile, qualità misurabile e indicazioni pronte per l’IA."
+    },
+    "about": {
+      "eyebrow": "Perché esiste",
+      "title": "Creato per team che scelgono la chiarezza",
+      "description": "Next Ranger trasforma le decisioni architetturali in convenzioni verificabili, per contribuire in sicurezza dal primo giorno."
+    },
+    "features": {
+      "eyebrow": "Tutto incluso",
+      "title": "Disciplina da produzione senza attrito",
+      "description": "Usa moduli, primitive, controlli qualità, localizzazione e sicurezza già pronti invece di ricostruire le basi."
+    },
+    "faq": {
+      "eyebrow": "Risposte chiare",
+      "title": "Domande prima di iniziare",
+      "description": "Scopri compromessi, flusso di lavoro e uso previsto di queste fondamenta volutamente strutturate."
+    },
+    "contact": {
+      "eyebrow": "Parliamone",
+      "title": "Raccontaci cosa stai costruendo",
+      "description": "Condividi obiettivi e vincoli. Il modello prepara una bozza locale senza fingere un invio al server."
+    },
+    "primaryAction": "Scopri le funzioni",
+    "secondaryAction": "Apri il laboratorio",
+    "trustLabel": "Pensato per team di prodotto, ingegneria e piattaforma",
+    "highlights": {
+      "one": {
+        "title": "Rigoroso da subito",
+        "description": "TypeScript ed ESLint trasformano gli accordi architetturali in errori, mai avvisi."
+      },
+      "two": {
+        "title": "Riutilizzabile davvero",
+        "description": "Primitive accessibili e confini modulari evitano duplicazioni e logica intrecciata."
+      },
+      "three": {
+        "title": "Pronto per l’IA",
+        "description": "Regole canoniche e schede attività offrono agli agenti un contesto preciso e compatto."
+      }
+    },
+    "questions": {
+      "one": {
+        "question": "Va bene per un prodotto esistente?",
+        "answer": "Sì. Adotta i contratti gradualmente, iniziando da confini, controlli e primitive condivise."
+      },
+      "two": {
+        "question": "La rigidità rallenta?",
+        "answer": "Rende esplicite le prime decisioni e poi accelera il lavoro riducendo le ambiguità."
+      },
+      "three": {
+        "question": "Include un backend?",
+        "answer": "Non viene promessa una finta piattaforma; i contratti gateway preparano il collegamento al tuo backend."
+      }
+    },
+    "contactAction": "Crea bozza email",
+    "contactNote": "Si apre una bozza locale nella tua app email; nulla viene inviato automaticamente.",
+    "contactForm": {
+      "nameLabel": "Nome",
+      "emailLabel": "Indirizzo email",
+      "messageLabel": "Messaggio",
+      "submit": "Prepara bozza email",
+      "notConfigured": "Il messaggio è valido. Configura NEXT_PUBLIC_CONTACT_EMAIL per indicare il destinatario.",
+      "ready": "La app email ha aperto una bozza locale; nulla e stato inviato.",
+      "subject": "Richiesta progetto Next Ranger",
+      "validation": {
+        "nameRequired": "Inserisci il nome.",
+        "emailRequired": "Inserisci la tua email.",
+        "emailInvalid": "Inserisci un indirizzo valido.",
+        "messageRequired": "Inserisci un messaggio.",
+        "messageShort": "Scrivi almeno 20 caratteri."
+      }
+    }
+  },
+  "pwa": {
+    "offlineTitle": "Sei offline",
+    "offlineDescription": "Riconnettiti per caricare i dati più recenti."
+  }
+}

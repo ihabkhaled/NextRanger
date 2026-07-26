@@ -1,0 +1,205 @@
+{
+  "app": {
+    "title": "Strict Next Ranger",
+    "description": "Kati bir Next.js on yuz sistemi.",
+    "skipToContent": "Ana icerige gec",
+    "loading": "Yükleniyor…",
+    "localeSwitchLabel": "Dil",
+    "localeNameEn": "English",
+    "localeNameAr": "العربية",
+    "themeSwitchLabel": "Renk teması",
+    "footerNote": "Web ve yerel ürün ekipleri için disiplinli bir temel.",
+    "breadcrumbLabel": "Sayfa yolu"
+  },
+  "nav": {
+    "home": "Karşılama",
+    "about": "Hakkında",
+    "features": "Özellikler",
+    "faq": "SSS",
+    "contact": "İletişim",
+    "menu": "Gezinmeyi aç",
+    "articles": "Makaleler",
+    "settings": "Ayarlar",
+    "login": "Oturum aç",
+    "workbench": "UI atölyesi",
+    "landmarkLabel": "Ana gezinme"
+  },
+  "home": {
+    "title": "Strict Next Ranger",
+    "subtitle": "İçe aktarımlar tek yönde akar, her kütüphanenin bir sahibi vardır ve modüller bilinçli genel yüzeyler sunar. Bağımsız kontroller incelemenin beklediği yapıyı uygular.",
+    "ctaArticles": "Temeli keşfet",
+    "ctaLogin": "Oturum aç",
+    "principlesTitle": "Güvenle başlamak için gereken her şey",
+    "principleComponents": "Gezinme, sayfa yolu, kartlar, formlar, durumlar, tema ve dil kontrolleri ile duyarlı düzenler paylaşılan yapı taşlarıdır.",
+    "principleBoundaries": "İçe aktarımlar tek yönde akar, her kütüphanenin bir sahibi vardır ve modüller bilinçli genel yüzeyler sunar. Bağımsız kontroller incelemenin beklediği yapıyı uygular.",
+    "principleServerFirst": "Her kural nedenini, uygulama mekanizmasını ve geçerli örneği belirtir. Ekip sistemi söylenceye dönüştürmeden geliştirebilir.",
+    "principleTesting": "Tip duyarlı ESLint, çift derleyici, dosya kapsamı, mimari, ölü kod, döngü ve metin eşliği incelemeden önce açıkça başarısız olur."
+  },
+  "articles": {
+    "title": "Makaleler",
+    "subtitle": "İçe aktarımlar tek yönde akar, her kütüphanenin bir sahibi vardır ve modüller bilinçli genel yüzeyler sunar. Bağımsız kontroller incelemenin beklediği yapıyı uygular.",
+    "empty": "Henüz makale yok.",
+    "error": "Bizim tarafımızda bir sorun oluştu. Tekrar deneyin.",
+    "retry": "Tekrar dene",
+    "loading": "Yükleniyor…",
+    "readingTime": "{minutes, plural, one {# dakikalık okuma} other {# dakikalık okuma}}",
+    "publishedOn": "{date} tarihinde yayımlandı",
+    "status": {
+      "draft": "Taslak",
+      "published": "Yayımlandı",
+      "archived": "Arşivlendi"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Oturum aç",
+      "subtitle": "Katı mimari, erişilebilir bileşenler, çok dilli rotalar ve hazır yayın kontrolleri içeren üretim odaklı Ionic React ve Capacitor başlangıcı.",
+      "emailLabel": "E-posta",
+      "passwordLabel": "Parola",
+      "submit": "Oturum aç",
+      "submitting": "Oturum açılıyor…",
+      "success": "Oturum aç",
+      "genericError": "E-posta veya parola yanlış.",
+      "validation": {
+        "emailRequired": "E-posta gerekli.",
+        "emailInvalid": "Geçerli bir e-posta girin.",
+        "passwordRequired": "Parola gerekli.",
+        "passwordTooShort": "Parola en az 8 karakter olmalı."
+      }
+    }
+  },
+  "settings": {
+    "title": "Ayarlar",
+    "subtitle": "Görünüm ve arayüz tercihleri.",
+    "theme": {
+      "label": "Tema",
+      "light": "Açık",
+      "dark": "Koyu",
+      "system": "Sistem"
+    },
+    "direction": {
+      "label": "Metin yönü",
+      "ltr": "Soldan sağa",
+      "rtl": "Sağdan sola"
+    },
+    "sidebar": {
+      "label": "Kenar çubuğu",
+      "expanded": "Genişletilmiş",
+      "collapsed": "Daraltılmış"
+    }
+  },
+  "errors": {
+    "generic": "Beklenmeyen bir durum oluştu. Tekrar deneyin.",
+    "network": "Çevrimdışı görünüyorsunuz. Bağlantınızı kontrol edip tekrar deneyin.",
+    "timeout": "İstek çok uzun sürdü. Tekrar deneyin.",
+    "notFound": "Aradığınızı bulamadık.",
+    "unauthorized": "Devam etmek için oturum açmalısınız.",
+    "forbidden": "Bu işlem için izniniz yok.",
+    "server": "Bizim tarafımızda bir sorun oluştu. Tekrar deneyin.",
+    "validation": "Bazı alanların düzeltilmesi gerekiyor."
+  },
+  "notFound": {
+    "title": "Sayfa bulunamadı",
+    "description": "Aradığınız sayfa mevcut değil.",
+    "backHome": "Ana sayfaya git"
+  },
+  "errorPage": {
+    "title": "Bir sorun oluştu",
+    "description": "Beklenmeyen bir durum oluştu. Tekrar deneyin.",
+    "retry": "Tekrar dene"
+  },
+  "workbench": {
+    "title": "UI atölyesi",
+    "subtitle": "Gezinme, sayfa yolu, kartlar, formlar, durumlar, tema ve dil kontrolleri ile duyarlı düzenler paylaşılan yapı taşlarıdır.",
+    "buttonsSection": "Düğmeler",
+    "feedbackSection": "Durumlar",
+    "iconsSection": "Simgeler",
+    "formsSection": "Form",
+    "sampleLabel": "E-posta",
+    "samplePlaceholder": "you@example.com",
+    "sampleAlert": "Şu anda gösterilecek içerik yok.",
+    "sampleButton": "Birincil eylem",
+    "sampleSecondaryButton": "İkincil eylem",
+    "sampleDangerButton": "Yıkıcı eylem"
+  },
+  "marketing": {
+    "home": {
+      "eyebrow": "Güvenle geliştirin",
+      "title": "Sıradaki ürününüzün hak ettiği katı temel",
+      "description": "Net sınırlar, yeniden kullanılabilir arayüz, ölçülebilir kalite ve yapay zekâya uygun rehberlik sunan özenli bir Next.js sistemi."
+    },
+    "about": {
+      "eyebrow": "Neden var",
+      "title": "Açıklığa değer veren ekipler için",
+      "description": "Next Ranger mimari kararları doğrulanabilir kurallara dönüştürerek insanların ve yapay zekânın ilk günden güvenle katkı vermesini sağlar."
+    },
+    "features": {
+      "eyebrow": "Her şey dâhil",
+      "title": "Yük olmadan üretim disiplini",
+      "description": "Temeli yeniden kurmak yerine hazır modülleri, arayüz parçalarını, kalite kapılarını, yerelleştirmeyi ve güvenlik varsayılanlarını kullanın."
+    },
+    "faq": {
+      "eyebrow": "Açık yanıtlar",
+      "title": "Başlamadan önce sorular",
+      "description": "Bilinçli biçimde yönlendirilmiş bu temelin ödünlerini, iş akışını ve amaçlanan kullanımını anlayın."
+    },
+    "contact": {
+      "eyebrow": "Konuşmaya başlayın",
+      "title": "Ne geliştirdiğinizi anlatın",
+      "description": "Hedefleri ve kısıtları paylaşın. Şablon yerel e-posta taslağı hazırlar, sunucuya gönderilmiş gibi davranmaz."
+    },
+    "primaryAction": "Özellikleri keşfet",
+    "secondaryAction": "Çalışma alanını aç",
+    "trustLabel": "Ürün, mühendislik ve platform ekipleri için tasarlandı",
+    "highlights": {
+      "one": {
+        "title": "Varsayılan olarak katı",
+        "description": "TypeScript ve ESLint mimari anlaşmaları uyarı değil hata hâline getirir."
+      },
+      "two": {
+        "title": "Yeniden kullanım odaklı",
+        "description": "Erişilebilir parçalar ve modül sınırları tekrarları ve dolaşık davranışı önler."
+      },
+      "three": {
+        "title": "Yapay zekâya hazır",
+        "description": "Standart kurallar ve görev kartları aracılara doğru ve küçük bağlam sunar."
+      }
+    },
+    "questions": {
+      "one": {
+        "question": "Mevcut bir ürüne uygun mu?",
+        "answer": "Evet. Sınırlar, kalite kapıları ve ortak parçalarla başlayarak kuralları aşamalı uygulayın."
+      },
+      "two": {
+        "question": "Katılık teslimatı yavaşlatır mı?",
+        "answer": "İlk kararları netleştirir; sonrasında belirsizlik azaldığı için işi hızlandırır."
+      },
+      "three": {
+        "question": "Bir backend içeriyor mu?",
+        "answer": "Sahte bir hizmet vaat edilmez; ağ geçidi sözleşmeleri gerçek backend için net bağlantılar sağlar."
+      }
+    },
+    "contactAction": "E-posta taslağı oluştur",
+    "contactNote": "E-posta uygulamanız yerel taslağı açar; hiçbir ileti otomatik gönderilmez.",
+    "contactForm": {
+      "nameLabel": "Ad",
+      "emailLabel": "E-posta adresi",
+      "messageLabel": "Mesaj",
+      "submit": "E-posta taslagi hazirla",
+      "notConfigured": "Mesaj gecerli. Aliciyi belirlemek icin NEXT_PUBLIC_CONTACT_EMAIL degerini ayarlayin.",
+      "ready": "E-posta uygulamaniz yerel taslagi acti; hicbir sey gonderilmedi.",
+      "subject": "Next Ranger proje talebi",
+      "validation": {
+        "nameRequired": "Adinizi girin.",
+        "emailRequired": "E-posta adresinizi girin.",
+        "emailInvalid": "Gecerli bir adres girin.",
+        "messageRequired": "Bir mesaj girin.",
+        "messageShort": "En az 20 karakter yazin."
+      }
+    }
+  },
+  "pwa": {
+    "offlineTitle": "Çevrimdışısınız",
+    "offlineDescription": "Güncel verileri yüklemek için yeniden bağlanın."
+  }
+}

@@ -1,0 +1,205 @@
+{
+  "app": {
+    "title": "Strict Next Ranger",
+    "description": "Um sistema frontend Next.js rigoroso.",
+    "skipToContent": "Ir para o conteudo",
+    "loading": "A carregar…",
+    "localeSwitchLabel": "Idioma",
+    "localeNameEn": "English",
+    "localeNameAr": "العربية",
+    "themeSwitchLabel": "Tema de cores",
+    "footerNote": "Uma base disciplinada para equipas web e nativas.",
+    "breadcrumbLabel": "Percurso de navegação"
+  },
+  "nav": {
+    "home": "Boas-vindas",
+    "about": "Sobre",
+    "features": "Funcionalidades",
+    "faq": "Perguntas",
+    "contact": "Contacto",
+    "menu": "Abrir navegação",
+    "articles": "Artigos",
+    "settings": "Definições",
+    "login": "Entrar",
+    "workbench": "Oficina de UI",
+    "landmarkLabel": "Navegação principal"
+  },
+  "home": {
+    "title": "Strict Next Ranger",
+    "subtitle": "As importações fluem numa direção, cada biblioteca tem um proprietário e os módulos expõem superfícies públicas deliberadas. Controlos independentes aplicam a mesma forma esperada na revisão.",
+    "ctaArticles": "Explorar a fundação",
+    "ctaLogin": "Entrar",
+    "principlesTitle": "Tudo para começar com confiança",
+    "principleComponents": "Navegação, breadcrumbs, cartões, formulários, estados, temas, idiomas e layouts responsivos são primitivas partilhadas.",
+    "principleBoundaries": "As importações fluem numa direção, cada biblioteca tem um proprietário e os módulos expõem superfícies públicas deliberadas. Controlos independentes aplicam a mesma forma esperada na revisão.",
+    "principleServerFirst": "Cada regra indica motivo, mecanismo e padrão válido. A equipa pode evoluir o sistema sem o transformar em tradição oral.",
+    "principleTesting": "ESLint tipado, dois compiladores, cobertura por ficheiro, arquitetura, código morto, ciclos e paridade de texto falham claramente antes da revisão."
+  },
+  "articles": {
+    "title": "Artigos",
+    "subtitle": "As importações fluem numa direção, cada biblioteca tem um proprietário e os módulos expõem superfícies públicas deliberadas. Controlos independentes aplicam a mesma forma esperada na revisão.",
+    "empty": "Ainda não há artigos.",
+    "error": "Algo correu mal do nosso lado. Tente novamente.",
+    "retry": "Tentar novamente",
+    "loading": "A carregar…",
+    "readingTime": "{minutes, plural, one {# minuto de leitura} other {# minutos de leitura}}",
+    "publishedOn": "Publicado em {date}",
+    "status": {
+      "draft": "Rascunho",
+      "published": "Publicado",
+      "archived": "Arquivado"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Entrar",
+      "subtitle": "Um starter Ionic React e Capacitor pronto para produção, com arquitetura rigorosa, componentes acessíveis, rotas multilingues e controlos de lançamento configurados.",
+      "emailLabel": "E-mail",
+      "passwordLabel": "Palavra-passe",
+      "submit": "Entrar",
+      "submitting": "A entrar…",
+      "success": "Entrar",
+      "genericError": "O e-mail ou a palavra-passe está incorreto.",
+      "validation": {
+        "emailRequired": "O e-mail é obrigatório.",
+        "emailInvalid": "Introduza um e-mail válido.",
+        "passwordRequired": "A palavra-passe é obrigatória.",
+        "passwordTooShort": "A palavra-passe deve ter pelo menos 8 caracteres."
+      }
+    }
+  },
+  "settings": {
+    "title": "Definições",
+    "subtitle": "Preferências de aparência e interface.",
+    "theme": {
+      "label": "Tema",
+      "light": "Claro",
+      "dark": "Escuro",
+      "system": "Sistema"
+    },
+    "direction": {
+      "label": "Direção do texto",
+      "ltr": "Da esquerda para a direita",
+      "rtl": "Da direita para a esquerda"
+    },
+    "sidebar": {
+      "label": "Barra lateral",
+      "expanded": "Expandida",
+      "collapsed": "Recolhida"
+    }
+  },
+  "errors": {
+    "generic": "Aconteceu algo inesperado. Tente novamente.",
+    "network": "Parece estar sem ligação. Verifique-a e tente novamente.",
+    "timeout": "O pedido demorou demasiado. Tente novamente.",
+    "notFound": "Não encontrámos o que procurava.",
+    "unauthorized": "Tem de iniciar sessão para continuar.",
+    "forbidden": "Não tem permissão para essa ação.",
+    "server": "Algo correu mal do nosso lado. Tente novamente.",
+    "validation": "Alguns campos precisam de atenção."
+  },
+  "notFound": {
+    "title": "Página não encontrada",
+    "description": "A página que procura não existe.",
+    "backHome": "Ir para o início"
+  },
+  "errorPage": {
+    "title": "Algo correu mal",
+    "description": "Aconteceu algo inesperado. Tente novamente.",
+    "retry": "Tentar novamente"
+  },
+  "workbench": {
+    "title": "Oficina de UI",
+    "subtitle": "Navegação, breadcrumbs, cartões, formulários, estados, temas, idiomas e layouts responsivos são primitivas partilhadas.",
+    "buttonsSection": "Botões",
+    "feedbackSection": "Estados",
+    "iconsSection": "Ícones",
+    "formsSection": "Formulário",
+    "sampleLabel": "E-mail",
+    "samplePlaceholder": "you@example.com",
+    "sampleAlert": "Não existe conteúdo para mostrar agora.",
+    "sampleButton": "Ação principal",
+    "sampleSecondaryButton": "Ação secundária",
+    "sampleDangerButton": "Ação destrutiva"
+  },
+  "marketing": {
+    "home": {
+      "eyebrow": "Construa com confiança",
+      "title": "A base rigorosa que o seu próximo produto merece",
+      "description": "Um sistema Next.js refinado, com limites claros, UI reutilizável, qualidade mensurável e orientação pronta para IA."
+    },
+    "about": {
+      "eyebrow": "Por que existe",
+      "title": "Feito para equipes que valorizam clareza",
+      "description": "Next Ranger transforma decisões de arquitetura em convenções verificáveis para pessoas e IA contribuírem com segurança."
+    },
+    "features": {
+      "eyebrow": "Tudo incluído",
+      "title": "Disciplina de produção sem peso extra",
+      "description": "Use módulos, componentes, controles de qualidade, localização e segurança preparados, em vez de reconstruir a base."
+    },
+    "faq": {
+      "eyebrow": "Respostas diretas",
+      "title": "Perguntas antes de começar",
+      "description": "Entenda escolhas, fluxo de trabalho e uso indicado desta base intencionalmente opinativa."
+    },
+    "contact": {
+      "eyebrow": "Vamos conversar",
+      "title": "Conte o que você está construindo",
+      "description": "Compartilhe metas e restrições. O modelo prepara um rascunho local e não finge enviar a um servidor."
+    },
+    "primaryAction": "Explorar recursos",
+    "secondaryAction": "Abrir bancada",
+    "trustLabel": "Criado para equipes de produto, engenharia e plataforma",
+    "highlights": {
+      "one": {
+        "title": "Rigoroso por padrão",
+        "description": "TypeScript e ESLint transformam acordos de arquitetura em erros, nunca avisos."
+      },
+      "two": {
+        "title": "Reutilizável por projeto",
+        "description": "Componentes acessíveis e limites de módulos evitam repetição e lógica emaranhada."
+      },
+      "three": {
+        "title": "Pronto para IA",
+        "description": "Regras canônicas e cartões de tarefa oferecem contexto preciso e compacto aos agentes."
+      }
+    },
+    "questions": {
+      "one": {
+        "question": "Serve para um produto existente?",
+        "answer": "Sim. Adote os contratos aos poucos, começando por limites, controles e componentes compartilhados."
+      },
+      "two": {
+        "question": "O rigor atrasa entregas?",
+        "answer": "As primeiras decisões ficam explícitas e o trabalho seguinte acelera com menos ambiguidades."
+      },
+      "three": {
+        "question": "Inclui backend?",
+        "answer": "Nenhum serviço fictício é prometido; contratos de gateway criam conexões claras para seu backend real."
+      }
+    },
+    "contactAction": "Criar rascunho de e-mail",
+    "contactNote": "Seu aplicativo de e-mail abre um rascunho local; nada é enviado automaticamente.",
+    "contactForm": {
+      "nameLabel": "Nome",
+      "emailLabel": "E-mail",
+      "messageLabel": "Mensagem",
+      "submit": "Preparar rascunho",
+      "notConfigured": "A mensagem e valida. Configure NEXT_PUBLIC_CONTACT_EMAIL para definir o destinatario.",
+      "ready": "Seu aplicativo abriu um rascunho local; nada foi enviado.",
+      "subject": "Consulta de projeto Next Ranger",
+      "validation": {
+        "nameRequired": "Informe seu nome.",
+        "emailRequired": "Informe seu e-mail.",
+        "emailInvalid": "Informe um e-mail valido.",
+        "messageRequired": "Escreva uma mensagem.",
+        "messageShort": "Escreva pelo menos 20 caracteres."
+      }
+    }
+  },
+  "pwa": {
+    "offlineTitle": "Está offline",
+    "offlineDescription": "Volte a ligar-se para carregar os dados recentes."
+  }
+}

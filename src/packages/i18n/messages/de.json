@@ -1,0 +1,205 @@
+{
+  "app": {
+    "title": "Strict Next Ranger",
+    "description": "Ein strenges Next.js-Frontend-System.",
+    "skipToContent": "Zum Inhalt springen",
+    "loading": "Wird geladen…",
+    "localeSwitchLabel": "Sprache",
+    "localeNameEn": "English",
+    "localeNameAr": "العربية",
+    "themeSwitchLabel": "Farbschema",
+    "footerNote": "Ein diszipliniertes Fundament für Web- und Native-Produktteams.",
+    "breadcrumbLabel": "Brotkrümelnavigation"
+  },
+  "nav": {
+    "home": "Willkommen",
+    "about": "Über uns",
+    "features": "Funktionen",
+    "faq": "FAQ",
+    "contact": "Kontakt",
+    "menu": "Navigation öffnen",
+    "articles": "Artikel",
+    "settings": "Einstellungen",
+    "login": "Anmelden",
+    "workbench": "UI-Werkbank",
+    "landmarkLabel": "Hauptnavigation"
+  },
+  "home": {
+    "title": "Strict Next Ranger",
+    "subtitle": "Imports fließen in eine Richtung, jede Bibliothek hat einen Besitzer und Feature-Module bieten bewusste öffentliche Schnittstellen. Unabhängige Prüfungen erzwingen dieselbe Form wie das Review.",
+    "ctaArticles": "Fundament entdecken",
+    "ctaLogin": "Anmelden",
+    "principlesTitle": "Alles für einen sicheren Start",
+    "principleComponents": "Navigation, Breadcrumbs, Karten, Formulare, Zustände, Theme- und Sprachsteuerung sowie responsive Layouts sind gemeinsame Bausteine statt lokaler Kopien.",
+    "principleBoundaries": "Imports fließen in eine Richtung, jede Bibliothek hat einen Besitzer und Feature-Module bieten bewusste öffentliche Schnittstellen. Unabhängige Prüfungen erzwingen dieselbe Form wie das Review.",
+    "principleServerFirst": "Jede harte Regel nennt Grund, Durchsetzung und gültiges Muster. Teams können das System verbessern, ohne es in mündliche Überlieferung zu verwandeln.",
+    "principleTesting": "Typbewusstes ESLint, zwei Compiler, dateiweise Abdeckung, Architekturprüfung, Dead-Code- und Zyklenerkennung sowie Textparität scheitern klar vor dem Review."
+  },
+  "articles": {
+    "title": "Artikel",
+    "subtitle": "Imports fließen in eine Richtung, jede Bibliothek hat einen Besitzer und Feature-Module bieten bewusste öffentliche Schnittstellen. Unabhängige Prüfungen erzwingen dieselbe Form wie das Review.",
+    "empty": "Noch keine Artikel vorhanden.",
+    "error": "Auf unserer Seite ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
+    "retry": "Erneut versuchen",
+    "loading": "Wird geladen…",
+    "readingTime": "{minutes, plural, one {# Minute Lesezeit} other {# Minuten Lesezeit}}",
+    "publishedOn": "Veröffentlicht am {date}",
+    "status": {
+      "draft": "Entwurf",
+      "published": "Veröffentlicht",
+      "archived": "Archiviert"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Anmelden",
+      "subtitle": "Ein produktionsnaher Ionic-React- und Capacitor-Starter mit strenger Architektur, barrierefreien Komponenten, mehrsprachigen Routen und fertigen Release-Prüfungen.",
+      "emailLabel": "E-Mail",
+      "passwordLabel": "Passwort",
+      "submit": "Anmelden",
+      "submitting": "Anmeldung…",
+      "success": "Anmelden",
+      "genericError": "E-Mail-Adresse oder Passwort ist falsch.",
+      "validation": {
+        "emailRequired": "E-Mail ist erforderlich.",
+        "emailInvalid": "Geben Sie eine gültige E-Mail-Adresse ein.",
+        "passwordRequired": "Passwort ist erforderlich.",
+        "passwordTooShort": "Das Passwort muss mindestens 8 Zeichen lang sein."
+      }
+    }
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "subtitle": "Einstellungen für Darstellung und Oberfläche.",
+    "theme": {
+      "label": "Theme",
+      "light": "Hell",
+      "dark": "Dunkel",
+      "system": "System"
+    },
+    "direction": {
+      "label": "Textrichtung",
+      "ltr": "Von links nach rechts",
+      "rtl": "Von rechts nach links"
+    },
+    "sidebar": {
+      "label": "Seitenleiste",
+      "expanded": "Erweitert",
+      "collapsed": "Eingeklappt"
+    }
+  },
+  "errors": {
+    "generic": "Etwas Unerwartetes ist passiert. Bitte versuchen Sie es erneut.",
+    "network": "Sie scheinen offline zu sein. Prüfen Sie die Verbindung und versuchen Sie es erneut.",
+    "timeout": "Die Anfrage hat zu lange gedauert. Bitte versuchen Sie es erneut.",
+    "notFound": "Wir konnten das Gesuchte nicht finden.",
+    "unauthorized": "Melden Sie sich an, um fortzufahren.",
+    "forbidden": "Sie haben keine Berechtigung für diese Aktion.",
+    "server": "Auf unserer Seite ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
+    "validation": "Einige Felder benötigen Aufmerksamkeit."
+  },
+  "notFound": {
+    "title": "Seite nicht gefunden",
+    "description": "Die gesuchte Seite existiert nicht.",
+    "backHome": "Zur Startseite"
+  },
+  "errorPage": {
+    "title": "Etwas ist schiefgegangen",
+    "description": "Etwas Unerwartetes ist passiert. Bitte versuchen Sie es erneut.",
+    "retry": "Erneut versuchen"
+  },
+  "workbench": {
+    "title": "UI-Werkbank",
+    "subtitle": "Navigation, Breadcrumbs, Karten, Formulare, Zustände, Theme- und Sprachsteuerung sowie responsive Layouts sind gemeinsame Bausteine statt lokaler Kopien.",
+    "buttonsSection": "Schaltflächen",
+    "feedbackSection": "Zustände",
+    "iconsSection": "Symbole",
+    "formsSection": "Formular",
+    "sampleLabel": "E-Mail",
+    "samplePlaceholder": "you@example.com",
+    "sampleAlert": "Derzeit gibt es keinen Inhalt anzuzeigen.",
+    "sampleButton": "Primäre Aktion",
+    "sampleSecondaryButton": "Sekundäre Aktion",
+    "sampleDangerButton": "Destruktive Aktion"
+  },
+  "marketing": {
+    "home": {
+      "eyebrow": "Sicher entwickeln",
+      "title": "Das strenge Fundament für Ihr nächstes Produkt",
+      "description": "Ein ausgereiftes Next.js-System mit klaren Grenzen, wiederverwendbarer UI, messbarer Qualität und KI-tauglicher Anleitung."
+    },
+    "about": {
+      "eyebrow": "Warum es existiert",
+      "title": "Für Teams, die Klarheit schätzen",
+      "description": "Next Ranger macht Architekturentscheidungen zu prüfbaren Konventionen, damit Menschen und KI sicher beitragen."
+    },
+    "features": {
+      "eyebrow": "Alles enthalten",
+      "title": "Produktionsdisziplin ohne Ballast",
+      "description": "Nutzen Sie fertige Module, UI-Bausteine, Qualitätsprüfungen, Lokalisierung und Sicherheitsvorgaben."
+    },
+    "faq": {
+      "eyebrow": "Klare Antworten",
+      "title": "Fragen vor dem Start",
+      "description": "Verstehen Sie Abwägungen, Arbeitsweise und Zweck dieses bewusst meinungsstarken Fundaments."
+    },
+    "contact": {
+      "eyebrow": "Ins Gespräch kommen",
+      "title": "Erzählen Sie uns von Ihrem Vorhaben",
+      "description": "Teilen Sie Ziele und Grenzen. Die Vorlage erstellt lokal einen Entwurf und täuscht keinen Serverversand vor."
+    },
+    "primaryAction": "Funktionen ansehen",
+    "secondaryAction": "Werkbank öffnen",
+    "trustLabel": "Für Produkt-, Entwicklungs- und Plattformteams",
+    "highlights": {
+      "one": {
+        "title": "Standardmäßig streng",
+        "description": "TypeScript und ESLint machen Architekturregeln zu Fehlern statt Warnungen."
+      },
+      "two": {
+        "title": "Konsequent wiederverwendbar",
+        "description": "Zugängliche Bausteine und Modulgrenzen verhindern Duplikate und verwobene Logik."
+      },
+      "three": {
+        "title": "KI-bereiter Kontext",
+        "description": "Verbindliche Regeln und Aufgabenkarten liefern präzisen, kompakten Agentenkontext."
+      }
+    },
+    "questions": {
+      "one": {
+        "question": "Eignet es sich für bestehende Produkte?",
+        "answer": "Ja. Führen Sie Verträge schrittweise ein, beginnend mit Grenzen, Prüfungen und gemeinsamen Bausteinen."
+      },
+      "two": {
+        "question": "Bremst Strenge die Lieferung?",
+        "answer": "Erste Entscheidungen werden klar; danach sinkt die Mehrdeutigkeit und die Arbeit wird schneller."
+      },
+      "three": {
+        "question": "Ist ein Backend enthalten?",
+        "answer": "Es wird kein Scheindienst versprochen. Gateway-Verträge schaffen klare Anschlüsse für Ihr echtes Backend."
+      }
+    },
+    "contactAction": "E-Mail-Entwurf erstellen",
+    "contactNote": "Ihre E-Mail-App öffnet einen lokalen Entwurf; nichts wird automatisch gesendet.",
+    "contactForm": {
+      "nameLabel": "Name",
+      "emailLabel": "E-Mail-Adresse",
+      "messageLabel": "Nachricht",
+      "submit": "E-Mail-Entwurf vorbereiten",
+      "notConfigured": "Die Nachricht ist gultig. Legen Sie mit NEXT_PUBLIC_CONTACT_EMAIL den Empfanger fest.",
+      "ready": "Ihre E-Mail-App hat einen lokalen Entwurf geoffnet; nichts wurde gesendet.",
+      "subject": "Next Ranger Projektanfrage",
+      "validation": {
+        "nameRequired": "Geben Sie Ihren Namen ein.",
+        "emailRequired": "Geben Sie Ihre E-Mail-Adresse ein.",
+        "emailInvalid": "Geben Sie eine gultige Adresse ein.",
+        "messageRequired": "Geben Sie eine Nachricht ein.",
+        "messageShort": "Schreiben Sie mindestens 20 Zeichen."
+      }
+    }
+  },
+  "pwa": {
+    "offlineTitle": "Sie sind offline",
+    "offlineDescription": "Stellen Sie die Verbindung wieder her, um aktuelle Daten zu laden."
+  }
+}

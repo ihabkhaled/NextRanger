@@ -1,0 +1,205 @@
+{
+  "app": {
+    "title": "Strict Next Ranger",
+    "description": "严格的 Next.js 前端系统。",
+    "skipToContent": "跳到主要内容",
+    "loading": "加载中…",
+    "localeSwitchLabel": "语言",
+    "localeNameEn": "English",
+    "localeNameAr": "العربية",
+    "themeSwitchLabel": "颜色主题",
+    "footerNote": "面向 Web 与原生产品团队的严谨基础。",
+    "breadcrumbLabel": "面包屑导航"
+  },
+  "nav": {
+    "home": "欢迎",
+    "about": "关于",
+    "features": "功能",
+    "faq": "常见问题",
+    "contact": "联系",
+    "menu": "打开导航",
+    "articles": "文章",
+    "settings": "设置",
+    "login": "登录",
+    "workbench": "UI 工作台",
+    "landmarkLabel": "主导航"
+  },
+  "home": {
+    "title": "Strict Next Ranger",
+    "subtitle": "依赖单向流动，每个库只有一个所有者，功能模块提供明确的公共接口。独立门禁执行与代码评审相同的结构要求。",
+    "ctaArticles": "探索基础",
+    "ctaLogin": "登录",
+    "principlesTitle": "安心开工所需的一切",
+    "principleComponents": "导航、面包屑、卡片、表单、状态、主题、语言与响应式布局都是共享组件，而非页面复制品。",
+    "principleBoundaries": "依赖单向流动，每个库只有一个所有者，功能模块提供明确的公共接口。独立门禁执行与代码评审相同的结构要求。",
+    "principleServerFirst": "每条硬规则都说明原因、执行机制和正确范式，团队可以持续改进而不依赖口耳相传。",
+    "principleTesting": "类型感知 ESLint、双编译器、逐文件覆盖率、架构、死代码、循环依赖与翻译一致性都会在评审前明确失败。"
+  },
+  "articles": {
+    "title": "文章",
+    "subtitle": "依赖单向流动，每个库只有一个所有者，功能模块提供明确的公共接口。独立门禁执行与代码评审相同的结构要求。",
+    "empty": "暂无文章。",
+    "error": "服务端出现问题，请重试。",
+    "retry": "重试",
+    "loading": "加载中…",
+    "readingTime": "{minutes, plural, other {阅读需 # 分钟}}",
+    "publishedOn": "发布于 {date}",
+    "status": {
+      "draft": "草稿",
+      "published": "已发布",
+      "archived": "已归档"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "登录",
+      "subtitle": "面向生产的 Ionic React 与 Capacitor 起步项目，内置严格架构、无障碍组件、多语言 URL 和发布门禁。",
+      "emailLabel": "邮箱",
+      "passwordLabel": "密码",
+      "submit": "登录",
+      "submitting": "正在登录…",
+      "success": "登录",
+      "genericError": "邮箱或密码不正确。",
+      "validation": {
+        "emailRequired": "邮箱为必填项。",
+        "emailInvalid": "请输入有效邮箱。",
+        "passwordRequired": "密码为必填项。",
+        "passwordTooShort": "密码至少需要 8 个字符。"
+      }
+    }
+  },
+  "settings": {
+    "title": "设置",
+    "subtitle": "外观与界面偏好设置。",
+    "theme": {
+      "label": "主题",
+      "light": "浅色",
+      "dark": "深色",
+      "system": "系统"
+    },
+    "direction": {
+      "label": "文字方向",
+      "ltr": "从左到右",
+      "rtl": "从右到左"
+    },
+    "sidebar": {
+      "label": "侧边栏",
+      "expanded": "展开",
+      "collapsed": "折叠"
+    }
+  },
+  "errors": {
+    "generic": "发生意外问题，请重试。",
+    "network": "当前似乎已离线，请检查连接后重试。",
+    "timeout": "请求耗时过长，请重试。",
+    "notFound": "未找到你要查找的内容。",
+    "unauthorized": "请先登录再继续。",
+    "forbidden": "你没有执行此操作的权限。",
+    "server": "服务端出现问题，请重试。",
+    "validation": "部分字段需要检查。"
+  },
+  "notFound": {
+    "title": "页面未找到",
+    "description": "你查找的页面不存在。",
+    "backHome": "返回首页"
+  },
+  "errorPage": {
+    "title": "出现问题",
+    "description": "发生意外问题，请重试。",
+    "retry": "重试"
+  },
+  "workbench": {
+    "title": "UI 工作台",
+    "subtitle": "导航、面包屑、卡片、表单、状态、主题、语言与响应式布局都是共享组件，而非页面复制品。",
+    "buttonsSection": "按钮",
+    "feedbackSection": "状态",
+    "iconsSection": "图标",
+    "formsSection": "表单",
+    "sampleLabel": "邮箱",
+    "samplePlaceholder": "you@example.com",
+    "sampleAlert": "目前没有可显示的内容。",
+    "sampleButton": "主要操作",
+    "sampleSecondaryButton": "次要操作",
+    "sampleDangerButton": "破坏性操作"
+  },
+  "marketing": {
+    "home": {
+      "eyebrow": "放心构建",
+      "title": "下一款产品值得拥有的严格基础",
+      "description": "精心打磨的 Next.js 基础，提供清晰边界、可复用界面、可衡量质量和面向 AI 的指南。"
+    },
+    "about": {
+      "eyebrow": "为何而生",
+      "title": "为重视清晰度的团队打造",
+      "description": "Next Ranger 将架构决策变成可验证的约定，让人和 AI 从第一天起安全协作。"
+    },
+    "features": {
+      "eyebrow": "完整配备",
+      "title": "没有负担的生产纪律",
+      "description": "直接使用准备好的模块、界面组件、质量门槛、本地化和安全默认值，无需重建基础。"
+    },
+    "faq": {
+      "eyebrow": "坦率回答",
+      "title": "开始前常见问题",
+      "description": "了解这套有明确主张的基础所涉及的取舍、工作方式和适用场景。"
+    },
+    "contact": {
+      "eyebrow": "开始交流",
+      "title": "告诉我们你在构建什么",
+      "description": "分享目标与约束。本模板只在本地准备邮件草稿，不会假装提交到服务器。"
+    },
+    "primaryAction": "探索功能",
+    "secondaryAction": "打开组件工坊",
+    "trustLabel": "面向产品、工程与平台团队设计",
+    "highlights": {
+      "one": {
+        "title": "默认严格",
+        "description": "TypeScript 与 ESLint 将架构约定变成错误，而不是警告。"
+      },
+      "two": {
+        "title": "为复用而设计",
+        "description": "无障碍组件和模块边界避免界面重复与逻辑纠缠。"
+      },
+      "three": {
+        "title": "适合 AI 协作",
+        "description": "规范规则和任务卡为智能体提供准确、精简的上下文。"
+      }
+    },
+    "questions": {
+      "one": {
+        "question": "适合现有产品吗？",
+        "answer": "适合。可以从边界、质量门槛和共享组件开始，逐步采用这些约定。"
+      },
+      "two": {
+        "question": "严格会拖慢交付吗？",
+        "answer": "前期决策更明确，后续因歧义减少而更快。"
+      },
+      "three": {
+        "question": "包含后端吗？",
+        "answer": "不会宣传虚假服务；网关契约为真实后端提供清晰接入点。"
+      }
+    },
+    "contactAction": "创建邮件草稿",
+    "contactNote": "邮件应用会打开本地草稿，不会自动发送任何内容。",
+    "contactForm": {
+      "nameLabel": "姓名",
+      "emailLabel": "电子邮箱",
+      "messageLabel": "留言",
+      "submit": "准备邮件草稿",
+      "notConfigured": "内容验证通过。请配置 NEXT_PUBLIC_CONTACT_EMAIL 以指定收件人。",
+      "ready": "邮件应用已打开本地草稿，未自动发送。",
+      "subject": "Next Ranger 项目咨询",
+      "validation": {
+        "nameRequired": "请输入姓名。",
+        "emailRequired": "请输入邮箱。",
+        "emailInvalid": "请输入有效邮箱。",
+        "messageRequired": "请输入留言。",
+        "messageShort": "请至少输入20个字符。"
+      }
+    }
+  },
+  "pwa": {
+    "offlineTitle": "你已离线",
+    "offlineDescription": "请重新连接以加载最新数据。"
+  }
+}

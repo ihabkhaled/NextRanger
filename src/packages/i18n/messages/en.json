@@ -6,10 +6,18 @@
     "loading": "Loading…",
     "localeSwitchLabel": "Change language",
     "localeNameEn": "English",
-    "localeNameAr": "Arabic"
+    "localeNameAr": "Arabic",
+    "themeSwitchLabel": "Change color theme",
+    "footerNote": "A production-minded foundation for ambitious teams.",
+    "breadcrumbLabel": "Breadcrumb"
   },
   "nav": {
     "home": "Home",
+    "about": "About",
+    "features": "Features",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "menu": "Menu",
     "articles": "Articles",
     "settings": "Settings",
     "login": "Sign in",
@@ -113,5 +121,85 @@
     "sampleButton": "Primary action",
     "sampleSecondaryButton": "Secondary action",
     "sampleDangerButton": "Destructive action"
+  },
+  "marketing": {
+    "home": {
+      "eyebrow": "Build with confidence",
+      "title": "The strict foundation your next product deserves",
+      "description": "A polished Next.js operating system with clear boundaries, reusable UI, measurable quality, and AI-ready guidance."
+    },
+    "about": {
+      "eyebrow": "Why it exists",
+      "title": "Made for teams that value clarity",
+      "description": "Next Ranger turns architecture decisions into enforceable conventions, so people and AI can contribute safely from day one."
+    },
+    "features": {
+      "eyebrow": "Everything included",
+      "title": "Production discipline without production drag",
+      "description": "Use the prepared modules, design primitives, quality gates, localization, and security defaults instead of rebuilding foundations."
+    },
+    "faq": {
+      "eyebrow": "Straight answers",
+      "title": "Questions before you start",
+      "description": "Understand the tradeoffs, workflow, and intended use of this intentionally opinionated foundation."
+    },
+    "contact": {
+      "eyebrow": "Start a conversation",
+      "title": "Tell us what you are building",
+      "description": "Share your goals and constraints. This starter prepares an email draft locally and never pretends to submit to a backend."
+    },
+    "primaryAction": "Explore features",
+    "secondaryAction": "Open workbench",
+    "trustLabel": "Designed for product, engineering, and platform teams",
+    "highlights": {
+      "one": {
+        "title": "Strict by default",
+        "description": "TypeScript and ESLint turn architectural agreements into errors, never warnings."
+      },
+      "two": {
+        "title": "Reusable by design",
+        "description": "Accessible primitives and module boundaries prevent repeated UI and tangled behavior."
+      },
+      "three": {
+        "title": "AI-ready context",
+        "description": "Canonical rules and task cards give coding agents precise, low-token context."
+      }
+    },
+    "questions": {
+      "one": {
+        "question": "Is this suitable for an existing product?",
+        "answer": "Yes. Adopt the contracts incrementally, beginning with boundaries, quality gates, and shared primitives."
+      },
+      "two": {
+        "question": "Does strictness slow delivery?",
+        "answer": "The first decisions become explicit; later work accelerates because reviews and agents encounter fewer ambiguities."
+      },
+      "three": {
+        "question": "Is a backend included?",
+        "answer": "No false service is advertised. Mock owners and gateway contracts provide clear seams for your real backend."
+      }
+    },
+    "contactAction": "Create email draft",
+    "contactNote": "Your email application opens with a local draft; no message is sent automatically.",
+    "contactForm": {
+      "nameLabel": "Name",
+      "emailLabel": "Email address",
+      "messageLabel": "Message",
+      "submit": "Prepare email draft",
+      "notConfigured": "Your message is valid. Configure NEXT_PUBLIC_CONTACT_EMAIL to address the draft.",
+      "ready": "Your email application opened a local draft; nothing was sent automatically.",
+      "subject": "Next Ranger project enquiry",
+      "validation": {
+        "nameRequired": "Enter your name.",
+        "emailRequired": "Enter your email address.",
+        "emailInvalid": "Enter a valid email address.",
+        "messageRequired": "Enter a message.",
+        "messageShort": "Write at least 20 characters."
+      }
+    }
+  },
+  "pwa": {
+    "offlineTitle": "You are offline",
+    "offlineDescription": "Reconnect to continue. Your current browser preferences remain on this device."
   }
 }

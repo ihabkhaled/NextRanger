@@ -1,0 +1,205 @@
+{
+  "app": {
+    "title": "Strict Next Ranger",
+    "description": "厳格なNext.jsフロントエンド基盤。",
+    "skipToContent": "メインコンテンツへ移動",
+    "loading": "読み込み中…",
+    "localeSwitchLabel": "言語",
+    "localeNameEn": "English",
+    "localeNameAr": "العربية",
+    "themeSwitchLabel": "カラーテーマ",
+    "footerNote": "Webとネイティブ製品チームのための規律ある基盤。",
+    "breadcrumbLabel": "パンくずリスト"
+  },
+  "nav": {
+    "home": "ようこそ",
+    "about": "概要",
+    "features": "機能",
+    "faq": "よくある質問",
+    "contact": "お問い合わせ",
+    "menu": "ナビゲーションを開く",
+    "articles": "記事",
+    "settings": "設定",
+    "login": "ログイン",
+    "workbench": "UIワークベンチ",
+    "landmarkLabel": "メインナビゲーション"
+  },
+  "home": {
+    "title": "Strict Next Ranger",
+    "subtitle": "importは一方向、各ライブラリには一人の所有者があり、モジュールは意図した公開面を提供します。独立したゲートがレビューと同じ形を強制します。",
+    "ctaArticles": "基盤を見る",
+    "ctaLogin": "ログイン",
+    "principlesTitle": "自信を持って始めるためのすべて",
+    "principleComponents": "ナビゲーション、パンくず、カード、フォーム、状態、テーマ、言語、レスポンシブ配置は共有部品です。",
+    "principleBoundaries": "importは一方向、各ライブラリには一人の所有者があり、モジュールは意図した公開面を提供します。独立したゲートがレビューと同じ形を強制します。",
+    "principleServerFirst": "各ルールは理由、強制手段、正しい例を示します。チームは暗黙知にせず仕組みを改善できます。",
+    "principleTesting": "型対応ESLint、二つのコンパイラ、ファイル別カバレッジ、設計、不要コード、循環、翻訳整合性がレビュー前に明確に失敗します。"
+  },
+  "articles": {
+    "title": "記事",
+    "subtitle": "importは一方向、各ライブラリには一人の所有者があり、モジュールは意図した公開面を提供します。独立したゲートがレビューと同じ形を強制します。",
+    "empty": "記事はまだありません。",
+    "error": "こちら側で問題が発生しました。再試行してください。",
+    "retry": "もう一度試す",
+    "loading": "読み込み中…",
+    "readingTime": "{minutes, plural, other {読了まで#分}}",
+    "publishedOn": "{date}に公開",
+    "status": {
+      "draft": "下書き",
+      "published": "公開済み",
+      "archived": "アーカイブ済み"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "ログイン",
+      "subtitle": "厳格な設計、アクセシブルな部品、多言語URL、リリースゲートを備えた、本番志向のIonic React・Capacitorスターターです。",
+      "emailLabel": "メール",
+      "passwordLabel": "パスワード",
+      "submit": "ログイン",
+      "submitting": "ログイン中…",
+      "success": "ログイン",
+      "genericError": "メールアドレスまたはパスワードが正しくありません。",
+      "validation": {
+        "emailRequired": "メールは必須です。",
+        "emailInvalid": "有効なメールを入力してください。",
+        "passwordRequired": "パスワードは必須です。",
+        "passwordTooShort": "パスワードは8文字以上必要です。"
+      }
+    }
+  },
+  "settings": {
+    "title": "設定",
+    "subtitle": "外観とインターフェースの設定。",
+    "theme": {
+      "label": "テーマ",
+      "light": "ライト",
+      "dark": "ダーク",
+      "system": "システム"
+    },
+    "direction": {
+      "label": "文字方向",
+      "ltr": "左から右",
+      "rtl": "右から左"
+    },
+    "sidebar": {
+      "label": "サイドバー",
+      "expanded": "展開",
+      "collapsed": "折りたたみ"
+    }
+  },
+  "errors": {
+    "generic": "予期しない問題が発生しました。再試行してください。",
+    "network": "オフラインのようです。接続を確認して再試行してください。",
+    "timeout": "リクエストに時間がかかりすぎました。再試行してください。",
+    "notFound": "お探しの内容が見つかりませんでした。",
+    "unauthorized": "続行するにはログインが必要です。",
+    "forbidden": "この操作を行う権限がありません。",
+    "server": "こちら側で問題が発生しました。再試行してください。",
+    "validation": "確認が必要な項目があります。"
+  },
+  "notFound": {
+    "title": "ページが見つかりません",
+    "description": "お探しのページは存在しません。",
+    "backHome": "ホームへ"
+  },
+  "errorPage": {
+    "title": "問題が発生しました",
+    "description": "予期しない問題が発生しました。再試行してください。",
+    "retry": "もう一度試す"
+  },
+  "workbench": {
+    "title": "UIワークベンチ",
+    "subtitle": "ナビゲーション、パンくず、カード、フォーム、状態、テーマ、言語、レスポンシブ配置は共有部品です。",
+    "buttonsSection": "ボタン",
+    "feedbackSection": "状態",
+    "iconsSection": "アイコン",
+    "formsSection": "フォーム",
+    "sampleLabel": "メール",
+    "samplePlaceholder": "you@example.com",
+    "sampleAlert": "現在表示できる内容はありません。",
+    "sampleButton": "主要操作",
+    "sampleSecondaryButton": "副次操作",
+    "sampleDangerButton": "破壊的操作"
+  },
+  "marketing": {
+    "home": {
+      "eyebrow": "確信を持って構築",
+      "title": "次のプロダクトにふさわしい厳格な土台",
+      "description": "明確な境界、再利用できるUI、測定可能な品質、AI向けガイドを備えた洗練されたNext.js基盤です。"
+    },
+    "about": {
+      "eyebrow": "存在する理由",
+      "title": "明快さを重視するチームのために",
+      "description": "Next Rangerは設計判断を検証可能な規約に変え、人とAIが初日から安全に貢献できるようにします。"
+    },
+    "features": {
+      "eyebrow": "必要なものを網羅",
+      "title": "重荷のない本番品質",
+      "description": "基礎を作り直さず、用意済みのモジュール、UI部品、品質ゲート、多言語化、セキュリティ既定値を活用できます。"
+    },
+    "faq": {
+      "eyebrow": "率直な回答",
+      "title": "始める前の疑問",
+      "description": "意図的に方針を定めた基盤のトレードオフ、作業手順、適した用途を確認できます。"
+    },
+    "contact": {
+      "eyebrow": "対話を始める",
+      "title": "作りたいものを教えてください",
+      "description": "目標と制約を共有してください。ローカルでメール下書きを作り、サーバー送信を装うことはありません。"
+    },
+    "primaryAction": "機能を見る",
+    "secondaryAction": "ワークベンチを開く",
+    "trustLabel": "プロダクト、エンジニアリング、基盤チーム向け",
+    "highlights": {
+      "one": {
+        "title": "初期状態から厳格",
+        "description": "TypeScriptとESLintが設計上の合意を警告ではなくエラーにします。"
+      },
+      "two": {
+        "title": "再利用を前提に設計",
+        "description": "アクセシブルな部品とモジュール境界が重複と複雑なロジックを防ぎます。"
+      },
+      "three": {
+        "title": "AIに適した文脈",
+        "description": "標準ルールとタスクカードが、正確で小さな文脈をエージェントへ渡します。"
+      }
+    },
+    "questions": {
+      "one": {
+        "question": "既存製品にも使えますか？",
+        "answer": "はい。境界、品質ゲート、共有部品から段階的に規約を導入できます。"
+      },
+      "two": {
+        "question": "厳格さで開発は遅くなりませんか？",
+        "answer": "初期判断が明確になり、その後は曖昧さが減るため作業が速くなります。"
+      },
+      "three": {
+        "question": "バックエンドは含まれますか？",
+        "answer": "架空のサービスはうたいません。ゲートウェイ契約が実際のバックエンドとの明確な接点になります。"
+      }
+    },
+    "contactAction": "メール下書きを作成",
+    "contactNote": "メールアプリでローカル下書きを開きます。自動送信はされません。",
+    "contactForm": {
+      "nameLabel": "お名前",
+      "emailLabel": "メールアドレス",
+      "messageLabel": "メッセージ",
+      "submit": "メール下書きを準備",
+      "notConfigured": "入力は有効です。NEXT_PUBLIC_CONTACT_EMAILで宛先を設定してください。",
+      "ready": "メールアプリで下書きを開きました。自動送信はしていません。",
+      "subject": "Next Rangerプロジェクトの相談",
+      "validation": {
+        "nameRequired": "お名前を入力してください。",
+        "emailRequired": "メールを入力してください。",
+        "emailInvalid": "有効なメールを入力してください。",
+        "messageRequired": "メッセージを入力してください。",
+        "messageShort": "20文字以上で入力してください。"
+      }
+    }
+  },
+  "pwa": {
+    "offlineTitle": "オフラインです",
+    "offlineDescription": "再接続して最新データを読み込んでください。"
+  }
+}

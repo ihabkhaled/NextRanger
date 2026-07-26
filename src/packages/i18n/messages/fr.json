@@ -1,0 +1,205 @@
+{
+  "app": {
+    "title": "Strict Next Ranger",
+    "description": "Un systeme frontal Next.js strict.",
+    "skipToContent": "Aller au contenu",
+    "loading": "Chargement…",
+    "localeSwitchLabel": "Langue",
+    "localeNameEn": "English",
+    "localeNameAr": "العربية",
+    "themeSwitchLabel": "Thème de couleur",
+    "footerNote": "Une base rigoureuse pour les équipes web et natives.",
+    "breadcrumbLabel": "Fil d’Ariane"
+  },
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "features": "Fonctionnalités",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "menu": "Ouvrir la navigation",
+    "articles": "Articles",
+    "settings": "Paramètres",
+    "login": "Connexion",
+    "workbench": "Atelier UI",
+    "landmarkLabel": "Navigation principale"
+  },
+  "home": {
+    "title": "Strict Next Ranger",
+    "subtitle": "Les imports suivent un seul sens, chaque bibliothèque a un propriétaire et les modules exposent des surfaces publiques intentionnelles. Des contrôles indépendants imposent la même forme que les revues.",
+    "ctaArticles": "Explorer les fondations",
+    "ctaLogin": "Se connecter",
+    "principlesTitle": "Tout pour démarrer en confiance",
+    "principleComponents": "Navigation, fil d’Ariane, cartes, formulaires, états, thèmes, langues et mises en page adaptatives sont des primitives partagées, pas des copies locales.",
+    "principleBoundaries": "Les imports suivent un seul sens, chaque bibliothèque a un propriétaire et les modules exposent des surfaces publiques intentionnelles. Des contrôles indépendants imposent la même forme que les revues.",
+    "principleServerFirst": "Chaque règle stricte nomme sa raison, son mécanisme de contrôle et le modèle valide. L’équipe peut faire évoluer le système sans folklore.",
+    "principleTesting": "ESLint typé, double compilation, couverture par fichier, validation d’architecture, code mort, cycles et parité des textes échouent clairement avant la revue."
+  },
+  "articles": {
+    "title": "Articles",
+    "subtitle": "Les imports suivent un seul sens, chaque bibliothèque a un propriétaire et les modules exposent des surfaces publiques intentionnelles. Des contrôles indépendants imposent la même forme que les revues.",
+    "empty": "Aucun article pour le moment.",
+    "error": "Un problème est survenu de notre côté. Réessayez.",
+    "retry": "Réessayer",
+    "loading": "Chargement…",
+    "readingTime": "{minutes, plural, one {# minute de lecture} other {# minutes de lecture}}",
+    "publishedOn": "Publié le {date}",
+    "status": {
+      "draft": "Brouillon",
+      "published": "Publié",
+      "archived": "Archivé"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Connexion",
+      "subtitle": "Un starter Ionic React et Capacitor pensé pour la production, avec architecture stricte, composants accessibles, routes multilingues et contrôles de livraison déjà configurés.",
+      "emailLabel": "E-mail",
+      "passwordLabel": "Mot de passe",
+      "submit": "Se connecter",
+      "submitting": "Connexion…",
+      "success": "Se connecter",
+      "genericError": "L’adresse e-mail ou le mot de passe est incorrect.",
+      "validation": {
+        "emailRequired": "L’e-mail est obligatoire.",
+        "emailInvalid": "Saisissez une adresse e-mail valide.",
+        "passwordRequired": "Le mot de passe est obligatoire.",
+        "passwordTooShort": "Le mot de passe doit comporter au moins 8 caractères."
+      }
+    }
+  },
+  "settings": {
+    "title": "Paramètres",
+    "subtitle": "Préférences d’apparence et d’interface.",
+    "theme": {
+      "label": "Thème",
+      "light": "Clair",
+      "dark": "Sombre",
+      "system": "Système"
+    },
+    "direction": {
+      "label": "Sens du texte",
+      "ltr": "De gauche à droite",
+      "rtl": "De droite à gauche"
+    },
+    "sidebar": {
+      "label": "Barre latérale",
+      "expanded": "Déployée",
+      "collapsed": "Réduite"
+    }
+  },
+  "errors": {
+    "generic": "Un événement inattendu s’est produit. Réessayez.",
+    "network": "Vous semblez hors ligne. Vérifiez votre connexion et réessayez.",
+    "timeout": "La requête a pris trop de temps. Réessayez.",
+    "notFound": "Nous n’avons pas trouvé ce que vous cherchez.",
+    "unauthorized": "Connectez-vous pour continuer.",
+    "forbidden": "Vous n’avez pas l’autorisation d’effectuer cette action.",
+    "server": "Un problème est survenu de notre côté. Réessayez.",
+    "validation": "Certains champs nécessitent votre attention."
+  },
+  "notFound": {
+    "title": "Page introuvable",
+    "description": "La page demandée n’existe pas.",
+    "backHome": "Retour à l’accueil"
+  },
+  "errorPage": {
+    "title": "Un problème est survenu",
+    "description": "Un événement inattendu s’est produit. Réessayez.",
+    "retry": "Réessayer"
+  },
+  "workbench": {
+    "title": "Atelier UI",
+    "subtitle": "Navigation, fil d’Ariane, cartes, formulaires, états, thèmes, langues et mises en page adaptatives sont des primitives partagées, pas des copies locales.",
+    "buttonsSection": "Boutons",
+    "feedbackSection": "États",
+    "iconsSection": "Icônes",
+    "formsSection": "Formulaire",
+    "sampleLabel": "E-mail",
+    "samplePlaceholder": "you@example.com",
+    "sampleAlert": "Aucun contenu à afficher actuellement.",
+    "sampleButton": "Action principale",
+    "sampleSecondaryButton": "Action secondaire",
+    "sampleDangerButton": "Action destructive"
+  },
+  "marketing": {
+    "home": {
+      "eyebrow": "Construisez sereinement",
+      "title": "La base stricte que mérite votre prochain produit",
+      "description": "Un socle Next.js soigné, avec frontières claires, interface réutilisable, qualité mesurable et repères adaptés à l’IA."
+    },
+    "about": {
+      "eyebrow": "Notre raison d’être",
+      "title": "Conçu pour les équipes qui privilégient la clarté",
+      "description": "Next Ranger transforme les choix d’architecture en conventions vérifiables pour contribuer sûrement dès le premier jour."
+    },
+    "features": {
+      "eyebrow": "Tout est inclus",
+      "title": "La rigueur de production sans lourdeur",
+      "description": "Réutilisez modules, composants, contrôles qualité, localisation et sécurité au lieu de reconstruire les fondations."
+    },
+    "faq": {
+      "eyebrow": "Réponses franches",
+      "title": "Vos questions avant de commencer",
+      "description": "Comprenez les compromis, le flux de travail et l’usage prévu de ce socle volontairement structuré."
+    },
+    "contact": {
+      "eyebrow": "Échangeons",
+      "title": "Parlez-nous de votre produit",
+      "description": "Partagez objectifs et contraintes. Le modèle prépare un brouillon local sans prétendre l’envoyer à un serveur."
+    },
+    "primaryAction": "Découvrir les fonctions",
+    "secondaryAction": "Ouvrir l’atelier",
+    "trustLabel": "Pensé pour les équipes produit, ingénierie et plateforme",
+    "highlights": {
+      "one": {
+        "title": "Strict par défaut",
+        "description": "TypeScript et ESLint transforment les accords d’architecture en erreurs, jamais en avertissements."
+      },
+      "two": {
+        "title": "Réutilisable par conception",
+        "description": "Des composants accessibles et des frontières nettes évitent répétitions et dépendances confuses."
+      },
+      "three": {
+        "title": "Prêt pour l’IA",
+        "description": "Règles canoniques et fiches de tâches offrent aux agents un contexte précis et compact."
+      }
+    },
+    "questions": {
+      "one": {
+        "question": "Convient-il à un produit existant ?",
+        "answer": "Oui. Adoptez les contrats progressivement, en commençant par les frontières, les contrôles et les composants partagés."
+      },
+      "two": {
+        "question": "La rigueur ralentit-elle ?",
+        "answer": "Elle explicite les premiers choix puis accélère la suite en réduisant les ambiguïtés."
+      },
+      "three": {
+        "question": "Un serveur est-il inclus ?",
+        "answer": "Aucun service fictif. Les contrats de passerelle préparent l’intégration de votre véritable backend."
+      }
+    },
+    "contactAction": "Créer un brouillon",
+    "contactNote": "Votre messagerie ouvre un brouillon local ; aucun message n’est envoyé automatiquement.",
+    "contactForm": {
+      "nameLabel": "Nom",
+      "emailLabel": "Adresse e-mail",
+      "messageLabel": "Message",
+      "submit": "Preparer le brouillon",
+      "notConfigured": "Message valide. Configurez NEXT_PUBLIC_CONTACT_EMAIL pour definir le destinataire.",
+      "ready": "Votre messagerie a ouvert un brouillon local; rien a ete envoye.",
+      "subject": "Demande de projet Next Ranger",
+      "validation": {
+        "nameRequired": "Saisissez votre nom.",
+        "emailRequired": "Saisissez votre e-mail.",
+        "emailInvalid": "Saisissez une adresse valide.",
+        "messageRequired": "Saisissez un message.",
+        "messageShort": "Ecrivez au moins 20 caracteres."
+      }
+    }
+  },
+  "pwa": {
+    "offlineTitle": "Vous êtes hors ligne",
+    "offlineDescription": "Reconnectez-vous pour charger les dernières données."
+  }
+}
