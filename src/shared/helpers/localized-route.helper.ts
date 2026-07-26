@@ -19,8 +19,7 @@ export function getPathLocale(pathname: string): AppLocale | null {
 export function replacePathLocale(pathname: string, nextLocale: AppLocale): Route {
   const segments = pathname.split('/');
   if (isSupportedLocale(segments[1])) {
-    segments[1] = nextLocale;
-    return (segments.join('/') || `/${nextLocale}`) as Route;
+    return buildLocalizedPath(nextLocale, segments.slice(2).join('/'));
   }
   return buildLocalizedPath(nextLocale, pathname);
 }
