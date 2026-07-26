@@ -180,14 +180,14 @@
       }
     },
     "contactAction": "Criar rascunho de e-mail",
-    "contactNote": "Seu aplicativo de e-mail abre um rascunho local; nada é enviado automaticamente.",
+    "contactNote": "Após a validação, decide se abre o correio. Nada é carregado ou enviado silenciosamente.",
     "contactForm": {
       "nameLabel": "Nome",
       "emailLabel": "E-mail",
       "messageLabel": "Mensagem",
       "submit": "Preparar rascunho",
       "notConfigured": "A mensagem e valida. Configure NEXT_PUBLIC_CONTACT_EMAIL para definir o destinatario.",
-      "ready": "Seu aplicativo abriu um rascunho local; nada foi enviado.",
+      "ready": "A mensagem está pronta. Reveja-a no correio antes de enviar.",
       "subject": "Consulta de projeto Next Ranger",
       "validation": {
         "nameRequired": "Informe seu nome.",

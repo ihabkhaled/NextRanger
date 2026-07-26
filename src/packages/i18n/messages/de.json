@@ -180,14 +180,14 @@
       }
     },
     "contactAction": "E-Mail-Entwurf erstellen",
-    "contactNote": "Ihre E-Mail-App öffnet einen lokalen Entwurf; nichts wird automatisch gesendet.",
+    "contactNote": "Nach der Validierung entscheiden Sie, ob die Mail-App geöffnet wird. Nichts wird hochgeladen oder still versendet.",
     "contactForm": {
       "nameLabel": "Name",
       "emailLabel": "E-Mail-Adresse",
       "messageLabel": "Nachricht",
       "submit": "E-Mail-Entwurf vorbereiten",
       "notConfigured": "Die Nachricht ist gultig. Legen Sie mit NEXT_PUBLIC_CONTACT_EMAIL den Empfanger fest.",
-      "ready": "Ihre E-Mail-App hat einen lokalen Entwurf geoffnet; nichts wurde gesendet.",
+      "ready": "Ihre Nachricht ist bereit. Prüfen Sie sie vor dem Senden in Ihrer Mail-App.",
       "subject": "Next Ranger Projektanfrage",
       "validation": {
         "nameRequired": "Geben Sie Ihren Namen ein.",

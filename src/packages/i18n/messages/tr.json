@@ -180,14 +180,14 @@
       }
     },
     "contactAction": "E-posta taslağı oluştur",
-    "contactNote": "E-posta uygulamanız yerel taslağı açar; hiçbir ileti otomatik gönderilmez.",
+    "contactNote": "Doğrulamadan sonra posta uygulamasını açmayı siz seçersiniz. Hiçbir şey yüklenmez veya sessizce gönderilmez.",
     "contactForm": {
       "nameLabel": "Ad",
       "emailLabel": "E-posta adresi",
       "messageLabel": "Mesaj",
       "submit": "E-posta taslagi hazirla",
       "notConfigured": "Mesaj gecerli. Aliciyi belirlemek icin NEXT_PUBLIC_CONTACT_EMAIL degerini ayarlayin.",
-      "ready": "E-posta uygulamaniz yerel taslagi acti; hicbir sey gonderilmedi.",
+      "ready": "Mesajınız hazır. Göndermeden önce posta uygulamanızda inceleyin.",
       "subject": "Next Ranger proje talebi",
       "validation": {
         "nameRequired": "Adinizi girin.",

@@ -180,14 +180,14 @@
       }
     },
     "contactAction": "创建邮件草稿",
-    "contactNote": "邮件应用会打开本地草稿，不会自动发送任何内容。",
+    "contactNote": "验证后由你决定是否打开邮件应用，不会上传或静默发送任何内容。",
     "contactForm": {
       "nameLabel": "姓名",
       "emailLabel": "电子邮箱",
       "messageLabel": "留言",
       "submit": "准备邮件草稿",
       "notConfigured": "内容验证通过。请配置 NEXT_PUBLIC_CONTACT_EMAIL 以指定收件人。",
-      "ready": "邮件应用已打开本地草稿，未自动发送。",
+      "ready": "消息已准备好，请在发送前于邮件应用中检查。",
       "subject": "Next Ranger 项目咨询",
       "validation": {
         "nameRequired": "请输入姓名。",

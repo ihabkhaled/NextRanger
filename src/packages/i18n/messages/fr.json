@@ -180,14 +180,14 @@
       }
     },
     "contactAction": "Créer un brouillon",
-    "contactNote": "Votre messagerie ouvre un brouillon local ; aucun message n’est envoyé automatiquement.",
+    "contactNote": "Après validation, vous choisissez d’ouvrir votre messagerie. Rien n’est téléversé ni envoyé silencieusement.",
     "contactForm": {
       "nameLabel": "Nom",
       "emailLabel": "Adresse e-mail",
       "messageLabel": "Message",
       "submit": "Preparer le brouillon",
       "notConfigured": "Message valide. Configurez NEXT_PUBLIC_CONTACT_EMAIL pour definir le destinataire.",
-      "ready": "Votre messagerie a ouvert un brouillon local; rien a ete envoye.",
+      "ready": "Votre message est prêt. Relisez-le dans votre messagerie avant l’envoi.",
       "subject": "Demande de projet Next Ranger",
       "validation": {
         "nameRequired": "Saisissez votre nom.",

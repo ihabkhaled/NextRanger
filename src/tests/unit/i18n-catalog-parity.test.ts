@@ -104,4 +104,8 @@ describe('localized message catalogs', () => {
       expect(corruptedCopy).toEqual([]);
     },
   );
+
+  it('describes the local mail handoff without claiming an app opened or a message sent', () => {
+    expect(enMessages.marketing.contactForm.ready).not.toMatch(/\b(opened|sent automatically)\b/iu);
+  });
 });

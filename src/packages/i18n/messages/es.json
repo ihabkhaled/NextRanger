@@ -180,14 +180,14 @@
       }
     },
     "contactAction": "Crear borrador de correo",
-    "contactNote": "Tu aplicación de correo abre un borrador local; no se envía nada automáticamente.",
+    "contactNote": "Tras validar, tú eliges abrir el correo. Nada se sube ni se envía en silencio.",
     "contactForm": {
       "nameLabel": "Nombre",
       "emailLabel": "Correo electronico",
       "messageLabel": "Mensaje",
       "submit": "Preparar borrador",
       "notConfigured": "El mensaje es valido. Configura NEXT_PUBLIC_CONTACT_EMAIL para indicar el destinatario.",
-      "ready": "Tu aplicacion abrio un borrador local; no se envio nada.",
+      "ready": "Tu mensaje está listo. Revísalo en tu aplicación de correo antes de enviarlo.",
       "subject": "Consulta de proyecto Next Ranger",
       "validation": {
         "nameRequired": "Escribe tu nombre.",

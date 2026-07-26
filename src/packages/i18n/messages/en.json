@@ -180,14 +180,14 @@
       }
     },
     "contactAction": "Create email draft",
-    "contactNote": "Your email application opens with a local draft; no message is sent automatically.",
+    "contactNote": "After validation, you choose whether to open your mail application. Nothing is uploaded or silently submitted by this demo.",
     "contactForm": {
       "nameLabel": "Name",
       "emailLabel": "Email address",
       "messageLabel": "Message",
       "submit": "Prepare email draft",
       "notConfigured": "Your message is valid. Configure NEXT_PUBLIC_CONTACT_EMAIL to address the draft.",
-      "ready": "Your email application opened a local draft; nothing was sent automatically.",
+      "ready": "Your message is ready. Review it in your mail application before sending.",
       "subject": "Next Ranger project enquiry",
       "validation": {
         "nameRequired": "Enter your name.",

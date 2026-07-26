@@ -180,14 +180,14 @@
       }
     },
     "contactAction": "Crea bozza email",
-    "contactNote": "Si apre una bozza locale nella tua app email; nulla viene inviato automaticamente.",
+    "contactNote": "Dopo la validazione scegli tu se aprire l’app di posta. Nulla viene caricato o inviato in silenzio.",
     "contactForm": {
       "nameLabel": "Nome",
       "emailLabel": "Indirizzo email",
       "messageLabel": "Messaggio",
       "submit": "Prepara bozza email",
       "notConfigured": "Il messaggio è valido. Configura NEXT_PUBLIC_CONTACT_EMAIL per indicare il destinatario.",
-      "ready": "La app email ha aperto una bozza locale; nulla e stato inviato.",
+      "ready": "Il messaggio è pronto. Controllalo nell’app di posta prima dell’invio.",
       "subject": "Richiesta progetto Next Ranger",
       "validation": {
         "nameRequired": "Inserisci il nome.",

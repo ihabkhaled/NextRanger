@@ -180,14 +180,14 @@
       }
     },
     "contactAction": "メール下書きを作成",
-    "contactNote": "メールアプリでローカル下書きを開きます。自動送信はされません。",
+    "contactNote": "検証後、メールアプリを開くか自分で選びます。何もアップロードや自動送信されません。",
     "contactForm": {
       "nameLabel": "お名前",
       "emailLabel": "メールアドレス",
       "messageLabel": "メッセージ",
       "submit": "メール下書きを準備",
       "notConfigured": "入力は有効です。NEXT_PUBLIC_CONTACT_EMAILで宛先を設定してください。",
-      "ready": "メールアプリで下書きを開きました。自動送信はしていません。",
+      "ready": "メッセージを準備しました。送信前にメールアプリで確認してください。",
       "subject": "Next Rangerプロジェクトの相談",
       "validation": {
         "nameRequired": "お名前を入力してください。",
