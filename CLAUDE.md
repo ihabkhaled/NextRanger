@@ -9,7 +9,7 @@ Compact entrypoint for Claude Code. Canonical sources — read before non-trivia
 
 ## Stack
 
-Next.js 16 App Router (Turbopack, typedRoutes) · React 19 · TypeScript 5.9 strict (tsgo) ·
+Next.js 16 App Router (Turbopack, typedRoutes) · React 19 · TypeScript 7 strict ·
 Tailwind v4 (CSS-first tokens) · TanStack Query v5 · Zustand v5 · Zod v4 · next-intl (en/ar, RTL) ·
 Vitest 4 + RTL · Playwright · MSW v2 · npm · Node >= 22.
 
@@ -17,7 +17,7 @@ Vitest 4 + RTL · Playwright · MSW v2 · npm · Node >= 22.
 
 - `npm run dev` / `build` / `start`
 - `npm run lint` (`--max-warnings=0`) · `npm run lint:fix` · `npm run format`
-- `npm run typecheck` (tsgo) · `npm run typecheck:tsc` (fallback)
+- `npm run typecheck` (TypeScript 7) · `npm run typecheck:compat` (TypeScript 6 tooling API)
 - `npm run test` / `test:watch` / `test:coverage`
 - `npm run test:e2e` / `test:a11y` / `test:visual`
 - `npm run test:e2e:install` (one-time Playwright Chromium download)

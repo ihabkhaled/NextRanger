@@ -14,13 +14,15 @@ Cursor agents get a distilled copy in [.cursor/rules/50-pitfalls.mdc](../.cursor
   publish ESLint-10-compatible releases. Do not let `npm run deps:upgrade` cross this major
   without re-verifying `npm run lint` on the full tree.
 
-### TypeScript 6 breaks madge and typescript-eslint peer ranges
+### TypeScript 7 does not provide the programmatic API used by ESLint tooling
 
-- **Symptom:** TypeScript 6 falls outside the peer ranges of `madge` (circular-dependency gate)
-  and `typescript-eslint`, breaking `npm run quality:circular` and lint.
-- **Fix:** stay on the 5.9 line (`typescript: ^5.9.3`). Day-to-day typechecking runs through tsgo
-  (`@typescript/native-preview`, `npm run typecheck`); `npm run typecheck:tsc` is the fallback and
-  both must stay green.
+- **Symptom:** replacing the root `typescript` package with TypeScript 7 breaks packages that
+  import the JavaScript compiler API, even though the TypeScript 7 CLI compiles the app.
+- **Fix:** keep the two explicit aliases. `@typescript/native` resolves to stable TypeScript 7 and
+  owns `npm run typecheck`; `typescript` resolves to `@typescript/typescript6` for ESLint/tooling
+  and owns `npm run typecheck:compat`. `npm run compiler:versions` proves both binaries.
+- **Related:** dependency-cruiser replaced madge because madge's TypeScript peer range cannot
+  support this split cleanly. Do not reintroduce madge.
 
 ### npm `overrides` must mirror the direct devDependency exactly
 

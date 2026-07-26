@@ -8,6 +8,7 @@
 import accessibilityConfig from './eslint/accessibility.config.mjs';
 import architectureConfig from './eslint/architecture.config.mjs';
 import baseConfig from './eslint/base.config.mjs';
+import { enforceErrorSeverity } from './eslint/error-severity.config.mjs';
 import ignoresConfig from './eslint/ignores.config.mjs';
 import importsConfig from './eslint/imports.config.mjs';
 import nextConfig from './eslint/next.config.mjs';
@@ -25,7 +26,7 @@ import testConfig from './eslint/test.config.mjs';
 import typescriptConfig from './eslint/typescript.config.mjs';
 import unicornConfig from './eslint/unicorn.config.mjs';
 
-export default [
+const composedConfig = [
   ...ignoresConfig,
   ...baseConfig,
   ...typescriptConfig,
@@ -46,3 +47,5 @@ export default [
   ...storybookConfig,
   ...prettierConfig,
 ];
+
+export default enforceErrorSeverity(composedConfig);

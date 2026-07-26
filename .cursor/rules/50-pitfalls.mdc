@@ -9,9 +9,9 @@ alwaysApply: false
 Full log with context: `memory/known-pitfalls.md`. When something feels broken, check here
 before changing configuration — most "bugs" below are the guardrails working.
 
-- **tsgo quirks**: `npm run typecheck` uses tsgo (@typescript/native-preview). If it
-  reports something implausible, cross-check with `npm run typecheck:tsc` before changing
-  code; the tsc fallback is authoritative.
+- **Two compiler roles**: `npm run typecheck` uses stable TypeScript 7 for app/test/node builds.
+  `npm run typecheck:compat` uses the TypeScript 6 API package required by ESLint and tooling.
+  Keep the aliases and both gates; do not replace one compiler with the other.
 - **`server-only` build error in a client file**: you imported `@/packages/env/server`
   (or something that does) under a `'use client'` boundary. Use `publicEnv` from
   `@/packages/env`, or move the read to a server component / route handler.

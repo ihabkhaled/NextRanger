@@ -18,7 +18,7 @@ Start with [00-non-negotiable-rules.md](00-non-negotiable-rules.md); everything 
 | [07-types-enums-constants.md](07-types-enums-constants.md)               | `as const` enums, types-only files, the shared constants catalogs.                                 |
 | [08-utils-helpers-mappers.md](08-utils-helpers-mappers.md)               | Utils vs helpers vs mappers vs schemas, and their 100% coverage bar.                               |
 | [09-library-wrapping.md](09-library-wrapping.md)                         | One owning wrapper per vendor package under `src/packages/`.                                       |
-| [10-eslint-typescript.md](10-eslint-typescript.md)                       | Flat-config layout, the 13 custom architecture rules, strict TypeScript, tsgo.                     |
+| [10-eslint-typescript.md](10-eslint-typescript.md)                       | Flat-config layout, 14 custom architecture rules, strict TypeScript 7, zero warning severity.      |
 | [11-security.md](11-security.md)                                         | CSP nonces, static headers, error sanitization, dependency scanning policy.                        |
 | [12-performance.md](12-performance.md)                                   | Rendering discipline, memo boundaries, virtualization, bundle hygiene.                             |
 | [13-accessibility.md](13-accessibility.md)                               | Landmarks, keyboard support, axe-clean requirement, `LANDMARK_IDS`.                                |

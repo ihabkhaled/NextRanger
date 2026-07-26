@@ -9,9 +9,10 @@ rule blocks you, the code is in the wrong layer — move it, do not disable the 
 ## Read first, in this order
 
 1. [context/architecture-map.md](context/architecture-map.md) — where everything lives.
-2. [rules/00-non-negotiable-rules.md](rules/00-non-negotiable-rules.md) — the law.
-3. The rule + skill matching your task (routing table below).
-4. [memory/known-pitfalls.md](memory/known-pitfalls.md) — mistakes already made once.
+2. [context/ai-task-card.md](context/ai-task-card.md) — the low-token task router.
+3. [rules/00-non-negotiable-rules.md](rules/00-non-negotiable-rules.md) — the law.
+4. The rule + skill matching your task (routing table below).
+5. [memory/known-pitfalls.md](memory/known-pitfalls.md) — mistakes already made once.
 
 ## Non-negotiables digest
 
@@ -62,6 +63,7 @@ rule blocks you, the code is in the wrong layer — move it, do not disable the 
 | Refactor a feature        | [skills/refactor-feature.md](skills/refactor-feature.md)                                                                                      | [rules/20](rules/20-review-checklist.md)             |
 | Lint / typecheck failures | [skills/fix-eslint-typecheck.md](skills/fix-eslint-typecheck.md)                                                                              | [rules/10](rules/10-eslint-typescript.md)            |
 | Pre-merge validation      | [skills/final-validation.md](skills/final-validation.md)                                                                                      | [rules/19](rules/19-release-gates.md)                |
+| Toolchain upgrade         | [skills/upgrade-toolchain.md](skills/upgrade-toolchain.md)                                                                                    | [rules/10](rules/10-eslint-typescript.md)            |
 
 Full index: [skills/README.md](skills/README.md). Reviewer personas: [agents/README.md](agents/README.md).
 
@@ -71,7 +73,8 @@ Run before declaring any task done:
 
 ```bash
 npm run lint        # ESLint 9 flat config, --max-warnings=0
-npm run typecheck   # tsgo over tsconfig.app/test/node (fallback: npm run typecheck:tsc)
+npm run typecheck   # stable TypeScript 7 over app/test/node; prints compiler versions
+npm run typecheck:compat # TypeScript 6 API compatibility check for ESLint/tooling
 npm run test        # Vitest (npm run test:coverage for the coverage gate)
 npm run build       # next build --turbopack
 ```

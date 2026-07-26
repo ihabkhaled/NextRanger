@@ -14,16 +14,21 @@ import {
 } from '@/packages/icons';
 import {
   Alert,
+  Badge,
   Button,
   Card,
   CardContent,
+  CardHeader,
   CardTitle,
+  Divider,
   Input,
   Label,
   PageContainer,
+  Select,
   Skeleton,
   Spinner,
   Stack,
+  Textarea,
 } from '@/packages/ui-primitives';
 import { PageHeader } from '@/shared/components/data-display/page-header.component';
 import { buildPageTitle } from '@/shared/helpers/page-title.helper';
@@ -47,57 +52,80 @@ export default async function WorkbenchPage(): Promise<ReactElement> {
   return (
     <PageContainer>
       <PageHeader title={t('title')} subtitle={t('subtitle')} />
-      <Card>
-        <CardTitle>{t('buttonsSection')}</CardTitle>
-        <CardContent>
-          <Stack direction="row" gap="sm" wrap="wrap">
-            <Button>{t('sampleButton')}</Button>
-            <Button variant="secondary">{t('sampleSecondaryButton')}</Button>
-            <Button variant="danger">{t('sampleDangerButton')}</Button>
-            <Button variant="ghost">{t('sampleSecondaryButton')}</Button>
-            <Button disabled>{t('sampleButton')}</Button>
-          </Stack>
-        </CardContent>
-      </Card>
-      <Card>
-        <CardTitle>{t('feedbackSection')}</CardTitle>
-        <CardContent>
-          <Stack gap="sm">
-            <Alert tone="info">{t('sampleAlert')}</Alert>
-            <Alert tone="success">{t('sampleAlert')}</Alert>
-            <Alert tone="warning">{t('sampleAlert')}</Alert>
-            <Alert tone="danger">{t('sampleAlert')}</Alert>
-            <Stack direction="row" gap="md" align="center">
-              <Spinner label={t('sampleAlert')} />
-              <Skeleton className={workbenchClasses.skeletonSample} />
+      <div className={workbenchClasses.sectionGrid}>
+        <Card className={workbenchClasses.card}>
+          <CardHeader>
+            <Badge tone="brand">{t('sampleButton')}</Badge>
+            <CardTitle>{t('buttonsSection')}</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Stack direction="row" gap="sm" wrap="wrap">
+              <Button>{t('sampleButton')}</Button>
+              <Button variant="secondary">{t('sampleSecondaryButton')}</Button>
+              <Button variant="soft">{t('sampleSecondaryButton')}</Button>
+              <Button variant="danger">{t('sampleDangerButton')}</Button>
+              <Button variant="ghost">{t('sampleSecondaryButton')}</Button>
+              <Button disabled>{t('sampleButton')}</Button>
             </Stack>
-          </Stack>
-        </CardContent>
-      </Card>
-      <Card>
-        <CardTitle>{t('iconsSection')}</CardTitle>
-        <CardContent>
-          <Stack direction="row" gap="md" align="center" wrap="wrap">
-            <NewspaperIcon aria-hidden="true" />
-            <SettingsIcon aria-hidden="true" />
-            <GlobeIcon aria-hidden="true" />
-            <SunIcon aria-hidden="true" />
-            <MoonIcon aria-hidden="true" />
-            <CheckIcon aria-hidden="true" />
-            <AlertIcon aria-hidden="true" />
-            <ArrowRightIcon aria-hidden="true" />
-          </Stack>
-        </CardContent>
-      </Card>
-      <Card>
-        <CardTitle>{t('formsSection')}</CardTitle>
-        <CardContent>
-          <Stack gap="xs">
-            <Label htmlFor="workbench-sample-input">{t('sampleLabel')}</Label>
-            <Input id="workbench-sample-input" placeholder={t('samplePlaceholder')} />
-          </Stack>
-        </CardContent>
-      </Card>
+          </CardContent>
+        </Card>
+        <Card className={workbenchClasses.card}>
+          <CardHeader>
+            <Badge tone="success">{t('feedbackSection')}</Badge>
+            <CardTitle>{t('feedbackSection')}</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Stack gap="sm">
+              <Alert tone="info">{t('sampleAlert')}</Alert>
+              <Alert tone="success">{t('sampleAlert')}</Alert>
+              <Alert tone="warning">{t('sampleAlert')}</Alert>
+              <Alert tone="danger">{t('sampleAlert')}</Alert>
+              <Stack direction="row" gap="md" align="center">
+                <Spinner label={t('sampleAlert')} />
+                <Skeleton className={workbenchClasses.skeletonSample} />
+              </Stack>
+            </Stack>
+          </CardContent>
+        </Card>
+        <Card className={workbenchClasses.card}>
+          <CardHeader>
+            <Badge>{t('iconsSection')}</Badge>
+            <CardTitle>{t('iconsSection')}</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className={workbenchClasses.iconGrid}>
+              <NewspaperIcon aria-hidden="true" />
+              <SettingsIcon aria-hidden="true" />
+              <GlobeIcon aria-hidden="true" />
+              <SunIcon aria-hidden="true" />
+              <MoonIcon aria-hidden="true" />
+              <CheckIcon aria-hidden="true" />
+              <AlertIcon aria-hidden="true" />
+              <ArrowRightIcon aria-hidden="true" />
+            </div>
+          </CardContent>
+        </Card>
+        <Card className={workbenchClasses.card}>
+          <CardHeader>
+            <Badge tone="warning">{t('formsSection')}</Badge>
+            <CardTitle>{t('formsSection')}</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Stack gap="sm">
+              <Label htmlFor="workbench-sample-input">{t('sampleLabel')}</Label>
+              <Input id="workbench-sample-input" placeholder={t('samplePlaceholder')} />
+              <Divider />
+              <Label htmlFor="workbench-sample-select">{t('buttonsSection')}</Label>
+              <Select id="workbench-sample-select" defaultValue="primary">
+                <option value="primary">{t('sampleButton')}</option>
+                <option value="secondary">{t('sampleSecondaryButton')}</option>
+              </Select>
+              <Label htmlFor="workbench-sample-textarea">{t('feedbackSection')}</Label>
+              <Textarea id="workbench-sample-textarea" placeholder={t('sampleAlert')} />
+            </Stack>
+          </CardContent>
+        </Card>
+      </div>
     </PageContainer>
   );
 }

@@ -1,6 +1,7 @@
 # Skill: Fix ESLint and Typecheck Failures
 
-Lint runs with `--max-warnings=0` and typecheck runs `tsgo` over three tsconfig projects, so
+Lint runs with `--max-warnings=0` plus an error-severity verifier, and stable TypeScript 7 checks
+three tsconfig projects, so
 "mostly green" does not exist. The prime directive: **fix violations by moving code to the layer
 the rule points at — never by disabling the rule.** An `eslint-disable` without a documented
 exception in `docs/exceptions/` is itself a lint failure.
@@ -37,8 +38,8 @@ exception in `docs/exceptions/` is itself a lint failure.
 1. Run `npm run typecheck`. It checks `tsconfig.app.json`, `tsconfig.test.json`, and
    `tsconfig.node.json` in sequence — note **which project** failed; that tells you whether the
    error is app code, test code, or tooling config.
-2. If a tsgo (`@typescript/native-preview`) message looks wrong or truncated, cross-check with
-   the stock compiler: `npm run typecheck:tsc`. Same error in both means the code is wrong.
+2. If a TypeScript 7 diagnostic looks implausible, run `npm run typecheck:compat`. This uses the
+   TypeScript 6 API package required by ESLint. Investigate any difference; never swap the aliases.
 3. Fix causes, not symptoms: no `any`, no `as` casts to silence a mismatch, no `!` assertions.
    Typical real fixes: narrow with `isDefined` (`src/shared/utils/`), exhaust unions with
    `assertNever`, parse unknown data with `parseSchema`/`safeParseSchema` from

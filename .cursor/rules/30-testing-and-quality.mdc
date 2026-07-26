@@ -40,7 +40,7 @@ npm run test:e2e        # Playwright e2e
 npm run test:a11y       # Playwright + axe accessibility suite
 npm run test:visual     # Playwright visual regression
 npm run quality         # lint + typecheck + coverage + build
-npm run validate        # quality + e2e + security scans + knip + madge
+npm run validate        # quality + e2e + security scans + knip + dependency-cruiser
 ```
 
 Pre-push (`.husky/pre-push`) runs typecheck + test — never push red, never skip hooks.

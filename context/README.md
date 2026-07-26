@@ -14,12 +14,14 @@ document disagree, the rule wins and the context document has a bug.
 | [codebase-navigation.md](./codebase-navigation.md) | Task-to-location lookup ("where do I put X"), file-suffix naming conventions, and the TypeScript path alias map.                                                                             |
 | [package-boundaries.md](./package-boundaries.md)   | The vendor → owner wrapper → exports table mirroring [eslint/package-boundaries.config.mjs](../eslint/package-boundaries.config.mjs), plus the procedure for adding a new vendor.            |
 | [reference-patterns.md](./reference-patterns.md)   | Canonical code excerpts quoted from the real modules: component/container split, query-key builder, gateway→mapper→service chain, store, form, toast, error mapping.                         |
+| [ai-task-card.md](./ai-task-card.md)               | One-page task routing, minimum context, and exact gate selection for low-token agent work.                                                                                                   |
+| [design-system-map.md](./design-system-map.md)     | Reusable UI primitives, layout ownership, and rules that prevent component duplication.                                                                                                      |
 | [glossary.md](./glossary.md)                       | Definitions of repo-specific terms: module, layer, owner wrapper, view model, wire type, BFF gateway, gate, exception, and more.                                                             |
 
 ## How to use this folder
 
-1. New to the repo? Read [architecture-map.md](./architecture-map.md) first, then
-   [codebase-navigation.md](./codebase-navigation.md).
+1. New to the repo? Read [architecture-map.md](./architecture-map.md), then use
+   [ai-task-card.md](./ai-task-card.md) to load only the context required by the task.
 2. About to import a third-party package? Check [package-boundaries.md](./package-boundaries.md)
    before writing the import.
 3. About to write a new file? Copy the closest excerpt in

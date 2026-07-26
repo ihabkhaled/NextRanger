@@ -63,11 +63,12 @@ Full chain: [rules/18-error-handling.md](../rules/18-error-handling.md).
 
 ## Dependency and scan policy: zero unhandled findings
 
-- `npm run security:audit` (`npm audit --audit-level=low`) and `npm run security:scan` (Trivy over
-  vuln + secret + misconfig, all severities, `--exit-code 1`) MUST pass with zero unhandled
-  findings. They run in `.github/workflows/security.yml`.
+- `npm run security:audit` (`npm audit --omit=dev --audit-level=low`) owns the deployable runtime
+  graph. `npm run security:scan` owns runtime and development dependencies through Trivy's lockfile
+  scan (`--include-dev-deps`) plus secret/misconfiguration scanning. Both use every severity and
+  MUST pass with zero unhandled findings. They run in `.github/workflows/security.yml`.
 - Transitive vulnerabilities are fixed with an `overrides` entry in [package.json](../package.json)
-  — the current `postcss` override is the reference example. Suppressing a finding instead of
+  — the current scoped overrides are reference examples. Suppressing a finding instead of
   fixing it requires an exception per [docs/exceptions/exception-template.md](../docs/exceptions/exception-template.md).
 
 Decisions log: [memory/security-decisions.md](../memory/security-decisions.md).

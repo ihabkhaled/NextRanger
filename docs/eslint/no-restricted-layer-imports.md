@@ -33,7 +33,7 @@ Exemptions built into the rule: type-only imports (`import type { … }`) and te
 
 Without a machine-checked direction, layers erode one PR at a time: a service imports a hook
 "just once", shared code learns about a feature module, and the dependency graph becomes a
-cycle farm. This rule is what keeps `madge` (`npm run quality:circular`) permanently clean and
+cycle farm. This rule is what keeps dependency-cruiser (`npm run quality:circular`) clean and
 keeps every layer replaceable.
 
 ## Violation

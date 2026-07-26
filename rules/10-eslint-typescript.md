@@ -46,11 +46,18 @@ rule implementations in `eslint/architecture-plugin/rules/` and shared AST/polic
 extend the base rather than fork it. Path aliases (`@/*`, `@modules/*`, `@shared/*`,
 `@packages/*`, `@tests/*`) are the only import roots — no relative walks across top-level areas.
 
-## Typecheck via tsgo
+## Stable TypeScript 7 build compiler
 
-`npm run typecheck` runs **tsgo** (`@typescript/native-preview`) over the app/test/node configs —
-it is dramatically faster than `tsc` and gates `.husky/pre-push`. `npm run typecheck:tsc` is the
-fallback when validating tsgo itself. Both MUST be clean; there is no "warnings allowed" mode.
+`npm run typecheck` invokes the stable TypeScript 7 binary from `@typescript/native` over the
+app/test/node configs and prints both installed compiler versions first. `npm run build` runs the
+TypeScript 7 app check before the supported Next.js/Turbopack production build. Because TypeScript
+7 does not expose the JavaScript API required by ESLint tooling, the root `typescript` alias points
+to `@typescript/typescript6`; `npm run typecheck:compat` checks the same configs with that API.
+Both gates MUST be clean.
+
+`npm run lint:severity` calculates the effective config for representative app, utility, test,
+and tooling files. Any enabled rule configured as `warn` fails; enabled rules are errors or off
+with a documented compatibility/ownership rationale.
 
 ## No-disable policy
 

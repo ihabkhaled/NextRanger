@@ -26,6 +26,7 @@ export default [
       parserOptions: {
         projectService: {
           allowDefaultProject: ['*.ts', '*.mts'],
+          defaultProject: 'tsconfig.eslint.json',
         },
         tsconfigRootDir: path.resolve(import.meta.dirname, '..'),
       },

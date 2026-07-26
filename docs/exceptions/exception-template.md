@@ -11,7 +11,7 @@ Copy this file to `docs/exceptions/exc-<nnnn>-<slug>.md`, fill every field, and 
 
 ## Scope
 
-- **Rule / gate bypassed**: <e.g. `sonarjs/no-hardcoded-passwords`, tsgo strict typecheck via `@ts-expect-error`, `npm run security:audit` finding GHSA-xxxx>
+- **Rule / gate bypassed**: <e.g. `sonarjs/no-hardcoded-passwords`, TypeScript 7 strict typecheck via `@ts-expect-error`, `npm run security:audit` finding GHSA-xxxx>
 - **Exact location(s)**: <file path(s) and, for in-source suppressions, the line-level comment that references this doc>
 - **Blast radius**: <what the gate would normally protect here; who/what is exposed while the exception stands>
 

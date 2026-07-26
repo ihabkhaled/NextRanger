@@ -12,6 +12,7 @@ import {
 import { FormField } from '@/shared/components/forms/form-field.component';
 import { TEST_IDS } from '@/shared/constants/test-ids.constants';
 
+import { loginFormClasses } from '../constants/auth-style.constants';
 import type { LoginFormProps } from '../types/auth.types';
 
 /**
@@ -20,12 +21,17 @@ import type { LoginFormProps } from '../types/auth.types';
  */
 export function LoginForm(props: LoginFormProps): ReactElement {
   return (
-    <Card>
+    <Card className={loginFormClasses.card}>
       <Stack gap="sm">
         <CardTitle>{props.viewModel.title}</CardTitle>
         <CardDescription>{props.viewModel.subtitle}</CardDescription>
       </Stack>
-      <form onSubmit={props.viewModel.onSubmit} noValidate data-testid={TEST_IDS.loginForm}>
+      <form
+        className={loginFormClasses.form}
+        onSubmit={props.viewModel.onSubmit}
+        noValidate
+        data-testid={TEST_IDS.loginForm}
+      >
         <Stack gap="md">
           {props.viewModel.formError ? (
             <Alert tone="danger" data-testid={TEST_IDS.loginError}>

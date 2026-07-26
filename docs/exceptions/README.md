@@ -20,7 +20,7 @@ The suppression site in code MUST reference its exception (a comment naming the 
 | ------------------------------------------------------- | ---------------------------------------------------- |
 | `// eslint-disable-*` in source                         | `npm run lint` with `--max-warnings=0`               |
 | Rule set to `'off'`/downgraded in `eslint/*.config.mjs` | the rule's whole surface                             |
-| `@ts-expect-error` / `as unknown as` bridge             | tsgo strict typecheck                                |
+| `@ts-expect-error` / `as unknown as` bridge             | TypeScript 7 strict typecheck                        |
 | Skipped test / lowered coverage threshold               | `npm run test:coverage` gates in `vitest.config.mts` |
 | Accepted vulnerability / audit filter                   | `npm run security:audit` / `npm run security:scan`   |
 | Raw (untranslated) user-facing copy                     | `no-raw-i18n-text`                                   |
@@ -50,6 +50,12 @@ The suppression site in code MUST reference its exception (a comment naming the 
 - **Where**: `src/packages/forms/use-app-zod-form.hook.ts` — the `as unknown as Resolver<TFieldValues>` bridge around `zodResolver`.
 - **Reason**: `zodResolver` from `@hookform/resolvers` cannot carry an abstract `TFieldValues` through its overloads under `exactOptionalPropertyTypes`; the cast is the single sanctioned bridge between the vendor generics and our generic facade.
 - **Mitigation**: the runtime contract (schema output equals form values) is guaranteed by the wrapper itself; the cast exists in exactly one file, owned by the forms package, and is re-evaluated on every `@hookform/resolvers` upgrade.
+
+### EXC-0005 — brace-expansion installer paths
+
+- **Where**: support/patch-brace-expansion-compat.mjs (security/detect-non-literal-fs-filename is off only for this file).
+- **Reason**: npm can install the patched package at multiple nested paths; literal filenames cannot cover a dependency tree that legitimately changes.
+- **Mitigation**: traversal is confined to process.cwd()/node_modules, the exact package name and version are verified, the source shape is checked before writing, and installation fails closed. See [EXC-0005](./EXC-0005-brace-expansion-installer-paths.md).
 
 ## Lifecycle
 

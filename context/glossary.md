@@ -58,7 +58,7 @@ and exact string values.
 
 **Gate** — An automated pass/fail check a change MUST clear: lint (`--max-warnings=0`), typecheck,
 coverage thresholds, build, e2e/a11y/visual suites, `security:audit`, `security:scan`, knip,
-madge. `npm run validate` runs them all; the policy is
+dependency-cruiser. `npm run validate` runs them all; the policy is
 [rules/19-release-gates.md](../rules/19-release-gates.md).
 
 **Exception** — A documented, reviewed, time-boxed deviation from a rule (e.g. an

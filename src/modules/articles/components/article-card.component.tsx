@@ -11,10 +11,12 @@ import type { ArticleCardProps } from '../types/article.types';
  */
 export function ArticleCard(props: ArticleCardProps): ReactElement {
   return (
-    <Card data-testid={props.viewModel.testId}>
+    <Card className={articleCardClasses.card} data-testid={props.viewModel.testId}>
       <span className={props.viewModel.statusBadgeClassName}>{props.viewModel.statusLabel}</span>
       <CardTitle>{props.viewModel.title}</CardTitle>
-      <CardDescription>{props.viewModel.summary}</CardDescription>
+      <CardDescription className={articleCardClasses.summary}>
+        {props.viewModel.summary}
+      </CardDescription>
       <p className={articleCardClasses.meta}>
         {props.viewModel.publishedLabel ? <span>{props.viewModel.publishedLabel}</span> : null}
         <span>{props.viewModel.readingTimeLabel}</span>
