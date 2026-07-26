@@ -4,9 +4,11 @@ import type { ReactElement } from 'react';
 import { getServerTranslations } from '@/packages/i18n';
 import { AppLink } from '@/packages/link';
 import {
+  Badge,
   buttonVariants,
   Card,
   CardContent,
+  CardHeader,
   CardTitle,
   PageContainer,
   Stack,
@@ -29,18 +31,26 @@ export default async function HomePage(): Promise<ReactElement> {
 
   return (
     <PageContainer>
-      <PageHeader title={t('title')} subtitle={t('subtitle')} />
-      <Stack direction="row" gap="sm">
-        <AppLink href={ROUTE_PATHS.articles} className={buttonVariants({ variant: 'primary' })}>
-          {t('ctaArticles')}
-        </AppLink>
-        <AppLink href={ROUTE_PATHS.login} className={buttonVariants({ variant: 'secondary' })}>
-          {t('ctaLogin')}
-        </AppLink>
-      </Stack>
-      <Card>
-        <CardTitle>{t('principlesTitle')}</CardTitle>
-        <CardContent>
+      <section className={homeClasses.hero}>
+        <div className={homeClasses.heroGlow} aria-hidden="true" />
+        <Stack gap="lg">
+          <Badge tone="brand">{t('principlesTitle')}</Badge>
+          <PageHeader title={t('title')} subtitle={t('subtitle')} />
+          <Stack className={homeClasses.actions} direction="row" gap="sm" wrap="wrap">
+            <AppLink href={ROUTE_PATHS.articles} className={buttonVariants({ variant: 'primary' })}>
+              {t('ctaArticles')}
+            </AppLink>
+            <AppLink href={ROUTE_PATHS.login} className={buttonVariants({ variant: 'secondary' })}>
+              {t('ctaLogin')}
+            </AppLink>
+          </Stack>
+        </Stack>
+      </section>
+      <Card className={homeClasses.principlesCard}>
+        <CardHeader className={homeClasses.principlesHeader}>
+          <CardTitle>{t('principlesTitle')}</CardTitle>
+        </CardHeader>
+        <CardContent className={homeClasses.principlesContent}>
           <ul className={homeClasses.principleList}>
             <li>{t('principleComponents')}</li>
             <li>{t('principleBoundaries')}</li>

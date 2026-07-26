@@ -6,8 +6,8 @@ Defines the minimum test evidence per change type and the gate matrix. The full 
 
 Every PR MUST pass, locally and in CI:
 
-- `npm run lint` — ESLint with `--max-warnings=0`, including the 13 `frontend-architecture` rules.
-- `npm run typecheck` — tsgo over `tsconfig.app.json`, `tsconfig.test.json`, `tsconfig.node.json`.
+- `npm run lint` — ESLint with `--max-warnings=0`, error-only severity, and 14 `frontend-architecture` rules.
+- `npm run typecheck` — stable TypeScript 7 over `tsconfig.app.json`, `tsconfig.test.json`, `tsconfig.node.json`.
 - `npm run test:coverage` — Vitest with thresholds from `vitest.config.mts`: 95% global lines/statements/functions/branches, 100% for utils, helpers, mappers, schemas, and query-key builders.
 - `npm run build` — the four together are `npm run quality`.
 

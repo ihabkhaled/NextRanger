@@ -12,13 +12,13 @@
 
 ### Automated gates — every command MUST exit clean
 
-- [ ] `npm run validate` — lint (--max-warnings=0), format check, typecheck (tsgo), unit/integration tests. <Result.>
+- [ ] `npm run validate` — lint (error-only, --max-warnings=0), format check, TypeScript 7, unit/integration tests. <Result.>
 - [ ] `npm run test:coverage` — thresholds hold: 95% global, 100% on utils/helpers/mappers/schemas/query-key builders (vitest.config.mts). <Result.>
 - [ ] `npm run test:e2e` — Playwright suites in src/tests/e2e/ including this feature's specs. <Result.>
 - [ ] `npm run test:a11y` — zero violations. <Result.>
 - [ ] `npm run test:visual` — snapshots reviewed; intentional diffs re-baselined with justification. <Result.>
 - [ ] `npm run security:audit` and `npm run security:scan` — zero unhandled vulnerabilities (overrides documented in package.json, as with the existing postcss override). <Result.>
-- [ ] `npm run quality` — knip dead-code and madge circular-dependency checks clean. <Result.>
+- [ ] `npm run quality:dead-code` and `npm run quality:circular` — knip and dependency-cruiser clean. <Result.>
 - [ ] `npm run build` — production build succeeds; typedRoutes compile. <Result.>
 - [ ] CI green on the release commit (.github/workflows/ci.yml, security.yml, e2e.yml). <Link to runs.>
 

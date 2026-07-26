@@ -45,7 +45,7 @@
 ## Definition of done (per PR)
 
 - [ ] `npm run validate` passes locally (on a fresh environment run `npm run test:e2e:install` then `npm run test:e2e:baseline` first)
-- [ ] `npm run quality` passes (knip dead code, madge circular deps)
+- [ ] `npm run quality` and `npm run quality:circular` pass (dependency-cruiser reports no cycles)
 - [ ] Tests from the stage-06 matrix for the touched slices are included in the same PR
 - [ ] Conventional commit messages; hooks in .husky/ not bypassed
 - [ ] Review checklist [rules/20-review-checklist.md](../../../rules/20-review-checklist.md) applied

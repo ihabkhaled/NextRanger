@@ -15,7 +15,7 @@ restart from the failed step):
 ```sh
 npm install                 # 1. lockfile-consistent install (npm ci in CI)
 npm run lint                # 2. ESLint flat config, --max-warnings=0
-npm run typecheck           # 3. tsgo over tsconfig.app/test/node
+npm run typecheck           # 3. stable TypeScript 7 over tsconfig.app/test/node
 npm run test:coverage       # 4. Vitest + thresholds: 95% global, 100% pure-logic layers
 npm run build               # 5. next build --turbopack (typedRoutes, env validation)
 npm run test:e2e:install    # 6. one-time Playwright Chromium download (npx playwright install chromium)
@@ -24,7 +24,7 @@ npm run test:e2e            # 8. Playwright e2e (builds + starts the app itself)
 npm run security:audit      # 9. npm audit --audit-level=low
 npm run security:scan       # 10. trivy vuln + secret + misconfig, all severities
 npm run quality:dead-code   # 11. knip
-npm run quality:circular    # 12. madge src --circular
+npm run quality:circular    # 12. dependency-cruiser over src
 ```
 
 Shortcut: `npm run validate` chains the gate steps (via `quality` + e2e + security + dead-code +

@@ -7,6 +7,8 @@ import { PageContainer } from '@/packages/ui-primitives';
 import { buildPageTitle } from '@/shared/helpers/page-title.helper';
 import { I18N_NAMESPACES } from '@/shared/i18n/i18n-namespaces.constants';
 
+import { loginPageClasses } from './page.variants';
+
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getServerTranslations(I18N_NAMESPACES.auth);
 
@@ -15,7 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function LoginPage(): ReactElement {
   return (
-    <PageContainer>
+    <PageContainer className={loginPageClasses.page}>
       <LoginFormContainer />
     </PageContainer>
   );

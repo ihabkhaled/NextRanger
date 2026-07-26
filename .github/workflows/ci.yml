@@ -30,7 +30,7 @@ jobs:
       - name: Lint (max-warnings=0)
         run: npm run lint
 
-      - name: Typecheck (tsgo)
+      - name: Typecheck (TypeScript 7)
         run: npm run typecheck
 
       - name: Unit and integration tests with coverage gates
@@ -42,7 +42,7 @@ jobs:
       - name: Dead code (knip)
         run: npm run quality:dead-code
 
-      - name: Circular dependencies (madge)
+      - name: Circular dependencies (dependency-cruiser)
         run: npm run quality:circular
 
       - name: Upload coverage report

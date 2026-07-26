@@ -79,7 +79,8 @@ layer as you build it — never after the fact.
 npm run lint
 npm run typecheck
 npm run test
-npm run quality        # knip dead-code + madge circular deps
+npm run quality        # lint + TypeScript 7 + coverage + build
+npm run quality:circular # dependency-cruiser cycle check
 npm run dev            # manually exercise the route with mocks enabled
 ```
 

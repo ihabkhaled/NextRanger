@@ -47,7 +47,7 @@ mappers/ schemas/ types/ enums/ constants/`). Run `npm run lint` and note which 
 5. **Re-check the seams.** After the last move:
 
    ```sh
-   npm run quality:circular   # madge: no new cycles from re-pointed imports
+   npm run quality:circular   # dependency-cruiser: no cycles from re-pointed imports
    npm run quality:dead-code  # knip: nothing orphaned by the moves
    ```
 
@@ -63,5 +63,5 @@ mappers/ schemas/ types/ enums/ constants/`). Run `npm run lint` and note which 
 ## Done when
 
 Behavior tests pass unchanged against the new structure, the module's `index.ts` diff is empty
-(or its change is an explicit, final commit), no architecture rule fires, and madge/knip report
+(or its change is an explicit, final commit), no architecture rule fires, and dependency-cruiser/knip report
 no new cycles or dead code.

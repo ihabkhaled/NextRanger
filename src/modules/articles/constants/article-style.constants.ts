@@ -10,5 +10,11 @@ export const ARTICLE_STATUS_BADGE_CLASSES: Readonly<Record<ArticleStatusValue, s
 };
 
 export const articleCardClasses = {
-  meta: 'flex flex-row flex-wrap items-center gap-3 text-xs text-muted-foreground',
+  card: 'group flex min-h-64 flex-col gap-4 overflow-hidden hover:-translate-y-1 hover:border-primary/25 hover:shadow-xl hover:shadow-shadow/8',
+  summary: 'line-clamp-3 leading-6',
+  meta: 'mt-auto flex flex-row flex-wrap items-center gap-3 border-t border-border pt-4 font-mono text-xs text-muted-foreground',
+} as const;
+
+export const articleListClasses = {
+  root: 'grid gap-5 md:grid-cols-2',
 } as const;

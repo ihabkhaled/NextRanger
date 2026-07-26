@@ -38,7 +38,8 @@ Gates:
 
 ```bash
 npm run lint             # ESLint, --max-warnings=0
-npm run typecheck        # tsgo (TypeScript native preview) over app/test/node configs
+npm run typecheck        # stable TypeScript 7 over app/test/node configs
+npm run typecheck:compat # TypeScript 6 API compatibility for ESLint/tooling
 npm run test:coverage    # Vitest + coverage thresholds
 npm run build            # next build --turbopack
 npm run test:e2e:install # one-time Playwright browser install (chromium for this project)
@@ -46,10 +47,10 @@ npm run test:e2e:baseline # one-time per-OS visual baseline write (safe; only fi
 npm run test:e2e         # Playwright (builds and starts the prod server itself)
 npm run test:a11y        # axe + keyboard suites
 npm run test:visual      # screenshot baselines
-npm run security:audit   # npm audit --audit-level=low
+npm run security:audit   # runtime graph, every severity
 npm run security:scan    # Trivy: vuln + secret + misconfig
 npm run quality:dead-code  # knip
-npm run quality:circular   # madge
+npm run quality:circular   # dependency-cruiser
 npm run validate         # everything above, in order
 ```
 

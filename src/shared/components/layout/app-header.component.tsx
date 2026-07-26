@@ -13,9 +13,15 @@ import { appHeaderClasses } from './app-header.variants';
 export function AppHeader(props: AppHeaderProps): ReactElement {
   return (
     <header className={appHeaderClasses.root} data-testid={props.testId}>
-      <Stack direction="row" align="center" justify="between" gap="md">
+      <Stack
+        className={appHeaderClasses.inner}
+        direction="row"
+        align="center"
+        justify="between"
+        gap="md"
+      >
         <span className={appHeaderClasses.brand}>{props.homeLabel}</span>
-        <nav aria-label={props.navLandmarkLabel}>
+        <nav className={appHeaderClasses.nav} aria-label={props.navLandmarkLabel}>
           <Stack direction="row" align="center" gap="sm" wrap="wrap">
             {props.navItems}
           </Stack>

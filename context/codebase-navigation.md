@@ -50,7 +50,8 @@ the matching skill in [skills/README.md](../skills/README.md) walks the full pro
 
 ## Path aliases
 
-Declared in [tsconfig.json](../tsconfig.json); Vitest resolves them via `vite-tsconfig-paths`.
+Declared in [tsconfig.json](../tsconfig.json); Vitest resolves them through Vite's native
+`resolve.tsconfigPaths` support.
 
 | Alias         | Resolves to        | Typical use                                                                                        |
 | ------------- | ------------------ | -------------------------------------------------------------------------------------------------- |

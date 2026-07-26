@@ -21,4 +21,11 @@ export default [
       'security/detect-object-injection': 'off',
     },
   },
+  {
+    // EXC-0005: paths are confined to process.cwd()/node_modules and fixed package names.
+    files: ['support/patch-brace-expansion-compat.mjs'],
+    rules: {
+      'security/detect-non-literal-fs-filename': 'off',
+    },
+  },
 ];

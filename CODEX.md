@@ -47,7 +47,8 @@ not an agent shortcut. Rule reference: [docs/eslint/README.md](docs/eslint/READM
 
 ```bash
 npm run lint          # ESLint 9 flat config, zero warnings tolerated
-npm run typecheck     # tsgo over tsconfig.app/test/node (fallback: npm run typecheck:tsc)
+npm run typecheck     # stable TypeScript 7 over app/test/node; prints compiler versions
+npm run typecheck:compat # TypeScript 6 API compatibility for ESLint/tooling
 npm run test          # Vitest; npm run test:coverage enforces 95%/100% thresholds
 npm run build         # next build --turbopack
 npm run quality            # lint + typecheck + coverage + build

@@ -17,7 +17,7 @@ import { appHeaderClasses } from '@/shared/components/layout/app-header.variants
 import { SkipLink } from '@/shared/components/primitives/skip-link.component';
 import { ROUTE_PATHS } from '@/shared/constants/route-paths.constants';
 import { TEST_IDS } from '@/shared/constants/test-ids.constants';
-import { interFont } from '@/shared/fonts/app-fonts';
+import { appFontClassName } from '@/shared/fonts/app-fonts';
 import { I18N_NAMESPACES } from '@/shared/i18n/i18n-namespaces.constants';
 
 import { layoutClasses } from './layout.variants';
@@ -44,7 +44,7 @@ export default async function RootLayout(
   const tNav = await getServerTranslations(I18N_NAMESPACES.nav);
 
   return (
-    <html lang={locale} dir={direction} data-theme="light" className={interFont.variable}>
+    <html lang={locale} dir={direction} data-theme="light" className={appFontClassName}>
       <body className={layoutClasses.body}>
         <AppIntlProvider locale={locale}>
           <AppProviders>

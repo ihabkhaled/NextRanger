@@ -35,6 +35,7 @@ Rules (the "what is allowed") live in [rules/README.md](../rules/README.md). Ori
 | Review a change for accessibility                           | [accessibility-review.md](accessibility-review.md)           |
 | Restructure an existing feature to match the architecture   | [refactor-feature.md](refactor-feature.md)                   |
 | Resolve ESLint or typecheck failures correctly              | [fix-eslint-typecheck.md](fix-eslint-typecheck.md)           |
+| Upgrade dependencies or compiler tooling                    | [upgrade-toolchain.md](upgrade-toolchain.md)                 |
 | Run the full quality gate before merge/release              | [final-validation.md](final-validation.md)                   |
 
 ## How to use a skill

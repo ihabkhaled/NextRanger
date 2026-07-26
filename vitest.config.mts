@@ -1,14 +1,14 @@
 import path from 'node:path';
 
 import react from '@vitejs/plugin-react';
-import tsconfigPaths from 'vite-tsconfig-paths';
 import { defineConfig } from 'vitest/config';
 
 const srcDir = path.resolve(import.meta.dirname, 'src');
 
 export default defineConfig({
-  plugins: [tsconfigPaths(), react()],
+  plugins: [react()],
   resolve: {
+    tsconfigPaths: true,
     // Explicit aliases (in addition to tsconfig paths) so vi.mock specifiers
     // using @/ resolve identically to source imports.
     alias: {

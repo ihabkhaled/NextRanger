@@ -42,24 +42,30 @@ Rationale for the security posture. The normative rules live in
   local dev and e2e. Error bodies are sanitized at this boundary — clients receive message keys
   (`ERROR_MESSAGE_KEYS`), never raw upstream errors.
 
-## The postcss override — transitive vulnerability playbook
+## Scoped overrides — transitive vulnerability playbook
 
-- **Decision:** the transitive postcss vulnerability was fixed with an npm override pinned to the
-  same spec as the direct devDependency: `"overrides": { "postcss": "^8.5.16" }` in
-  `package.json`, plus a lockfile regeneration.
+- **Decision:** patched transitive releases are selected with narrow npm overrides and a lockfile
+  regeneration. Current pins cover `postcss`, `brace-expansion` 5.0.8, `fast-uri` 3, and Next's
+  optional `sharp` image dependency. The `brace-expansion` security fix has no patched 1.x
+  release, so the override deliberately lifts legacy `minimatch` consumers to 5.0.8. Because
+  5.x changed its CommonJS and ESM export shapes, the fail-closed `postinstall` step restores
+  the callable function while preserving the named exports; EXC-0005 documents its confined path
+  traversal. Remove the override and compatibility step when the owner ranges catch up.
 - **Rejected alternatives:** waiting for upstreams to bump, or suppressing the audit finding.
-- **Why:** this is the canonical example of the zero-unhandled-vulnerability policy: fix the tree,
-  don't silence the scanner. The override spec MUST match the direct dependency exactly (see
-  [known-pitfalls.md](./known-pitfalls.md)) and MUST be removed once all dependents require the
-  patched version on their own. Every override carries a comment trail in `package.json` and an
-  entry here.
+- **Why:** this is the zero-unhandled-vulnerability policy: fix the resolved tree, do not silence
+  the scanner. Direct dependency overrides MUST match their declared spec; transitive overrides
+  stay on the narrowest patched line that passes the full lint, test, build, and security gates.
+  Every override has an entry here.
 
 ## Trivy severity floor: LOW
 
 - **Decision:** `npm run security:scan` runs Trivy with
   `--severity LOW,MEDIUM,HIGH,CRITICAL --exit-code 1` across vuln, secret, and misconfig
-  scanners, including dev dependencies; `npm run security:audit` runs `npm audit
---audit-level=low`. Both gate `npm run validate` and CI (`.github/workflows/security.yml`).
+  scanners, including dev dependencies; `npm run security:audit` runs
+  `npm audit --omit=dev --audit-level=low` for the deployable graph. Trivy owns the full lockfile,
+  including dev tooling, because npm audit can continue attributing a parent advisory after its
+  vulnerable transitive child has been overridden to the patched release. Both gate
+  `npm run validate` and CI (`.github/workflows/security.yml`).
 - **Rejected alternative:** the common HIGH/CRITICAL-only floor.
 - **Why:** severity scores describe the vulnerability in isolation, not our exposure — LOW
   findings routinely chain, and a floor of LOW keeps the backlog at zero instead of letting a

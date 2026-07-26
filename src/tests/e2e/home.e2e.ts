@@ -7,7 +7,7 @@ test.describe('home page', () => {
     await page.goto('/');
 
     await expect(page.getByRole('heading', { level: 1 })).toContainText('Strict Next Ranger');
-    await expect(page.getByText('Non-negotiables')).toBeVisible();
+    await expect(page.getByRole('heading', { level: 2, name: 'Non-negotiables' })).toBeVisible();
     await expect(page.getByTestId(TEST_IDS.appHeader)).toBeVisible();
   });
 
