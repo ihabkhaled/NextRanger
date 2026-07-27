@@ -20,7 +20,10 @@ export async function MarketingPageContainer(
   props: MarketingPageContainerProps,
 ): Promise<ReactElement> {
   setServerLocale(props.locale);
-  const t = await getServerTranslations(I18N_NAMESPACES.marketing);
+  const t = await getServerTranslations({
+    locale: props.locale,
+    namespace: I18N_NAMESPACES.marketing,
+  });
   const nonce = await getRequestNonce();
   const pageKey = MARKETING_MESSAGE_KEYS.pages[props.kind];
   const highlights = MARKETING_MESSAGE_KEYS.highlights.map((key) => (

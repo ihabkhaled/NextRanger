@@ -17,6 +17,6 @@ export {
   type AppLocale,
   type AppTextDirection,
 } from './locale.constants';
-export { getServerLocale, getServerTranslations } from './server-messages';
+export { getServerLocale, getServerMessages, getServerTranslations } from './server-messages';
 export { setServerLocale } from './server-messages';
 export { useAppLocale, useAppTranslation } from './translation-hooks';

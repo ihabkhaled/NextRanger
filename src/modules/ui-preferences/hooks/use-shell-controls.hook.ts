@@ -1,5 +1,5 @@
 import { getBrowserLocationSuffix } from '@/packages/browser';
-import { isSupportedLocale } from '@/packages/i18n';
+import { getLocaleDirection, isSupportedLocale } from '@/packages/i18n';
 import { useAppNavigation } from '@/packages/navigation';
 import { buildLocalizedLocation } from '@/shared/helpers/localized-route.helper';
 
@@ -15,6 +15,7 @@ export function useShellControls(props: ShellControlsContainerProps): ShellContr
   const navigation = useAppNavigation();
   const theme = useUiPreferencesStore((state) => state.theme);
   const setTheme = useUiPreferencesStore((state) => state.setTheme);
+  const setDirection = useUiPreferencesStore((state) => state.setDirection);
   const nextTheme = getNextTheme(theme);
 
   return {
@@ -29,6 +30,7 @@ export function useShellControls(props: ShellControlsContainerProps): ShellContr
       if (!isSupportedLocale(requestedLocale)) {
         return;
       }
+      setDirection(getLocaleDirection(requestedLocale));
       navigation.replace(
         buildLocalizedLocation(navigation.pathname, requestedLocale, getBrowserLocationSuffix()),
       );

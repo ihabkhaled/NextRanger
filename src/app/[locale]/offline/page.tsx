@@ -16,7 +16,7 @@ export default async function OfflinePage(
     appNotFound();
   }
   setServerLocale(locale);
-  const t = await getServerTranslations(I18N_NAMESPACES.pwa);
+  const t = await getServerTranslations({ locale, namespace: I18N_NAMESPACES.pwa });
   return (
     <PageContainer>
       <Stack gap="md">

@@ -6,6 +6,7 @@ import { beforeEach, describe, expect, it } from 'vitest';
 import { BreadcrumbContainer, SiteNavigationContainer } from '@/modules/site-navigation';
 import { ShellControlsContainer, useUiPreferencesStore } from '@/modules/ui-preferences';
 import { useAppNavigation } from '@/packages/navigation';
+import { AppDirection } from '@/shared/enums/app-direction.enum';
 import { AppTheme } from '@/shared/enums/app-theme.enum';
 import { AppRouterStubProvider, buildRouterStub } from '@/tests/helpers/app-router-stub';
 
@@ -28,7 +29,7 @@ function preventTestNavigation(event: MouseEvent<HTMLElement>): void {
 
 describe('site navigation', () => {
   beforeEach(() => {
-    useUiPreferencesStore.setState({ theme: AppTheme.Light });
+    useUiPreferencesStore.setState({ theme: AppTheme.Light, direction: AppDirection.Ltr });
   });
 
   it('marks the current localized route semantically', () => {
@@ -87,6 +88,7 @@ describe('site navigation', () => {
     expect(themeButton).toBeInTheDocument();
     await user.selectOptions(localeSelect, 'ar');
     expect(router.replace).toHaveBeenCalledWith('/ar/features');
+    expect(useUiPreferencesStore.getState().direction).toBe(AppDirection.Rtl);
     await user.click(themeButton);
     expect(useUiPreferencesStore.getState().theme).toBe(AppTheme.Dark);
   });

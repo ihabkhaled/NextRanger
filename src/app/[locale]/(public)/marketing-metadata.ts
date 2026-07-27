@@ -15,7 +15,7 @@ export async function buildMarketingMetadata(
   kind: MarketingPageKind,
 ): Promise<Metadata> {
   setServerLocale(locale);
-  const t = await getServerTranslations(I18N_NAMESPACES.marketing);
+  const t = await getServerTranslations({ locale, namespace: I18N_NAMESPACES.marketing });
   const pageKey = MARKETING_MESSAGE_KEYS.pages[kind];
   return buildSeoMetadata({
     locale,

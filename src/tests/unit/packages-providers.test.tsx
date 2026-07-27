@@ -1,9 +1,16 @@
 import { render, screen } from '@testing-library/react';
+import type { ReactElement } from 'react';
 import { describe, expect, it } from 'vitest';
 
-import { AppIntlProvider, DEFAULT_LOCALE } from '@/packages/i18n';
+import { AppIntlProvider, DEFAULT_LOCALE, useAppTranslation } from '@/packages/i18n';
+import enMessages from '@/packages/i18n/messages/en.json';
 import { AppQueryProvider } from '@/packages/query';
 import { VirtualizedList } from '@/packages/virtuoso';
+
+function TranslatedAppTitle(): ReactElement {
+  const t = useAppTranslation('app');
+  return <span>{t('title')}</span>;
+}
 
 describe('AppQueryProvider', () => {
   it('provides the query cache to children (devtools included in local env)', () => {
@@ -26,6 +33,16 @@ describe('AppIntlProvider', () => {
     );
 
     expect(screen.getByText('intl-child')).toBeInTheDocument();
+  });
+
+  it('provides an explicit locale catalog to hydrated children', () => {
+    render(
+      <AppIntlProvider locale={DEFAULT_LOCALE} messages={enMessages}>
+        <TranslatedAppTitle />
+      </AppIntlProvider>,
+    );
+
+    expect(screen.getByText('Strict Next Ranger')).toBeInTheDocument();
   });
 });
 

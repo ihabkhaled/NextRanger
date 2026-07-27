@@ -11,6 +11,7 @@ import { ShellControlsContainer } from '@/modules/ui-preferences';
 import {
   AppIntlProvider,
   getLocaleDirection,
+  getServerMessages,
   getServerTranslations,
   isSupportedLocale,
   setServerLocale,
@@ -55,9 +56,13 @@ export default async function LocaleLayout(props: LocaleLayoutProps): Promise<Re
   const locale = candidate;
   setServerLocale(locale);
   const direction = getLocaleDirection(locale);
-  const tApp = await getServerTranslations(I18N_NAMESPACES.app);
-  const tNav = await getServerTranslations(I18N_NAMESPACES.nav);
-  const tSettings = await getServerTranslations(I18N_NAMESPACES.settings);
+  const messages = await getServerMessages({ locale });
+  const tApp = await getServerTranslations({ locale, namespace: I18N_NAMESPACES.app });
+  const tNav = await getServerTranslations({ locale, namespace: I18N_NAMESPACES.nav });
+  const tSettings = await getServerTranslations({
+    locale,
+    namespace: I18N_NAMESPACES.settings,
+  });
   const navigationLabels: SiteNavigationLabels = {
     home: tNav('home'),
     about: tNav('about'),
@@ -76,7 +81,7 @@ export default async function LocaleLayout(props: LocaleLayoutProps): Promise<Re
         <Script src="/theme-init.js" strategy="beforeInteractive" />
       </head>
       <body className={layoutClasses.body}>
-        <AppIntlProvider locale={locale}>
+        <AppIntlProvider locale={locale} messages={messages}>
           <AppProviders key={locale}>
             {appConfig.isProduction ? <ServiceWorkerRegistrationContainer /> : null}
             <SkipLink targetHref={`#${LANDMARK_IDS.mainContent}`} label={tApp('skipToContent')} />

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import type { ReactElement } from 'react';
 
-import { getServerTranslations } from '@/packages/i18n';
+import { getServerTranslations, isSupportedLocale } from '@/packages/i18n';
 import {
   AlertIcon,
   ArrowRightIcon,
@@ -12,6 +12,7 @@ import {
   SettingsIcon,
   SunIcon,
 } from '@/packages/icons';
+import { appNotFound } from '@/packages/navigation';
 import {
   Alert,
   Badge,
@@ -33,11 +34,16 @@ import {
 import { PageHeader } from '@/shared/components/data-display/page-header.component';
 import { buildPageTitle } from '@/shared/helpers/page-title.helper';
 import { I18N_NAMESPACES } from '@/shared/i18n/i18n-namespaces.constants';
+import type { LocaleRouteProps } from '@/shared/types/app-route.types';
 
 import { workbenchClasses } from './page.variants';
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getServerTranslations(I18N_NAMESPACES.workbench);
+export async function generateMetadata(props: LocaleRouteProps): Promise<Metadata> {
+  const { locale } = await props.params;
+  if (!isSupportedLocale(locale)) {
+    return {};
+  }
+  const t = await getServerTranslations({ locale, namespace: I18N_NAMESPACES.workbench });
 
   return { title: buildPageTitle(t('title')) };
 }
@@ -46,8 +52,12 @@ export async function generateMetadata(): Promise<Metadata> {
  * Component workbench: the living showcase of design-system primitives.
  * This replaces Storybook — see ADR 0002.
  */
-export default async function WorkbenchPage(): Promise<ReactElement> {
-  const t = await getServerTranslations(I18N_NAMESPACES.workbench);
+export default async function WorkbenchPage(props: LocaleRouteProps): Promise<ReactElement> {
+  const { locale } = await props.params;
+  if (!isSupportedLocale(locale)) {
+    appNotFound();
+  }
+  const t = await getServerTranslations({ locale, namespace: I18N_NAMESPACES.workbench });
 
   return (
     <PageContainer>

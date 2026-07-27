@@ -1,6 +1,7 @@
 import { NextIntlClientProvider } from 'next-intl';
 import type { ReactElement, ReactNode } from 'react';
 
+import type { AppMessages } from './intl-messages-provider';
 import type { AppLocale } from './locale.constants';
 
 /**
@@ -9,7 +10,15 @@ import type { AppLocale } from './locale.constants';
  * the request config.
  */
 export function AppIntlProvider(
-  props: Readonly<{ locale: AppLocale; children: ReactNode }>,
+  props: Readonly<{ locale: AppLocale; messages?: AppMessages; children: ReactNode }>,
 ): ReactElement {
-  return <NextIntlClientProvider locale={props.locale}>{props.children}</NextIntlClientProvider>;
+  if (props.messages === undefined) {
+    return <NextIntlClientProvider locale={props.locale}>{props.children}</NextIntlClientProvider>;
+  }
+
+  return (
+    <NextIntlClientProvider locale={props.locale} messages={props.messages}>
+      {props.children}
+    </NextIntlClientProvider>
+  );
 }

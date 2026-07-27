@@ -1,51 +1,37 @@
 import { expect, test } from '@playwright/test';
 
-import { LOCALE_COOKIE_NAME } from '@/packages/i18n/locale.constants';
-
-test.describe('i18n / RTL', () => {
-  test('defaults to English LTR', async ({ page }) => {
+test.describe('localized URL and RTL contracts', () => {
+  test('the bare origin redirects to the default English page', async ({ page }) => {
     await page.goto('/');
 
+    await expect(page).toHaveURL('/en');
     await expect(page.locator('html')).toHaveAttribute('lang', 'en');
     await expect(page.locator('html')).toHaveAttribute('dir', 'ltr');
   });
 
-  test('the Arabic locale cookie switches language and direction', async ({
-    context,
-    page,
-    baseURL,
-  }) => {
-    await context.addCookies([
-      {
-        name: LOCALE_COOKIE_NAME,
-        value: 'ar',
-        url: baseURL ?? 'http://localhost:3000',
-      },
-    ]);
+  test('the Arabic URL is an independently crawlable RTL page', async ({ page }) => {
+    await page.goto('/ar');
 
-    await page.goto('/');
-
+    await expect(page).toHaveURL('/ar');
     await expect(page.locator('html')).toHaveAttribute('lang', 'ar');
     await expect(page.locator('html')).toHaveAttribute('dir', 'rtl');
-    await expect(page.getByRole('link', { name: 'المقالات', exact: true })).toBeVisible();
-    await expect(page.getByRole('heading', { level: 1 })).toContainText('سترِكت نكست رينجر');
+    await expect(page.getByRole('link', { name: 'About' })).toHaveCount(0);
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', /\/ar$/u);
   });
 
-  test('an unsupported locale cookie falls back to the default locale', async ({
-    context,
-    page,
-    baseURL,
-  }) => {
-    await context.addCookies([
-      {
-        name: LOCALE_COOKIE_NAME,
-        value: 'xx',
-        url: baseURL ?? 'http://localhost:3000',
-      },
-    ]);
+  test('the language switcher preserves the route, query, and fragment', async ({ page }) => {
+    await page.goto('/en/faq?source=e2e#question');
 
-    await page.goto('/');
+    await page.getByRole('combobox', { name: 'Change language' }).selectOption('ar');
 
-    await expect(page.locator('html')).toHaveAttribute('lang', 'en');
+    await expect(page).toHaveURL('/ar/faq?source=e2e#question');
+    await expect(page.locator('html')).toHaveAttribute('lang', 'ar');
+    await expect(page.locator('html')).toHaveAttribute('dir', 'rtl');
+  });
+
+  test('unsupported locale segments return a real not-found response', async ({ page }) => {
+    const response = await page.goto('/xx');
+
+    expect(response?.status()).toBe(404);
   });
 });
