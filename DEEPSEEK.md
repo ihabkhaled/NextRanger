@@ -8,7 +8,7 @@ A production-grade starter that teams clone for enterprise frontend work. A real
 
 ## Stack
 
-Next.js 16 App Router (Turbopack, typedRoutes) · React 19 · TypeScript 7 strict · Tailwind v4 (CSS-first tokens) · TanStack Query v5 · Zustand v5 · Zod v4 · next-intl (14 URL locales, RTL) · Vitest 4 + RTL · Playwright · MSW v2 · npm · Node >= 22.
+Next.js 16 App Router (Turbopack, typedRoutes) · React 19 · TypeScript 7 strict · Tailwind v4 (CSS-first tokens) · TanStack Query v5 · Zustand v5 · Zod v4 · next-intl (14 URL locales, RTL) · Vitest 4 + RTL · Playwright · MSW v2 · npm 12.0.1 · Node 24.18.0.
 
 ## Commands
 

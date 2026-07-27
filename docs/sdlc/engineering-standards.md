@@ -11,7 +11,8 @@ Branches MUST follow `<type>/<scope>-<short-slug>`, where `<type>` is one of the
 - `chore/deps-weekly-upgrade`
 - `docs/adr-0002-workbench`
 
-Work never happens directly on `main`. `main` is always releasable.
+Feature branches are the default. Direct work on `main` is allowed only when the repository owner
+explicitly authorizes it; every pushed checkpoint must still be green and independently revertible.
 
 ## Commits — conventional, machine-enforced
 
@@ -23,9 +24,9 @@ Work never happens directly on `main`. `main` is always releasable.
 
 ## Git hooks (never bypassed)
 
-- `.husky/pre-commit` → `npx lint-staged` (Prettier + ESLint on staged files, per `.lintstagedrc.cjs`).
-- `.husky/commit-msg` → commitlint.
-- `.husky/pre-push` → `npm run gate:push`.
+- `.husky/pre-commit` → `corepack npm exec lint-staged` (Prettier + ESLint on staged files).
+- `.husky/commit-msg` → `corepack npm exec commitlint`.
+- `.husky/pre-push` → `corepack npm run gate:push`.
 
 `--no-verify` is prohibited. A hook that blocks you is a defect to fix, not a gate to skip.
 

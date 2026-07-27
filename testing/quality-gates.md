@@ -14,7 +14,7 @@ overrides, no "merge now, fix later". Exceptions follow
 | Typecheck (strict, 3 tsconfigs)                           | `npm run typecheck` (stable TypeScript 7 over `tsconfig.app.json`, `tsconfig.test.json`, `tsconfig.node.json`) | pre-push; `ci.yml`                                                                  | Yes                                                                                       |
 | Unit + integration tests with coverage thresholds         | `npm run test:coverage` ([coverage-policy.md](coverage-policy.md))                                             | pre-push (`npm run test`); `ci.yml` (with coverage)                                 | Yes                                                                                       |
 | Production build                                          | `npm run build`                                                                                                | `ci.yml`; also implied by the e2e webServer                                         | Yes                                                                                       |
-| Playwright browser install                                | `npm run test:e2e:install` (`npx playwright install chromium`)                                                 | One-time per environment; CI caches the binary                                      | Yes — required before first `test:e2e` / `validate` locally                               |
+| Playwright browser install                                | `npm run test:e2e:install` (`playwright install chromium`)                                                     | One-time per environment; CI caches the binary                                      | Yes — required before first `test:e2e` / `validate` locally                               |
 | End-to-end                                                | `npm run test:e2e`                                                                                             | `.github/workflows/e2e.yml`                                                         | Yes                                                                                       |
 | Accessibility (axe serious/critical = 0 + keyboard specs) | `npm run test:a11y`                                                                                            | `e2e.yml`                                                                           | Yes                                                                                       |
 | Visual regression (`maxDiffPixelRatio: 0.02`)             | `npm run test:visual`                                                                                          | `e2e.yml`                                                                           | Yes                                                                                       |
@@ -43,8 +43,8 @@ the hook.
   through it. On a fresh platform, install Chromium with `npm run test:e2e:install`. Only when
   intentionally establishing or reviewing current-OS screenshots, run
   `npm run test:e2e:baseline`; it refreshes all current-OS baselines. CI is compare-only and
-  fails on missing or changed Linux baselines. All Playwright npm scripts use
-  `npx playwright …`, matching the manual agent commands.
+  fails on missing or changed Linux baselines. All Playwright npm scripts resolve the committed
+  local CLI and cannot download a surprise version.
 
 ## Merge and release
 

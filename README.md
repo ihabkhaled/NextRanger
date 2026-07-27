@@ -22,17 +22,23 @@ to React Server Components, client boundaries, design systems, i18n/RTL, and bro
   95% global coverage (100% for pure logic).
 - **Security by default**: per-request nonce CSP, strict headers, validated env split,
   cookie-session doctrine, Trivy + npm audit zero-unhandled-vulnerability policy.
-- **Bilingual by default**: English + Arabic catalogs, cookie locale, RTL direction handling.
+- **Fourteen crawlable locales**: locale-prefixed URLs, reciprocal SEO, all-catalog parity,
+  and Arabic/Persian RTL handling.
 - **An AI operating system**: `AGENTS.md`, `CLAUDE.md`, `CODEX.md`, `cursor.md`,
-  `.cursor/rules/`, plus `rules/`, `skills/`, `agents/`, `context/`, and `memory/` so coding
-  agents work inside the same guardrails humans do.
+  `.ai/`, `.cursor/rules/`, plus `rules/`, `skills/`, `agents/`, `context/`, and `memory/`
+  so coding agents work inside the same guardrails humans do.
 
 ## Quick start
 
 ```bash
+nvm use
+corepack enable
 npm install
 npm run dev        # http://localhost:3000 — gateway mock mode is on by default
 ```
+
+The pinned toolchain is Node 24.18.0 and npm 12.0.1; `.nvmrc`, `.node-version`, and
+`packageManager` keep local and CI installs identical.
 
 Gates:
 
@@ -54,12 +60,12 @@ npm run quality:circular   # dependency-cruiser
 npm run validate         # everything above, in order
 ```
 
-> **First-time e2e setup (repeatable on any OS):** run these two `npx`-backed one-time
+> **First-time e2e setup (repeatable on any OS):** run these two local-binary one-time
 > steps before the first `npm run validate`, exactly as agents do it here:
 >
 > ```bash
-> npm run test:e2e:install   # npx playwright install chromium
-> npm run test:e2e:baseline  # npx playwright test src/tests/visual --update-snapshots=all
+> npm run test:e2e:install   # playwright install chromium
+> npm run test:e2e:baseline  # playwright test src/tests/visual --update-snapshots=all
 > ```
 >
 > `npm run validate` expects the browser to be present; the install is not part of
@@ -69,8 +75,8 @@ npm run validate         # everything above, in order
 > inspecting an intentional visual diff; it refreshes every baseline for the current OS.
 > The committed Linux baselines remain the source of truth (see
 > [testing/visual-testing-standard.md](testing/visual-testing-standard.md)).
-> Every Playwright npm script is `npx playwright …` backed, matching the manual commands agents
-> run during validation.
+> Every Playwright npm script resolves the committed local binary; it never downloads a surprise
+> CLI during validation.
 
 ## Architecture in one breath
 

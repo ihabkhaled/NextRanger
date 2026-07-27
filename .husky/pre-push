@@ -1,1 +1,1 @@
-npm run gate:push
+corepack npm run gate:push

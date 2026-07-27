@@ -4,23 +4,77 @@ import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 
 interface PackageManifest {
+  readonly allowScripts: Readonly<Record<string, boolean>>;
   readonly devDependencies: Readonly<Record<string, string>>;
+  readonly engines: {
+    readonly node: string;
+    readonly npm: string;
+  };
+  readonly overrides: Readonly<Record<string, unknown>>;
+  readonly packageManager: string;
   readonly scripts: Readonly<Record<string, string>>;
+}
+
+interface NcuConfig {
+  readonly reject: readonly string[];
 }
 
 const repoRoot = path.resolve(import.meta.dirname, '../../..');
 const packageManifest = JSON.parse(
   readFileSync(path.join(repoRoot, 'package.json'), 'utf8'),
 ) as PackageManifest;
+const ncuConfig = JSON.parse(readFileSync(path.join(repoRoot, '.ncurc.json'), 'utf8')) as NcuConfig;
+const nodeVersion = readFileSync(path.join(repoRoot, '.node-version'), 'utf8').trim();
+const nvmVersion = readFileSync(path.join(repoRoot, '.nvmrc'), 'utf8').trim();
+const npmConfig = readFileSync(path.join(repoRoot, '.npmrc'), 'utf8');
 const prePushHook = readFileSync(path.join(repoRoot, '.husky/pre-push'), 'utf8');
 const ciWorkflow = readFileSync(path.join(repoRoot, '.github/workflows/ci.yml'), 'utf8');
 const e2eWorkflow = readFileSync(path.join(repoRoot, '.github/workflows/e2e.yml'), 'utf8');
+const securityWorkflow = readFileSync(
+  path.join(repoRoot, '.github/workflows/security.yml'),
+  'utf8',
+);
+const sortPackageNames = (left: string, right: string): number => left.localeCompare(right);
 
 describe('toolchain contract', () => {
   it('pins the stable TypeScript 7 compiler and the TypeScript 6 compatibility API', () => {
     expect(packageManifest.devDependencies['@typescript/native']).toBe('npm:typescript@^7.0.2');
     expect(packageManifest.devDependencies['typescript']).toBe(
       'npm:@typescript/typescript6@^6.0.2',
+    );
+  });
+
+  it('pins one warning-free Node and npm toolchain locally and in every workflow', () => {
+    expect(packageManifest.engines).toEqual({
+      node: '>=24.15.0 <25',
+      npm: '>=12.0.1 <13',
+    });
+    expect(packageManifest.packageManager).toBe('npm@12.0.1');
+    expect(nodeVersion).toBe('24.18.0');
+    expect(nvmVersion).toBe(nodeVersion);
+    for (const workflow of [ciWorkflow, e2eWorkflow, securityWorkflow]) {
+      expect(workflow).toContain('node-version: 24.18.0');
+      expect(workflow).toContain('corepack npm ci');
+    }
+    expect(prePushHook).toContain('corepack npm run gate:push');
+    expect(packageManifest.scripts['gate:push']).not.toMatch(/(^|&& )npm /u);
+    expect(packageManifest.scripts['security:audit']).toMatch(/^corepack npm /u);
+    expect(packageManifest.allowScripts).toEqual({
+      '@parcel/watcher@2.5.6': true,
+      '@swc/core@1.15.43': true,
+      msw: false,
+      'unrs-resolver@1.12.2': true,
+    });
+    expect(packageManifest.overrides['@swc/helpers']).toBe('0.5.23');
+    expect(npmConfig).toContain('engine-strict=true');
+    expect(npmConfig).toContain('strict-allow-scripts=true');
+  });
+
+  it('fails dependency drift checks while documenting peer-blocked ESLint majors', () => {
+    expect(packageManifest.scripts['deps:check']).toContain('--errorLevel 2');
+    expect(packageManifest.scripts['deps:check:all']).toBe('npm-check-updates --reject "/(?!)"');
+    expect(ncuConfig.reject.toSorted(sortPackageNames)).toEqual(
+      ['@eslint/js', 'eslint', 'eslint-plugin-unicorn'].toSorted(sortPackageNames),
     );
   });
 

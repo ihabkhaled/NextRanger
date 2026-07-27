@@ -5,9 +5,11 @@ Versions below are the exact ranges declared today; `npm run deps:check` reports
 Raw vendor imports outside the owner wrapper are an ESLint error — see
 [context/package-boundaries.md](./package-boundaries.md).
 
-Node `>=22.0.0`, npm `>=10.0.0` (`packageManager: npm@10.7.0`). Scoped `overrides` keep
-`postcss`, `brace-expansion`, `fast-uri`, and Next's optional `sharp` dependency on patched
-versions until their owners' compatible ranges catch up. See
+Node `24.18.0` (`.nvmrc` / `.node-version`), npm `12.0.1` through Corepack
+(`packageManager: npm@12.0.1`). Pinned `allowScripts` entries permit only reviewed native build
+steps, explicitly deny MSW's nonessential postinstall, and make new install scripts fail closed.
+Scoped `overrides` keep `postcss`, `brace-expansion`, `fast-uri`, `@swc/helpers`, and Next's
+optional `sharp` dependency on compatible patched versions until their owners' ranges catch up. See
 [memory/security-decisions.md](../memory/security-decisions.md).
 
 ## Runtime dependencies
@@ -43,10 +45,10 @@ versions until their owners' compatible ranges catch up. See
 | `msw`                                                  | ^2.15.0                    | Network mocking; owner is `src/tests/msw` (test-only vendor).                                                                                                                                                                                                                                         |
 | `@playwright/test` + `@axe-core/playwright`            | ^1.62.0 / ^4.12.1          | E2E (`test:e2e`), accessibility (`test:a11y`), visual (`test:visual`) suites.                                                                                                                                                                                                                         |
 | `husky` + `lint-staged` + `@commitlint/*`              | ^9.1.7 / ^17.2.0 / ^21.2.1 | Hooks: pre-commit lint-staged, commit-msg conventional commits, pre-push `gate:push`.                                                                                                                                                                                                                 |
-| `knip`                                                 | ^5.88.1                    | Dead-code gate (`quality:dead-code`).                                                                                                                                                                                                                                                                 |
-| `dependency-cruiser`                                   | ^18.1.0                    | Node 22-compatible circular/unresolvable dependency gate (`quality:circular`).                                                                                                                                                                                                                        |
+| `knip`                                                 | ^6.29.0                    | Dead-code gate (`quality:dead-code`).                                                                                                                                                                                                                                                                 |
+| `dependency-cruiser`                                   | ^18.1.0                    | Circular/unresolvable dependency gate (`quality:circular`).                                                                                                                                                                                                                                           |
 | `prettier`                                             | ^3.9.6                     | Formatting (`format`, `format:check`).                                                                                                                                                                                                                                                                |
-| `npm-check-updates`                                    | ^22.2.9                    | Dependency currency (`deps:check` / `deps:upgrade`).                                                                                                                                                                                                                                                  |
+| `npm-check-updates`                                    | ^23.0.0                    | Compatible drift (`deps:check`) and all-major visibility (`deps:check:all`).                                                                                                                                                                                                                          |
 | Trivy (external binary)                                | —                          | `security:scan`: vuln + secret + misconfig, exit-code 1 on any severity.                                                                                                                                                                                                                              |
 
 ## Script map

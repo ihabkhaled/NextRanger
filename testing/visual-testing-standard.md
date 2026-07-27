@@ -71,8 +71,8 @@ Because baselines are per-OS, a machine that has never run the visual suite has 
 its platform. Install Chromium, then create the current-OS baselines explicitly:
 
 ```sh
-npm run test:e2e:install   # npx playwright install chromium
-npm run test:e2e:baseline  # npx playwright test src/tests/visual --update-snapshots=all
+npm run test:e2e:install   # playwright install chromium
+npm run test:e2e:baseline  # playwright test src/tests/visual --update-snapshots=all
 ```
 
 This command is intentionally destructive for current-OS snapshots: it refreshes all of them.

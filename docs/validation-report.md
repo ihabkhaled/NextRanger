@@ -62,6 +62,6 @@ modules/shared.
 - The e2e web server runs on dedicated port 3100; the gateway serves fixtures
   (`SERVER_API_MOCKING=enabled`) so no backend is required.
 - `npm run validate` chains every gate and is the single handoff command. It requires the two
-  one-time, `npx`-backed Playwright steps first: `npm run test:e2e:install` (Chromium binary) and
+  one-time local Playwright steps first: `npm run test:e2e:install` (Chromium binary) and
   `npm run test:e2e:baseline` only when an intentional visual change requires reviewed,
   current-OS baselines.

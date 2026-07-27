@@ -24,6 +24,18 @@ package won** over its alternatives. Propose a replacement only with a new dated
   react-i18next is client-centric and would force provider gymnastics in server components.
   Full rationale: [i18n-rtl-decisions.md](./i18n-rtl-decisions.md).
 
+## ESLint 9 compatibility line
+
+- **Decision:** stay on the latest ESLint 9, `@eslint/js` 9, and Unicorn 65 releases until every
+  configured lint plugin declares ESLint 10 support.
+- **Current blockers:** the latest `eslint-plugin-react` peer range ends at ESLint 9.7 and the
+  latest `eslint-plugin-jsx-a11y` range ends at ESLint 9. Unicorn 66+ requires ESLint 10.4+.
+- **Why:** forcing peer-invalid majors would make `npm ci` non-reproducible or require
+  `--legacy-peer-deps`, both worse than a visible compatibility hold. `.ncurc.json` excludes only
+  these three coupled majors from `deps:check`; `deps:check:all` keeps them visible for review.
+- **Exit condition:** remove the exclusions and upgrade the three packages together when both
+  blocking plugins publish compatible peer ranges and the zero-warning lint gate passes.
+
 ## sonner over react-hot-toast
 
 - **Decision:** `sonner`, wrapped at `src/packages/toast` (`showToast`, `ToastType`, `AppToaster`).
@@ -73,9 +85,16 @@ package won** over its alternatives. Propose a replacement only with a new dated
 
 ## npm over pnpm / yarn
 
-- **Decision:** npm (`packageManager: npm@10.7.0`, `engines.npm >= 10`).
-- **Why:** zero-install tooling on every Node >= 22 machine and CI image; `overrides` handles the
+- **Decision:** npm 12.0.1 through Corepack on pinned Node 24.18.0.
+- **Why:** Corepack honors `packageManager` without a floating global CLI; `overrides` handles the
   transitive-vulnerability workflow we actually use (see the postcss case in
   [known-pitfalls.md](./known-pitfalls.md)); no workspace features are needed in a single-app
   repo. pnpm's strictness benefits are already delivered by knip, `no-raw-package-imports`, and
   the lockfile-committed policy — a second package manager would only add onboarding friction.
+- **Install-script policy:** `.npmrc` enables `strict-allow-scripts`. `package.json` approves only
+  the exact native build versions required by Parcel, SWC, and the resolver, while explicitly
+  denying MSW's nonessential postinstall. Any new script-bearing dependency fails installation
+  until its script is reviewed and pinned.
+- **SWC helper override:** `@swc/helpers` 0.5.23 satisfies `@swc/core`'s `>=0.5.17` optional peer
+  while remaining compatible with Next. Without the override, npm 12 reports the otherwise
+  deduplicated 0.5.15 graph as invalid.

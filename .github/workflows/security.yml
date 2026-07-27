@@ -16,14 +16,14 @@ jobs:
 
       - uses: actions/setup-node@v7
         with:
-          node-version: 22
+          node-version: 24.18.0
           cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        run: corepack npm ci
 
       - name: Audit (zero unhandled vulnerabilities policy)
-        run: npm run security:audit
+        run: corepack npm run security:audit
 
   trivy:
     name: Trivy scan (vuln, secret, misconfig)

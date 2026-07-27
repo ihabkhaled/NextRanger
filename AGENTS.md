@@ -85,7 +85,7 @@ npm run build       # next build --turbopack
 Aggregates: `npm run quality` (localized asset drift + lint + typecheck + coverage + build +
 dead code + circular dependencies), `npm run gate:push` (format + quality + production audit),
 and `npm run validate` (push gate + e2e + Trivy).
-Run the two one-time, `npx`-backed Playwright steps once per environment before the first
+Run the two one-time, local Playwright steps once per environment before the first
 `npm run validate`: `npm run test:e2e:install` (downloads the Chromium binary) and
 `npm run test:e2e:baseline` (refreshes every current-OS visual snapshot; run only for an
 intentional UI change and review each image).
