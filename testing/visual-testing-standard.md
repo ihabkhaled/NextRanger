@@ -68,28 +68,23 @@ animations via reduced-motion emulation for the latter).
 ## First run on a new OS (fresh environment)
 
 Because baselines are per-OS, a machine that has never run the visual suite has no baseline for
-its own platform yet. A plain `npm run test:e2e` (or `npm run validate`) would then _write_ the
-missing baseline and _fail that first run_, so only a re-run is green — this is exactly what a
-first `validate` on macOS/darwin hits when only Linux/Windows baselines are committed. To make
-the first `validate` green in a single pass, seed the missing baselines once with the repeatable,
-`npx`-backed scripts:
+its platform. Install Chromium, then create the current-OS baselines explicitly:
 
 ```sh
 npm run test:e2e:install   # npx playwright install chromium
-npm run test:e2e:baseline  # npx playwright test src/tests/visual --update-snapshots=missing
+npm run test:e2e:baseline  # npx playwright test src/tests/visual --update-snapshots=all
 ```
 
-`test:e2e:baseline` uses `--update-snapshots=missing`, so it only writes baselines that do not
-exist yet and never overwrites a committed one — the same policy CI applies in
-`.github/workflows/e2e.yml`. These local per-OS baselines (e.g. `*-chromium-darwin.png`) speed up
-local iteration only; the committed **Linux** baselines remain the source of truth.
+This command is intentionally destructive for current-OS snapshots: it refreshes all of them.
+Review every resulting image and diff before committing. CI never updates snapshots; it only
+compares the rendered application with the committed **Linux** source of truth.
 
 ## Update flow
 
 1. Make the intentional UI change.
 2. Run `npm run test:visual` and inspect the HTML report diffs — confirm every diff is the
    change you intended and nothing else.
-3. Regenerate: `npm run test:visual -- --update-snapshots` on the CI platform.
+3. Regenerate: `npm run test:e2e:baseline` on the CI platform or matching Linux container.
 4. Commit the updated baselines **in the same PR as the UI change**, and call out the visual
    diff in the PR description so reviewers judge the screenshots, not just the code.
 

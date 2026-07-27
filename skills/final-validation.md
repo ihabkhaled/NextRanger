@@ -19,7 +19,7 @@ npm run typecheck           # 3. stable TypeScript 7 over tsconfig.app/test/node
 npm run test:coverage       # 4. Vitest + thresholds: 95% global, 100% pure-logic layers
 npm run build               # 5. next build --turbopack (typedRoutes, env validation)
 npm run test:e2e:install    # 6. one-time Playwright Chromium download (npx playwright install chromium)
-npm run test:e2e:baseline   # 7. one-time per-OS visual baselines (writes only missing; safe)
+npm run test:e2e:baseline   # 7. only after reviewing an intentional visual change
 npm run test:e2e            # 8. Playwright e2e (builds + starts the app itself)
 npm run security:audit      # 9. npm audit --audit-level=low
 npm run security:scan       # 10. trivy vuln + secret + misconfig, all severities
@@ -30,9 +30,8 @@ npm run quality:circular    # 12. dependency-cruiser over src
 Shortcut: `npm run validate` chains the gate steps (via `quality` + e2e + security + dead-code +
 circular). It does NOT run the two one-time Playwright steps, so on a fresh environment run them
 yourself first, in order: `npm install`, then `npm run test:e2e:install` (npx-backed Chromium
-download) and `npm run test:e2e:baseline` (writes only the missing per-OS visual baselines).
-Doing both first makes the first `validate` green in a single pass — otherwise the first visual
-run writes the missing per-platform baselines and fails once, and only the re-run is green. Add
+download). Run `npm run test:e2e:baseline` only to approve an intentional visual change; it
+refreshes every current-OS snapshot and therefore requires image-by-image review. Add
 `npm run test:a11y` / `npm run test:visual` whenever the change touched any UI.
 
 ## Forbidden-pattern greps

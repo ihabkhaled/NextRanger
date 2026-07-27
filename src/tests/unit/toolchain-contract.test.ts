@@ -14,6 +14,7 @@ const packageManifest = JSON.parse(
 ) as PackageManifest;
 const prePushHook = readFileSync(path.join(repoRoot, '.husky/pre-push'), 'utf8');
 const ciWorkflow = readFileSync(path.join(repoRoot, '.github/workflows/ci.yml'), 'utf8');
+const e2eWorkflow = readFileSync(path.join(repoRoot, '.github/workflows/e2e.yml'), 'utf8');
 
 describe('toolchain contract', () => {
   it('pins the stable TypeScript 7 compiler and the TypeScript 6 compatibility API', () => {
@@ -46,6 +47,12 @@ describe('toolchain contract', () => {
     expect(packageManifest.scripts['quality']).toContain('quality:circular');
     expect(prePushHook).toContain('npm run gate:push');
     expect(ciWorkflow).toContain('npm run gate:push');
+  });
+
+  it('keeps visual baseline updates explicit and makes CI compare-only', () => {
+    expect(packageManifest.scripts['test:e2e:baseline']).toContain('--update-snapshots=all');
+    expect(e2eWorkflow).not.toContain('--update-snapshots');
+    expect(e2eWorkflow).toContain('npm run test:visual');
   });
 
   it('rejects warning-level ESLint configuration', () => {

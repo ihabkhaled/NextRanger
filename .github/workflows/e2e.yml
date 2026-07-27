@@ -30,10 +30,8 @@ jobs:
       - name: E2E and accessibility suites
         run: npx playwright test src/tests/e2e src/tests/accessibility
 
-      # Visual baselines are per-platform; on a fresh runner the missing-baseline
-      # policy writes them (testing/visual-testing-standard.md documents the flow).
       - name: Visual suite
-        run: npx playwright test src/tests/visual --update-snapshots=missing
+        run: npm run test:visual
 
       - name: Upload Playwright report
         if: always()

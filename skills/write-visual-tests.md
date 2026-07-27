@@ -44,10 +44,10 @@ defined in [testing/visual-testing-standard.md](../testing/visual-testing-standa
    `STORAGE_KEYS.uiPreferences` (`'snr.ui-preferences.v1'`), so it survives the navigation.
 5. Wait for stability before every screenshot: `await page.waitForLoadState('networkidle')` and,
    where content streams in, an explicit `expect(locator).toBeVisible()` on the last element.
-6. Generate baselines for new snapshots only:
+6. After inspecting the expected missing-snapshot failure, generate current-OS baselines:
 
    ```sh
-   npx playwright test src/tests/visual --update-snapshots=missing
+   npm run test:e2e:baseline
    ```
 
    Then run `npm run test:visual` again and confirm it passes with zero diffs.
@@ -57,13 +57,12 @@ defined in [testing/visual-testing-standard.md](../testing/visual-testing-standa
 - Playwright suffixes snapshot files per platform (`-chromium-win32.png`, `-chromium-linux.png`,
   ...). CI (`.github/workflows/e2e.yml`) runs on Linux, so **Linux baselines are the source of
   truth** and are the ones committed. Local Windows/macOS baselines exist only to speed up local
-  iteration; regenerate missing local baselines with `--update-snapshots=missing`.
+  iteration; refresh them explicitly with `npm run test:e2e:baseline`.
 - Never run a bare `--update-snapshots` to make a red suite green. A diff is a finding: either
   the UI change is intended (update the specific baseline and say so in the PR) or it is a
   regression (fix the code). Blanket baseline refreshes MUST be their own commit with the visual
   change described.
-- `--update-snapshots=missing` is always safe: it writes only baselines that do not exist yet and
-  never overwrites a committed one.
+- CI MUST be compare-only. It never passes an `--update-snapshots` flag.
 
 ## Done when
 

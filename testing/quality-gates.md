@@ -40,12 +40,11 @@ the hook.
 - `npm run validate` = `quality` + e2e + security:audit + security:scan + dead-code + circular.
   This is the full release gate — the same bar CI applies across all three workflows, runnable
   on one machine. The [skills/final-validation.md](../skills/final-validation.md) skill walks
-  through it. On a fresh environment run the two one-time, `npx`-backed Playwright steps before
-  the first `validate`: `npm run test:e2e:install` (Chromium) and `npm run test:e2e:baseline`
-  (writes only the missing per-OS visual baselines). Doing both first makes the first `validate`
-  green in one pass; skip the baseline step and the first visual run writes the missing
-  per-platform baselines and fails once, with only the re-run green. All Playwright npm scripts
-  use `npx playwright …`, matching the manual agent commands.
+  through it. On a fresh platform, install Chromium with `npm run test:e2e:install`. Only when
+  intentionally establishing or reviewing current-OS screenshots, run
+  `npm run test:e2e:baseline`; it refreshes all current-OS baselines. CI is compare-only and
+  fails on missing or changed Linux baselines. All Playwright npm scripts use
+  `npx playwright …`, matching the manual agent commands.
 
 ## Merge and release
 

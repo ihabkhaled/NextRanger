@@ -43,7 +43,7 @@ npm run typecheck:compat # TypeScript 6 API compatibility for ESLint/tooling
 npm run test:coverage    # Vitest + coverage thresholds
 npm run build            # next build --turbopack
 npm run test:e2e:install # one-time Playwright browser install (chromium for this project)
-npm run test:e2e:baseline # one-time per-OS visual baseline write (safe; only fills missing)
+npm run test:e2e:baseline # explicit, reviewed refresh of every current-OS baseline
 npm run test:e2e         # Playwright (builds and starts the prod server itself)
 npm run test:a11y        # axe + keyboard suites
 npm run test:visual      # screenshot baselines
@@ -59,17 +59,16 @@ npm run validate         # everything above, in order
 >
 > ```bash
 > npm run test:e2e:install   # npx playwright install chromium
-> npm run test:e2e:baseline  # npx playwright test src/tests/visual --update-snapshots=missing
+> npm run test:e2e:baseline  # npx playwright test src/tests/visual --update-snapshots=all
 > ```
 >
 > `npm run validate` expects the browser to be present; the install is not part of
 > `validate` to keep that command fast and repeatable in CI. Visual baselines are
-> **per-OS** (`*-chromium-darwin.png`, `*-chromium-linux.png`, …). On a fresh OS the
-> baselines for your platform do not exist yet, so a plain `npm run test:e2e` (or
-> `validate`) would write them and fail on that first run. `npm run test:e2e:baseline`
-> writes only the missing baselines and never overwrites a committed one, so the
-> subsequent `validate` is green in a single pass. The committed Linux baselines remain
-> the source of truth (see [testing/visual-testing-standard.md](testing/visual-testing-standard.md)).
+> **per-OS** (`*-chromium-linux.png`, `*-chromium-win32.png`, …). CI is compare-only and
+> fails when a Linux baseline is missing or changed. Run `test:e2e:baseline` only after
+> inspecting an intentional visual diff; it refreshes every baseline for the current OS.
+> The committed Linux baselines remain the source of truth (see
+> [testing/visual-testing-standard.md](testing/visual-testing-standard.md)).
 > Every Playwright npm script is `npx playwright …` backed, matching the manual commands agents
 > run during validation.
 
