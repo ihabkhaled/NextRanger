@@ -20,9 +20,8 @@ interface NcuConfig {
 }
 
 const repoRoot = path.resolve(import.meta.dirname, '../../..');
-const packageManifest = JSON.parse(
-  readFileSync(path.join(repoRoot, 'package.json'), 'utf8'),
-) as PackageManifest;
+const packageManifestSource = readFileSync(path.join(repoRoot, 'package.json'), 'utf8');
+const packageManifest = JSON.parse(packageManifestSource) as PackageManifest;
 const ncuConfig = JSON.parse(readFileSync(path.join(repoRoot, '.ncurc.json'), 'utf8')) as NcuConfig;
 const nodeVersion = readFileSync(path.join(repoRoot, '.node-version'), 'utf8').trim();
 const nvmVersion = readFileSync(path.join(repoRoot, '.nvmrc'), 'utf8').trim();
@@ -46,6 +45,7 @@ describe('toolchain contract', () => {
   });
 
   it('pins one warning-free Node and npm toolchain locally and in every workflow', () => {
+    expect(packageManifestSource.match(/"allowScripts"/gu) ?? []).toHaveLength(1);
     expect(packageManifest.engines).toEqual({
       node: '>=24.15.0 <25',
       npm: '>=12.0.1 <13',
