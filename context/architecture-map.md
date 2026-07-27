@@ -12,14 +12,17 @@ human-readable twin.
 src/
 ├── proxy.ts                     # Next 16 proxy: per-request nonce CSP (script-src 'self' 'nonce-…' 'strict-dynamic')
 ├── app/                         # Routes, layouts, route handlers ONLY — no business logic
-│   ├── (auth)/login/            # Login route (route group: auth screens)
-│   ├── (dashboard)/articles/    # Articles list route
-│   ├── (dashboard)/settings/    # UI preferences route
-│   ├── (public)/                # Public landing route
-│   ├── (workbench)/workbench/   # Living primitive showcase (ADR 0002 — replaces Storybook)
+│   ├── (redirect)/              # Root redirect to the default locale
+│   ├── [locale]/                # Every page URL is locale-prefixed
+│   │   ├── (auth)/login/        # Login route
+│   │   ├── (dashboard)/         # Articles and settings
+│   │   ├── (public)/            # Home, about, contact, FAQ, features
+│   │   ├── (workbench)/         # Living primitive showcase
+│   │   └── offline/             # PWA offline fallback
 │   ├── api/gateway/[...path]/   # BFF gateway route → gateway-handler.ts (mock fixtures or upstream proxy)
 │   ├── api/health/              # Health route → buildHealthReport service
-│   ├── layout.tsx, providers.tsx, error.tsx, global-error.tsx, loading.tsx, not-found.tsx
+│   ├── providers.tsx, error.tsx, global-error.tsx, not-found.tsx
+│   ├── manifest.ts, robots.ts, sitemap.ts
 │   └── styles.css               # Tailwind v4 CSS-first tokens; dark theme via [data-theme='dark']
 ├── modules/                     # Feature modules — cross-module imports ONLY via @/modules/<feature> (index.ts)
 │   ├── articles/                # Flagship reference module: full layer anatomy
@@ -38,6 +41,9 @@ src/
 │   │   └── index.ts             # Public surface — the only legal cross-module entry point
 │   ├── auth/                    # Login form, useAuthStore session snapshot (cookie-session, token-free)
 │   ├── health/                  # buildHealthReport service behind /api/health
+│   ├── marketing/               # Localized public pages, contact, SEO schema
+│   ├── pwa/                     # Service-worker registration
+│   ├── site-navigation/         # Navbar, sidebar, footer, breadcrumbs
 │   └── ui-preferences/          # Theme/direction/sidebar store + hydration/persistence/DOM-sync effects
 ├── shared/                      # Generic building blocks — MUST never import from modules or app
 │   ├── accessibility/           # Landmark ids, skip-link helpers

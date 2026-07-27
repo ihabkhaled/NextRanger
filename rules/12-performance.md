@@ -6,7 +6,7 @@ client bundle small and rendering work bounded by default.
 ## Server components first
 
 - Every route and component is a React Server Component unless it demonstrably needs browser
-  interactivity. `src/app` pages (e.g. [src/app/(dashboard)/articles/page.tsx](<../src/app/(dashboard)/articles/page.tsx>))
+  interactivity. `src/app` pages (e.g. [src/app/[locale]/(dashboard)/articles/page.tsx](<../src/app/[locale]/(dashboard)/articles/page.tsx>))
   MUST stay server components that compose containers.
 - `'use client'` is a justified exception, never a default. Every client file MUST carry a
   `// client-boundary-reason: …` comment, enforced by
@@ -18,7 +18,8 @@ client bundle small and rendering work bounded by default.
 ## Route-level loading boundaries
 
 Every route group MUST have a loading boundary so navigation streams immediately —
-[src/app/loading.tsx](../src/app/loading.tsx) is the root example, built from `Spinner`/`Skeleton`
+[src/app/[locale]/loading.tsx](../src/app/[locale]/loading.tsx) is the locale-shell example,
+built from `Spinner`/`Skeleton`
 primitives in [src/packages/ui-primitives](../src/packages/ui-primitives). Never block a whole page
 on one slow query when a skeleton can render first.
 

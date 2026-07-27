@@ -39,7 +39,7 @@ settled trade-off or re-hits a known failure mode.
 | [testing-strategy.md](./testing-strategy.md)                     | Why the coverage bars, MSW-everywhere, and test-type split are what they are.  |
 | [security-decisions.md](./security-decisions.md)                 | CSP, session, BFF, and vulnerability-policy decisions.                         |
 | [performance-decisions.md](./performance-decisions.md)           | Server-first rendering, memoization stance, virtualization and cache defaults. |
-| [i18n-rtl-decisions.md](./i18n-rtl-decisions.md)                 | Cookie-based locale, en/ar proof pair, logical properties, plurals.            |
+| [i18n-rtl-decisions.md](./i18n-rtl-decisions.md)                 | URL locales, 14-catalog contract, RTL proof locales, logical properties.       |
 | [accessibility-decisions.md](./accessibility-decisions.md)       | Lint preset, axe fail bar, skip link, toggle and focus patterns.               |
 | [ui-design-system-decisions.md](./ui-design-system-decisions.md) | Token architecture, variants-as-constants, primitive inventory.                |
 

@@ -26,7 +26,7 @@ fixing release.
 
 - **Severity:** <Sev-3 | Sev-4>
 - **First seen in:** <release version> — **Reported via:** <support ticket / smoke test / e2e>
-- **Affected area:** <route (e.g. /articles), module, locale (en/ar/both), theme>
+- **Affected area:** <locale-prefixed route, module, locale(s), theme>
 - **Symptom:** <exactly what the user sees, quoting visible copy so Tier 1 can match reports>
 - **Conditions:** <when it happens: locale, viewport, data shape, gateway mode>
 - **Workaround:** <steps Tier 1 can give a user, or "none">

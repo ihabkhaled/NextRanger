@@ -8,11 +8,12 @@ rule blocks you, the code is in the wrong layer — move it, do not disable the 
 
 ## Read first, in this order
 
-1. [context/architecture-map.md](context/architecture-map.md) — where everything lives.
+1. [.ai/BOOTSTRAP.md](.ai/BOOTSTRAP.md) — minimal-context loading protocol.
 2. [context/ai-task-card.md](context/ai-task-card.md) — the low-token task router.
-3. [rules/00-non-negotiable-rules.md](rules/00-non-negotiable-rules.md) — the law.
-4. The rule + skill matching your task (routing table below).
-5. [memory/known-pitfalls.md](memory/known-pitfalls.md) — mistakes already made once.
+3. [context/architecture-map.md](context/architecture-map.md) — where everything lives.
+4. [rules/00-non-negotiable-rules.md](rules/00-non-negotiable-rules.md) — the law.
+5. The rule + skill matching your task (routing table below).
+6. [memory/known-pitfalls.md](memory/known-pitfalls.md) — mistakes already made once.
 
 ## Non-negotiables digest
 
@@ -28,9 +29,11 @@ rule blocks you, the code is in the wrong layer — move it, do not disable the 
   (guarded by `server-only`). No browser globals outside `src/packages/browser` / `src/packages/storage`.
 - Query keys come only from builder files (e.g. `src/modules/articles/queries/article-query-keys.ts`).
   Use `useAppQuery` / `useAppMutation` from `@/packages/query`, never raw `@tanstack/react-query`.
-- Every user-visible string is a next-intl message key with `en` **and** `ar` entries.
+- Every user-visible string is a next-intl message key present in every catalog named by
+  `SUPPORTED_LOCALES`.
   The only exception is `FALLBACK_ERROR_COPY` in the global error boundary.
-- Routes live only in `src/app`; navigate via `ROUTE_PATHS`
+- Page routes live in `src/app/[locale]` and APIs in `src/app/api`; navigate via locale-free `ROUTE_PATHS` plus
+  `buildLocalizedPath` / `buildLocalizedLocation`
   (`src/shared/constants/route-paths.constants.ts`); API calls go through `httpClient` +
   `buildGatewayPath` to the same-origin BFF gateway.
 - Lint runs with `--max-warnings=0`. Any `eslint-disable` requires a documented exception
@@ -79,13 +82,14 @@ npm run test        # Vitest (npm run test:coverage for the coverage gate)
 npm run build       # next build --turbopack
 ```
 
-Aggregates: `npm run quality` (lint + typecheck + coverage + build) and `npm run validate`
-(quality + e2e + `security:audit` + `security:scan` + `quality:dead-code` + `quality:circular`).
+Aggregates: `npm run quality` (localized asset drift + lint + typecheck + coverage + build +
+dead code + circular dependencies), `npm run gate:push` (format + quality + production audit),
+and `npm run validate` (push gate + e2e + Trivy).
 Run the two one-time, `npx`-backed Playwright steps once per environment before the first
 `npm run validate`: `npm run test:e2e:install` (downloads the Chromium binary) and
-`npm run test:e2e:baseline` (writes only the missing per-OS visual baselines, so the first
-`validate` is green in one pass instead of failing once while it writes them).
-The pre-push hook (`.husky/pre-push`) already runs typecheck + test; do not push red.
+`npm run test:e2e:baseline` (refreshes every current-OS visual snapshot; run only for an
+intentional UI change and review each image).
+The pre-push hook (`.husky/pre-push`) runs `npm run gate:push`; do not push red.
 Commit each coherent behavior, design, test, or documentation concern separately with a
 conventional message after its focused gate passes, then push the authorized branch promptly.
 Never bypass hooks, mix unrelated concerns, or defer all publication to one final mega-commit.

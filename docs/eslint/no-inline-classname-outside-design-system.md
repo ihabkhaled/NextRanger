@@ -74,7 +74,7 @@ are always exempt regardless of location.
 ## When you hit it
 
 1. First check whether a primitive or existing variant already covers the need — browse the
-   living showcase at `/workbench` (`src/app/(workbench)/workbench/page.tsx`, see
+   living showcase at `/<locale>/workbench` (`src/app/[locale]/(workbench)/workbench/page.tsx`, see
    [architecture/adrs/0002-component-workbench-over-storybook.md](../../architecture/adrs/0002-component-workbench-over-storybook.md)).
 2. Otherwise move the classes into the module's `*-style.constants.ts` or a `*.variants.ts`
    file next to the consumer ([skills/create-component.md](../../skills/create-component.md)).

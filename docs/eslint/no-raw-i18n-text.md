@@ -22,9 +22,9 @@ component as a prop.
 ## Why
 
 One hardcoded `"Retry"` in a component is invisible until the Arabic locale ships with a
-half-translated screen. Because this repo is bilingual (en + ar, RTL) by contract, untranslated
-copy is a correctness bug, not a polish issue. Forcing copy through message keys in
-`src/packages/i18n/messages/{en,ar}.json` keeps both catalogs complete and reviewable, and
+half-translated screen. Because this repo ships every `SUPPORTED_LOCALES` catalog and two RTL
+languages, untranslated copy is a correctness bug, not a polish issue. Forcing copy through
+message keys in `src/packages/i18n/messages/` keeps every catalog complete and reviewable, and
 keeps components locale-agnostic. See [rules/14-i18n-rtl.md](../../rules/14-i18n-rtl.md).
 
 ## Violation

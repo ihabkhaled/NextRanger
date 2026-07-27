@@ -32,7 +32,8 @@
 
 ## Localization requirements
 
-- **Locales:** English and Arabic are both mandatory (SUPPORTED_LOCALES in src/packages/i18n). <Note any copy that is hard to translate, pluralization, or number/date formats.>
+- **Locales:** every `SUPPORTED_LOCALES` catalog is mandatory; explicitly review Arabic and Persian
+  RTL plus affected plural, date, number, and non-Latin shaping behavior.
 - **RTL:** <any layout that needs explicit RTL attention beyond the automatic dir attribute flip>
 
 ## Non-functional requirements

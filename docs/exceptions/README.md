@@ -57,6 +57,16 @@ The suppression site in code MUST reference its exception (a comment naming the 
 - **Reason**: npm can install the patched package at multiple nested paths; literal filenames cannot cover a dependency tree that legitimately changes.
 - **Mitigation**: traversal is confined to process.cwd()/node_modules, the exact package name and version are verified, the source shape is checked before writing, and installation fails closed. See [EXC-0005](./EXC-0005-brace-expansion-installer-paths.md).
 
+### EXC-0006 — localized social-asset filesystem paths
+
+- **Where**: `support/social-*.mjs` via the scoped rule override in
+  `eslint/security.config.mjs`.
+- **Reason**: deterministic generators must read locale/weight-derived font and PNG paths; the
+  security rule cannot prove those enumerations are closed.
+- **Mitigation**: paths are confined to fixed repository roots, locale/weight values come from
+  validated closed sets, and committed hash manifests fail the quality gate on drift. See
+  [EXC-0006](./EXC-0006-social-asset-filesystem.md).
+
 ## Lifecycle
 
 1. File the doc from the template with a new `EXC-NNNN` id, get architect approval in the same PR as the suppression.

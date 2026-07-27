@@ -45,7 +45,8 @@
 ## i18n message keys
 
 - **Namespace:** <existing entry in I18N_NAMESPACES or a new one added to src/shared/i18n/i18n-namespaces.constants.ts>
-- **Keys:** <key list from stage 03's copy inventory; each lands in both src/packages/i18n/messages/en.json and ar.json via skills/add-i18n-message-key.md>
+- **Keys:** <stage 03 copy inventory; each key lands in every SUPPORTED_LOCALES catalog via
+  skills/add-i18n-message-key.md>
 - **Error keys:** <new entries in ERROR_MESSAGE_KEYS (src/shared/errors/error-keys.constants.ts) if the feature has distinct failure modes>
 
 ## Environment and configuration

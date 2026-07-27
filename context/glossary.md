@@ -70,6 +70,6 @@ undocumented disables fail review.
 and performs the `.map()` over child elements. See
 [rules/02-components-and-containers.md](../rules/02-components-and-containers.md).
 
-**Workbench** — The `/workbench` route (`src/app/(workbench)/workbench/page.tsx`), the living
+**Workbench** — The `/<locale>/workbench` route (`src/app/[locale]/(workbench)/workbench/page.tsx`), the living
 showcase of design-system primitives adopted instead of Storybook —
 [architecture/adrs/0002-component-workbench-over-storybook.md](../architecture/adrs/0002-component-workbench-over-storybook.md).

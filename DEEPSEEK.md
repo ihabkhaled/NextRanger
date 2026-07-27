@@ -8,19 +8,19 @@ A production-grade starter that teams clone for enterprise frontend work. A real
 
 ## Stack
 
-Next.js 16 App Router (Turbopack, typedRoutes) · React 19 · TypeScript 5.9 strict (tsgo) · Tailwind v4 (CSS-first tokens) · TanStack Query v5 · Zustand v5 · Zod v4 · next-intl (en/ar, RTL) · Vitest 4 + RTL · Playwright · MSW v2 · npm · Node >= 22.
+Next.js 16 App Router (Turbopack, typedRoutes) · React 19 · TypeScript 7 strict · Tailwind v4 (CSS-first tokens) · TanStack Query v5 · Zustand v5 · Zod v4 · next-intl (14 URL locales, RTL) · Vitest 4 + RTL · Playwright · MSW v2 · npm · Node >= 22.
 
 ## Commands
 
 - `npm run dev` / `build` / `start`
 - `npm run lint` (`--max-warnings=0`) · `npm run lint:fix` · `npm run format`
-- `npm run typecheck` (tsgo) · `npm run typecheck:tsc` (fallback)
+- `npm run typecheck` (TypeScript 7) · `npm run typecheck:compat` (TypeScript 6 API)
 - `npm run test` / `test:watch` / `test:coverage`
 - `npm run test:e2e` / `test:a11y` / `test:visual`
 - `npm run test:e2e:install` (one-time Playwright Chromium download)
-- `npm run test:e2e:baseline` (one-time per-OS visual baselines — writes only missing)
-- `npm run quality` (lint + typecheck + coverage + build)
-- `npm run validate` (quality + e2e + security scans + dead code + circular deps)
+- `npm run test:e2e:baseline` (refreshes all current-OS baselines; review every image)
+- `npm run gate:push` (format + full quality + production dependency audit)
+- `npm run validate` (push gate + e2e + Trivy)
 
 ## Architecture layers
 
@@ -118,6 +118,6 @@ Use `npm run quality` and `npm run validate` for full gates. Never push red.
 
 1. Read the relevant skill (e.g., [skills/create-module.md](skills/create-module.md)).
 2. Plan tests first: unit, integration, e2e/a11y as appropriate.
-3. Scaffold module layers, `index.ts`, route + `ROUTE_PATHS`, message keys in both `en.json` and `ar.json`, gateway mocks if needed.
+3. Scaffold module layers, `index.ts`, locale-prefixed route + `ROUTE_PATHS`, message keys in every supported catalog, and gateway mocks if needed.
 4. Implement bottom-up: types/enums/constants → schemas → gateway → mappers → services → queries → hooks → containers → components.
 5. Run the full gates: `npm run quality` or `npm run validate` for route/user-flow changes.

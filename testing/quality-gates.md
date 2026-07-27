@@ -28,7 +28,7 @@ overrides, no "merge now, fix later". Exceptions follow
 
 - `.husky/pre-commit` → `lint-staged` (format + lint on staged files only, keeping commits fast).
 - `.husky/commit-msg` → commitlint with the conventional config (`commitlint.config.cjs`).
-- `.husky/pre-push` → `npm run typecheck && npm run test`.
+- `.husky/pre-push` → `npm run gate:push`.
 
 Hooks are the fast local echo of CI, not a substitute for it — CI always runs the full,
 unscoped gate set. Bypassing hooks (`--no-verify`) is never acceptable; if a hook is wrong, fix

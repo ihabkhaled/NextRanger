@@ -5,6 +5,7 @@ Entrypoint for Cursor in **strict-next-ranger**. Scoped rule files live in
 this file is the human-readable digest. Canonical sources:
 
 - [AGENTS.md](AGENTS.md) — full agent entrypoint + skills routing table
+- [.ai/context-manifest.json](.ai/context-manifest.json) — task-scoped context only
 - [context/architecture-map.md](context/architecture-map.md) — where everything lives
 - [rules/00-non-negotiable-rules.md](rules/00-non-negotiable-rules.md) — the law
 - [memory/known-pitfalls.md](memory/known-pitfalls.md) — mistakes already made once
@@ -12,7 +13,7 @@ this file is the human-readable digest. Canonical sources:
 ## Stack
 
 Next.js 16 App Router (Turbopack, typedRoutes) · React 19 · TypeScript 7 strict ·
-Tailwind v4 · TanStack Query v5 · Zustand v5 · Zod v4 · next-intl (en/ar, RTL) ·
+Tailwind v4 · TanStack Query v5 · Zustand v5 · Zod v4 · next-intl (14 URL locales, RTL) ·
 Vitest 4 + RTL · Playwright · MSW v2 · npm · Node >= 22.
 
 ## Commands
@@ -22,8 +23,8 @@ Vitest 4 + RTL · Playwright · MSW v2 · npm · Node >= 22.
 - `npm run typecheck` (TypeScript 7) · `npm run typecheck:compat` (TypeScript 6 tooling API)
 - `npm run test` / `test:coverage` / `test:e2e` / `test:a11y` / `test:visual`
 - `npm run test:e2e:install` (one-time Playwright Chromium download)
-- `npm run test:e2e:baseline` (one-time per-OS visual baselines — writes only missing)
-- `npm run quality` · `npm run validate`
+- `npm run test:e2e:baseline` (refreshes all current-OS baselines; review every image)
+- `npm run gate:push` · `npm run validate`
 
 ## Architecture digest
 
@@ -45,7 +46,8 @@ Vitest 4 + RTL · Playwright · MSW v2 · npm · Node >= 22.
 - Containers: `'use client'` + `// client-boundary-reason: …`, glue hooks to components, own the `.map()`.
 - No `process.env` outside `src/packages/env`; no browser globals outside `src/packages/browser|storage`.
 - Query keys only from builder files; `useAppQuery`/`useAppMutation`, never raw `@tanstack/react-query`.
-- All copy through next-intl message keys (en + ar); never `dangerouslySetInnerHTML`.
+- All copy through next-intl keys present in every supported catalog; every route preserves the
+  URL locale; never `dangerouslySetInnerHTML`.
 - Never add `eslint-disable` without a documented exception in `docs/exceptions/` —
   a firing rule means the code belongs in another layer; move it.
 - TDD; coverage 95% global, 100% for utils/helpers/mappers/schemas/query-key builders; no `.only`/skips.

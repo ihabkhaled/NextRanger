@@ -42,7 +42,7 @@ it compiles, passes tests, and ships.
 - `src/packages/<vendor>` wrappers import nothing from `shared`, `modules`, or `app` — they
   sit at the bottom of the graph.
 - `src/app` contains only routes, layouts, providers, and route handlers; screen logic lives
-  in module containers (compare [src/app/(dashboard)/articles/page.tsx](<../src/app/(dashboard)/articles/page.tsx>),
+  in module containers (compare [src/app/[locale]/(dashboard)/articles/page.tsx](<../src/app/[locale]/(dashboard)/articles/page.tsx>),
   which only composes `ArticlesListContainer`).
 - New third-party dependencies get an owning wrapper first — hand off to
   [skills/create-package-wrapper.md](../skills/create-package-wrapper.md) and the

@@ -19,7 +19,7 @@
 | 9   | <TSX-only component files>  | [skills/create-component.md](../../../skills/create-component.md)         | <components/, *.variants.ts>                  | —          |
 | 10  | <Container>                 | [skills/create-container.md](../../../skills/create-container.md)         | <containers/>                                 | 8, 9       |
 | 11  | <Route + ROUTE_PATHS entry> | [skills/add-route.md](../../../skills/add-route.md)                       | <src/app/…/page.tsx>                          | 10         |
-| 12  | <Message keys en + ar>      | [skills/add-i18n-message-key.md](../../../skills/add-i18n-message-key.md) | <messages/en.json, ar.json>                   | —          |
+| 12  | <All-locale message keys>   | [skills/add-i18n-message-key.md](../../../skills/add-i18n-message-key.md) | <messages/*.json>                             | —          |
 | 13  | <Forms, if any>             | [skills/add-form.md](../../../skills/add-form.md)                         | <schemas/, components/>                       | 3          |
 | 14  | <Tests per stage-06 matrix> | [skills/write-unit-tests.md](../../../skills/write-unit-tests.md) etc.    | <test/, src/tests/…>                          | each slice |
 

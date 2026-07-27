@@ -24,7 +24,7 @@ attributes — the showcase can silently lie.
 ## Decision
 
 We do not use Storybook. The living showcase is a normal App Router route at `/workbench`
-([src/app/(workbench)/workbench/page.tsx](<../../src/app/(workbench)/workbench/page.tsx>),
+([src/app/[locale]/(workbench)/workbench/page.tsx](<../../src/app/[locale]/(workbench)/workbench/page.tsx>),
 path constant `ROUTE_PATHS.workbench` in
 [src/shared/constants/route-paths.constants.ts](../../src/shared/constants/route-paths.constants.ts)).
 

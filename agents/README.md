@@ -32,17 +32,17 @@ The release gatekeeper uses `GO` / `NO-GO` instead (see its brief).
 
 ## Roster
 
-| Brief                                                            | Scope                                                                        |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| [frontend-architect.md](frontend-architect.md)                   | Layering, module boundaries, public surfaces                                 |
-| [next-app-router-reviewer.md](next-app-router-reviewer.md)       | `src/app` conventions, server/client boundaries, metadata, route handlers    |
-| [react-performance-reviewer.md](react-performance-reviewer.md)   | Client-boundary bloat, memo discipline, virtualization, query config         |
-| [frontend-security-reviewer.md](frontend-security-reviewer.md)   | CSP, env handling, cookies, dependencies, error leakage                      |
-| [accessibility-reviewer.md](accessibility-reviewer.md)           | Axe results, keyboard paths, focus, semantics, forms                         |
-| [frontend-test-engineer.md](frontend-test-engineer.md)           | TDD enforcement, coverage, test quality, MSW usage                           |
-| [eslint-boundary-reviewer.md](eslint-boundary-reviewer.md)       | Custom-rule violations, boundary map maintenance, exception audit            |
-| [frontend-release-gatekeeper.md](frontend-release-gatekeeper.md) | Runs `final-validation`, blocks on any red gate, writes release notes        |
-| [i18n-rtl-reviewer.md](i18n-rtl-reviewer.md)                     | en/ar catalog parity, no raw copy, direction correctness, logical properties |
+| Brief                                                            | Scope                                                                     |
+| ---------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| [frontend-architect.md](frontend-architect.md)                   | Layering, module boundaries, public surfaces                              |
+| [next-app-router-reviewer.md](next-app-router-reviewer.md)       | `src/app` conventions, server/client boundaries, metadata, route handlers |
+| [react-performance-reviewer.md](react-performance-reviewer.md)   | Client-boundary bloat, memo discipline, virtualization, query config      |
+| [frontend-security-reviewer.md](frontend-security-reviewer.md)   | CSP, env handling, cookies, dependencies, error leakage                   |
+| [accessibility-reviewer.md](accessibility-reviewer.md)           | Axe results, keyboard paths, focus, semantics, forms                      |
+| [frontend-test-engineer.md](frontend-test-engineer.md)           | TDD enforcement, coverage, test quality, MSW usage                        |
+| [eslint-boundary-reviewer.md](eslint-boundary-reviewer.md)       | Custom-rule violations, boundary map maintenance, exception audit         |
+| [frontend-release-gatekeeper.md](frontend-release-gatekeeper.md) | Runs `final-validation`, blocks on any red gate, writes release notes     |
+| [i18n-rtl-reviewer.md](i18n-rtl-reviewer.md)                     | All-locale catalog parity, URL locale, direction, logical properties      |
 
 ## Invoking more than one agent
 

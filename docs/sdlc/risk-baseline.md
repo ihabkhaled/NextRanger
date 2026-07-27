@@ -45,7 +45,8 @@ Examples:
 - Test-only additions (new specs, new factories in `src/tests/factories`).
 - Styling token tweaks in `src/app/styles.css` that do not change component structure.
 
-**Required mitigations**: one approval; `npm run quality` green; for copy changes, a visual pass over affected screens in both locales (Arabic copy length and RTL flow differ).
+**Required mitigations**: one approval; `npm run quality` green; for copy changes, catalog-parity
+tests plus affected-locale visual review, including Arabic and Persian RTL flow.
 
 ## Escalation triggers
 

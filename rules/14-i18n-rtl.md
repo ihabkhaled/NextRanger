@@ -1,13 +1,15 @@
 # Rule 14 — i18n and RTL
 
-Every user-visible string is translated, and every layout works mirrored. English (`en`) and Arabic
-(`ar`) ship together; Arabic is the RTL proof that the layout rules are real.
+Every user-visible string is translated, every page has a locale-prefixed URL, and every layout
+works mirrored. `SUPPORTED_LOCALES` is the only locale source of truth; Arabic (`ar`) and Persian
+(`fa`) are the RTL proof that the layout rules are real.
 
 ## Catalogs and namespaces
 
-- Message catalogs live at [src/packages/i18n/messages/en.json](../src/packages/i18n/messages/en.json)
-  and [src/packages/i18n/messages/ar.json](../src/packages/i18n/messages/ar.json). Both files MUST
-  stay key-for-key identical — a key added to one without the other fails review.
+- Message catalogs live in
+  [src/packages/i18n/messages/](../src/packages/i18n/messages/). Every locale in
+  `SUPPORTED_LOCALES` MUST have one catalog, and all catalogs MUST stay key-for-key identical
+  with identical interpolation placeholders.
 - Namespaces are constants in
   [src/shared/i18n/i18n-namespaces.constants.ts](../src/shared/i18n/i18n-namespaces.constants.ts)
   (`I18N_NAMESPACES`). Never pass a raw namespace string to a translation hook.
@@ -34,13 +36,20 @@ Every user-visible string is translated, and every layout works mirrored. Englis
 - `*.component.tsx` files MUST NOT call translation hooks (they may not call hooks at all —
   [rules/02-components-and-containers.md](../rules/02-components-and-containers.md)).
 
-## Locale selection and direction
+## Locale URLs and direction
 
-- The locale is cookie-based: `LOCALE_COOKIE_NAME = 'NEXT_LOCALE'` in
-  [src/packages/i18n/locale.constants.ts](../src/packages/i18n/locale.constants.ts), with
-  `SUPPORTED_LOCALES = ['en', 'ar']` and `DEFAULT_LOCALE = 'en'`. There are no locale URL prefixes.
-- The `dir` attribute MUST come from `getLocaleDirection(locale)` — `'rtl'` for `ar`, `'ltr'`
-  otherwise. Never hardcode `dir="ltr"` or infer direction anywhere else.
+- The first route segment is the locale: `/<locale>/...`. `src/app/[locale]/layout.tsx` validates
+  it, and `src/packages/i18n/request.ts` resolves messages from `requestLocale`.
+- `ROUTE_PATHS` remains locale-free. Links and redirects MUST use `buildLocalizedPath`; locale
+  switches MUST use `buildLocalizedLocation` so path, query, and hash survive.
+- `SUPPORTED_LOCALES` and `DEFAULT_LOCALE` live in
+  [src/packages/i18n/locale.constants.ts](../src/packages/i18n/locale.constants.ts). Do not repeat
+  the locale list in application logic.
+- The `dir` attribute MUST come from `getLocaleDirection(locale)` — RTL for `ar` and `fa`, LTR
+  otherwise. Never hardcode direction or let persisted preferences override the URL locale.
+- Every public page MUST publish canonical and reciprocal hreflang links for all supported
+  locales plus `x-default`; see
+  [context/localization-and-seo-map.md](../context/localization-and-seo-map.md).
 
 ## RTL-safe styling: logical properties only
 
@@ -54,8 +63,9 @@ Every user-visible string is translated, and every layout works mirrored. Englis
 
 ## Plurals — Arabic makes them real
 
-Use ICU plural syntax; Arabic has six plural categories, so `one`/`other` alone is wrong. Real
-example from [src/packages/i18n/messages/ar.json](../src/packages/i18n/messages/ar.json):
+Use ICU plural syntax appropriate to each locale. Arabic has six plural categories, so
+`one`/`other` alone is wrong. Real example from
+[src/packages/i18n/messages/ar.json](../src/packages/i18n/messages/ar.json):
 
 ```json
 "readingTime": "{minutes, plural, one {دقيقة قراءة واحدة} two {دقيقتا قراءة} few {# دقائق قراءة} other {# دقيقة قراءة}}"

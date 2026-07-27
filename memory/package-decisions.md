@@ -19,8 +19,8 @@ package won** over its alternatives. Propose a replacement only with a new dated
 - **Decision:** `next-intl`, wrapped at `src/packages/i18n` (`useAppTranslation`,
   `getServerTranslations`, `AppIntlProvider`, catalogs in `src/packages/i18n/messages/`).
 - **Why:** first-class App Router support — server components translate via
-  `getServerTranslations` without shipping catalogs to the client, and the cookie-based locale
-  (`LOCALE_COOKIE_NAME = 'NEXT_LOCALE'`) integrates with `src/packages/i18n/request.ts`.
+  `getServerTranslations` without shipping catalogs to the client, and the `[locale]` route
+  integrates with `requestLocale` in `src/packages/i18n/request.ts`.
   react-i18next is client-centric and would force provider gymnastics in server components.
   Full rationale: [i18n-rtl-decisions.md](./i18n-rtl-decisions.md).
 

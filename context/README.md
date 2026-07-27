@@ -7,16 +7,17 @@ document disagree, the rule wins and the context document has a bug.
 
 ## Contents
 
-| Document                                           | Purpose                                                                                                                                                                                      |
-| -------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [architecture-map.md](./architecture-map.md)       | The canonical map: annotated `src/` tree, the one-way layer dependency diagram, and the import policy table enforced by [eslint/architecture.config.mjs](../eslint/architecture.config.mjs). |
-| [stack-and-toolchain.md](./stack-and-toolchain.md) | Every dependency in [package.json](../package.json): version, why it was chosen, and which wrapper owns it.                                                                                  |
-| [codebase-navigation.md](./codebase-navigation.md) | Task-to-location lookup ("where do I put X"), file-suffix naming conventions, and the TypeScript path alias map.                                                                             |
-| [package-boundaries.md](./package-boundaries.md)   | The vendor → owner wrapper → exports table mirroring [eslint/package-boundaries.config.mjs](../eslint/package-boundaries.config.mjs), plus the procedure for adding a new vendor.            |
-| [reference-patterns.md](./reference-patterns.md)   | Canonical code excerpts quoted from the real modules: component/container split, query-key builder, gateway→mapper→service chain, store, form, toast, error mapping.                         |
-| [ai-task-card.md](./ai-task-card.md)               | One-page task routing, minimum context, and exact gate selection for low-token agent work.                                                                                                   |
-| [design-system-map.md](./design-system-map.md)     | Reusable UI primitives, layout ownership, and rules that prevent component duplication.                                                                                                      |
-| [glossary.md](./glossary.md)                       | Definitions of repo-specific terms: module, layer, owner wrapper, view model, wire type, BFF gateway, gate, exception, and more.                                                             |
+| Document                                                     | Purpose                                                                                                                                                                                      |
+| ------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [architecture-map.md](./architecture-map.md)                 | The canonical map: annotated `src/` tree, the one-way layer dependency diagram, and the import policy table enforced by [eslint/architecture.config.mjs](../eslint/architecture.config.mjs). |
+| [stack-and-toolchain.md](./stack-and-toolchain.md)           | Every dependency in [package.json](../package.json): version, why it was chosen, and which wrapper owns it.                                                                                  |
+| [codebase-navigation.md](./codebase-navigation.md)           | Task-to-location lookup ("where do I put X"), file-suffix naming conventions, and the TypeScript path alias map.                                                                             |
+| [package-boundaries.md](./package-boundaries.md)             | The vendor → owner wrapper → exports table mirroring [eslint/package-boundaries.config.mjs](../eslint/package-boundaries.config.mjs), plus the procedure for adding a new vendor.            |
+| [reference-patterns.md](./reference-patterns.md)             | Canonical code excerpts quoted from the real modules: component/container split, query-key builder, gateway→mapper→service chain, store, form, toast, error mapping.                         |
+| [ai-task-card.md](./ai-task-card.md)                         | One-page task routing, minimum context, and exact gate selection for low-token agent work.                                                                                                   |
+| [design-system-map.md](./design-system-map.md)               | Reusable UI primitives, layout ownership, and rules that prevent component duplication.                                                                                                      |
+| [localization-and-seo-map.md](./localization-and-seo-map.md) | URL locale, metadata, crawler, sitemap, PWA, and deterministic social-asset sources of truth.                                                                                                |
+| [glossary.md](./glossary.md)                                 | Definitions of repo-specific terms: module, layer, owner wrapper, view model, wire type, BFF gateway, gate, exception, and more.                                                             |
 
 ## How to use this folder
 

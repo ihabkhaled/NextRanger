@@ -8,19 +8,19 @@ A production-grade starter that teams clone for enterprise frontend work. A real
 
 ## Stack
 
-Next.js 16 App Router (Turbopack, typedRoutes) · React 19 · TypeScript 5.9 strict (tsgo) · Tailwind v4 (CSS-first tokens) · TanStack Query v5 · Zustand v5 · Zod v4 · next-intl (en/ar, RTL) · Vitest 4 + RTL · Playwright · MSW v2 · npm · Node >= 22.
+Next.js 16 App Router (Turbopack, typedRoutes) · React 19 · TypeScript 7 strict · Tailwind v4 (CSS-first tokens) · TanStack Query v5 · Zustand v5 · Zod v4 · next-intl (14 URL locales, RTL) · Vitest 4 + RTL · Playwright · MSW v2 · npm · Node >= 22.
 
 ## Commands
 
 - `npm run dev` / `build` / `start`
 - `npm run lint` (`--max-warnings=0`) · `npm run lint:fix` · `npm run format`
-- `npm run typecheck` (tsgo) · `npm run typecheck:tsc` (fallback)
+- `npm run typecheck` (TypeScript 7) · `npm run typecheck:compat` (TypeScript 6 API)
 - `npm run test` / `test:watch` / `test:coverage`
 - `npm run test:e2e` / `test:a11y` / `test:visual`
 - `npm run test:e2e:install` (one-time Playwright Chromium download)
-- `npm run test:e2e:baseline` (one-time per-OS visual baselines — writes only missing)
-- `npm run quality` (lint + typecheck + coverage + build)
-- `npm run validate` (quality + e2e + security scans + dead code + circular deps)
+- `npm run test:e2e:baseline` (refreshes all current-OS baselines; review every image)
+- `npm run gate:push` (format + full quality + production dependency audit)
+- `npm run validate` (push gate + e2e + Trivy)
 
 ## Architecture layers
 
@@ -104,12 +104,12 @@ Run before declaring any task done:
 
 ```bash
 npm run lint      # ESLint 9 flat config, --max-warnings=0
-npm run typecheck # tsgo over app/test/node (fallback: npm run typecheck:tsc)
+npm run typecheck # TypeScript 7 over app/test/node plus TypeScript 6 compatibility
 npm run test      # Vitest
 npm run build     # next build --turbopack
 ```
 
-Aggregates: `npm run quality` and `npm run validate`. The pre-push hook runs typecheck + test; never push red.
+Aggregates: `npm run gate:push` and `npm run validate`. The pre-push hook runs `gate:push`; never push red.
 
 ## What the agent must never do
 

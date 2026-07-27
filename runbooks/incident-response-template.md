@@ -25,7 +25,7 @@
 ## Initial assessment
 
 - User-visible symptom: <what users see, with URL/route, e.g. `/articles` shows the error state>
-- Blast radius: <all users | one locale (en/ar) | one module | one route>
+- Blast radius: <all users | named locale(s) | one module | one locale-prefixed route>
 - `/api/health` status: <200 body / failing — check first; it proves boot, routing, serialization>
 - Gateway mode: <SERVER_API_MOCKING value; if proxying, is SERVER_API_BASE_URL upstream healthy?>
 - Suspected trigger: <deploy | upstream API | infra | dependency/CDN | unknown>

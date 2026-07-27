@@ -34,7 +34,8 @@
 
 ## Constraints and assumptions
 
-- **Constraints:** <deadlines, budget, compliance, locales — remember the app ships in English and Arabic; any user-facing copy doubles the translation work>
+- **Constraints:** <deadlines, budget, compliance, affected locales — every user-facing key must
+  land in all catalogs listed by SUPPORTED_LOCALES>
 - **Assumptions:** <what we are taking on faith; each assumption is a risk to log below>
 
 ## Risks

@@ -2,6 +2,7 @@
 
 Entrypoint for Codex agents working in **strict-next-ranger**, a strict Next.js 16 frontend
 operating system. Canonical sources: [AGENTS.md](AGENTS.md),
+[.ai/BOOTSTRAP.md](.ai/BOOTSTRAP.md),
 [context/architecture-map.md](context/architecture-map.md),
 [rules/00-non-negotiable-rules.md](rules/00-non-negotiable-rules.md).
 
@@ -51,11 +52,11 @@ npm run typecheck     # stable TypeScript 7 over app/test/node; prints compiler 
 npm run typecheck:compat # TypeScript 6 API compatibility for ESLint/tooling
 npm run test          # Vitest; npm run test:coverage enforces 95%/100% thresholds
 npm run build         # next build --turbopack
-npm run quality            # lint + typecheck + coverage + build
-npm run validate           # quality + e2e + security:audit + security:scan + dead code + circular
+npm run gate:push          # format + assets + lint + types + coverage + build + static checks + audit
+npm run validate           # push gate + e2e + Trivy
 npm run test:e2e:install   # one-time Playwright Chromium download (run before first validate)
-npm run test:e2e:baseline  # one-time per-OS visual baselines (writes only missing; before first validate)
+npm run test:e2e:baseline  # refresh all current-OS visual baselines; review every changed image
 ```
 
 Git hooks already enforce these: `.husky/pre-commit` (lint-staged), `.husky/commit-msg`
-(conventional commits), `.husky/pre-push` (typecheck + test). Never skip hooks.
+(conventional commits), `.husky/pre-push` (`gate:push`). Never skip hooks.

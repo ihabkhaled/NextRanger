@@ -10,7 +10,7 @@ shifts, token drift, RTL mirroring bugs, dark-theme contrast breaks. Specs live 
 - Every routed page in `ROUTE_PATHS` gets a full-page baseline in its **ready** state
   (fixtures loaded — the gateway serves deterministic module mocks such as
   `src/modules/articles/api/articles.mock.ts`, so screenshots are stable by construction).
-- The `/workbench` route (`src/app/(workbench)/workbench/page.tsx`) is the design-system
+- The localized workbench route (`src/app/[locale]/(workbench)/workbench/page.tsx`) is the design-system
   gate: it showcases every `src/packages/ui-primitives` primitive, so one screenshot set there
   covers `Button`, `Input`, `Card`, `Alert`, `Skeleton`, and friends without per-primitive
   specs. This is the visual arm of ADR

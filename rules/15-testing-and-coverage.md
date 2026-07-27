@@ -9,7 +9,7 @@ Testing here is TDD-shaped and gate-enforced. The full standards live under
    user flow).
 2. Implement the minimum code to pass.
 3. Refactor with the tests green; run `npm run test:coverage` before pushing (the
-   `.husky/pre-push` hook runs typecheck + tests regardless).
+   `.husky/pre-push` hook runs `gate:push` regardless).
 
 Skills: [skills/write-unit-tests.md](../skills/write-unit-tests.md),
 [skills/write-integration-tests.md](../skills/write-integration-tests.md),

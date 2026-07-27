@@ -4,34 +4,29 @@ Rationale for the internationalization posture. Normative rules:
 [rules/14-i18n-rtl.md](../rules/14-i18n-rtl.md); library choice rationale in
 [package-decisions.md](./package-decisions.md).
 
-## Cookie-based locale over path-based locale routing
+## Path-based locale routing
 
-- **Decision:** the locale is stored in a cookie (`LOCALE_COOKIE_NAME = 'NEXT_LOCALE'` in
-  `src/packages/i18n/locale.constants.ts`) and resolved per-request in
-  `src/packages/i18n/request.ts`. There is no `/[locale]/` route segment;
-  `ROUTE_PATHS` (`src/shared/constants/route-paths.constants.ts`) are locale-free.
-- **Rejected alternative:** path-prefix routing (`/en/articles`, `/ar/articles`).
-- **Why:** path locales double every route surface — every `AppLink`, typed route, e2e spec,
-  redirect, and breadcrumb must carry the segment, and `typedRoutes` typing gets noisier for zero
-  product benefit in an app whose pages are user-scoped, not public marketing content needing
-  per-locale SEO URLs. The cookie keeps navigation, `ROUTE_PATHS`, and Playwright specs
-  single-shaped. Known trade-off, accepted: shared URLs render in the recipient's locale, not the
-  sender's, and there is no per-locale indexing. If a public marketing surface is added later,
-  that surface can adopt path locales without disturbing the app shell — record the change here.
+- **Decision:** every page uses a `src/app/[locale]/` route and a `/<locale>/...` URL.
+  `ROUTE_PATHS` remains locale-free; `buildLocalizedPath` and `buildLocalizedLocation` add or
+  replace the locale segment at navigation boundaries.
+- **Superseded:** the original cookie-only design and its rejection of path prefixes.
+- **Why:** public marketing pages require separately crawlable locale documents, reciprocal
+  hreflang, stable shared URLs, and locale-specific social metadata. One route shape still serves
+  every language while helpers preserve path, query, and hash.
 
-## en/ar as the proof pair
+## Fourteen-locale contract
 
-- **Decision:** `SUPPORTED_LOCALES = ['en', 'ar']` with `DEFAULT_LOCALE = 'en'`; catalogs at
-  `src/packages/i18n/messages/en.json` and `ar.json` MUST stay key-identical.
-- **Why:** Arabic is the strongest stress test a second locale can provide: right-to-left
-  direction, different pluralization, longer strings, and non-Latin script. If a screen works in
-  en and ar, adding a third LTR locale is catalog work, not engineering work. `ar` is a real
-  supported locale, not a pseudo-locale — translations are maintained, not machine-stubbed.
+- **Decision:** the locale list is owned only by `SUPPORTED_LOCALES` with English as the default.
+  One JSON catalog exists per locale; tests enforce key, placeholder, and corruption parity.
+- **Why:** Arabic and Persian prove RTL behavior; Hindi, Thai, Japanese, Chinese, and Korean prove
+  non-Latin shaping; the remaining high-usage languages exercise longer Latin copy.
+- **Release note:** catalog tests prove structure and basic corruption checks, not native-speaker
+  editorial approval. Production teams MUST review brand copy with qualified translators.
 
 ## Direction via `dir` attribute + logical properties
 
 - **Decision:** direction is derived from the locale by `getLocaleDirection`
-  (`src/packages/i18n/locale.constants.ts`, RTL set = `{ar}`) and applied as the `dir` attribute
+  (`src/packages/i18n/locale.constants.ts`, RTL set = `{ar, fa}`) and applied as the `dir` attribute
   on the document root (synced by the ui-preferences module). Styling MUST use CSS logical
   properties — Tailwind's `ms-*`/`me-*`/`ps-*`/`pe-*`/`start-*`/`end-*` utilities — never
   `ml-*`/`mr-*`/`left-*`/`right-*` for direction-sensitive spacing.

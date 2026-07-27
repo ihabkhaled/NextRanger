@@ -2,15 +2,13 @@
 
 ## Mission
 
-Guarantee that every piece of user-visible copy is a translated message key, that the `en`
-and `ar` catalogs never drift apart, and that every screen is direction-correct under
-`dir="rtl"`. English-hardcoded UIs and mirrored-broken Arabic layouts are both release
-blockers in this repo.
+Guarantee that every piece of user-visible copy is a translated message key, every catalog named
+by `SUPPORTED_LOCALES` stays in parity, and every URL preserves its locale. Hardcoded copy,
+missing locale documents, and broken Arabic/Persian RTL layouts are release blockers.
 
 ## When to invoke
 
-- Any diff touching [src/packages/i18n/messages/en.json](../src/packages/i18n/messages/en.json)
-  or [ar.json](../src/packages/i18n/messages/ar.json), the i18n facade in
+- Any diff touching [src/packages/i18n/messages/](../src/packages/i18n/messages/), the i18n facade in
   [src/packages/i18n/](../src/packages/i18n/index.ts), or namespace constants in
   [src/shared/i18n/i18n-namespaces.constants.ts](../src/shared/i18n/i18n-namespaces.constants.ts).
 - Any new component, container, schema error message, or toast — anything that renders copy.
@@ -31,13 +29,12 @@ blockers in this repo.
 
 ## Review checklist
 
-- Catalog parity: every key added to `en.json` exists in `ar.json` and vice versa — same
-  shape, same interpolation placeholders. A key present in one catalog only is
+- Catalog parity: every English key exists in every supported catalog with the same shape and
+  interpolation placeholders. A key present in one catalog only is
   REQUEST CHANGES; a placeholder mismatch (`{count}` vs missing) is `BLOCK` because it
   crashes at render.
-- Arabic values are real translations, not copied English and not machine-garbled
-  placeholders. If translation is pending, the PR does not merge — there is no "temporary
-  English in ar.json" state.
+- Localized values are real translations, not copied English or machine-garbled placeholders.
+  Native editorial review is required before claiming production-grade translation quality.
 - No raw copy in JSX, aria-labels, `alt` text, toast calls, or Zod error messages — all go
   through message keys (`no-raw-i18n-text` enforces JSX; review the non-JSX surfaces it
   cannot see). The single sanctioned exception is `FALLBACK_ERROR_COPY` in
@@ -56,8 +53,8 @@ blockers in this repo.
   purely symbolic icons do not.
 - Formatting: dates through the `src/packages/date` facade, numbers/plurals through message
   syntax — no hand-built `str + var` concatenation, which breaks RTL and pluralization.
-- Verify the switch path: with locale cookie `NEXT_LOCALE=ar`, the changed screens render
-  translated, mirrored, and unbroken (walk it in dev or via the e2e suite).
+- Verify the switch path: changing `/en/...` to `/ar/...` and `/fa/...` preserves the remaining
+  path, query, and hash while rendering translated, mirrored, unbroken documents.
 
 ## Verdict format
 

@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "entrypoint": "AGENTS.md",
+  "tasks": {
+    "route-or-seo": [
+      "context/localization-and-seo-map.md",
+      "rules/01-next-app-router-architecture.md",
+      "rules/14-i18n-rtl.md",
+      "skills/add-route.md"
+    ],
+    "feature-module": [
+      "context/architecture-map.md",
+      "context/reference-patterns.md",
+      "skills/create-module.md"
+    ],
+    "reusable-ui": [
+      "context/design-system-map.md",
+      "rules/02-components-and-containers.md",
+      "skills/create-component.md"
+    ],
+    "locale-copy": ["rules/14-i18n-rtl.md", "skills/add-i18n-message-key.md"],
+    "toolchain": [
+      "context/stack-and-toolchain.md",
+      "rules/10-eslint-typescript.md",
+      "skills/upgrade-toolchain.md"
+    ],
+    "release": [
+      "rules/19-release-gates.md",
+      "rules/21-version-control-checkpoints.md",
+      "skills/final-validation.md"
+    ]
+  }
+}

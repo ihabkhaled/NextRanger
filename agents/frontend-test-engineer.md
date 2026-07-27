@@ -39,7 +39,7 @@ asserts user-visible behavior rather than implementation detail.
   mappers/schemas/query-key builders) ships at 100% branches — no exceptions, the threshold
   block in vitest.config.mts will fail the build anyway.
 - No `.only`, no `.skip` without a documented exception in
-  [docs/exceptions/](../docs/exceptions/README.md); the pre-push hook runs `typecheck + test`
+  [docs/exceptions/](../docs/exceptions/README.md); the pre-push hook runs `gate:push`
   so a red suite never leaves a machine.
 - Network: HTTP is intercepted by MSW v2 handlers under `src/tests/msw/handlers/` — never
   by mocking `httpClient` or axios internals. Handler responses use module mock fixtures

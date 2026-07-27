@@ -57,7 +57,7 @@ Rationale for the design-system architecture. Normative rules:
 ## Living showcase: the workbench, not Storybook
 
 - **Decision:** every primitive and every variant renders on the `/workbench` route
-  (`src/app/(workbench)/workbench/page.tsx`, path constant `ROUTE_PATHS.workbench`). Storybook is
+  (`src/app/[locale]/(workbench)/workbench/page.tsx`, path constant `ROUTE_PATHS.workbench`). Storybook is
   deliberately not used — full reasoning in ADR
   [architecture/adrs/0002-component-workbench-over-storybook.md](../architecture/adrs/0002-component-workbench-over-storybook.md).
 - **Why it matters here:** the workbench runs inside the real app shell — real tokens, real

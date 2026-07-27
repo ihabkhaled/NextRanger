@@ -1,60 +1,53 @@
-# Skill: Add a Route
+---
+name: add-route
+description: Use when adding or changing a Next.js page, route handler, public marketing document, sitemap entry, or crawl-visibility contract.
+---
 
-Use this skill to add a new page under `src/app/`. Routes are thin: a `page.tsx` composes
-module containers and shared layout primitives — it never contains feature logic. Doctrine:
-[rules/01-next-app-router-architecture.md](../rules/01-next-app-router-architecture.md).
+# Add a route
 
-## Steps
+Routes are thin locale-aware composition shells. Read
+[the localization/SEO map](../context/localization-and-seo-map.md) and
+[rule 01](../rules/01-next-app-router-architecture.md).
 
-1. **Pick the route group.** Existing groups under `src/app/`:
-   - `(public)` — unauthenticated marketing/landing surface (home lives at
-     `src/app/(public)/page.tsx`).
-   - `(auth)` — sign-in flows (`src/app/(auth)/login/page.tsx`).
-   - `(dashboard)` — the product shell (`src/app/(dashboard)/articles/page.tsx`,
-     `src/app/(dashboard)/settings/page.tsx`).
-   - `(workbench)` — the design-system showcase (`src/app/(workbench)/workbench/page.tsx`).
-     Create a new group only when the new page needs a different layout shell; otherwise reuse.
-2. **Register the path constant.** Add the path to `ROUTE_PATHS` in
-   `src/shared/constants/route-paths.constants.ts` (typed as `Route`, so `typedRoutes` catches
-   dead links at build time). Raw path strings in app code are a no-magic-strings violation.
-3. **Add the i18n copy.** Every page needs at least `title` and `subtitle` keys. Follow
-   [skills/add-i18n-message-key.md](add-i18n-message-key.md): add the namespace to
-   `I18N_NAMESPACES` if new, and add keys to BOTH `src/packages/i18n/messages/en.json` and
-   `src/packages/i18n/messages/ar.json`.
-4. **Write `page.tsx`** as an async Server Component. Copy the shape of
-   `src/app/(dashboard)/articles/page.tsx` — it is the canonical page:
+## Choose the route class
 
-   ```tsx
-   export async function generateMetadata(): Promise<Metadata> {
-     const t = await getServerTranslations(I18N_NAMESPACES.articles);
+| Class                          | Location                                    | Discovery                  |
+| ------------------------------ | ------------------------------------------- | -------------------------- |
+| Public marketing               | `src/app/[locale]/(public)/<slug>/page.tsx` | indexable, sitemap, schema |
+| Auth/product/workbench/offline | matching `[locale]` group                   | `noindex`, robots disallow |
+| API                            | `src/app/api/<path>/route.ts`               | robots disallow            |
 
-     return { title: buildPageTitle(t('title')) };
-   }
-   ```
+## Green vertical slice
 
-   Rules:
-   - `generateMetadata` MUST use `buildPageTitle` from
-     `src/shared/helpers/page-title.helper.ts` ("Section · App name" format).
-   - Translations come from `getServerTranslations` (`@/packages/i18n`) with an
-     `I18N_NAMESPACES` constant — never a raw namespace string.
-   - The body composes `PageContainer` (from `@/packages/ui-primitives`), the shared
-     `PageHeader` component, and the module's container imported from the module public
-     surface (`@/modules/<feature>` — never a deep path).
-   - No `'use client'` in `page.tsx`. Interactivity lives in the module's container.
+1. Write the focused failing test. Keep it local; red tests are never committed or pushed.
+2. Add the locale-free path to `ROUTE_PATHS`. Use `buildLocalizedPath` or
+   `buildLocalizedLocation` at navigation boundaries.
+3. Add copy to every catalog in `src/packages/i18n/messages/`; update message-key constants.
+4. Add the async Server Component page. It validates `params.locale`, composes module exports,
+   and contains no feature logic or client boundary.
+5. Update typed navigation labels/items and breadcrumb scope.
+6. Apply discovery:
+   - Public: add `INDEXABLE_PATHS`, `MarketingPageKind`, metadata/keywords, semantic JSON-LD,
+     sitemap and SEO tests. Reuse `/social/<locale>.png` unless the product requires per-page art.
+   - Utility: add `NON_INDEXABLE_PATHS`, `buildNonIndexableMetadata`, and crawler tests.
+7. If offline navigation should cache the route, update `public/sw.js` and its contract test.
+8. Add unit/e2e coverage; add a11y and reviewed visual coverage when UI changed.
 
-5. **Add the navigation link.** Extend the header/nav with an `AppLink` (from
-   `@/packages/link`) pointing at the new `ROUTE_PATHS` entry, labeled with a key in the
-   `nav` namespace of both message catalogs.
-6. **Write the e2e smoke test** in `src/tests/e2e/<feature>.e2e.ts` per
-   [skills/write-e2e-tests.md](write-e2e-tests.md): navigate to the route, assert the page
-   title (`buildPageTitle` output) and one stable `TEST_IDS` element. Playwright's
-   `webServer` (see `playwright.config.ts`) builds and starts the app with
-   `SERVER_API_MOCKING: 'enabled'`, so the page must render fully against mock fixtures.
-7. **Gate.** Run `npm run lint`, `npm run typecheck`, `npm run build` (typedRoutes verifies
-   every `AppLink` target), and `npm run test:e2e`.
+## Gates and checkpoint
 
-## Definition of done
+Run the focused tests, `npm run lint`, `npm run typecheck`, and `npm run build`. For discovery
+changes also run:
 
-- `page.tsx` is Server Component + composition only; metadata via `buildPageTitle`.
-- `ROUTE_PATHS` entry, nav link, en + ar copy, e2e smoke test.
-- `npm run quality` green.
+```sh
+npx playwright test src/tests/e2e/seo.e2e.ts
+npm run assets:social:check
+```
+
+Commit the complete green vertical slice conventionally and push it promptly. Before final
+publication run `npm run gate:push`; never bypass hooks.
+
+## Done
+
+- Locale-prefixed URL, route constant, navigation/breadcrumb, and all catalogs agree.
+- Page is server composition only; public/private crawler policy is explicit.
+- Focused tests and gates are green with zero warnings.

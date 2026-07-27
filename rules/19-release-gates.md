@@ -10,19 +10,21 @@ the full pipeline in one command.
 | --- | --------------------------------------- | ----------------------------------------------- | -------------------------------------------------------- |
 | 1   | Lint (zero warnings)                    | `npm run lint` (`--max-warnings=0`)             | `.github/workflows/ci.yml`, `.husky/pre-commit` (staged) |
 | 2   | Formatting                              | `npm run format:check`                          | ci.yml, pre-commit (staged)                              |
-| 3   | Typecheck (strict, 3 tsconfigs)         | `npm run typecheck` (stable TypeScript 7)       | ci.yml, `.husky/pre-push`                                |
-| 4   | Unit + integration with coverage 95/100 | `npm run test:coverage`                         | ci.yml, pre-push (`npm run test`)                        |
-| 5   | Production build                        | `npm run build`                                 | ci.yml (via `npm run quality`)                           |
-| 6   | E2E                                     | `npm run test:e2e`                              | `.github/workflows/e2e.yml`                              |
-| 7   | Accessibility (axe, zero violations)    | `npm run test:a11y`                             | e2e.yml                                                  |
-| 8   | Visual regression                       | `npm run test:visual`                           | e2e.yml                                                  |
-| 9   | Dependency audit                        | `npm run security:audit`                        | `.github/workflows/security.yml`                         |
-| 10  | Trivy scan (vuln + secret + misconfig)  | `npm run security:scan`                         | security.yml                                             |
-| 11  | Dead code                               | `npm run quality:dead-code` (knip)              | ci.yml                                                   |
-| 12  | Circular dependencies                   | `npm run quality:circular` (dependency-cruiser) | ci.yml                                                   |
-| 13  | Conventional commits                    | commitlint                                      | `.husky/commit-msg`                                      |
+| 3   | Localized social-asset drift            | `npm run assets:social:check`                   | ci.yml, `.husky/pre-push`                                |
+| 4   | Typecheck (strict, 3 tsconfigs)         | `npm run typecheck` (TypeScript 7 + TS6 compat) | ci.yml, `.husky/pre-push`                                |
+| 5   | Unit + integration with coverage 95/100 | `npm run test:coverage`                         | ci.yml, pre-push                                         |
+| 6   | Production build                        | `npm run build`                                 | ci.yml (via `npm run quality`)                           |
+| 7   | E2E                                     | `npm run test:e2e`                              | `.github/workflows/e2e.yml`                              |
+| 8   | Accessibility (axe, zero violations)    | `npm run test:a11y`                             | e2e.yml                                                  |
+| 9   | Visual regression                       | `npm run test:visual`                           | e2e.yml                                                  |
+| 10  | Dependency audit                        | `npm run security:audit`                        | ci.yml, pre-push                                         |
+| 11  | Trivy scan (vuln + secret + misconfig)  | `npm run security:scan`                         | security.yml                                             |
+| 12  | Dead code                               | `npm run quality:dead-code` (knip)              | ci.yml, pre-push                                         |
+| 13  | Circular dependencies                   | `npm run quality:circular` (dependency-cruiser) | ci.yml, pre-push                                         |
+| 14  | Conventional commits                    | commitlint                                      | `.husky/commit-msg`                                      |
 
-`npm run quality` = gates 1, 3, 4, 5. `npm run validate` = quality + 6, 9, 10, 11, 12.
+`npm run quality` = gates 1 and 3–6 plus 12–13. `npm run gate:push` adds gate 2 and 10.
+`npm run validate` adds gates 7 and 11. The e2e workflow runs gates 7–9.
 
 ## What blocks a release
 

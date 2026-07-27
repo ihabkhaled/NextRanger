@@ -8,7 +8,8 @@ User acceptance testing validates that a feature does the right thing for real u
   - **Mocked backend** — `SERVER_API_MOCKING=enabled` (the default): the BFF gateway (`/api/gateway/[...path]`) serves module mock fixtures such as `src/modules/articles/api/articles.mock.ts`. Suitable for UX/flow acceptance with zero backend.
   - **Integrated backend** — `SERVER_API_MOCKING` unset/disabled with `SERVER_API_BASE_URL` pointing at the staging API. Required for High-risk auth and data-contract acceptance.
 - The configuration used MUST be recorded in the UAT log. Auth negative paths in mocked mode use the sentinel `AUTH_MOCK_REJECTED_PASSWORD` (`'wrong-password'`) from `src/modules/auth`.
-- UAT is executed in both locales (`en` LTR, `ar` RTL) and both themes (light, dark via `[data-theme='dark']`) — locale and direction bugs are acceptance failures, not polish items.
+- UAT covers every supported locale plus focused RTL walks in Arabic and Persian, in both light
+  and dark themes. Locale and direction bugs are acceptance failures, not polish items.
 
 ## Entry criteria
 

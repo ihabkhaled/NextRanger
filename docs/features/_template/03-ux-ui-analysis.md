@@ -1,6 +1,8 @@
 # 03 — UX / UI Analysis
 
-> Map every screen and interaction to the design system before any component is written. The living primitive showcase is the workbench route (`/workbench`, src/app/(workbench)/workbench/page.tsx) — verify a primitive there before assuming it exists. See architecture/adrs/0002-component-workbench-over-storybook.md for why there is no Storybook.
+> Map every screen and interaction to the design system before writing components. Verify
+> primitives at `/<locale>/workbench`
+> (`src/app/[locale]/(workbench)/workbench/page.tsx`). See ADR 0002 for why there is no Storybook.
 
 ## Screens and entry points
 
@@ -41,7 +43,8 @@
 
 ## Copy inventory
 
-<List every user-visible string. Each becomes a message key in both catalogs (src/packages/i18n/messages/en.json and ar.json) during stage 04 — raw text in JSX is an ESLint error (docs/eslint/no-raw-i18n-text.md).>
+<List every user-visible string. Each becomes a message key in every catalog under
+src/packages/i18n/messages/ during stage 04; raw JSX text is an ESLint error.>
 
 | String (English draft) | Intended namespace                                                     | Notes                   |
 | ---------------------- | ---------------------------------------------------------------------- | ----------------------- |

@@ -3,6 +3,7 @@
 Compact entrypoint for Claude Code. Canonical sources — read before non-trivial work:
 
 - [AGENTS.md](AGENTS.md) — full agent entrypoint + skills routing table
+- [.ai/context-manifest.json](.ai/context-manifest.json) — load only the files for this task
 - [context/architecture-map.md](context/architecture-map.md) — where everything lives
 - [rules/00-non-negotiable-rules.md](rules/00-non-negotiable-rules.md) — the law
 - [memory/known-pitfalls.md](memory/known-pitfalls.md) — mistakes already made once
@@ -10,7 +11,7 @@ Compact entrypoint for Claude Code. Canonical sources — read before non-trivia
 ## Stack
 
 Next.js 16 App Router (Turbopack, typedRoutes) · React 19 · TypeScript 7 strict ·
-Tailwind v4 (CSS-first tokens) · TanStack Query v5 · Zustand v5 · Zod v4 · next-intl (en/ar, RTL) ·
+Tailwind v4 (CSS-first tokens) · TanStack Query v5 · Zustand v5 · Zod v4 · next-intl (14 URL locales, RTL) ·
 Vitest 4 + RTL · Playwright · MSW v2 · npm · Node >= 22.
 
 ## Commands
@@ -21,8 +22,10 @@ Vitest 4 + RTL · Playwright · MSW v2 · npm · Node >= 22.
 - `npm run test` / `test:watch` / `test:coverage`
 - `npm run test:e2e` / `test:a11y` / `test:visual`
 - `npm run test:e2e:install` (one-time Playwright Chromium download)
-- `npm run test:e2e:baseline` (one-time per-OS visual baselines — writes only missing)
-- `npm run quality` (lint + typecheck + coverage + build)
+- `npm run test:e2e:baseline` (refreshes all current-OS baselines; review every image)
+- `npm run assets:social:generate` / `assets:social:check` (localized social-card write/check)
+- `npm run quality` (asset drift + lint + typecheck + coverage + build + static architecture)
+- `npm run gate:push` (format + quality + production dependency audit)
 - `npm run validate` (quality + e2e + security scans + dead code + circular deps)
 
 ## Architecture digest
@@ -46,7 +49,10 @@ Vitest 4 + RTL · Playwright · MSW v2 · npm · Node >= 22.
 - Containers: `'use client'` + `// client-boundary-reason: …`, glue hooks to components, own the `.map()`.
 - No `process.env` outside `src/packages/env`; no browser globals outside `src/packages/browser|storage`.
 - Query keys only from builder files; `useAppQuery`/`useAppMutation`, never raw `@tanstack/react-query`.
-- All copy through next-intl message keys (en + ar); never `dangerouslySetInnerHTML`.
+- All copy through next-intl keys with catalog parity across every `SUPPORTED_LOCALES` entry;
+  never `dangerouslySetInnerHTML`.
+- Every page URL is locale-prefixed (`/[locale]/...`); preserve the active locale with
+  `buildLocalizedPath` / `buildLocalizedLocation`.
 - Never add `eslint-disable` without a documented exception in `docs/exceptions/` —
   a rule firing means the code is in the wrong layer; move it.
 - TDD; coverage 95% global, 100% for utils/helpers/mappers/schemas/query-key builders; no `.only`/skips.

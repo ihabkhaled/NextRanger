@@ -22,7 +22,7 @@ Start with [00-non-negotiable-rules.md](00-non-negotiable-rules.md); everything 
 | [11-security.md](11-security.md)                                         | CSP nonces, static headers, error sanitization, dependency scanning policy.                        |
 | [12-performance.md](12-performance.md)                                   | Rendering discipline, memo boundaries, virtualization, bundle hygiene.                             |
 | [13-accessibility.md](13-accessibility.md)                               | Landmarks, keyboard support, axe-clean requirement, `LANDMARK_IDS`.                                |
-| [14-i18n-rtl.md](14-i18n-rtl.md)                                         | next-intl wrapper usage, en/ar catalogs, cookie locale, RTL via `dir`.                             |
+| [14-i18n-rtl.md](14-i18n-rtl.md)                                         | next-intl wrapper, 14 URL locales, catalog parity, RTL via `dir`.                                  |
 | [15-testing-and-coverage.md](15-testing-and-coverage.md)                 | Test pyramid, MSW, coverage thresholds, no `.only`/skips.                                          |
 | [16-observability-analytics.md](16-observability-analytics.md)           | Logging through `appLogger`, event discipline, no raw `console`.                                   |
 | [17-configuration-environment.md](17-configuration-environment.md)       | `publicEnv`/`getServerEnv`, Zod-validated env, `.env.example` contract.                            |

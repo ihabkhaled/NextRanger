@@ -23,8 +23,8 @@ client boundaries MUST never creep upward without a documented reason.
 3. [rules/04-services-api-gateway.md](../rules/04-services-api-gateway.md) (BFF doctrine)
 4. [docs/eslint/require-client-component-reason.md](../docs/eslint/require-client-component-reason.md)
    and [docs/eslint/no-server-only-import-in-client.md](../docs/eslint/no-server-only-import-in-client.md)
-5. Reference shells: [src/app/layout.tsx](../src/app/layout.tsx),
-   [src/app/(dashboard)/articles/page.tsx](<../src/app/(dashboard)/articles/page.tsx>),
+5. Reference shells: [src/app/[locale]/layout.tsx](../src/app/[locale]/layout.tsx),
+   [src/app/[locale]/(dashboard)/articles/page.tsx](<../src/app/[locale]/(dashboard)/articles/page.tsx>),
    [src/app/api/health/route.ts](../src/app/api/health/route.ts)
 
 ## Review checklist

@@ -25,7 +25,7 @@ Work never happens directly on `main`. `main` is always releasable.
 
 - `.husky/pre-commit` → `npx lint-staged` (Prettier + ESLint on staged files, per `.lintstagedrc.cjs`).
 - `.husky/commit-msg` → commitlint.
-- `.husky/pre-push` → `npm run typecheck && npm run test`.
+- `.husky/pre-push` → `npm run gate:push`.
 
 `--no-verify` is prohibited. A hook that blocks you is a defect to fix, not a gate to skip.
 

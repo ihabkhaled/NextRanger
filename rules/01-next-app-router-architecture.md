@@ -19,16 +19,17 @@ conventions (page, layout, route, error, loading, not-found, providers) or a col
 Routes are organized into four groups; new routes MUST join one of them (or justify a new group
 in an ADR):
 
-| Group         | Purpose                                                                                                                                                             | Existing routes                                                                  |
-| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `(public)`    | Unauthenticated marketing/landing                                                                                                                                   | `src/app/(public)/page.tsx` (`/`)                                                |
-| `(auth)`      | Authentication flows                                                                                                                                                | `src/app/(auth)/login/page.tsx` (`/login`)                                       |
-| `(dashboard)` | Product screens behind a session                                                                                                                                    | `src/app/(dashboard)/articles/page.tsx`, `src/app/(dashboard)/settings/page.tsx` |
-| `(workbench)` | Living design-system showcase (see [architecture/adrs/0002-component-workbench-over-storybook.md](../architecture/adrs/0002-component-workbench-over-storybook.md)) | `src/app/(workbench)/workbench/page.tsx`                                         |
+| Group         | Purpose                                                                                                                                                             | Existing routes                                                                 |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `(public)`    | Localized, indexable marketing pages                                                                                                                                | `src/app/[locale]/(public)/page.tsx`, `about/`, `contact/`, `faq/`, `features/` |
+| `(auth)`      | Localized authentication flows                                                                                                                                      | `src/app/[locale]/(auth)/login/page.tsx`                                        |
+| `(dashboard)` | Localized product screens                                                                                                                                           | `src/app/[locale]/(dashboard)/articles/page.tsx`, `settings/page.tsx`           |
+| `(workbench)` | Living design-system showcase (see [architecture/adrs/0002-component-workbench-over-storybook.md](../architecture/adrs/0002-component-workbench-over-storybook.md)) | `src/app/[locale]/(workbench)/workbench/page.tsx`                               |
 
-Every route path MUST also exist in `ROUTE_PATHS`
+Every page route lives below `[locale]`. Its locale-free path MUST also exist in `ROUTE_PATHS`
 ([src/shared/constants/route-paths.constants.ts](../src/shared/constants/route-paths.constants.ts));
-navigation uses those constants with `AppLink` / `useAppNavigation`, never string literals.
+navigation combines those constants with `buildLocalizedPath` or `buildLocalizedLocation`, never
+raw path strings.
 Follow [skills/add-route.md](../skills/add-route.md) when adding one.
 
 ## File conventions
