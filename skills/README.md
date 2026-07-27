@@ -22,7 +22,7 @@ Rules (the "what is allowed") live in [rules/README.md](../rules/README.md). Ori
 | Add client global state with Zustand                        | [create-zustand-store.md](create-zustand-store.md)           |
 | Wrap a new third-party package in `src/packages/`           | [create-package-wrapper.md](create-package-wrapper.md)       |
 | Add a page or route handler under `src/app/`                | [add-route.md](add-route.md)                                 |
-| Add a translated message key (en + ar)                      | [add-i18n-message-key.md](add-i18n-message-key.md)           |
+| Add translated copy across every supported catalog          | [add-i18n-message-key.md](add-i18n-message-key.md)           |
 | Build a form with `useAppZodForm` and a Zod schema          | [add-form.md](add-form.md)                                   |
 | Render a large list with `VirtualizedList`                  | [add-virtualized-list.md](add-virtualized-list.md)           |
 | Write Vitest unit tests for module code                     | [write-unit-tests.md](write-unit-tests.md)                   |
