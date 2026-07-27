@@ -101,6 +101,12 @@ describe('SEO and PWA contracts', () => {
     expect(metadata.robots).toEqual({ index: false, follow: false });
   });
 
+  it('omits an undefined title from private metadata', () => {
+    expect(buildNonIndexableMetadata()).toEqual({
+      robots: { index: false, follow: false },
+    });
+  });
+
   it('lists all 70 public documents with reciprocal alternates', () => {
     const entries = sitemap();
 
