@@ -109,6 +109,10 @@ describe('toolchain contract', () => {
   it('keeps visual baseline updates explicit and makes CI compare-only', () => {
     expect(packageManifest.scripts['test:e2e:baseline']).toContain('--update-snapshots=all');
     expect(e2eWorkflow).not.toContain('--update-snapshots');
+    expect(e2eWorkflow).toContain('corepack npm exec -- playwright install --with-deps chromium');
+    expect(e2eWorkflow).toContain(
+      'corepack npm exec -- playwright test src/tests/e2e src/tests/accessibility',
+    );
     expect(e2eWorkflow).toContain('npm run test:visual');
   });
 
