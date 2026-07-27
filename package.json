@@ -35,6 +35,7 @@
     "fonts:social:check": "node support/social-fonts.mjs",
     "assets:social:generate": "corepack npm run fonts:social:generate && node support/social-images.mjs --write",
     "assets:social:check": "corepack npm run fonts:social:check && node support/social-images.mjs",
+    "commitlint": "commitlint",
     "compiler:versions": "node node_modules/@typescript/native/bin/tsc --version && node node_modules/typescript/bin/tsc6 --version",
     "typecheck": "corepack npm run compiler:versions && corepack npm run typecheck:app && corepack npm run typecheck:test && corepack npm run typecheck:node && corepack npm run typecheck:compat",
     "typecheck:app": "node node_modules/@typescript/native/bin/tsc --pretty --noEmit -p tsconfig.app.json",

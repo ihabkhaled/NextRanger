@@ -27,6 +27,7 @@ const ncuConfig = JSON.parse(readFileSync(path.join(repoRoot, '.ncurc.json'), 'u
 const nodeVersion = readFileSync(path.join(repoRoot, '.node-version'), 'utf8').trim();
 const nvmVersion = readFileSync(path.join(repoRoot, '.nvmrc'), 'utf8').trim();
 const npmConfig = readFileSync(path.join(repoRoot, '.npmrc'), 'utf8');
+const commitMessageHook = readFileSync(path.join(repoRoot, '.husky/commit-msg'), 'utf8');
 const prePushHook = readFileSync(path.join(repoRoot, '.husky/pre-push'), 'utf8');
 const ciWorkflow = readFileSync(path.join(repoRoot, '.github/workflows/ci.yml'), 'utf8');
 const e2eWorkflow = readFileSync(path.join(repoRoot, '.github/workflows/e2e.yml'), 'utf8');
@@ -57,6 +58,8 @@ describe('toolchain contract', () => {
       expect(workflow).toContain('corepack npm ci');
     }
     expect(prePushHook).toContain('corepack npm run gate:push');
+    expect(commitMessageHook).toContain('corepack npm run commitlint');
+    expect(packageManifest.scripts['commitlint']).toBe('commitlint');
     expect(packageManifest.scripts['gate:push']).not.toMatch(/(^|&& )npm /u);
     expect(packageManifest.scripts['security:audit']).toMatch(/^corepack npm /u);
     expect(packageManifest.allowScripts).toEqual({
