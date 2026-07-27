@@ -151,6 +151,7 @@
     "primaryAction": "기능 살펴보기",
     "secondaryAction": "워크벤치 열기",
     "trustLabel": "제품, 엔지니어링, 플랫폼 팀을 위한 설계",
+    "routeAtlasLabel": "현지화 경로 아틀라스",
     "highlights": {
       "one": {
         "title": "기본부터 엄격하게",

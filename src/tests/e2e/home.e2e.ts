@@ -10,8 +10,10 @@ test.describe('home page', () => {
       'The strict foundation your next product deserves',
     );
     await expect(
-      page.getByText('Designed for product, engineering, and platform teams'),
+      page.getByText('Designed for product, engineering, and platform teams').first(),
     ).toBeVisible();
+    await expect(page.getByRole('heading', { level: 2, name: 'Strict Next Ranger' })).toBeVisible();
+    await expect(page.getByText('/en/contact')).toBeVisible();
     await expect(page.getByTestId(TEST_IDS.appHeader)).toBeVisible();
   });
 

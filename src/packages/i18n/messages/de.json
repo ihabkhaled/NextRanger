@@ -151,6 +151,7 @@
     "primaryAction": "Funktionen ansehen",
     "secondaryAction": "Werkbank öffnen",
     "trustLabel": "Für Produkt-, Entwicklungs- und Plattformteams",
+    "routeAtlasLabel": "Atlas lokalisierter Routen",
     "highlights": {
       "one": {
         "title": "Standardmäßig streng",

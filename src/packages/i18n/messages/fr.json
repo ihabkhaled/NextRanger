@@ -151,6 +151,7 @@
     "primaryAction": "Découvrir les fonctions",
     "secondaryAction": "Ouvrir l’atelier",
     "trustLabel": "Pensé pour les équipes produit, ingénierie et plateforme",
+    "routeAtlasLabel": "Atlas des routes localisées",
     "highlights": {
       "one": {
         "title": "Strict par défaut",

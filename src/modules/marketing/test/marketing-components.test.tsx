@@ -7,7 +7,9 @@ import { DEFAULT_LOCALE, IntlMessagesProvider } from '@/packages/i18n';
 import enMessages from '@/packages/i18n/messages/en.json';
 import { AppLink } from '@/packages/link';
 
+import { EditorialSection } from '../components/editorial-section.component';
 import { MarketingPage } from '../components/marketing-page.component';
+import { RouteAtlas } from '../components/route-atlas.component';
 import { ContactFormContainer } from '../containers/contact-form.container';
 
 function renderWithMessages(content: ReactNode): void {
@@ -51,6 +53,47 @@ describe('MarketingPage', () => {
     expect(screen.getByRole('region', { name: 'Route atlas' })).toHaveTextContent(
       'Localized route map',
     );
+  });
+});
+
+describe('marketing content modules', () => {
+  it('renders a labelled route atlas and an editorial evidence section', () => {
+    render(
+      <>
+        <RouteAtlas
+          label="Localized route atlas"
+          title="Every language is a first-class route"
+          description="Canonical pages connect through one visible publishing system."
+          stations={
+            <>
+              <li>01 /en</li>
+              <li>02 /en/features</li>
+            </>
+          }
+        />
+        <EditorialSection
+          eyebrow="Operating principles"
+          title="Decisions teams can trust"
+          description="Rules stay visible and enforceable."
+          content={
+            <ol>
+              <li>Server-first by default</li>
+            </ol>
+          }
+        />
+      </>,
+    );
+
+    expect(screen.getByRole('region', { name: 'Localized route atlas' })).toHaveTextContent(
+      '/en/features',
+    );
+    expect(
+      screen.getByRole('heading', {
+        level: 2,
+        name: 'Every language is a first-class route',
+      }),
+    ).toBeVisible();
+    expect(screen.getByText('Server-first by default')).toBeVisible();
   });
 });
 

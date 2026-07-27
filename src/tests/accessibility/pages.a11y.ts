@@ -4,6 +4,12 @@ import { expect, test, type Page } from '@playwright/test';
 import { TEST_IDS } from '@/shared/constants/test-ids.constants';
 
 const BLOCKING_IMPACTS = new Set(['serious', 'critical']);
+const PUBLIC_MARKETING_ROUTES = [
+  { name: 'About', path: '/en/about' },
+  { name: 'Features', path: '/en/features' },
+  { name: 'FAQ', path: '/en/faq' },
+  { name: 'Contact', path: '/en/contact' },
+] as const;
 
 async function expectNoBlockingViolations(page: Page): Promise<void> {
   const results = await new AxeBuilder({ page }).analyze();
@@ -26,6 +32,13 @@ test.describe('axe scans', () => {
     await page.goto('/en');
     await expectNoBlockingViolations(page);
   });
+
+  for (const route of PUBLIC_MARKETING_ROUTES) {
+    test(`${route.name} page has no serious or critical violations`, async ({ page }) => {
+      await page.goto(route.path);
+      await expectNoBlockingViolations(page);
+    });
+  }
 
   test('articles page (loaded state) has no serious or critical violations', async ({ page }) => {
     await page.goto('/en/articles');

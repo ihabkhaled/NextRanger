@@ -151,6 +151,7 @@
     "primaryAction": "Explorar funciones",
     "secondaryAction": "Abrir banco de trabajo",
     "trustLabel": "Diseñado para equipos de producto, ingeniería y plataforma",
+    "routeAtlasLabel": "Atlas de rutas localizadas",
     "highlights": {
       "one": {
         "title": "Estricto por defecto",

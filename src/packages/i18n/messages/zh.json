@@ -151,6 +151,7 @@
     "primaryAction": "探索功能",
     "secondaryAction": "打开组件工坊",
     "trustLabel": "面向产品、工程与平台团队设计",
+    "routeAtlasLabel": "本地化路由图谱",
     "highlights": {
       "one": {
         "title": "默认严格",

@@ -151,6 +151,7 @@
     "primaryAction": "Explore features",
     "secondaryAction": "Open workbench",
     "trustLabel": "Designed for product, engineering, and platform teams",
+    "routeAtlasLabel": "Localized route atlas",
     "highlights": {
       "one": {
         "title": "Strict by default",

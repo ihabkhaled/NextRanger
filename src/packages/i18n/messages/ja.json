@@ -151,6 +151,7 @@
     "primaryAction": "機能を見る",
     "secondaryAction": "ワークベンチを開く",
     "trustLabel": "プロダクト、エンジニアリング、基盤チーム向け",
+    "routeAtlasLabel": "ローカライズされたルートアトラス",
     "highlights": {
       "one": {
         "title": "初期状態から厳格",

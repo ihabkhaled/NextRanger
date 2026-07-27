@@ -151,6 +151,7 @@
     "primaryAction": "Explorar recursos",
     "secondaryAction": "Abrir bancada",
     "trustLabel": "Criado para equipes de produto, engenharia e plataforma",
+    "routeAtlasLabel": "Atlas de rotas localizadas",
     "highlights": {
       "one": {
         "title": "Rigoroso por padrão",

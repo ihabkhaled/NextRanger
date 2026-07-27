@@ -25,6 +25,20 @@ export interface MarketingPageContainerProps {
   readonly kind: MarketingPageKind;
 }
 
+export interface RouteAtlasProps {
+  readonly label: string;
+  readonly title: string;
+  readonly description: string;
+  readonly stations: ReactNode;
+}
+
+export interface EditorialSectionProps {
+  readonly eyebrow: string;
+  readonly title: string;
+  readonly description: string;
+  readonly content: ReactNode;
+}
+
 export interface ContactFormValues {
   readonly name: string;
   readonly email: string;
