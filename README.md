@@ -27,6 +27,9 @@ to React Server Components, client boundaries, design systems, i18n/RTL, and bro
 - **An AI operating system**: `AGENTS.md`, `CLAUDE.md`, `CODEX.md`, `cursor.md`,
   `.ai/`, `.cursor/rules/`, plus `rules/`, `skills/`, `agents/`, `context/`, and `memory/`
   so coding agents work inside the same guardrails humans do.
+- **A reusable modernization brief**:
+  [copy the production master prompt](docs/production-modernization-prompt.md) into an existing
+  web, Capacitor, or backend project and replace its bracketed context.
 
 ## Quick start
 
