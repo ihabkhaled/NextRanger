@@ -4,7 +4,7 @@ import { TEST_IDS } from '@/shared/constants/test-ids.constants';
 
 test.describe('articles list', () => {
   test('renders the gateway fixture articles as cards', async ({ page }) => {
-    await page.goto('/articles');
+    await page.goto('/en/articles');
 
     await expect(page.getByTestId(TEST_IDS.articlesList)).toBeVisible();
 
@@ -14,7 +14,7 @@ test.describe('articles list', () => {
   });
 
   test('shows translated status badges and reading times', async ({ page }) => {
-    await page.goto('/articles');
+    await page.goto('/en/articles');
 
     await expect(page.getByTestId(TEST_IDS.articlesList)).toBeVisible();
     await expect(page.getByText('Draft', { exact: true })).toBeVisible();
@@ -22,7 +22,7 @@ test.describe('articles list', () => {
   });
 
   test('orders published articles newest first with drafts at the end', async ({ page }) => {
-    await page.goto('/articles');
+    await page.goto('/en/articles');
 
     const cards = page.locator(`[data-testid^="${TEST_IDS.articleCard}-"]`);
 
