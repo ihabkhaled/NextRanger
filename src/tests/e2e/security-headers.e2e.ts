@@ -6,7 +6,7 @@ function extractNonce(csp: string): string {
 
 test.describe('security headers', () => {
   test('pages ship the nonce CSP and static security headers', async ({ page }) => {
-    const response = await page.goto('/');
+    const response = await page.goto('/en');
 
     expect(response).not.toBeNull();
 
@@ -24,13 +24,28 @@ test.describe('security headers', () => {
   });
 
   test('the CSP nonce rotates per request', async ({ page }) => {
-    const first = await page.goto('/');
+    const first = await page.goto('/en');
     const firstCsp = first?.headers()['content-security-policy'] ?? '';
 
-    const second = await page.goto('/');
+    const second = await page.goto('/en');
     const secondCsp = second?.headers()['content-security-policy'] ?? '';
 
     expect(extractNonce(firstCsp)).not.toBe('');
     expect(extractNonce(firstCsp)).not.toBe(extractNonce(secondCsp));
+  });
+
+  test('localized pages hydrate without CSP violations', async ({ page }) => {
+    const cspErrors: string[] = [];
+    page.on('console', (message) => {
+      if (message.type() === 'error' && message.text().includes('Content Security Policy')) {
+        cspErrors.push(message.text());
+      }
+    });
+
+    await page.goto('/en');
+    await page.getByRole('button', { name: /Change color theme/u }).click();
+
+    await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+    expect(cspErrors).toEqual([]);
   });
 });
