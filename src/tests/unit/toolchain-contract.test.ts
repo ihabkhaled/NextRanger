@@ -25,6 +25,7 @@ const packageManifest = JSON.parse(packageManifestSource) as PackageManifest;
 const ncuConfig = JSON.parse(readFileSync(path.join(repoRoot, '.ncurc.json'), 'utf8')) as NcuConfig;
 const nodeVersion = readFileSync(path.join(repoRoot, '.node-version'), 'utf8').trim();
 const nvmVersion = readFileSync(path.join(repoRoot, '.nvmrc'), 'utf8').trim();
+const trivyVersion = readFileSync(path.join(repoRoot, '.trivy-version'), 'utf8').trim();
 const npmConfig = readFileSync(path.join(repoRoot, '.npmrc'), 'utf8');
 const commitMessageHook = readFileSync(path.join(repoRoot, '.husky/commit-msg'), 'utf8');
 const prePushHook = readFileSync(path.join(repoRoot, '.husky/pre-push'), 'utf8');
@@ -53,10 +54,12 @@ describe('toolchain contract', () => {
     expect(packageManifest.packageManager).toBe('npm@12.0.1');
     expect(nodeVersion).toBe('24.18.0');
     expect(nvmVersion).toBe(nodeVersion);
+    expect(trivyVersion).toBe('0.71.0');
     for (const workflow of [ciWorkflow, e2eWorkflow, securityWorkflow]) {
       expect(workflow).toContain('node-version: 24.18.0');
       expect(workflow).toContain('corepack npm ci');
     }
+    expect(securityWorkflow).toContain(`version: v${trivyVersion}`);
     expect(prePushHook).toContain('corepack npm run gate:push');
     expect(commitMessageHook).toContain('corepack npm run commitlint');
     expect(packageManifest.scripts['commitlint']).toBe('commitlint');

@@ -59,7 +59,8 @@ Rationale for the security posture. The normative rules live in
 
 ## Trivy severity floor: LOW
 
-- **Decision:** `npm run security:scan` runs Trivy with
+- **Decision:** Trivy 0.71.0 is pinned in `.trivy-version` and the Security workflow.
+  `npm run security:scan` runs it with
   `--severity LOW,MEDIUM,HIGH,CRITICAL --exit-code 1` across vuln, secret, and misconfig
   scanners, including dev dependencies; `npm run security:audit` runs
   `npm audit --omit=dev --audit-level=low` for the deployable graph. Trivy owns the full lockfile,

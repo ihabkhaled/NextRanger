@@ -36,6 +36,7 @@ jobs:
         with:
           scan-type: fs
           scan-ref: .
+          version: v0.71.0
           scanners: vuln,secret,misconfig
           severity: LOW,MEDIUM,HIGH,CRITICAL
           exit-code: '1'
