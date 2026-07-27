@@ -5,8 +5,8 @@ const badgeBase = 'inline-flex w-fit items-center rounded-full px-2 py-0.5 text-
 /** Status badge class bundles, selected in the display helper. */
 export const ARTICLE_STATUS_BADGE_CLASSES: Readonly<Record<ArticleStatusValue, string>> = {
   draft: `${badgeBase} bg-muted text-muted-foreground`,
-  published: `${badgeBase} bg-success/10 text-success`,
-  archived: `${badgeBase} bg-warning/10 text-warning`,
+  published: `${badgeBase} bg-success/10 text-success-readable`,
+  archived: `${badgeBase} bg-warning/10 text-warning-readable`,
 };
 
 export const articleCardClasses = {

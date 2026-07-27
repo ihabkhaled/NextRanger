@@ -12,6 +12,7 @@
   --font-mono: 'Geist Mono', 'Geist Mono Fallback', ui-monospace, monospace;
   --color-canvas: var(--role-canvas);
   --color-primary: var(--role-primary);
+  --color-primary-readable: var(--role-primary-readable);
   --color-primary-foreground: var(--role-primary-foreground);
   --color-surface: var(--role-surface);
   --color-surface-raised: var(--role-surface-raised);
@@ -23,7 +24,9 @@
   --color-danger: var(--role-danger);
   --color-danger-foreground: var(--role-danger-foreground);
   --color-success: var(--role-success);
+  --color-success-readable: var(--role-success-readable);
   --color-warning: var(--role-warning);
+  --color-warning-readable: var(--role-warning-readable);
   --color-shadow: var(--role-shadow);
 }
 
@@ -31,6 +34,7 @@
   color-scheme: light;
   --role-canvas: #f4f7f8;
   --role-primary: #087e8b;
+  --role-primary-readable: #00636e;
   --role-primary-foreground: #ffffff;
   --role-surface: #edf3f4;
   --role-surface-raised: #ffffff;
@@ -40,17 +44,20 @@
   --role-border: #b9cdd1;
   --role-ring: #e09f3e;
   --role-shadow: #07111f;
-  /* Status roles stay ≥ 4.5:1 on surface/tint backgrounds (WCAG 2 AA). */
+  /* Brand/status fills retain the atlas palette; readable roles own tinted text. */
   --role-danger: #b53d3d;
   --role-danger-foreground: #ffffff;
-  --role-success: #237f59;
-  --role-warning: #996514;
+  --role-success: #2a9d6f;
+  --role-success-readable: #17663f;
+  --role-warning: #e09f3e;
+  --role-warning-readable: #704400;
 }
 
 [data-theme='dark'] {
   color-scheme: dark;
   --role-canvas: #07111f;
   --role-primary: #45bac4;
+  --role-primary-readable: #69d1d9;
   --role-primary-foreground: #07111f;
   --role-surface: #0d1c2c;
   --role-surface-raised: #132438;
@@ -63,7 +70,9 @@
   --role-danger: #f07878;
   --role-danger-foreground: #07111f;
   --role-success: #66c99a;
+  --role-success-readable: #7bd9ad;
   --role-warning: #f1b953;
+  --role-warning-readable: #f5c873;
 }
 
 body {

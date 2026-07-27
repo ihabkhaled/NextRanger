@@ -9,7 +9,7 @@ export const buttonVariants = cva(
           'bg-primary text-primary-foreground shadow-primary/20 hover:bg-primary/90 hover:shadow-md',
         secondary:
           'border border-border bg-surface-raised text-foreground hover:border-primary/25 hover:bg-muted',
-        soft: 'border border-primary/15 bg-primary/10 text-primary hover:bg-primary/15',
+        soft: 'border border-primary/15 bg-primary/10 text-primary-readable hover:bg-primary/15',
         danger: 'bg-danger text-danger-foreground hover:bg-danger/90',
         ghost: 'shadow-none text-foreground hover:bg-muted',
       },

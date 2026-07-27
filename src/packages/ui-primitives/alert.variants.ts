@@ -4,8 +4,8 @@ export const alertVariants = cva('rounded-md border p-4 text-sm', {
   variants: {
     tone: {
       info: 'border-border bg-muted text-foreground',
-      success: 'border-success/40 bg-success/10 text-success',
-      warning: 'border-warning/40 bg-warning/10 text-warning',
+      success: 'border-success/40 bg-success/10 text-success-readable',
+      warning: 'border-warning/40 bg-warning/10 text-warning-readable',
       danger: 'border-danger/40 bg-danger/10 text-danger',
     },
   },

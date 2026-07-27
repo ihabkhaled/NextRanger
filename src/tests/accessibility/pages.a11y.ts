@@ -11,42 +11,49 @@ async function expectNoBlockingViolations(page: Page): Promise<void> {
     BLOCKING_IMPACTS.has(violation.impact ?? ''),
   );
 
-  expect(blocking.map((violation) => `${violation.id}: ${violation.description}`)).toEqual([]);
+  expect(
+    blocking.flatMap((violation) =>
+      violation.nodes.map(
+        (node) =>
+          `${violation.id} ${node.target.join(' ')}: ${node.failureSummary ?? violation.description}`,
+      ),
+    ),
+  ).toEqual([]);
 }
 
 test.describe('axe scans', () => {
   test('home page has no serious or critical violations', async ({ page }) => {
-    await page.goto('/');
+    await page.goto('/en');
     await expectNoBlockingViolations(page);
   });
 
   test('articles page (loaded state) has no serious or critical violations', async ({ page }) => {
-    await page.goto('/articles');
+    await page.goto('/en/articles');
     await expect(page.getByTestId(TEST_IDS.articlesList)).toBeVisible();
     await expectNoBlockingViolations(page);
   });
 
   test('login page has no serious or critical violations', async ({ page }) => {
-    await page.goto('/login');
+    await page.goto('/en/login');
     await expectNoBlockingViolations(page);
   });
 
   test('login page with validation errors has no serious or critical violations', async ({
     page,
   }) => {
-    await page.goto('/login');
+    await page.goto('/en/login');
     await page.getByTestId(TEST_IDS.loginSubmit).click();
     await expect(page.getByText('Enter your email address.')).toBeVisible();
     await expectNoBlockingViolations(page);
   });
 
   test('settings page has no serious or critical violations', async ({ page }) => {
-    await page.goto('/settings');
+    await page.goto('/en/settings');
     await expectNoBlockingViolations(page);
   });
 
   test('workbench page has no serious or critical violations', async ({ page }) => {
-    await page.goto('/workbench');
+    await page.goto('/en/workbench');
     await expectNoBlockingViolations(page);
   });
 });
