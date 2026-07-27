@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import type { MouseEvent, ReactNode } from 'react';
 import { beforeEach, describe, expect, it } from 'vitest';
 
-import { SiteNavigationContainer } from '@/modules/site-navigation';
+import { BreadcrumbContainer, SiteNavigationContainer } from '@/modules/site-navigation';
 import { ShellControlsContainer, useUiPreferencesStore } from '@/modules/ui-preferences';
 import { useAppNavigation } from '@/packages/navigation';
 import { AppTheme } from '@/shared/enums/app-theme.enum';
@@ -67,9 +67,11 @@ describe('site navigation', () => {
     expect(menu).not.toHaveAttribute('open');
   });
 
-  it('names the compact theme action with current and next modes', () => {
+  it('switches locale and advances the compact theme control', async () => {
+    const user = userEvent.setup();
+    const router = buildRouterStub();
     render(
-      <AppRouterStubProvider router={buildRouterStub()} pathname="/en">
+      <AppRouterStubProvider router={router} pathname="/en/features">
         <ShellControlsContainer
           locale="en"
           localeLabel="Change language"
@@ -79,6 +81,35 @@ describe('site navigation', () => {
       </AppRouterStubProvider>,
     );
 
-    expect(screen.getByRole('button', { name: /Light.*Dark/u })).toBeInTheDocument();
+    const themeButton = screen.getByRole('button', { name: /Light.*Dark/u });
+    const localeSelect = screen.getByRole('combobox', { name: 'Change language' });
+
+    expect(themeButton).toBeInTheDocument();
+    await user.selectOptions(localeSelect, 'ar');
+    expect(router.replace).toHaveBeenCalledWith('/ar/features');
+    await user.click(themeButton);
+    expect(useUiPreferencesStore.getState().theme).toBe(AppTheme.Dark);
+  });
+
+  it('renders a localized current-page breadcrumb outside the home route', () => {
+    render(
+      <AppRouterStubProvider router={buildRouterStub()} pathname="/en/features">
+        <BreadcrumbContainer locale="en" labels={labels} />
+      </AppRouterStubProvider>,
+    );
+
+    expect(screen.getByRole('link', { name: 'Home' })).toHaveAttribute('href', '/en');
+    expect(screen.getByText('Features')).toHaveAttribute('aria-current', 'page');
+  });
+
+  it('keeps the breadcrumb to home only for unknown routes', () => {
+    render(
+      <AppRouterStubProvider router={buildRouterStub()} pathname="/en/unknown">
+        <BreadcrumbContainer locale="en" labels={labels} />
+      </AppRouterStubProvider>,
+    );
+
+    expect(screen.getByRole('link', { name: 'Home' })).toBeInTheDocument();
+    expect(screen.queryByText('Features')).not.toBeInTheDocument();
   });
 });
