@@ -16,14 +16,15 @@ Executed by the release gatekeeper for every production release. Companion polic
 
 Run the complete gate on the release commit:
 
-```
-npm run validate
+```sh
+corepack npm run validate
 ```
 
-This chains `quality` (lint → typecheck → test:coverage → build), then `test:e2e`, `security:audit`, `security:scan`, `quality:dead-code`, and `quality:circular`. Additionally:
+`validate` executes `gate:push` (format → localized assets → lint → TypeScript 7+6 → coverage →
+build → dead code → cycles → runtime audit), then the full Playwright discovery set, then Trivy.
 
-- [ ] `npm run test:a11y` — zero axe violations.
-- [ ] `npm run test:visual` — no unexplained visual diffs; intentional diffs have reviewed baselines.
+- [ ] The `validate` result includes passing E2E, accessibility, and visual suites.
+- [ ] Visual output has no unexplained diffs; every intentional baseline change names its reviewer.
 - [ ] CI workflows `.github/workflows/ci.yml`, `security.yml`, `e2e.yml` green on the release commit.
 
 No step may be re-run-until-green: a flaky failure is investigated and fixed or filed before proceeding.
@@ -31,7 +32,8 @@ No step may be re-run-until-green: a flaky failure is investigated and fixed or 
 ## 3. Build sanity
 
 - [ ] `npm run build` output inspected: no unexpected bundle-size jump (compare first-load JS per route against the previous release; investigate anything > 10%).
-- [ ] `npm run start` locally with `SERVER_API_MOCKING=enabled`: app boots, `/`, `/login`, `/articles`, `/settings` render (the `ROUTE_PATHS` surface).
+- [ ] `npm run start` locally with `SERVER_API_MOCKING=enabled`: app boots and `/en`, `/en/login`,
+      `/en/articles`, and `/en/settings` render (the locale-prefixed `ROUTE_PATHS` surface).
 - [ ] `/api/health` returns the report from `buildHealthReport` (`src/modules/health`).
 
 ## 4. Smoke tests

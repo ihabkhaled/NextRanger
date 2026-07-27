@@ -7,28 +7,29 @@ overrides, no "merge now, fix later". Exceptions follow
 
 ## Gate table
 
-| Gate                                                      | Script                                                                                                         | Runs in                                                                             | Blocking                                                                                  |
-| --------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| Formatting                                                | `npm run format:check`                                                                                         | pre-commit (via `lint-staged`, auto-fixes staged files); `.github/workflows/ci.yml` | Yes                                                                                       |
-| Lint (zero warnings)                                      | `npm run lint` (`eslint . --concurrency=4 --max-warnings=0`)                                                   | pre-commit (staged scope); `ci.yml` (full)                                          | Yes                                                                                       |
-| Typecheck (strict, 3 tsconfigs)                           | `npm run typecheck` (stable TypeScript 7 over `tsconfig.app.json`, `tsconfig.test.json`, `tsconfig.node.json`) | pre-push; `ci.yml`                                                                  | Yes                                                                                       |
-| Unit + integration tests with coverage thresholds         | `npm run test:coverage` ([coverage-policy.md](coverage-policy.md))                                             | pre-push (`npm run test`); `ci.yml` (with coverage)                                 | Yes                                                                                       |
-| Production build                                          | `npm run build`                                                                                                | `ci.yml`; also implied by the e2e webServer                                         | Yes                                                                                       |
-| Playwright browser install                                | `npm run test:e2e:install` (`playwright install chromium`)                                                     | One-time per environment; CI caches the binary                                      | Yes — required before first `test:e2e` / `validate` locally                               |
-| End-to-end                                                | `npm run test:e2e`                                                                                             | `.github/workflows/e2e.yml`                                                         | Yes                                                                                       |
-| Accessibility (axe serious/critical = 0 + keyboard specs) | `npm run test:a11y`                                                                                            | `e2e.yml`                                                                           | Yes                                                                                       |
-| Visual regression (`maxDiffPixelRatio: 0.02`)             | `npm run test:visual`                                                                                          | `e2e.yml`                                                                           | Yes                                                                                       |
-| Runtime dependency vulnerabilities                        | `npm run security:audit` (`npm audit --omit=dev --audit-level=low`)                                            | `.github/workflows/security.yml`                                                    | Yes — zero unhandled findings; development dependencies remain in the Trivy lockfile scan |
-| Vuln + secret + misconfig scan                            | `npm run security:scan` (Trivy, `--exit-code 1`, severity LOW–CRITICAL)                                        | `security.yml`                                                                      | Yes                                                                                       |
-| Dead code                                                 | `npm run quality:dead-code` (knip)                                                                             | `ci.yml`                                                                            | Yes                                                                                       |
-| Circular dependencies                                     | `npm run quality:circular` (dependency-cruiser over `src`)                                                     | `ci.yml`                                                                            | Yes                                                                                       |
-| Commit message convention                                 | commitlint (conventional)                                                                                      | commit-msg hook (`.husky/commit-msg`)                                               | Yes                                                                                       |
+| Gate                                                      | Script                                                                    | Runs in                                                    | Blocking                                                                                  |
+| --------------------------------------------------------- | ------------------------------------------------------------------------- | ---------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| Formatting                                                | `npm run format:check`                                                    | pre-commit (staged write); pre-push; `ci.yml` (full check) | Yes                                                                                       |
+| Localized social-asset drift                              | `npm run assets:social:check`                                             | pre-push; `ci.yml`                                         | Yes                                                                                       |
+| Lint (zero warnings)                                      | `npm run lint` (`eslint . --concurrency=off --max-warnings=0`)            | pre-commit (staged scope); pre-push; `ci.yml` (full)       | Yes                                                                                       |
+| Typecheck (strict, 3 tsconfigs)                           | `npm run typecheck` (TypeScript 7 native plus TypeScript 6 compatibility) | pre-push; `ci.yml`                                         | Yes                                                                                       |
+| Unit + integration tests with coverage thresholds         | `npm run test:coverage` ([coverage-policy.md](coverage-policy.md))        | pre-push via `gate:push`; `ci.yml`                         | Yes                                                                                       |
+| Production build                                          | `npm run build`                                                           | pre-push; `ci.yml`; Playwright web server                  | Yes                                                                                       |
+| Playwright browser install                                | `npm run test:e2e:install` (`playwright install chromium`)                | One-time per environment; CI caches the binary             | Yes — required before first `test:e2e` / `validate` locally                               |
+| End-to-end                                                | `npm run test:e2e`                                                        | local `validate`; `.github/workflows/e2e.yml`              | Yes                                                                                       |
+| Accessibility (axe serious/critical = 0 + keyboard specs) | `npm run test:a11y`                                                       | local `validate` via `test:e2e`; `e2e.yml`                 | Yes                                                                                       |
+| Visual regression (`maxDiffPixelRatio: 0.02`)             | `npm run test:visual`                                                     | local `validate` via `test:e2e`; `e2e.yml`                 | Yes                                                                                       |
+| Runtime dependency vulnerabilities                        | `npm run security:audit` (`npm audit --omit=dev --audit-level=low`)       | pre-push; `ci.yml`; `security.yml`                         | Yes — zero unhandled findings; development dependencies remain in the Trivy lockfile scan |
+| Vuln + secret + misconfig scan                            | `npm run security:scan` (Trivy, `--exit-code 1`, severity LOW–CRITICAL)   | local `validate`; `security.yml`                           | Yes                                                                                       |
+| Dead code                                                 | `npm run quality:dead-code` (knip)                                        | pre-push; `ci.yml`                                         | Yes                                                                                       |
+| Circular dependencies                                     | `npm run quality:circular` (dependency-cruiser over `src`)                | pre-push; `ci.yml`                                         | Yes                                                                                       |
+| Commit message convention                                 | commitlint (conventional)                                                 | commit-msg hook (`.husky/commit-msg`)                      | Yes                                                                                       |
 
 ## Local enforcement: git hooks
 
 - `.husky/pre-commit` → `lint-staged` (format + lint on staged files only, keeping commits fast).
 - `.husky/commit-msg` → commitlint with the conventional config (`commitlint.config.cjs`).
-- `.husky/pre-push` → `npm run gate:push`.
+- `.husky/pre-push` → `corepack npm run gate:push`.
 
 Hooks are the fast local echo of CI, not a substitute for it — CI always runs the full,
 unscoped gate set. Bypassing hooks (`--no-verify`) is never acceptable; if a hook is wrong, fix
@@ -36,12 +37,14 @@ the hook.
 
 ## Composite scripts
 
-- `npm run quality` = lint → typecheck → test:coverage → build. Run it before opening a PR.
-- `npm run validate` = `quality` + e2e + security:audit + security:scan + dead-code + circular.
-  This is the full release gate — the same bar CI applies across all three workflows, runnable
-  on one machine. The [skills/final-validation.md](../skills/final-validation.md) skill walks
-  through it. On a fresh platform, install Chromium with `npm run test:e2e:install`. Only when
-  intentionally establishing or reviewing current-OS screenshots, run
+- `npm run quality` = social-asset drift → lint → TypeScript 7+6 typecheck → coverage → build →
+  dead code → circular dependencies.
+- `npm run gate:push` = format check → `quality` → runtime audit.
+- `npm run validate` = `gate:push` → the full Playwright discovery set → Trivy. This is the full
+  release gate — the same bar CI applies across all three workflows, runnable on one machine. The
+  [skills/final-validation.md](../skills/final-validation.md) skill walks through it. On a fresh
+  platform, install Chromium with `npm run test:e2e:install`. Only when intentionally establishing
+  or reviewing current-OS screenshots, run
   `npm run test:e2e:baseline`; it refreshes all current-OS baselines. CI is compare-only and
   fails on missing or changed Linux baselines. All Playwright npm scripts resolve the committed
   local CLI and cannot download a surprise version.
