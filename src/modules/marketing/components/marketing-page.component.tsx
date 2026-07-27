@@ -12,7 +12,6 @@ export function MarketingPage(props: MarketingPageProps): ReactElement {
         {props.structuredData}
       </script>
       <section className={marketingClasses.hero}>
-        <div className={marketingClasses.glow} aria-hidden />
         <Stack gap="lg">
           <p className={marketingClasses.eyebrow}>{props.eyebrow}</p>
           <h1 className={marketingClasses.title}>{props.title}</h1>

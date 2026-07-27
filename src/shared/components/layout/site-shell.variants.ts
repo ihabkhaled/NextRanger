@@ -1,11 +1,10 @@
 export const siteShellClasses = {
-  body: 'min-h-dvh bg-background font-sans text-foreground antialiased',
-  header:
-    'sticky top-0 z-50 border-b border-border/70 bg-surface/85 px-4 py-3 shadow-sm backdrop-blur-xl sm:px-6',
+  body: 'min-h-dvh bg-canvas font-sans text-foreground antialiased',
+  header: 'sticky top-0 z-50 border-b-2 border-foreground bg-canvas px-4 py-3 sm:px-6',
   headerInner: 'mx-auto flex max-w-[90rem] items-center justify-between gap-4',
   brand: 'inline-flex items-center gap-3 text-sm font-black tracking-tight text-foreground',
   brandMark:
-    'grid size-9 place-items-center rounded-xl bg-primary text-primary-foreground shadow-md shadow-primary/20',
+    'grid size-9 place-items-center border-2 border-foreground bg-warning font-mono text-foreground shadow-[3px_3px_0_var(--role-foreground)]',
   desktopNav: 'hidden items-center gap-1 lg:flex',
   navLink:
     'rounded-lg px-3 py-2 text-sm font-semibold text-muted-foreground transition hover:bg-muted hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring',
@@ -17,7 +16,7 @@ export const siteShellClasses = {
   mobileSummary:
     'cursor-pointer list-none rounded-lg border border-border bg-surface-raised px-3 py-2 text-sm font-bold',
   mobilePanel:
-    'absolute end-0 top-12 z-50 grid min-w-60 gap-1 rounded-2xl border border-border bg-surface-raised p-3 shadow-xl',
+    'absolute end-0 top-12 z-50 grid min-w-60 gap-1 border-2 border-foreground bg-surface-raised p-3 shadow-[6px_6px_0_var(--role-primary)]',
   frame: 'mx-auto grid min-h-[calc(100dvh-4rem)] max-w-[90rem] lg:grid-cols-[15rem_minmax(0,1fr)]',
   sidebar: 'hidden border-e border-border/70 bg-surface/55 p-5 lg:block',
   sidebarNav: 'sticky top-24 grid gap-1',
