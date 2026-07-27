@@ -51,7 +51,7 @@ describe('login flow', () => {
     await user.click(screen.getByTestId(TEST_IDS.loginSubmit));
 
     await waitFor(() => {
-      expect(router.push).toHaveBeenCalledWith('/');
+      expect(router.push).toHaveBeenCalledWith('/en');
     });
 
     expect(useAuthStore.getState().session?.displayName).toBe('demo');

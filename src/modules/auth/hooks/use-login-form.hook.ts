@@ -6,6 +6,7 @@ import { useAppNavigation } from '@/packages/navigation';
 import { showToast, ToastType } from '@/packages/toast';
 import { ROUTE_PATHS } from '@/shared/constants/route-paths.constants';
 import { TEST_IDS } from '@/shared/constants/test-ids.constants';
+import { buildLocalizedPath, resolvePathLocale } from '@/shared/helpers/localized-route.helper';
 import { I18N_NAMESPACES } from '@/shared/i18n/i18n-namespaces.constants';
 
 import { AUTH_MESSAGE_KEYS } from '../constants/auth-message-keys.constants';
@@ -37,7 +38,9 @@ export function useLoginForm(): LoginFormViewModel {
         onSuccess: (session) => {
           setSession(session);
           showToast({ type: ToastType.Success, message: t(AUTH_MESSAGE_KEYS.success) });
-          navigation.push(ROUTE_PATHS.home);
+          navigation.push(
+            buildLocalizedPath(resolvePathLocale(navigation.pathname), ROUTE_PATHS.home),
+          );
         },
       });
     },
