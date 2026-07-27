@@ -6,17 +6,25 @@ import { describe, expect, it } from 'vitest';
 import manifest from '@/app/manifest';
 import robots from '@/app/robots';
 import sitemap from '@/app/sitemap';
+import { buildMarketingKeywords } from '@/modules/marketing';
 import { DEFAULT_LOCALE, SUPPORTED_LOCALES } from '@/packages/i18n';
-import { INDEXABLE_PATHS } from '@/shared/constants/seo.constants';
+import {
+  INDEXABLE_PATHS,
+  NON_INDEXABLE_PATHS,
+  SOCIAL_IMAGE_DIRECTORY,
+  SOCIAL_IMAGE_SIZE,
+} from '@/shared/constants/seo.constants';
 import { buildLocalizedPath } from '@/shared/helpers/localized-route.helper';
 import {
   buildAbsoluteAppUrl,
   buildLanguageAlternates,
+  buildNonIndexableMetadata,
   buildSeoMetadata,
 } from '@/shared/helpers/seo-metadata.helper';
 
 const repoRoot = path.resolve(import.meta.dirname, '../../..');
 const serviceWorkerSource = readFileSync(path.join(repoRoot, 'public/sw.js'), 'utf8');
+const iconSource = readFileSync(path.join(repoRoot, 'public/icons/icon.svg'), 'utf8');
 
 describe('SEO and PWA contracts', () => {
   it('builds reciprocal locale alternates including x-default', () => {
@@ -36,13 +44,16 @@ describe('SEO and PWA contracts', () => {
       title: 'Fonctionnalites',
       description: 'Une base stricte et localisee.',
       keywords: ['Next.js', 'TypeScript'],
+      socialImageAlt: 'Fonctionnalites · Strict Next Ranger',
     });
 
     expect(metadata).toEqual(
       expect.objectContaining({
+        applicationName: 'Strict Next Ranger',
         title: 'Fonctionnalites',
         description: 'Une base stricte et localisee.',
         keywords: ['Next.js', 'TypeScript'],
+        publisher: 'Strict Next Ranger',
         robots: { index: true, follow: true },
       }),
     );
@@ -54,6 +65,14 @@ describe('SEO and PWA contracts', () => {
         locale: 'fr_FR',
         url: buildAbsoluteAppUrl('/fr/features'),
         title: 'Fonctionnalites',
+        images: [
+          {
+            url: buildAbsoluteAppUrl(`${SOCIAL_IMAGE_DIRECTORY}/fr.png`),
+            width: SOCIAL_IMAGE_SIZE.width,
+            height: SOCIAL_IMAGE_SIZE.height,
+            alt: 'Fonctionnalites · Strict Next Ranger',
+          },
+        ],
       }),
     );
     const alternateLocales =
@@ -62,20 +81,23 @@ describe('SEO and PWA contracts', () => {
         : undefined;
     expect(alternateLocales).not.toContain('fr_FR');
     expect(metadata.twitter).toEqual(
-      expect.objectContaining({ card: 'summary', title: 'Fonctionnalites' }),
+      expect.objectContaining({
+        card: 'summary_large_image',
+        title: 'Fonctionnalites',
+        images: [
+          {
+            url: buildAbsoluteAppUrl(`${SOCIAL_IMAGE_DIRECTORY}/fr.png`),
+            alt: 'Fonctionnalites · Strict Next Ranger',
+          },
+        ],
+      }),
     );
   });
 
   it('keeps private metadata out of search results', () => {
-    const metadata = buildSeoMetadata({
-      locale: 'en',
-      path: '/workbench',
-      title: 'Workbench',
-      description: 'Private implementation workspace.',
-      keywords: [],
-      index: false,
-    });
+    const metadata = buildNonIndexableMetadata('Workbench · Strict Next Ranger');
 
+    expect(metadata.title).toBe('Workbench · Strict Next Ranger');
     expect(metadata.robots).toEqual({ index: false, follow: false });
   });
 
@@ -94,7 +116,40 @@ describe('SEO and PWA contracts', () => {
 
   it('publishes a default-locale manifest and protected crawler routes', () => {
     expect(manifest().start_url).toBe(buildLocalizedPath(DEFAULT_LOCALE, '/'));
-    expect(robots().rules).toEqual(expect.objectContaining({ userAgent: '*' }));
+    expect(manifest().theme_color).toBe('#087e8b');
+    expect(manifest().background_color).toBe('#f4f7f8');
+    expect(iconSource).not.toContain('#6d5dfc');
+    expect(iconSource).toContain('#087E8B');
+
+    const crawlerRules = robots().rules;
+    expect(crawlerRules).not.toBeInstanceOf(Array);
+    expect(crawlerRules).toEqual(expect.objectContaining({ userAgent: '*' }));
+    const disallowed = Array.isArray(crawlerRules) ? undefined : crawlerRules.disallow;
+    expect(disallowed).toContain('/api/');
+    for (const locale of SUPPORTED_LOCALES) {
+      for (const path of NON_INDEXABLE_PATHS) {
+        expect(disallowed).toContain(buildLocalizedPath(locale, path));
+      }
+    }
+  });
+
+  it('builds deduplicated localized marketing keywords around stable technology terms', () => {
+    expect(
+      buildMarketingKeywords([
+        'Fonctionnalités',
+        'Tout est inclus',
+        'Fonctionnalités',
+        'Pensé pour les équipes produit',
+      ]),
+    ).toEqual([
+      'Fonctionnalités',
+      'Tout est inclus',
+      'Pensé pour les équipes produit',
+      'Next.js',
+      'React',
+      'TypeScript 7',
+      'Progressive Web App',
+    ]);
   });
 
   it('keeps service-worker locale and request exclusions aligned', () => {

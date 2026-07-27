@@ -52,10 +52,14 @@ export async function MarketingPageContainer(
       <CardContent>{t(`${key}.description`)}</CardContent>
     </Card>
   ));
-  const questions = MARKETING_MESSAGE_KEYS.questions.map((key) => (
-    <details key={key} className={marketingClasses.faq}>
-      <summary className={marketingClasses.faqQuestion}>{t(`${key}.question`)}</summary>
-      <p className={marketingClasses.faqAnswer}>{t(`${key}.answer`)}</p>
+  const faqItems = MARKETING_MESSAGE_KEYS.questions.map((key) => ({
+    question: t(`${key}.question`),
+    answer: t(`${key}.answer`),
+  }));
+  const questions = faqItems.map((item) => (
+    <details key={item.question} className={marketingClasses.faq}>
+      <summary className={marketingClasses.faqQuestion}>{item.question}</summary>
+      <p className={marketingClasses.faqAnswer}>{item.answer}</p>
     </details>
   ));
   const atlasStations = MARKETING_ATLAS_STATIONS.map((station) => {
@@ -147,6 +151,7 @@ export async function MarketingPageContainer(
         props.kind,
         t(`${pageKey}.title`),
         t(`${pageKey}.description`),
+        faqItems,
       )}
       primaryAction={
         <AppLink

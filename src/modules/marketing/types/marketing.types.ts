@@ -39,6 +39,11 @@ export interface EditorialSectionProps {
   readonly content: ReactNode;
 }
 
+export interface MarketingFaqItem {
+  readonly question: string;
+  readonly answer: string;
+}
+
 export interface ContactFormValues {
   readonly name: string;
   readonly email: string;

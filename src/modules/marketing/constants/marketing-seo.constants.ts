@@ -10,10 +10,19 @@ export const MARKETING_PATHS = {
   contact: ROUTE_PATHS.contact,
 } as const;
 
-export const MARKETING_KEYWORDS: Readonly<Record<MarketingPageKind, readonly string[]>> = {
-  home: ['Next.js boilerplate', 'TypeScript 7', 'strict frontend architecture'],
-  about: ['maintainable Next.js', 'frontend architecture', 'AI coding context'],
-  features: ['reusable React components', 'ESLint strict', 'Next.js starter features'],
-  faq: ['Next.js starter FAQ', 'strict boilerplate guidance', 'frontend conventions'],
-  contact: ['Next.js consulting', 'frontend foundation', 'product engineering'],
+export const MARKETING_TECHNOLOGY_KEYWORDS = [
+  'Next.js',
+  'React',
+  'TypeScript 7',
+  'Progressive Web App',
+] as const;
+
+export const MARKETING_PAGE_SCHEMA_TYPES: Readonly<
+  Record<MarketingPageKind, 'WebPage' | 'AboutPage' | 'FAQPage' | 'ContactPage'>
+> = {
+  home: 'WebPage',
+  about: 'AboutPage',
+  features: 'WebPage',
+  faq: 'FAQPage',
+  contact: 'ContactPage',
 };

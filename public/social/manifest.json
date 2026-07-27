@@ -1,0 +1,62 @@
+{
+  "generatedBy": "npm run assets:social:generate",
+  "generatorHash": "6417f27451fc3a1f9f7818025b5486481288d92f41ae4e32825d737f17eccc5c",
+  "locales": {
+    "en": {
+      "imageHash": "d57af777c969d4fbfede17313ca2695d9cbbb4fc80ba6289c5d90763789fccef",
+      "messageHash": "b66471f319ecf21d5a9805b2102c37a1b7e40a1db5d9a9d5d211d779a0923ed5"
+    },
+    "ar": {
+      "imageHash": "06e5bfa8c285b47e1422f30983fa3b0e0128c7aca6314a492639448e464c2891",
+      "messageHash": "8791683030dd9b63fb3a61f98d0346381f3fb2a9baab52a8ba2421cdc4d9f7c3"
+    },
+    "fr": {
+      "imageHash": "436488c9351dabcca9165e1e6cc12d6678fb5e1b40321080d352285f9393c8f7",
+      "messageHash": "5265297da960ea00df81dcc129e2eebf17059673f85c49402655fe8ee6b4ff88"
+    },
+    "it": {
+      "imageHash": "6711d6bb47ab483e60410e26b2995590bad2f2d5e04029846023c7074bac2634",
+      "messageHash": "bc906f671953975e270f614aceb32569bd984439c0c14c073741891877a20213"
+    },
+    "de": {
+      "imageHash": "f0aa54f31c5be2a9ee5cdfebf563bbeb8e2741698d5e3beddcb82c44b4eb10d0",
+      "messageHash": "64e7c7aa54b63493aedd6656858b7909fd5392781f647474e08863c5f5e47e5b"
+    },
+    "hi": {
+      "imageHash": "bc30e953d01a485612181bc9a50c70e755ba286254944ef28edf6365246e2100",
+      "messageHash": "f72063e7622f2013e7a3fb8359e42c51b4d045489b49c222c48ac28c9746ed09"
+    },
+    "fa": {
+      "imageHash": "d8be92ad5f86475ca49a802a4bd77588a115625a6aa98bce4f3e36d7c8f09916",
+      "messageHash": "5dd14f9ba8ffd67129d37755d3749e277600a2d4b207cdf2b5178d8cf48ed601"
+    },
+    "th": {
+      "imageHash": "3b0fdf05751ff0601a9ddcd4869cb7cdb678c43048472552a434e2af16cfa46b",
+      "messageHash": "a4ad905f4b0a99857384097c539283eb609f846b0685480a381b404c2b3b2cba"
+    },
+    "ja": {
+      "imageHash": "0946711c11e22ebd55e79e776b2487c5cb9a8fc6c31b12b400413688b368af58",
+      "messageHash": "688e35bffce3e0cc95e05d60b86ac6006e0beb19d86477c986932dd3b36c7726"
+    },
+    "zh": {
+      "imageHash": "f5a6d7c280f0affa0ab529a4268c7050fa451c6212a76193d2373d2e552a180e",
+      "messageHash": "ad1c295141a2ee72a5bfde712f882dd3cfa80fc1c48df23fe1cf8e9945606140"
+    },
+    "es": {
+      "imageHash": "75b0f0a8400e069a4d2ca28161a20eba654f6c84ada94e5f91bd610e260baae6",
+      "messageHash": "24d79b6cbc6d110ef7314499f8a29b3b7aad10d09147da678f218ac1e9ea7f02"
+    },
+    "pt": {
+      "imageHash": "d87749db07c765971bedb32902aaff18237ea297becf43abe66615fc26d771f9",
+      "messageHash": "7a87ea42ef8360d3194c27d94d6b04868e5e60a9ada78b1293badd6d4daca7fe"
+    },
+    "ko": {
+      "imageHash": "ea6a647c23d40656877fa21d04363749377f037e91b05f9a27d222861bce726a",
+      "messageHash": "3444c619679c5dcffc63529ba52f502de9d5427c3e90a2c789ef8a375c1a39ee"
+    },
+    "tr": {
+      "imageHash": "431f0a9472a453c8b94c29ccb227dcbc9871994268d1c46cc0152e10b6835616",
+      "messageHash": "19643333c017da5b95ea0c4908f130b6b5a20eb71cd29069703c839b8c21230b"
+    }
+  }
+}

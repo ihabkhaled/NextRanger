@@ -1,6 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Next Ranger">
-  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#6d5dfc"/><stop offset="1" stop-color="#15b8a6"/></linearGradient></defs>
-  <rect width="512" height="512" rx="116" fill="#0b1020"/>
-  <path d="M112 386V126h68l152 168V126h68v260h-64L180 214v172z" fill="url(#g)"/>
-  <circle cx="400" cy="112" r="28" fill="#f5c451"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Strict Next Ranger route atlas mark">
+  <rect width="512" height="512" rx="96" fill="#F4F7F8"/>
+  <rect x="56" y="56" width="400" height="400" rx="56" fill="#087E8B"/>
+  <rect x="40" y="40" width="400" height="400" rx="56" fill="#E09F3E" stroke="#07111F" stroke-width="16"/>
+  <path d="M128 328V136h56l144 120V136h56v192h-52L184 208v120z" fill="#07111F"/>
+  <path d="M128 376h256" fill="none" stroke="#07111F" stroke-width="12"/>
+  <rect x="112" y="360" width="32" height="32" fill="#F4F7F8" stroke="#07111F" stroke-width="8"/>
+  <rect x="240" y="360" width="32" height="32" fill="#2A9D6F" stroke="#07111F" stroke-width="8"/>
+  <rect x="368" y="360" width="32" height="32" fill="#D95D5D" stroke="#07111F" stroke-width="8"/>
 </svg>

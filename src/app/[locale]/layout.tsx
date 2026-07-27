@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Script from 'next/script';
 import type { ReactElement, ReactNode } from 'react';
 
@@ -37,6 +38,10 @@ import { AppProviders } from '../providers';
 import { layoutClasses } from './layout.variants';
 
 import '../styles.css';
+
+export const metadata: Metadata = {
+  metadataBase: new URL(appConfig.appUrl),
+};
 
 interface LocaleLayoutProps {
   readonly children: ReactNode;

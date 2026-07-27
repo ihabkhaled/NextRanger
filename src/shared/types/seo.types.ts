@@ -6,5 +6,5 @@ export interface SeoMetadataInput {
   readonly title: string;
   readonly description: string;
   readonly keywords: readonly string[];
-  readonly index?: boolean;
+  readonly socialImageAlt: string;
 }

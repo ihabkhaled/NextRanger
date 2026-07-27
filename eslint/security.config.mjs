@@ -28,4 +28,11 @@ export default [
       'security/detect-non-literal-fs-filename': 'off',
     },
   },
+  {
+    // EXC-0006: fixed locale/weight enumerations are confined to the repository asset roots.
+    files: ['support/social-*.mjs'],
+    rules: {
+      'security/detect-non-literal-fs-filename': 'off',
+    },
+  },
 ];

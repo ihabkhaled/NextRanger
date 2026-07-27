@@ -14,6 +14,7 @@ export const ROUTE_PATHS = {
   articles: '/articles' as Route,
   settings: '/settings' as Route,
   workbench: '/workbench' as Route,
+  offline: '/offline' as Route,
 } as const;
 
 /** Catalog-derived public API. @public */
