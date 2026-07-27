@@ -9,7 +9,11 @@ import sitemap from '@/app/sitemap';
 import { DEFAULT_LOCALE, SUPPORTED_LOCALES } from '@/packages/i18n';
 import { INDEXABLE_PATHS } from '@/shared/constants/seo.constants';
 import { buildLocalizedPath } from '@/shared/helpers/localized-route.helper';
-import { buildLanguageAlternates } from '@/shared/helpers/seo-metadata.helper';
+import {
+  buildAbsoluteAppUrl,
+  buildLanguageAlternates,
+  buildSeoMetadata,
+} from '@/shared/helpers/seo-metadata.helper';
 
 const repoRoot = path.resolve(import.meta.dirname, '../../..');
 const serviceWorkerSource = readFileSync(path.join(repoRoot, 'public/sw.js'), 'utf8');
@@ -23,6 +27,56 @@ describe('SEO and PWA contracts', () => {
     for (const locale of SUPPORTED_LOCALES) {
       expect(alternates[locale]).toContain(`/${locale}/features`);
     }
+  });
+
+  it('builds complete indexable metadata with locale-specific social tags', () => {
+    const metadata = buildSeoMetadata({
+      locale: 'fr',
+      path: '/features',
+      title: 'Fonctionnalites',
+      description: 'Une base stricte et localisee.',
+      keywords: ['Next.js', 'TypeScript'],
+    });
+
+    expect(metadata).toEqual(
+      expect.objectContaining({
+        title: 'Fonctionnalites',
+        description: 'Une base stricte et localisee.',
+        keywords: ['Next.js', 'TypeScript'],
+        robots: { index: true, follow: true },
+      }),
+    );
+    expect(metadata.alternates?.canonical).toBe(buildAbsoluteAppUrl('/fr/features'));
+    expect(metadata.alternates?.languages?.fr).toBe(buildAbsoluteAppUrl('/fr/features'));
+    expect(metadata.alternates?.languages?.['x-default']).toBe(buildAbsoluteAppUrl('/en/features'));
+    expect(metadata.openGraph).toEqual(
+      expect.objectContaining({
+        locale: 'fr_FR',
+        url: buildAbsoluteAppUrl('/fr/features'),
+        title: 'Fonctionnalites',
+      }),
+    );
+    const alternateLocales =
+      metadata.openGraph && !Array.isArray(metadata.openGraph)
+        ? metadata.openGraph.alternateLocale
+        : undefined;
+    expect(alternateLocales).not.toContain('fr_FR');
+    expect(metadata.twitter).toEqual(
+      expect.objectContaining({ card: 'summary', title: 'Fonctionnalites' }),
+    );
+  });
+
+  it('keeps private metadata out of search results', () => {
+    const metadata = buildSeoMetadata({
+      locale: 'en',
+      path: '/workbench',
+      title: 'Workbench',
+      description: 'Private implementation workspace.',
+      keywords: [],
+      index: false,
+    });
+
+    expect(metadata.robots).toEqual({ index: false, follow: false });
   });
 
   it('lists all 70 public documents with reciprocal alternates', () => {
