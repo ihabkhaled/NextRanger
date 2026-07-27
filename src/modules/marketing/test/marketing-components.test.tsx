@@ -65,12 +65,9 @@ describe('ContactFormContainer', () => {
     expect(screen.getByText('Enter your email address.')).toBeVisible();
     expect(screen.getByText('Enter a message.')).toBeVisible();
 
-    await user.type(screen.getByRole('textbox', { name: 'Name' }), 'Ada Lovelace');
-    await user.type(screen.getByRole('textbox', { name: 'Email address' }), 'ada@example.com');
-    await user.type(
-      screen.getByRole('textbox', { name: 'Message' }),
-      'Please help our team launch a multilingual product.',
-    );
+    await user.type(screen.getByRole('textbox', { name: 'Name' }), 'A');
+    await user.type(screen.getByRole('textbox', { name: 'Email address' }), 'a@b.co');
+    await user.type(screen.getByRole('textbox', { name: 'Message' }), '12345678901234567890');
     await user.click(screen.getByRole('button', { name: 'Prepare email draft' }));
 
     expect(await screen.findByRole('status')).toHaveTextContent(

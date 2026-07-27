@@ -52,4 +52,18 @@ describe('VirtualizedList', () => {
     expect(screen.getByText('Row 4')).toBeInTheDocument();
     expect(screen.queryByText('Row 150')).not.toBeInTheDocument();
   });
+
+  it('uses runtime measurement when no initial render count is supplied', () => {
+    render(
+      <VirtualizedList
+        items={[{ id: 'measured', label: 'Measured row' }]}
+        heightPx={200}
+        computeItemKey={(item) => item.id}
+        renderItem={(item) => <span>{item.label}</span>}
+        testId="measured-list"
+      />,
+    );
+
+    expect(screen.getByTestId('measured-list')).toBeInTheDocument();
+  });
 });

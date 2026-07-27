@@ -7,6 +7,8 @@ import {
   getSafeWindow,
   isBrowser,
   matchesMediaQuery,
+  openEmailDraft,
+  registerAppServiceWorker,
   setRootAttribute,
 } from '@/packages/browser';
 import { readStorageJson, removeStorageItem, writeStorageJson } from '@/packages/storage';
@@ -41,6 +43,35 @@ describe('browser/storage facades without a browser environment', () => {
   it('returns the current query and hash suffix when a browser exists', () => {
     vi.stubGlobal('window', { location: { search: '?page=2', hash: '#latest' } });
     expect(getBrowserLocationSuffix()).toBe('?page=2#latest');
+  });
+
+  it('returns false instead of opening a mail draft during SSR', () => {
+    vi.stubGlobal('window', undefined);
+
+    expect(openEmailDraft('team@example.com', 'Subject', 'Body')).toBe(false);
+  });
+
+  it('opens an encoded local mail draft when a browser exists', () => {
+    const location = { href: '', search: '', hash: '' };
+    vi.stubGlobal('window', { location });
+
+    expect(openEmailDraft('team@example.com', 'Hello world', 'A&B')).toBe(true);
+    expect(location.href).toBe('mailto:team@example.com?subject=Hello%20world&body=A%26B');
+  });
+
+  it('skips service-worker registration when the browser API is unavailable', async () => {
+    vi.stubGlobal('window', { navigator: {} });
+
+    await expect(registerAppServiceWorker('/sw.js')).resolves.toBeNull();
+  });
+
+  it('registers the app service worker through the browser facade', async () => {
+    const registration = { scope: '/app/' };
+    const register = vi.fn().mockResolvedValue(registration);
+    vi.stubGlobal('window', { navigator: { serviceWorker: { register } } });
+
+    await expect(registerAppServiceWorker('/sw.js')).resolves.toBe(registration);
+    expect(register).toHaveBeenCalledWith('/sw.js');
   });
 
   it('storage facade returns null/false when window is absent', () => {
