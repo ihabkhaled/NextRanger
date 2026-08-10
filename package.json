@@ -120,7 +120,7 @@
     "knip": "^6.29.0",
     "lint-staged": "^17.2.0",
     "msw": "^2.15.0",
-    "npm-check-updates": "^23.0.0",
+    "npm-check-updates": "^23.0.1",
     "postcss": "^8.5.23",
     "prettier": "^3.9.6",
     "tailwindcss": "^4.3.3",
